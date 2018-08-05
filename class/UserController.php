@@ -4,7 +4,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[sizeof($uri)-1];
 switch ($method) {
 	case 'GET':
-		$result =  DB::select("user",["id","first_name"], (($id==null) ? "id =". $id : null));
+		$result =  DB::select("user",["id"], (($id==null) ? "id =". $id : null));
 		break;
 	case 'POST':
 		$contents = file_get_contents("php://input");
@@ -22,4 +22,4 @@ switch ($method) {
 		break;
 }
 
-// echo($result);
+ echo($result);
