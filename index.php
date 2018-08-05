@@ -13,11 +13,7 @@ include '/database/config.php';
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
-        // Home page
-        case '/':
-            require 'class/home.php';
-            break;
-        // Home page
+    
         case 'home':
             require 'class/home.php';
             break;
