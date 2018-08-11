@@ -14,8 +14,8 @@ if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
     
-        case 'home':
-            require 'class/home.php';
+        case 'user':
+            require 'class/UserController.php';
             break;
         // About page
         case 'about':
@@ -48,14 +48,25 @@ switch ($request_uri[0]) {
     case '/about':
         require 'blades/about.php';
         break;
+    case '/user':
+        require 'class/security.php';
+        require 'blades/user.php';
+        break;
     case '/login':
         require 'class/security.php';
     	require 'blades/login.php';
         break;
+    case '/userstatus':
+        require 'class/UserStatusController.php';
+        break;
     // Everything else
+    case '/500':
+         header('HTTP/1.0 500');
+         require 'blades/500.php';
+        break;
     default:
         header('HTTP/1.0 404 Not Found');
-        require 'blades/404.html';
+        require 'blades/404.php';
         break;
 }
 }

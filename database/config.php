@@ -27,8 +27,8 @@ Class DB{
 
 	function select($table,$fields = null,$conditions = null){
 		$conn = DB::db_init();
-		$query = !$conditions ? ("select * from $table") : ("select * from $table where $conditions");
-		if ($fields) {
+		$query = !isset($conditions) ? ("select * from $table") : ("select * from $table where $conditions");
+		if ($fields !==null) {
 			$query = str_replace('*', join(",", $fields), $query);
 		}
 		
@@ -40,22 +40,30 @@ Class DB{
 				array_push($result_array,$row);
 			}
 		}
+		// return $query;
 		return json_encode($result_array);
 	}
 
-	function insert($table,$fields,$contents){
-		if (sizeof($fields)!==sizeof($contents)) {
-			return 500;
-		}
-		$conn = DB::init();
-		$query = "insert into $table ";
-		for ($i=0; $i < sizeof($fields); $i++) { 
-			$query .= $fields[$i] . "='" . $contents[$i] ."'";
-			
-		}
+	function insert($table,$contents){
+		$conn = DB::db_init();
+		$query = "insert into $table (" .join(',',$contents) . ")";
+		// $result = $conn->query($query);
+		return $query;
+		return ($result->num_rows > 0) ?  true :  false; 
 	}
 
-	function post($table,$contents){
+	function update($table,$column,$content,$conditions){
+		if (sizeof($column) !== sizeof($content)){ return false; }
+		$conn = DB::db_init();
+		$query = "update $table set ";
+		for ($i=0; $i < sizeof($column); $i++) { 
+			$query .= $column[$i] . "=" . $content[$i];
+			if ($i < sizeof($column)-1) {
+				$query .= ",";
+			}
+		}
+		$query .= " where " . $conditions;
+		return $query;
 
 	}
 
@@ -63,8 +71,8 @@ Class DB{
 		$conn = DB::db_init();
 		$id = $conn->real_escape_string($id);
 		$query = "DELETE from $table where id=$id";
-		$result = $conn->query($query);
-		return true;
+		// $result = $conn->query($query);
+		return $query;
 	}
 	function escape($string){
 		$string = str_replace("'", "\'", $string);
