@@ -10,17 +10,26 @@ switch ($method) {
 	case 'POST':
 		$contents = file_get_contents("php://input");
 		$data_to_catch = array();
-		$data_to_insert = json_decode($contents);
+		$data_to_insert = array();
+		$data_to_insert = json_decode(($contents));
+
 		foreach ($data_to_insert as $key1) {
-			foreach ($key1 as $key2 => $value) {
-				array_push($data_to_catch, $value);
-			}
+				foreach ($key1 as $key2 => $value) {
+				if ($key2=="password") {
+					$value = "'".base64_encode((md5($value)))."'";
+
+				}
+				array_push($data_to_catch, "$value");
+				}
 		}
-		echo DB::insert("user", $data_to_catch);
+		$fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
+		echo (DB::insert("users", $data_to_catch,$fields)) ? "WAAAW" : "NGEK";
 		
 		break;
 	case 'PUT':
 		$contents = json_decode(file_get_contents("php://input"),true);
+		$contents = str_replace("[", "", $contents);
+		$contents = str_replace("]", "", $contents);
 		$column = array();
 		$cont_ = array();
 		$conditions = "id=" . $id;
@@ -32,10 +41,10 @@ switch ($method) {
 			}
 		}
 		// echo "\n";
-		echo DB::update("user", $column, $cont_, $conditions);
+		echo DB::update("users", $column, $cont_, $conditions);
 		break;
 	case 'DELETE':
-		DB::delete("user", (($id==null) ? "id =". $id : null));
+		DB::delete("users", (($id==null) ? "id =". $id : null));
 		break;					
 	default:
 		return 500;

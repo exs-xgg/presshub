@@ -59,6 +59,12 @@ switch ($request_uri[0]) {
     case '/userstatus':
         require 'class/UserStatusController.php';
         break;
+    case '/admin':
+        require 'blades/admin.php';
+        break;
+    case '/dashboard':
+        require 'blades/dashboard.php';
+        break;
     // Everything else
     case '/500':
          header('HTTP/1.0 500');

@@ -9,7 +9,7 @@ Class DB{
 		$SERVER_ADDRESS = "localhost";
 		$DATABASE_USER = "root";
 		$DATABASE_PASSWORD = "";
-		$DATABASE_NAME = "sanjose_users";
+		$DATABASE_NAME = "presshub";
 		return mysqli_connect($SERVER_ADDRESS,$DATABASE_USER,$DATABASE_PASSWORD,$DATABASE_NAME);
 	}
 
@@ -44,12 +44,11 @@ Class DB{
 		return json_encode($result_array);
 	}
 
-	function insert($table,$contents){
+	function insert($table,$contents,$fields=null){
 		$conn = DB::db_init();
-		$query = "insert into $table (" .join(',',$contents) . ")";
-		// $result = $conn->query($query);
-		return $query;
-		return ($result->num_rows > 0) ?  true :  false; 
+		$query = "insert into $table ($fields) values(" .join(',',$contents) . ")";
+		// return $query;
+		return   $conn->query($query) ?  true :  false; 
 	}
 
 	function update($table,$column,$content,$conditions){
