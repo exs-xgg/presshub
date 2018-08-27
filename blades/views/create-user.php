@@ -75,7 +75,8 @@
 										</select>
 									</div>
 								</div>
-								<button onclick="submitForm()">SUbmit</button>
+								<br>
+								<button class="btn btn-primary" onclick="submitForm()">SUbmit</button>
 							</div>
 						</div>
 					</div>
@@ -107,18 +108,9 @@
 				data: dataa,
 				url: "/api/user",
 				success: function(result){
-					console.log(result);
+					toastr.info("Succesfully created user");
 				}
 			})
 	}
-	function createUserForm(){
-var unindexed_array = $("#createUserForm_").serializeArray();
-    var indexed_array = {};
-
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n['name']] = n['value'];
-    });
-
-    console.log(indexed_array);
-	}
+	toastr.info("Succesfully created user");
 </script>

@@ -1,4 +1,4 @@
-create database presshub;
+create database if not exists presshub;
 	use presshub;
 
 create table users(

@@ -7,7 +7,7 @@ $uri = explode("/", $request_uri[0]);
 
 include '/database/config.php';
 
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // var_dump($uri);
 //API CONTROLLER ROUTES
 if (strpos($uri[1], 'api') !== false) {
@@ -23,6 +23,9 @@ if (strpos($uri[1], 'api') !== false) {
             break;
         case 'login':
             require 'class/login.php';
+            break;
+        case 'role':
+            require 'class/RoleController.php';
             break;
         // Everything else
         default:
