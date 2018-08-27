@@ -48,15 +48,28 @@
 		
 	}
 	function editRole(id){
-console.log(id);
-	}
-	function deleteRole(id){
 		$.ajax({
-			url: "",
+			url: "/api/role/" + id,
+			type: "PUT",
 			success: function(result){
+				toastr.info("Delete succesful");
 				getRoles();
 			}
 		});
+	}
+	function deleteRole(id){
+		var action = confirm("Are you sure you want to delete " + id + "?");
+		if (action) {
+			$.ajax({
+				url: "/api/role/" + id,
+				type: "DELETE",
+				success: function(result){
+					toastr.info("Delete succesful");
+					getRoles();
+				}
+			});
+		}
+		
 	}
 	function submitRole(){
 		var role = $("#role").val();

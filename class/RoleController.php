@@ -23,10 +23,10 @@ switch ($method) {
 		echo "$result";
 		break;
 	case 'PUT':
-		
 		break;
 	case 'DELETE':
-		
+		echo DB::delete("designation","'".$uri[sizeof($uri)-1]."'"); ;
+
 		break;					
 	default:
 		return 500;
