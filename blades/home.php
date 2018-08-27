@@ -111,7 +111,7 @@
           <span></span>
           <span></span>
         </div>
-        <div class="container shape-container d-flex" contenteditable="true">
+        <div class="container shape-container d-flex">
           <div class="col px-0">
             <div class="row">
               <div class="col-lg-7" >
@@ -141,15 +141,64 @@
       </section>
       <!-- 1st Hero Variation -->
     </div>
+    <div class="row">
+      <div class="col-lg-6">
+      <div class="alert alert-danger"><h2 class="text-white">Recent Events</h2></div>
+      <div class="container">
+        <div class="well well-bg">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+            <div class="rounded shadow-lg overflow-hidden transform-perspective-right">
+              <div id="carousel_example" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel_example" data-slide-to="0" class=""></li>
+                  <li data-target="#carousel_example" data-slide-to="1" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="img-fluid" src="https://i.ytimg.com/vi/CiV6ITr6jlc/maxresdefault.jpg" alt="First slide">
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="img-fluid" src="http://3-photos7.motorcar.com/used-2013-lamborghini-gallardo-2013lamborghinigallardolp5502withonly34771miles-13253-16906214-2-1024.jpg" alt="Second slide">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+          <style>
+            .img-fluid{
+             object-fit: cover;
+  width:800px;
+  height:500px;
+            }
+          </style>
     <section class="section section-lg pt-lg-0 mt--200">
       <div class="container">
-      	<div class="alert alert-danger"><h2 class="text-white">Recent Events</h2></div>
+      	
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="row row-grid">
               
               <?php
-              	include "/class/RecentStoriesController.php";
+              	// include "/class/RecentStoriesController.php";
               ?>
             </div>
           </div>
