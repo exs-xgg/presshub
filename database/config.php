@@ -68,9 +68,9 @@ Class DB{
 
 	function delete($table,$id){
 		$conn = DB::db_init();
-		$id = $conn->real_escape_string($id);
+		// $id = $conn->real_escape_string($id);
 		$query = "DELETE from $table where id=$id";
-		// $result = $conn->query($query);
+		$result = $conn->query($query);
 		return $query;
 	}
 	function escape($string){

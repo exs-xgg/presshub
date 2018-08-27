@@ -1,10 +1,10 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
-$id = $uri[sizeof($uri)-1];
+$id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("user",["id","last_name"]," id=". $id) : DB::select("user",["id","last_name"]);
+		$result =  ($id!==null) ? DB::select("users",["id","last_name"]," id=". $id) : DB::select("users");
 		echo "$result";
 		break;
 	case 'POST':
