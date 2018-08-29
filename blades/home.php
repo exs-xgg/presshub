@@ -20,6 +20,9 @@
   <script src="/vendor/popper/popper.min.js"></script>
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <script src="/vendor/headroom/headroom.min.js"></script>
+  
+  <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
+  <script src="/node_modules/toastr/build/toastr.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>

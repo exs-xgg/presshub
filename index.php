@@ -28,6 +28,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'role':
             require 'class/RoleController.php';
             break;
+        case 'issue':
+            require 'class/IssueController.php';
+            break;
         // Everything else
         default:
             header('HTTP/1.0 404 Not Found');

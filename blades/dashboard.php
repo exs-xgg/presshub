@@ -19,6 +19,9 @@
   <script src="/vendor/popper/popper.min.js"></script>
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <script src="/vendor/headroom/headroom.min.js"></script>
+<script src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
+  <script src="/node_modules/toastr/build/toastr.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
@@ -52,7 +55,7 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">My Profile</span>
+                <span class="nav-link-inner--text">My Profile</span>  (<small>NAME HERE</small>)
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -85,7 +88,7 @@
               Announcements
             </div>
             <div class="card-body">
-              
+              Paginate animation carousel Jumbotron here
             </div>
           </div>
         </div>
@@ -99,11 +102,9 @@
                   <li class="nav-item">
                     <a class="nav-link mb-sm-3 mb-md-0 active show" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments</a>
                   </li>
+                  
                   <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Notifications <span id="notifNo">(*)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Messages</a>
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Calendar</a>
                   </li>
                 </ul>
               </div>
@@ -111,24 +112,32 @@
                 <div class="card-body">
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                      <table class="table">
+                      <table class="table" id="assignedTable">
                         <thead>
                           <tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr>
                         </thead>
                         <tbody>
-                          <tr class="delayed"><td>2018-06-09</td><td>CCS 2nd Sem</td><td>News</td><td>2018-07-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
+                          <tr class="delayed"><td>2018-06-09</td><td>CCS 2nd Sem Red if late</td><td>News</td><td>2018-07-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
                           <tr><td>2018-06-09</td><td>CCS 2nd Sem</td><td>Editorial</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
-                          <tr><td>2018-06-09</td><td>CCS 2nd Sem</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
+                          <tr class="new"><td>2018-06-09</td><td>CCS 2nd Sem Blue if less than a week assigned</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
                         </tbody>
                       </table>
+                      <div class="small">
+                        <small> • LEGEND •</small>
+                        <ul>
+                          <li>Default</li>
+                          <li class="delayed">Nearing Deadline / Overdue</li>
+                          <li class="new">Fresh; less than a week since assigned</li>
+                        </ul>
+                      </div>
                     </div>
-                    <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                   <!--  <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                      <div class="alert alert-primary" onclick="$(this).hide(1000)"><span class="fa fa-circle mr-2"> </span> An article has been assigned to you.</div>
                      <div class="alert alert-primary" onclick="$(this).hide(1000)"><span class="fa fa-circle mr-2"> </span> An article has been assigned to you.</div>
                      <div class="alert alert-primary" onclick="$(this).hide(1000)"><span class="fa fa-circle mr-2"> </span> An article has been assigned to you.</div>
-                    </div>
+                    </div> -->
                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                      <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                     <?php include "views/create-issue.php"; ?>
                     </div>
                   </div>
                 </div>
@@ -137,6 +146,9 @@
             <style type="text/css">
               .delayed{
                 color: red;
+              }
+              .new {
+                color: blue
               }
             </style>
         <div class="col-lg-4 col-md-4 col-xs-6">
@@ -175,4 +187,7 @@
     </div>
   </main>
 </body>
+<script>
+  $("#assignedTable").datatable;
+</script>
 </html>
