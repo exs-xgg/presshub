@@ -73,11 +73,88 @@
 						 <div class="alert alert-dark"><span class="text-white"><b>Add Articles</b></span></div>
 						 <div class="card bg-secondary shadow border-0">
 						 	<div class="card-body bg-white">
-						 		<div class="col-lg-6 ">
-					                <label>Article Name</label>
-							 		<input class="form-control" type="text" id="name">
-						            
-								</div>
+						 		<div class="row">
+						 			<div class="col-lg-5 ">
+						                <label>Article Name</label>
+								 		<input class="form-control" type="text" id="name">
+							            
+									</div>
+									<div class="col-lg-5 ">
+						                <label>Assign Users</label>
+								 		<input class="form-control" type="text" id="name" list="userList">
+							            <datalist id="userList">
+										  <option value="7">Rain</option>
+										  <option value="8">Josh</option>
+										  <option value="9">Therese</option>
+										  <option value="10">Calvin</option>
+										  <option value="11">Maam Danica</option>
+										</datalist>
+									</div>
+									<div class="col-lg-2">
+										<label class="col-lg-12">&nbsp;</label>
+										<button class="btn btn-primary"><i class="fa fa-plus"></i> Add</button>
+									</div>
+						 		</div>
+						 		<hr>
+						 		<div class="row">
+						 			<div class="col-lg-4">
+						 				<div class="list-group bg-secondary shadow border-0">
+										  <span class="list-group-item active">
+										    Cras justo odio
+										  </span>
+										  <span class="list-group-item list-group-item-action">Dapibus ac facilisis in</span>
+										  <span class="list-group-item list-group-item-action">Morbi leo risus</span>
+										  <span class="list-group-item list-group-item-action">Porta ac consectetur ac</span>
+										  <span class="list-group-item list-group-item-action disabled">Vestibulum at eros</span>
+										</div>
+						 			</div>
+						 			<div class="col-lg-8">
+						 				<div class="card bg-secondary shadow border-0">
+										 	<div class="card-body bg-warning text-white">
+						 						Assigned Users
+						 					</div>
+						 					<div class="card-body">
+						 						<ul class="list-group col-lg-12">
+						 							<li class="list-group-item">
+						 								Rain Pioquinto <button type="button" class="pull-right btn btn-sm btn-danger" data-toggle="modal" data-target="#md_1"><b>x</b></button>
+						 							</li>
+<div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-danger">
+                  <div class="modal-header">
+                    <h6 class="modal-title" id="modal-title-notification">Delete User Assignment</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="py-3 text-center">
+                      <i class="ni ni-bell-55 ni-3x"></i>
+                      <h4 class="heading mt-4">WARNING!</h4>
+                      <p>You are about to delete Rain Pioquinto from the article Article Name here. Continue?</p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-white">Yes, Delete this user</button>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+						 							<li class="list-group-item">
+						 								Rain Pioquinto
+						 							</li>
+						 							<li class="list-group-item">
+						 								Rain Pioquinto
+						 							</li>
+						 						</ul>
+						 					</div>
+						 				</div>
+						 			</div>
+						 		</div>
+						 		
 						 		
 						 	</div>
 						 	
