@@ -81,7 +81,7 @@
 									</div>
 									<div class="col-lg-5 ">
 						                <label>Assign Users</label>
-								 		<input class="form-control" type="text" id="name" list="userList">
+								 		<input class="form-control" type="text" id="userAssigned" list="userList">
 							            <datalist id="userList">
 										  <option value="7">Rain</option>
 										  <option value="8">Josh</option>
@@ -167,6 +167,9 @@
 </div>
 
 <script>
+	var issue_id = '';
+	var article_id = '';
+	var r = '';
 	loadIssues();
 	// loadUsers();
 	function loadUsers(){
@@ -195,7 +198,7 @@
 	function loadIssues(){
 	$("#issueCard").hide();
 
-	$("#issueCard").show(500);
+	
 
 		$("#issueListTable > tbody").empty();
 		$.ajax({
@@ -213,14 +216,43 @@
 						break;
 						default:break;
 					}
-					 $('#issueListTable > tbody:last-child').append('<tr><td>' +value.id + '</td><td>' +value.date_started + '</td><td>' +value.nickname +'</td><td>' +value.deadline + '</td><td>' +value.status + '</td><td><a href="#" class="link"><i class="fa fa-eye"></i> View</a></td></tr>');
+					 $('#issueListTable > tbody:last-child').append('<tr><td>' +value.id + '</td><td>' +value.date_started + '</td><td>' +value.nickname +'</td><td>' +value.deadline + '</td><td>' +value.status + '</td><td><a href="#" class="link" onclick="loadIssueArticle(' + value.id + ')"><i class="fa fa-eye"></i> View</a></td></tr>');
+					 issue_id = value.id;
 					
 				});
 				
 			}
 	});
 			}
-	function loadIssue(){
+	function loadIssueArticle(e){
+		$.ajax({
+			url: "/api/issue/" + e,
+			success: function(result){
+				console.log(result);
+				r = jQuery.parseJSON(result);
+				$.each(r,function(idx,value){
+					switch(value.status){
+						case 'O':value.status = "ONGOING";
+						break;
+						case 'H':value.status = "ON HOLD";
+						break
+						case 'D':value.status = "DISMISSED";
+						break;
+						default:break;
+					}
+					var deadline = value.deadline.replace(" 00:00:00","").split("-");
+					var date_started = value.date_started.replace(" 00:00:00","").split("-");
+					console.log()
 
+					$("#nickname").val(value.nickname);
+					$("#status").val(value.status);
+					$("#date_started").val(date_started[1] + '/' + date_started[2] + '/' + date_started[0]);
+					$("#deadline").val(deadline[1] + '/' + deadline[2] + '/' + deadline[0]);
+				});
+				
+			}
+		});
+		
+		$("#issueCard").show("slow");
 	}
 </script>
