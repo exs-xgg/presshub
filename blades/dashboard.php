@@ -13,15 +13,18 @@
   <!-- Icons -->
   <link href="/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="/node_modules/datatables/media/css/jquery.datatables.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/popper/popper.min.js"></script>
-  <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <script src="/vendor/headroom/headroom.min.js"></script>
 <script src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
   <script src="/node_modules/toastr/build/toastr.min.js"></script>
+  <script src="/node_modules/datatables/media/js/jquery.datatables.min.js"></script>
+  <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
@@ -55,7 +58,15 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">My Profile</span>  (<small>NAME HERE</small>)
+                <span class="nav-link-inner--text">My Profile</span>  (<small><?php
+                  $user = $_SESSION['user'];
+                  $user = json_decode($user);
+                  foreach ($user as $key) {
+                    foreach ($key as $key1 => $value) {
+                      echo "$value ";
+                    }
+                  }
+                  ?></small>)
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -112,7 +123,7 @@
                 <div class="card-body">
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                      <table class="table" id="assignedTable">
+                      <table class="table table-striped" id="assignedTable">
                         <thead>
                           <tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr>
                         </thead>
@@ -122,7 +133,7 @@
                           <tr class="new"><td>2018-06-09</td><td>CCS 2nd Sem Blue if less than a week assigned</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
                         </tbody>
                       </table>
-                      <div class="small">
+                      <div class="small bg-secondary">
                         <small> • LEGEND •</small>
                         <ul>
                           <li>Default</li>
@@ -188,6 +199,7 @@
   </main>
 </body>
 <script>
-  $("#assignedTable").datatable;
+    $('#assignedTable').DataTable();
+
 </script>
 </html>

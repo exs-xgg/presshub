@@ -74,22 +74,12 @@
 						 <div class="card bg-secondary shadow border-0">
 						 	<div class="card-body bg-white">
 						 		<div class="row">
-						 			<div class="col-lg-5 ">
+						 			<div class="col-lg-10 ">
 						                <label>Article Name</label>
 								 		<input class="form-control" type="text" id="name">
 							            
 									</div>
-									<div class="col-lg-5 ">
-						                <label>Assign Users</label>
-								 		<input class="form-control" type="text" id="userAssigned" list="userList">
-							            <datalist id="userList">
-										  <option value="7">Rain</option>
-										  <option value="8">Josh</option>
-										  <option value="9">Therese</option>
-										  <option value="10">Calvin</option>
-										  <option value="11">Maam Danica</option>
-										</datalist>
-									</div>
+									
 									<div class="col-lg-2">
 										<label class="col-lg-12">&nbsp;</label>
 										<button class="btn btn-primary"><i class="fa fa-plus"></i> Add</button>
@@ -98,14 +88,8 @@
 						 		<hr>
 						 		<div class="row">
 						 			<div class="col-lg-4">
-						 				<div class="list-group bg-secondary shadow border-0">
-										  <span class="list-group-item active">
-										    Cras justo odio
-										  </span>
-										  <span class="list-group-item list-group-item-action">Dapibus ac facilisis in</span>
-										  <span class="list-group-item list-group-item-action">Morbi leo risus</span>
-										  <span class="list-group-item list-group-item-action">Porta ac consectetur ac</span>
-										  <span class="list-group-item list-group-item-action disabled">Vestibulum at eros</span>
+						 				<div class="list-group bg-secondary shadow border-0" id="articleList">
+										 
 										</div>
 						 			</div>
 						 			<div class="col-lg-8">
@@ -114,6 +98,24 @@
 						 						Assigned Users
 						 					</div>
 						 					<div class="card-body">
+						 						<div class="row">
+						 							<div class="col-lg-10 ">
+										                <label>Assign Users</label>
+												 		<input class="form-control" type="text" id="userAssigned" list="userList">
+											            <datalist id="userList">
+														  <option value="7">Rain</option>
+														  <option value="8">Josh</option>
+														  <option value="9">Therese</option>
+														  <option value="10">Calvin</option>
+														  <option value="11">Maam Danica</option>
+														</datalist>
+													</div>
+													<div class="col-lg-2">
+														<label class="col-lg-12">&nbsp;</label>
+														<button class="btn btn-primary"><i class="fa fa-plus"></i> Add</button>
+													</div>
+						 						</div>
+						 						
 						 						<ul class="list-group col-lg-12">
 						 							<li class="list-group-item">
 						 								Rain Pioquinto <button type="button" class="pull-right btn btn-sm btn-danger" data-toggle="modal" data-target="#md_1"><b>x</b></button>
@@ -198,8 +200,6 @@
 	function loadIssues(){
 	$("#issueCard").hide();
 
-	
-
 		$("#issueListTable > tbody").empty();
 		$.ajax({
 			url: "/api/issue",
@@ -255,4 +255,19 @@
 		
 		$("#issueCard").show("slow");
 	}
+	function loadArticle(e){
+		$.ajax({
+			url: "/api/issue-article/" + e,
+			success: function(result){
+				console.log(result);
+				r = jQuery.parseJSON(result);
+				$.each(r,function(idx,value){
+					$("#articleList").append('<span class="list-group-item list-group-item-action" id="art_' + value.id + '" onclick="viewArticleUser(' + value.id + ')">' + value.name + '</span>');
+				});
+				
+			}
+		});
+	}
 </script>
+
+

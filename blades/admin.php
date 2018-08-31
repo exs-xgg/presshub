@@ -26,6 +26,20 @@
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
 <body>
-	<?php include 'blades/views/issue-dashboard.php'; ?>
+    <div class="row">
+      <div class="col-lg-6">
+        <?php// include 'blades/views/issue-dashboard.php'; ?>
+      </div>
+      <div class="col-lg-6">
+        <?php include 'blades/views/create-issue.php'; ?>
+      </div>
+      <div class="col-lg-6">
+        <?php //include 'blades/views/edit-role.php'; ?>
+      </div>
+       <div class="col-lg-6">
+        <?php include 'blades/views/create-user.php'; ?>
+      </div>
+    </div>
+
 </body>
 </html>

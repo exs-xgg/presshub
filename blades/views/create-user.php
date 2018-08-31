@@ -1,13 +1,10 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-1 col-md-0 col-xs-0">
-			&nbsp;
-		</div>
-		<div class="col-lg-10 col-md-12 col-xs-12">
+		<div class="col-lg-12 col-md-12 col-xs-12">
 			<div class="container">
 				<div class="row">
 					<div class="card">
-						<div class="card-title">
+						<div class="card-header">
 							<span>Create New User</span>
 						</div>
 						<div class="card-body">
@@ -82,9 +79,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-lg-1 col-md-0 col-xs-0">
-			&nbsp;
 		</div>
 	</div>
 </div>
