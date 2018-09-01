@@ -27,17 +27,17 @@
 </head>
 <body>
     <div class="row">
-      <div class="col-lg-6">
-        <?php// include 'blades/views/issue-dashboard.php'; ?>
+      <div class="col-lg-12">
+        <?php include 'blades/views/issue-dashboard.php'; ?>
       </div>
       <div class="col-lg-6">
-        <?php include 'blades/views/create-issue.php'; ?>
+        <?php //include 'blades/views/create-issue.php'; ?>
       </div>
       <div class="col-lg-6">
         <?php //include 'blades/views/edit-role.php'; ?>
       </div>
        <div class="col-lg-6">
-        <?php include 'blades/views/create-user.php'; ?>
+        <?php //include 'blades/views/create-user.php'; ?>
       </div>
     </div>
 
