@@ -25,20 +25,72 @@
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
+<header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand mr-lg-5" href="/home">
+          <h3>Presshub</h3>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="/home">
+                  <img src="/img/brand/blue.png">
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link">
+                <i class="ni ni-ui-04 d-lg-none"></i>
+                <span class="nav-link-inner--text">My Profile</span>  (<small><?php
+                  $user = $_SESSION['user'];
+                  $user = json_decode($user);
+                  foreach ($user as $key) {
+                    foreach ($key as $key1 => $value) {
+                      echo "$value ";
+                    }
+                  }
+                  ?></small>)
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="/about" class="nav-link">
+                <i class="ni ni-collection d-lg-none"></i>
+                <span class="nav-link-inner--text">User Settings</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <li class="nav-item d-none d-lg-block ml-lg-4">
+              <a href="/login" target="_blank" class="btn btn-warning btn-icon">
+                <span class="btn-inner--icon">
+                  <i class="fa fa-sign-out mr-2"></i>
+                </span>
+                <span class="nav-link-inner--text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 <body>
-    <div class="row">
-      <div class="col-lg-12">
-        <?php include 'blades/views/issue-dashboard.php'; ?>
-      </div>
-      <div class="col-lg-6">
-        <?php //include 'blades/views/create-issue.php'; ?>
-      </div>
-      <div class="col-lg-6">
-        <?php //include 'blades/views/edit-role.php'; ?>
-      </div>
-       <div class="col-lg-6">
-        <?php //include 'blades/views/create-user.php'; ?>
-      </div>
+    <div class="contaier">
+      <div class="row">
+        
+      </div>   
     </div>
 
 </body>

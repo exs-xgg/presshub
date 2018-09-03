@@ -1,7 +1,8 @@
 <?php if (!isset($_SESSION['user'])) {
 	header("location: /login");
   // echo $_SESSION['user'];
-} ?>
+} 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -59,13 +60,7 @@
               <a href="#" class="nav-link">
                 <i class="ni ni-ui-04 d-lg-none"></i>
                 <span class="nav-link-inner--text">My Profile</span>  (<small><?php
-                  $user = $_SESSION['user'];
-                  $user = json_decode($user);
-                  foreach ($user as $key) {
-                    foreach ($key as $key1 => $value) {
-                      echo "$value ";
-                    }
-                  }
+                  echo $_SESSION['user'];
                   ?></small>)
               </a>
             </li>
@@ -99,7 +94,7 @@
               Announcements
             </div>
             <div class="card-body">
-              Paginate animation carousel Jumbotron here
+              <?php include 'views/announcement-carousel.php'; ?>
             </div>
           </div>
         </div>
@@ -128,17 +123,17 @@
                           <tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr>
                         </thead>
                         <tbody>
-                          <tr class="delayed"><td>2018-06-09</td><td>CCS 2nd Sem Red if late</td><td>News</td><td>2018-07-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
+                          <tr class="text-danger"><td>2018-06-09</td><td>CCS 2nd Sem Red if late</td><td>News</td><td>2018-07-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
                           <tr><td>2018-06-09</td><td>CCS 2nd Sem</td><td>Editorial</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
-                          <tr class="new"><td>2018-06-09</td><td>CCS 2nd Sem Blue if less than a week assigned</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
+                          <tr class="text-primary"><td>2018-06-09</td><td>CCS 2nd Sem Blue if less than a week assigned</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
                         </tbody>
                       </table>
                       <div class="small bg-secondary">
                         <small> • LEGEND •</small>
                         <ul>
                           <li>Default</li>
-                          <li class="delayed">Nearing Deadline / Overdue</li>
-                          <li class="new">Fresh; less than a week since assigned</li>
+                          <li class="text-danger">Nearing Deadline / Overdue</li>
+                          <li class="text-primary">Fresh; less than a week since assigned</li>
                         </ul>
                       </div>
                     </div>
@@ -154,14 +149,7 @@
                 </div>
               </div>
             </div>
-            <style type="text/css">
-              .delayed{
-                color: red;
-              }
-              .new {
-                color: blue
-              }
-            </style>
+            
         <div class="col-lg-4 col-md-4 col-xs-6">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
