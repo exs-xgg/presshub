@@ -104,7 +104,7 @@
 				success: function(result){
 					toastr.info("Succesfully created user");
 				}
-			})
+			});
 	}
 	// toastr.info("Succesfully created user");
 </script>

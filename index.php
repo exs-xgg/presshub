@@ -31,6 +31,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'issue':
             require 'class/IssueController.php';
             break;
+        case 'announcement':
+            require 'class/CarouselController.php';
+            break;
         // Everything else
         default:
             header('HTTP/1.0 404 Not Found');

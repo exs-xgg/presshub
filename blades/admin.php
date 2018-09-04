@@ -1,11 +1,7 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
   <title>Admin - Presshub</title>
 <link href="/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -13,18 +9,22 @@
   <!-- Icons -->
   <link href="/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="/node_modules/datatables/media/css/jquery.datatables.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/popper/popper.min.js"></script>
-  <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <script src="/vendor/headroom/headroom.min.js"></script>
 <script src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
   <script src="/node_modules/toastr/build/toastr.min.js"></script>
+  <script src="/node_modules/datatables/media/js/jquery.datatables.min.js"></script>
+  <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
+<body>
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
@@ -54,14 +54,8 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">My Profile</span>  (<small><?php
-                  $user = $_SESSION['user'];
-                  $user = json_decode($user);
-                  foreach ($user as $key) {
-                    foreach ($key as $key1 => $value) {
-                      echo "$value ";
-                    }
-                  }
+               <span class="nav-link-inner--text">My Profile</span>  (<small><?php
+                  echo $_SESSION['user'];
                   ?></small>)
               </a>
             </li>
@@ -89,7 +83,9 @@
 <body>
     <div class="contaier">
       <div class="row">
-        
+        <?php include 'views/carousel-panel.php';?>
+      </div>   <div class="row">
+        <?php include 'views/create-user.php';?>
       </div>   
     </div>
 
