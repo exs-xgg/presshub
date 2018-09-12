@@ -6,10 +6,13 @@
 					Add Announcement
 				</div>
 				<div class="card-body">
-					<label>Role Name</label>
-					<input type="text" id="role" class="form-control col-lg-4">
+					<label>Title</label>
+					<input type="text" id="title" class="form-control col-lg-4">
 					<br>
-					<button class="btn btn-primary col-lg-2" onclick="submitRole()">Add Role</button>
+					<label>Body</label>
+					<textarea class="form-control" id="body"></textarea>
+					<br>
+					<button class="btn btn-primary col-lg-4" onclick="submitAnnouncement()">Add Announcement</button>
 				</div>
 				<div class="card-footer">
 					<label>Announcements</label>
@@ -28,20 +31,17 @@
 <script>
 	 $('#announcementTable').DataTable();
 	getRoles();
-	function getRoles(){
-		$("#roleTable > tbody").empty();
+	function getAnnouncement(){
+		$("#announcementTable > tbody").empty();
 		$.ajax({
 			url: "/api/announcement/",
 			success: function(result){
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#roleTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,10) + '</td><td>' + value.date_created + '</td><td> <button onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td<td>More buttons here</td></tr>');
+					 $('#announcementTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,10) + '</td><td>' + value.date_created + '</td><td> <button onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td<td>More buttons here</td></tr>');
 				});
-				for (var i = 0; i < r.length; i++) {
-				    
-				    
-				}
+				
 		           
 		        }
 				
@@ -72,17 +72,10 @@
 		}
 		
 	}
-	function submitRole(){
+	function submitAnnouncement(){
 		var dataa = [{
-				'first_name': "'" + $("#first_name").val() + "'",
-				'middle_name': "'" + $("#middle_name").val() + "'",
-				'last_name': "'" + $("#last_name").val() + "'",
-				'designation': "'" + $("#designation").val().substring(0,3) + "'",
-				'contact_no': "'" + $("#contact_no").val() + "'",
-				'email_addr': "'" + $("#email_addr").val() + "'",
-				'username': "'" + $("#username").val() + "'",
-				'password': "'" + $("#password").val() + "'",
-				'is_admin':"'" + $("#is_admin").val().substring(0,1) + "'"
+				'title': "'" + $("#title").val() + "'",
+				'body': "'" + $("#body").val() + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);
@@ -91,7 +84,7 @@
 				data: dataa,
 				url: "/api/announcement",
 				success: function(result){
-					toastr.info("Succesfully created user");
+					toastr.success("Succesfully created announcement");
 				}
 			});
 	}

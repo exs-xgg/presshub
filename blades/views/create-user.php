@@ -102,7 +102,7 @@
 				data: dataa,
 				url: "/api/user",
 				success: function(result){
-					toastr.info("Succesfully created user");
+					toastr.success("Succesfully created user");
 				}
 			});
 	}

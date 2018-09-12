@@ -90,7 +90,7 @@ if (!$_SESSION['is_admin']=="Y") {
           </ul>
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a href="/login" target="_blank" class="btn btn-warning btn-icon">
+              <a href="/login" class="btn btn-warning btn-icon">
                 <span class="btn-inner--icon">
                   <i class="fa fa-sign-out mr-2"></i>
                 </span>

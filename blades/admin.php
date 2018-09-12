@@ -29,7 +29,7 @@
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand mr-lg-5" href="/home">
-          <h3>Presshub</h3>
+          <h3>Presshub Admin Panel</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -50,25 +50,9 @@
               </div>
             </div>
           </div>
-          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link">
-                <i class="ni ni-ui-04 d-lg-none"></i>
-               <span class="nav-link-inner--text">My Profile</span>  (<small><?php
-                  echo $_SESSION['user'];
-                  ?></small>)
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="/about" class="nav-link">
-                <i class="ni ni-collection d-lg-none"></i>
-                <span class="nav-link-inner--text">User Settings</span>
-              </a>
-            </li>
-          </ul>
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a href="/login" target="_blank" class="btn btn-warning btn-icon">
+              <a href="/login" class="btn btn-warning btn-icon">
                 <span class="btn-inner--icon">
                   <i class="fa fa-sign-out mr-2"></i>
                 </span>
@@ -82,12 +66,42 @@
   </header>
 <body>
     <div class="contaier">
-      <div class="row">
-        <?php include 'views/carousel-panel.php';?>
-      </div>   <div class="row">
-        <?php include 'views/create-user.php';?>
-      </div>   
+     
+        <div class="nav-wrapper">
+          <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link mb-sm-3 mb-md-0 active show" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Create User</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Create Issue</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Create Announcement</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Calendar</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade active show" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                <?php include 'views/create-user.php';?>
+              </div>
+              <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+               <?php include "views/create-issue.php"; ?>
+              </div>
+              <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+              <?php include 'views/carousel-panel.php';?>
+              </div>
+            </div>
+          </div>
+        </div>
+     
     </div>
+    
 
 </body>
 </html>
