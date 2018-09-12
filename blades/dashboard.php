@@ -70,6 +70,23 @@
                 <span class="nav-link-inner--text">User Settings</span>
               </a>
             </li>
+            <?php
+if (!$_SESSION['is_admin']=="Y") {
+
+
+  ?>
+<li class="nav-item dropdown">
+              <a href="/admin" class="nav-link">
+                <i class="ni ni-collection d-lg-none"></i>
+                <span class="nav-link-inner--text">Admin</span>
+              </a>
+            </li>
+
+  <?php
+}
+
+
+            ?>
           </ul>
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item d-none d-lg-block ml-lg-4">
