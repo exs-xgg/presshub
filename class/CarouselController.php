@@ -4,7 +4,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("announcement",null," id=". $id) : DB::select("issue");
+		$result =  ($id!==null) ? DB::select("announcement",null," id=". $id) : DB::select("announcement");
 		echo "$result";
 		break;
 	case 'POST':

@@ -10,6 +10,7 @@
 			foreach ($result as $key) {
 				$_SESSION['user'] = $key->{"first_name"}.' '.$key->{"middle_name"}.' '.$key->{"last_name"};
 				$_SESSION['is_admin'] = $key->{"is_admin"};
+				$_SESSION['id'] = $key->{"id"};
 			}
 			// echo $_SESSION['user'];
 			header("location: /dashboard");

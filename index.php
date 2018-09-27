@@ -14,7 +14,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
-    
+        
         case 'user':
             require 'class/UserController.php';
             break;
@@ -33,6 +33,9 @@ if (strpos($uri[1], 'api') !== false) {
             break;
         case 'announcement':
             require 'class/CarouselController.php';
+            break;
+        case 'carouselActive':
+            require 'class/CarouselActiveController.php';
             break;
         // Everything else
         default:

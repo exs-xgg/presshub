@@ -1,6 +1,6 @@
-<div class="container">
+
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6">
 			<div class="card">
 				<div class="card-header">
 					Create New Issue
@@ -50,9 +50,42 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-6">
+			<div class="card">
+				<div class="card-header">
+					Issues Registered
+				</div>
+				<div class="card-body">
+					<table class="table" id="issuesTable">
+						<thead>
+							<tr><th>Issue Name</th><th>Date Started</th><th>Status</th><th>Deadline</th></tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+
 <script>
+	getIssues();
+	function getIssues(){
+		$("#issuesTable > tbody").empty();
+		$.ajax({
+			url: "/api/issue",
+			success: function(result){
+				console.log(result);
+				r = jQuery.parseJSON(result);
+				$.each(r,function(idx,value){
+					 $('#issuesTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
+				});
+				
+		           
+		        }
+				
+			});
+	}
 	function createIssueConfirm(){
 		var confirm_ = confirm("You are about to create a new issue, and this action can't be undone. Continue?");
 		if (confirm_) {
