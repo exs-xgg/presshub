@@ -9,7 +9,7 @@
 <div class="card bg-secondary">
 	<div class="card-body">
 		<div class="container">
-		<h1>Issue Panel</h1>
+<nav class="alert alert-dark"><h4 class="text-white">Issue</h4></nav>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="container" id="form">
@@ -55,12 +55,34 @@
 				            </div>
 						</div>
 						<div class="container">
-							<span class="btn btn-primary pull-right" onclick="saveIssue()">Save</span>
+							 <span class="btn btn-primary pull-right" onclick="saveIssue()">Save</span> <a href="/admin" class="btn btn-warning" >Go Back</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+			<br><br>
+			<nav class="alert alert-dark"><h4 class="text-white">Articles</h4></nav>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<section>
+							<ul class="list">
+								<li class="list-i">aaaa</li>
+							</ul>
+						</section>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<section>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</section>
+					</div>
+				</div>
+			</div>
 		</div>	
 	</div>
 
@@ -97,7 +119,7 @@ var dataa = [{
 				data: dataa,
 				url: "/api/issue/" + localStorage.getItem("issue_id"),
 				success: function(result){
-					toastr.success("Issue Succesfully Added!");
+					toastr.info("Issue Succesfully Updated!");
 					console.log(dataa);
 				}
 			})

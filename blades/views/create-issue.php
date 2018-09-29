@@ -77,7 +77,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#issuesTable > tbody:last-child').append('<tr><td><a href="/admin/issue/' + value.id + '">' + value.id + '</a></td><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
+					 $('#issuesTable > tbody:last-child').append('<tr onclick="navIssue(' + value.id + ')"><td><a href="/admin/issue/' + value.id + '">' + value.id + '</a></td><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
 					 
 				});
 				}
@@ -85,6 +85,9 @@
 		        
 				
 			});
+	}
+	function navIssue(e){
+		window.location.href = "/admin/issue/" + e;
 	}
 	function createIssueConfirm(){
 		var confirm_ = confirm("You are about to create a new issue, and this action can't be undone. Continue?");
@@ -113,5 +116,10 @@
 			})
 	}
 
-	
+
 </script>
+<style type="text/css">
+	tr:hover{
+		background-color: #ddd;
+	}
+</style>
