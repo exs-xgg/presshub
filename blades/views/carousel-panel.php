@@ -19,7 +19,7 @@
 					<label>Announcements</label>
 					<table class="table" id="announcementTable">
 						<thead>
-							<tr><th>Title</th><th>Body</th><th>Date</th><th>Is Active</th><th>Actions</th></tr>
+							<tr><th>Title</th><th>Body</th><th>Date</th><th>Actions</th></tr>
 						</thead>
 						<tbody>
 						</tbody>
@@ -39,7 +39,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#announcementTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,20) + '</td><td>' + value.date_created + '</td><td id="ac_' + value.id + '" contenteditable="true" onkeypress="editActiveAnnouncement(event,' + value.id + ')">' + value.is_active + '</td><td> <button class="btn btn-danger" onclick="deleteAnnouncement(' + "'" +value.id +  "'" +')">Delete</button><button class="btn btn-info" onclick="editAnnouncement(' + "'" +value.id +  "'" +')">Edit</button></td></tr>');
+					 $('#announcementTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,20) + '</td><td>' + value.date_created + '</td><td> <button class="btn btn-danger" onclick="deleteAnnouncement(' + "'" +value.id +  "'" +')">Delete</button><button class="btn btn-info" onclick="editAnnouncement(' + "'" +value.id +  "'" +')">Edit</button></td></tr>');
 				});
 				
 		           
@@ -53,6 +53,7 @@
 		var action = confirm("Are you sure you want to delete annoucement #" + id + "?");
 		if (action) {
 			$.ajax({
+				type: "DELETE",
 				url: "/api/announcement/" + id,
 				type: "DELETE",
 				success: function(result){
@@ -93,7 +94,7 @@
 					toastr.success("Succesfully created announcement");
 				}
 			});
-			 timeout(1000,getAnnouncement());
+			 // timeout(1000,getAnnouncement());
+			 getAnnouncement();
 	}
-
 </script>

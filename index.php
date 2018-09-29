@@ -49,38 +49,38 @@ if (strpos($uri[1], 'api') !== false) {
 
 //PAGE VIEW CONTROLLERS
     session_start();
-switch ($request_uri[0]) {
+switch ($uri[1]) {
     // Home page
-    case '/':
+    case '':
         require 'blades/home.php';
         break;
     // Home page
-    case '/home':
+    case 'home':
         require 'blades/home.php';
         break;
     // About page
-    case '/about':
+    case 'about':
         require 'blades/about.php';
         break;
-    case '/user':
+    case 'user':
         require 'class/security.php';
         require 'blades/user.php';
         break;
-    case '/login':
+    case 'login':
         require 'class/security.php';
     	require 'blades/login.php';
         break;
-    case '/userstatus':
+    case 'userstatus':
         require 'class/UserStatusController.php';
         break;
-    case '/admin':
+    case 'admin':
         require 'blades/admin.php';
         break;
-    case '/dashboard':
+    case 'dashboard':
         require 'blades/dashboard.php';
         break;
     // Everything else
-    case '/500':
+    case '500':
          header('HTTP/1.0 500');
          require 'blades/500.php';
         break;

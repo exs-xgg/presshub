@@ -6,8 +6,7 @@
 					Create New Issue
 				</div>
 				<div class="card-body">
-					
-						 <small class="d-block text-uppercase font-weight-bold mb-3">Issue Name</small>
+					 <small class="d-block text-uppercase font-weight-bold mb-3">Issue Name</small>
 						<input class="form-control form-control-alternative" type="text" id="nickname" required="">
 						
 						<br>
@@ -58,7 +57,7 @@
 				<div class="card-body">
 					<table class="table" id="issuesTable">
 						<thead>
-							<tr><th>Issue Name</th><th>Date Started</th><th>Status</th><th>Deadline</th></tr>
+							<tr><th>ID</th><th>Issue Name</th><th>Date Started</th><th>Status</th><th>Deadline</th></tr>
 						</thead>
 						<tbody>
 						</tbody>
@@ -78,11 +77,12 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#issuesTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
+					 $('#issuesTable > tbody:last-child').append('<tr><td><a href="/admin/issue/' + value.id + '">' + value.id + '</a></td><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
+					 
 				});
-				
+				}
 		           
-		        }
+		        
 				
 			});
 	}
@@ -112,4 +112,6 @@
 				}
 			})
 	}
+
+	
 </script>

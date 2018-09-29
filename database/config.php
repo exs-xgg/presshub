@@ -51,10 +51,14 @@ Class DB{
 		return   $conn->query($query) ?  true :  false; 
 	}
 
-	function update($table,$column,$content,$conditions){
+	function update($table,$content,$column,$conditions){
+		// return $content;
 		if (sizeof($column) !== sizeof($content)){ return false; }
 		$conn = DB::db_init();
 		$query = "update $table set ";
+		$content = explode(",", $content);
+
+		$column = explode(",", $column);
 		for ($i=0; $i < sizeof($column); $i++) { 
 			$query .= $column[$i] . "=" . $content[$i];
 			if ($i < sizeof($column)-1) {
@@ -62,7 +66,8 @@ Class DB{
 			}
 		}
 		$query .= " where " . $conditions;
-		return $query;
+		return   $conn->query($query) ?  true :  false; 
+		// return $query;
 
 	}
 
