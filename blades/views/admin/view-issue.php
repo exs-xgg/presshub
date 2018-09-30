@@ -55,7 +55,7 @@
 				            </div>
 						</div>
 						<div class="container">
-							 <span class="btn btn-primary pull-right" onclick="saveIssue()">Save</span> <a href="/admin" class="btn btn-warning" >Go Back</a>
+							 <span class="btn btn-primary pull-right" id="issueupdatebtn" onclick="saveIssue()"><i class="fa fa-save"></i> Save</span> <a href="/admin" class="btn btn-warning" ><i class="fa fa-chevron-left"></i> Go Back</a>
 						</div>
 					</div>
 				</div>
@@ -68,22 +68,47 @@
 						<nav class="alert alert-success"><b><span class="text-white">New Article</span></b></nav>
 						<label>Article Name</label>
 						<div class="row">
-							<div class="col-lg-8">
+
+
+							<div class="col-lg-8 col-md-8">
 								<input class="form-control form-control-alternative" type="text" id="article_name">
 							</div>
-							<div class="col-lg-4">
-								<button class="btn btn-primary">Add</button>
+							<div class="col-lg-4 col-md-4">
+								<button class="btn btn-primary" onclick="addArticle()"><i class="fa fa-plus"></i> Add</button>
 							</div>
+
+
+
+						</div>
+						<br>
+						<div class="row">
+							<table class="table table-striped">
+								
+									<tr><th>Article Name</th><th>Date Added</th><td></td></tr>
+								
+								
+									<tr><td>Head ARticle</td><td>2018-09-09</td><td class="chev" onclick="loadArticlePage(2)"><i class="fa fa-chevron-right"></i></td></tr>
+								
+							</table>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
-						<section>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<section id="drawer">
+							<div class="row">
+								<div class="col-lg-12">
+									<nav class="alert alert-dark" id="article_name">Article Name here</nav>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+							</div>
 						</section>
 					</div>
 				</div>
@@ -95,7 +120,25 @@
 
 
 <script type="text/javascript">
+	$("#drawer").hide(0);
 	loadIssue();
+	function loadArticlePage(page){
+		$("#drawer").hide(0);
+		$("#drawer").show(1000);
+	}
+	function addArticle(){
+		article_name = $("#article_name").val();
+		$.ajax({
+			url: "/api/article/" + localStorage.getItem("issue_id"),
+			data: [{'article_name' : article_name}],
+			success: function(result){
+				toastr.success("Succesfully Added Article!");
+			}
+		});
+	}
+	function loadArticle(){
+
+	}
 	function loadIssue(){
 		// alert(localStorage.getItem("issue_id"));
 		$.ajax({
@@ -106,11 +149,17 @@
 					$("#issue_name").val(value.nickname);
 					$("#date_started").val(value.date_started);
 					$("#deadline").val(value.deadline);
+					$("#status").val(value.status);
 				});
 			}
 		});
 	}
 	function saveIssue(){
+		if (!$("#date_started").val() || !$("#deadline").val()) {
+			toastr.error("Date areas should not be empty!");
+			$("#issueupdatebtn").addClass("btn-danger");
+			return 0;
+		}
 		var date_started = $("#date_started").val().split("/");
 		date_started = date_started[2] + "-" + date_started[0] + "-" + date_started[1];
 
@@ -137,3 +186,14 @@ var dataa = [{
 	}
 	
 </script>
+<style type="text/css">
+	tr:hover{
+		background-color: #ddd;
+	}
+	.chev:hover{
+		cursor: pointer;
+		background-color: gray;
+		color: white
+	}
+	
+</style>

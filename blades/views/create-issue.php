@@ -103,7 +103,7 @@
 		var deadline = $("#deadline").val().split("/");
 		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
 
-var dataa = [{
+		var dataa = [{
 				'nickname': "'" + $("#issue_name").val() + "'",
 				'date_started': "date('" + date_started + "')",
 				'deadline': "date('" + deadline + "')",
