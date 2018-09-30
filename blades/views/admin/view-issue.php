@@ -65,11 +65,16 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
-						<section>
-							<ul class="list">
-								<li class="list-i">aaaa</li>
-							</ul>
-						</section>
+						<nav class="alert alert-success"><b><span class="text-white">New Article</span></b></nav>
+						<label>Article Name</label>
+						<div class="row">
+							<div class="col-lg-8">
+								<input class="form-control form-control-alternative" type="text" id="article_name">
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary">Add</button>
+							</div>
+						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<section>
@@ -106,10 +111,16 @@
 		});
 	}
 	function saveIssue(){
+		var date_started = $("#date_started").val().split("/");
+		date_started = date_started[2] + "-" + date_started[0] + "-" + date_started[1];
+
+		var deadline = $("#deadline").val().split("/");
+		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
+
 var dataa = [{
 				'nickname': "'" + $("#issue_name").val() + "'",
-				'date_started': "'" + $("#date_started").val() + "'",
-				'deadline': "'" + $("#deadline").val() + "'",
+				'date_started': "date('" + date_started + "')",
+				'deadline': "date('" + deadline + "')",
 				'status': "'" + $("#status").val() + "'"
 			}];
 			dataa = JSON.stringify(dataa);

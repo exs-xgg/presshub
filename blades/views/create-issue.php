@@ -97,10 +97,16 @@
 	}
 
 	function submitFormIssue(){
-			var dataa = [{
-				'nickname': "'" + $("#nickname").val() + "'",
-				'date_started': "'" + $("#date_started").val() + "'",
-				'deadline': "'" + $("#deadline").val() + "'",
+		var date_started = $("#date_started").val().split("/");
+		date_started = date_started[2] + "-" + date_started[0] + "-" + date_started[1];
+
+		var deadline = $("#deadline").val().split("/");
+		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
+
+var dataa = [{
+				'nickname': "'" + $("#issue_name").val() + "'",
+				'date_started': "date('" + date_started + "')",
+				'deadline': "date('" + deadline + "')",
 				'status': "'" + $("#status").val() + "'"
 			}];
 			dataa = JSON.stringify(dataa);

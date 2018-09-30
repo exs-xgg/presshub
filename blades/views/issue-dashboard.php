@@ -66,8 +66,6 @@
 					              </div>
 					            </div>
 							</div>
-							
-							
 						</div>
 						<br><br>
 						 <div class="alert alert-dark"><span class="text-white"><b>Add Articles</b></span></div>
