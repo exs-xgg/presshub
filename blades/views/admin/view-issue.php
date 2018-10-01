@@ -82,13 +82,13 @@
 						</div>
 						<br>
 						<div class="row">
-							<table class="table table-striped">
-								
+							<table class="table table-striped" id="article_list">
+								<thead>
 									<tr><th>Article Name</th><th>Date Added</th><td></td></tr>
-								
-								
+								</thead>
+								<tbody>
 									<tr><td>Head ARticle</td><td>2018-09-09</td><td class="chev" onclick="loadArticlePage(2)"><i class="fa fa-chevron-right"></i></td></tr>
-								
+								</tbody>
 							</table>
 						</div>
 					</div>
@@ -96,12 +96,12 @@
 						<section id="drawer">
 							<div class="row">
 								<div class="col-lg-12">
-									<nav class="alert alert-dark" id="article_name" contenteditable="true">Article Name here</nav>
+									<nav class="alert alert-dark" id="article_name_header">Article Name here</nav>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<a class="btn btn-primary" href="goToArticle()">View Article</a>
+									<a class="btn btn-primary text-white" onclick="goToArticle()">View Article</a>
 								</div>
 							</div>
 							<hr>
@@ -112,7 +112,6 @@
 							</div>
 							<div class="row">
 								<div class="container">
-									<label>Add User</label>
 									<div class="row">
 			 							<div class="col-lg-10 ">
 							                <label>Assign Users</label>
@@ -147,15 +146,16 @@
 	var article_name_init = '';
 	$("#drawer").hide(0);
 	loadIssue();
+	loadArticle();
 	function loadArticlePage(page){
 		$("#drawer").hide(0);
 		$.ajax({
-			url: '/api/issue/' + localStorage.getItem("issue_id"),
+			url: '/api/article/' + page,
 			success: function(result){
 				var art_page = jQuery.parseJSON(result);
-				$.each(result,function(idx,value){
-					localStorage.setItem("art_id",value.id);
-
+				$.each(art_page,function(idx,value){
+					localStorage.setItem("art_id", value.id);
+					$("#article_name_header").text(value.name);
 				});
 
 				getUserList();
@@ -166,11 +166,20 @@
 	}
 	function addArticle(){
 		article_name = $("#article_name").val();
+		var dataaa = [{
+				'name' : "'"+article_name+"'",
+				'date_created': "now()",
+				'status': "'H'"
+				}];
+		dataaa = JSON.stringify(dataaa);
 		$.ajax({
 			url: "/api/article/" + localStorage.getItem("issue_id"),
-			data: [{'article_name' : article_name}],
+			type: 'post',
+			data: dataaa,
 			success: function(result){
 				toastr.success("Succesfully Added Article!");
+				console.log(dataaa);
+				console.log(result);
 			}
 		});
 	}
@@ -179,7 +188,7 @@
 			url: '/api/userList',
 			success: function(result){
 				var user_list = jQuery.parseJSON(result);
-				$("#userList").clear();
+				$("#userList").empty();
 				$.each(user_list,function(idx,value){
 					$("#userList").append('<option id="' + value.id + '">' + value.first_name + ' ' + value.last_name + '</option>');
 				});
@@ -189,8 +198,8 @@
 	function addUserToArticle(){
 		var user_id = $("#userList").val();
 		dataa = [{
-			'user_id' : user_id,
-			'art_id' : localStorage.getItem("art_id")
+			'user' : user_id,
+			'article' : localStorage.getItem("art_id")
 		}]
 		$.ajax({
 			url: "/api/userList",
@@ -199,6 +208,7 @@
 			success: function(result){
 				console.log(result);
 				toastr.success("User Succesfully assigned to this Article!");
+				getUserList();
 			}
 		});
 	}
@@ -206,7 +216,19 @@
 		window.location.href = "/article/" + localStorage.getItem("art_id");
 	}
 	function loadArticle(){
-
+		//<tr><td>Head ARticle</td><td>2018-09-09</td><td class="chev" onclick="loadArticlePage(2)"><i class="fa fa-chevron-right"></i></td></tr>
+		$.ajax({
+			url: "/api/article/" + localStorage.getItem("issue_id"),
+			type: 'post',
+			success: function(result){
+				$("#article_list").empty();
+				var res_art = jQuery.parseJSON(result);
+				$.each(res_art,function(idx,value){
+					$("#article_list").append('<tr><td>'+ value.name +'</td><td>'+ value.date_created +'</td><td class="chev" onclick="loadArticlePage('+ value.id +')"><i class="fa fa-chevron-right"></i></td></tr>');
+				});
+				
+			}
+		});
 	}
 	function loadIssue(){
 		// alert(localStorage.getItem("issue_id"));
@@ -239,7 +261,8 @@ var dataa = [{
 				'nickname': "'" + $("#issue_name").val() + "'",
 				'date_started': "date('" + date_started + "')",
 				'deadline': "date('" + deadline + "')",
-				'status': "'" + $("#status").val() + "'"
+				'status': "'" + $("#status").val() + "'",
+				'issue_id': localStorage.getItem("issue_id")
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);

@@ -18,8 +18,14 @@ if (strpos($uri[1], 'api') !== false) {
         case 'user':
             require 'class/UserController.php';
             break;
+        case 'articleList':
+            require 'class/ArticleListController.php';
+            break;
         case 'userList':
             require 'class/UserListController.php';
+            break;
+        case 'article':
+            require 'class/ArticleController.php';
             break;
         case 'about':
             require 'class/about.php';
@@ -77,6 +83,9 @@ switch ($uri[1]) {
         break;
     case 'admin':
         require 'blades/admin.php';
+        break;
+    case 'article':
+        require 'blades/article-view.php';
         break;
     case 'dashboard':
         require 'blades/dashboard.php';

@@ -1,33 +1,37 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
-$id = $uri[4];
+$id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("designation",["id","description"]," id=". $id) : DB::select("designation",["id","description"]);
+		$result =  ($id!==null) ? DB::select("role",null," id=". $id) : DB::select("role");
 		echo "$result";
 		break;
 	case 'POST':
 		$contents = file_get_contents("php://input");
-		// $data_to_catch = array();
-		// $data_to_insert = array();
-		// $data_to_insert = json_decode(($contents));
-		// $role = '';
-		// foreach ($data_to_insert as $key1) {
-		// 		foreach ($key1 as $key2 => $value) {
-		// 			$role = $value;
-		// 		}
-		// 	}
-		$contents = strtoupper(str_replace('"', '', $contents));
-		$result = DB::insert("designation",["'".((substr($contents,0,3)))."'","'$contents'"],"id,description");
-		echo "$result";
+		$data_to_catch = array();
+		$data_to_insert = array();
+		$data_to_insert = json_decode(($contents));
+		$fields = array();
+		foreach ($data_to_insert as $key1) {
+				foreach ($key1 as $key2 => $value) {
+				
+				array_push($data_to_catch, "$value");
+				array_push($fields, $key2);
+				
+			}
+		}
+			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
+		echo (DB::insert("role", $data_to_catch,join(",", $fields))) ? true : false;
 		break;
+
+
 	case 'PUT':
 		break;
 	case 'DELETE':
-		echo DB::delete("designation","'".$uri[sizeof($uri)-1]."'"); ;
-
-		break;					
+		$result = DB::delete("role", $id);
+		echo "$result";
+		break;				
 	default:
 		return 500;
 		break;
