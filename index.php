@@ -18,7 +18,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'user':
             require 'class/UserController.php';
             break;
-        // About page
+        case 'userList':
+            require 'class/UserListController.php';
+            break;
         case 'about':
             require 'class/about.php';
             break;

@@ -96,17 +96,41 @@
 						<section id="drawer">
 							<div class="row">
 								<div class="col-lg-12">
-									<nav class="alert alert-dark" id="article_name">Article Name here</nav>
+									<nav class="alert alert-dark" id="article_name" contenteditable="true">Article Name here</nav>
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-lg-12 col-md-12">
+									<a class="btn btn-primary" href="goToArticle()">View Article</a>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
 								<div class="col-md-12">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+									<nav class="alert alert-warning">Assigned User(s)</nav>
+								</div>
+							</div>
+							<div class="row">
+								<div class="container">
+									<label>Add User</label>
+									<div class="row">
+			 							<div class="col-lg-10 ">
+							                <label>Assign Users</label>
+									 		<input class="form-control" type="text" id="userAssigned" list="userList">
+								            <datalist id="userList">
+											  <option value="7">Rain</option>
+											  <option value="8">Josh</option>
+											  <option value="9">Therese</option>
+											  <option value="10">Calvin</option>
+											  <option value="11">Maam Danica</option>
+											</datalist>
+										</div>
+										<div class="col-lg-2">
+											<label class="col-lg-12">&nbsp;</label>
+											<span onclick="addUserToArticle()" class="btn btn-primary"><i class="fa fa-plus"></i> Add</span>
+										</div>
+			 						</div>
+									
 								</div>
 							</div>
 						</section>
@@ -120,11 +144,25 @@
 
 
 <script type="text/javascript">
+	var article_name_init = '';
 	$("#drawer").hide(0);
 	loadIssue();
 	function loadArticlePage(page){
 		$("#drawer").hide(0);
+		$.ajax({
+			url: '/api/issue/' + localStorage.getItem("issue_id"),
+			success: function(result){
+				var art_page = jQuery.parseJSON(result);
+				$.each(result,function(idx,value){
+					localStorage.setItem("art_id",value.id);
+
+				});
+
+				getUserList();
+			}
+		});
 		$("#drawer").show(1000);
+
 	}
 	function addArticle(){
 		article_name = $("#article_name").val();
@@ -135,6 +173,37 @@
 				toastr.success("Succesfully Added Article!");
 			}
 		});
+	}
+	function getUserList(){
+		$.ajax({
+			url: '/api/userList',
+			success: function(result){
+				var user_list = jQuery.parseJSON(result);
+				$("#userList").clear();
+				$.each(user_list,function(idx,value){
+					$("#userList").append('<option id="' + value.id + '">' + value.first_name + ' ' + value.last_name + '</option>');
+				});
+			}
+		});
+	}
+	function addUserToArticle(){
+		var user_id = $("#userList").val();
+		dataa = [{
+			'user_id' : user_id,
+			'art_id' : localStorage.getItem("art_id")
+		}]
+		$.ajax({
+			url: "/api/userList",
+			method: 'post',
+			data: dataa,
+			success: function(result){
+				console.log(result);
+				toastr.success("User Succesfully assigned to this Article!");
+			}
+		});
+	}
+	function goToArticle(){
+		window.location.href = "/article/" + localStorage.getItem("art_id");
 	}
 	function loadArticle(){
 
