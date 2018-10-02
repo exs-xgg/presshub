@@ -23,7 +23,7 @@ switch ($method) {
 				}
 		}
 		$fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
-		echo (DB::insert("users", $data_to_catch,$fields)) ? "WAAAW" : "NGEK";
+		echo (DB::insert("users", $data_to_catch,$fields)) ? true : false;
 		
 		break;
 	case 'PUT':

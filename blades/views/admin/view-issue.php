@@ -129,7 +129,17 @@
 											<span onclick="addUserToArticle()" class="btn btn-primary"><i class="fa fa-plus"></i> Add</span>
 										</div>
 			 						</div>
-									
+			 						<br>
+									<div class="row">
+										<table class="table table-striped" id="user_article_list">
+											<thead>
+												<tr><th>Name</th><td></td></tr>
+											</thead>
+											<tbody>
+												<tr><td>Test</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</section>
@@ -159,6 +169,7 @@
 				});
 
 				getUserList();
+				loadUserArticle();
 			}
 		});
 		$("#drawer").show(1000);
@@ -185,22 +196,37 @@
 	}
 	function getUserList(){
 		$.ajax({
-			url: '/api/userList',
+			url: '/api/user',
 			success: function(result){
 				var user_list = jQuery.parseJSON(result);
 				$("#userList").empty();
 				$.each(user_list,function(idx,value){
-					$("#userList").append('<option id="' + value.id + '">' + value.first_name + ' ' + value.last_name + '</option>');
+					$("#userList").append('<option value="' + value.id + '">' + value.first_name + ' ' + value.last_name + '</option>');
+				});
+			}
+		});
+	}
+	function loadUserArticle(){
+		var user_id = $("#userList").val();
+		$.ajax({
+			url: "/api/userList/" + localStorage.getItem("art_id"),
+			success: function(result){
+				console.log(result);
+				var user_list = jQuery.parseJSON(result);
+				$("#user_article_list").empty();
+				$.each(user_list,function(idx,value){
+					$("#user_article_list").append('<tr><td>'+ value.first_name +' ' + value.last_name + '</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>');
 				});
 			}
 		});
 	}
 	function addUserToArticle(){
-		var user_id = $("#userList").val();
+		var user_id = $("#userAssigned").val();
 		dataa = [{
 			'user' : user_id,
 			'article' : localStorage.getItem("art_id")
 		}]
+		dataa = JSON.stringify(dataa);
 		$.ajax({
 			url: "/api/userList",
 			method: 'post',
@@ -208,7 +234,7 @@
 			success: function(result){
 				console.log(result);
 				toastr.success("User Succesfully assigned to this Article!");
-				getUserList();
+				loadUserArticle();
 			}
 		});
 	}

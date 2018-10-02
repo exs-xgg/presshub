@@ -4,7 +4,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::raw("select * from users inner join user_article on users.id=user_article.user where article=". $id) : DB::select("user_article");
+		$result =  ($id!==null) ? DB::select("user_article",null," id=". $id) : DB::select("user_article");
 		echo "$result";
 		break;
 	case 'POST':
@@ -22,7 +22,7 @@ switch ($method) {
 			}
 		}
 			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
-		echo (DB::insert("user_article", $data_to_catch,join(",", $fields))) ? true : false;
+		echo (DB::insert("user_article", $data_to_catch,join(",", $fields))) ;
 		break;
 
 
