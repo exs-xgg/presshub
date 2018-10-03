@@ -17,7 +17,7 @@
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand mr-lg-5" href="/home">
-          <h3 id="article_name">Article Name</h3>
+          <h3 id="article_header">Article Name</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -64,9 +64,9 @@
     <div class="row">
         <div class="col-md-6">
           <label>Article Name</label>
-          <input class="form-control form-control-alternative" type="text" name="article_name">
+          <input class="form-control form-control-alternative" type="text" id="article_name">
           <label>Article Title</label>
-          <input class="form-control form-control-alternative" type="text" name="article_name">
+          <input class="form-control form-control-alternative" type="text" id="article_title">
           <label>Deadline</label>
           <div class="form-group focused">
             <div class="input-group">
@@ -107,40 +107,53 @@
           
         </div>
         <div class="col-md-12">
-           <nav class="alert alert-dark">Content</nav>
+           <nav class="alert alert-dark">Content <div class="pull-right">Select column Preview:&nbsp;&nbsp;<select id="numberOfColumns"><option id="2">2</option><option id="3">3</option><option id="4">4</option></select>&nbsp;&nbsp;<button class="btn btn-sm btn-primary" onclick="changeColumn()">Go</button></div></nav>
            <br>
-           <p contenteditable="true" id="article_content" class="twoColumns">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-           proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-           proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-           proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+           <p contenteditable="true" id="article_content" class="p2c"></p>
            <!-- <textarea class="form-control form-control-alternative"></textarea> -->
         </div>
     </div>
-
 </div>
 
     
 
 </body>
+<script>
+  getWholeArticle();
+  function getWholeArticle(){
+    $.ajax({
+      url: '/api/article/' + localStorage.getItem("art_id"),
+      success: function(result){
+        console.log(result);
+        var article_result = jQuery.parseJSON(result);
+        $.each(article_result, function(idx, value){
+          $("#article_header").text(value.name);
+          $("#article_name").val(value.name);
+          $("#article_content").text(value.body);
+        });
+      }
+    });
+  }
+
+
+
+  function changeColumn(){
+    var numberOfColumns = $("#numberOfColumns").val();
+    $("#article_content").removeClass();
+    $("#article_content").addClass("p" + numberOfColumns + 'c');
+  }
+</script>
 <style type="text/css">
-  .twoColumns{
+  .p2c{
+    text-align: justify;
+    -webkit-column-gap: 20px;
+       -moz-column-gap: 20px;
+            column-gap: 20px;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+}
+.p3c{
     text-align: justify;
     -webkit-column-gap: 20px;
        -moz-column-gap: 20px;
@@ -148,6 +161,15 @@
     -webkit-column-count: 3;
        -moz-column-count: 3;
             column-count: 3;
+}
+.p4c{
+    text-align: justify;
+    -webkit-column-gap: 20px;
+       -moz-column-gap: 20px;
+            column-gap: 20px;
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
 }
 </style>
 </html>
