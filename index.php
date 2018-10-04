@@ -48,6 +48,12 @@ if (strpos($uri[1], 'api') !== false) {
         case 'carouselActive':
             require 'class/CarouselActiveController.php';
             break;
+        case 'assignment_':
+            require 'class/ArticleAssignmentController.php';
+            break;
+        case 'assignment':
+            require 'class/Article-2Controller.php';
+            break;
         // Everything else
         default:
             header('HTTP/1.0 404 Not Found');

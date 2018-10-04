@@ -120,6 +120,10 @@
 </body>
 <script>
   getWholeArticle();
+  function snapArticle(){
+    var article_body = $("#article_body");
+    
+  }
   function getWholeArticle(){
     $.ajax({
       url: '/api/article/' + localStorage.getItem("art_id"),

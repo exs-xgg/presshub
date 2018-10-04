@@ -1,6 +1,6 @@
 <?php if (!isset($_SESSION['user'])) {
 	header("location: /login");
-  // echo $_SESSION['user'];
+  echo $_SESSION['idx'];
 } 
 ?>
 
@@ -129,8 +129,7 @@ if (!$_SESSION['is_admin']=="Y") {
                         </thead>
                         <tbody>
                           <tr class="text-danger"><td>2018-06-09</td><td>CCS 2nd Sem Red if late</td><td>News</td><td>2018-07-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
-                          <tr><td>2018-06-09</td><td>CCS 2nd Sem</td><td>Editorial</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
-                          <tr class="text-primary"><td>2018-06-09</td><td>CCS 2nd Sem Blue if less than a week assigned</td><td>Feature</td><td>2018-10-31</td><td><a class="link" href="/view/asd"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>
+                          
                         </tbody>
                       </table>
                       <div class="small bg-secondary">
@@ -148,7 +147,7 @@ if (!$_SESSION['is_admin']=="Y") {
                      <div class="alert alert-primary" onclick="$(this).hide(1000)"><span class="fa fa-circle mr-2"> </span> An article has been assigned to you.</div>
                     </div> -->
                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                     <?php include "views/create-issue.php"; ?>
+                     <?php //include "views/create-issue.php"; ?>
                     </div>
                   </div>
                 </div>
@@ -192,7 +191,24 @@ if (!$_SESSION['is_admin']=="Y") {
   </main>
 </body>
 <script>
+  function fetchMyArticles(){
+    $.ajax({
+      url: '/api/assignment/' + <?php echo $_SESSION['idx']; ?>,
+      success: function(result){
+        console.log(result);
+        assign_result = jQuery.parseJSON(result);
+        $("#assignedTable").empty();
+        $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead>');
+        $.each(assign_result,function(idx,values){
+          // var id_art = values.article;
+          $("#assignedTable").append('<tr class="text-danger"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
+        });
+
     $('#assignedTable').DataTable();
+      }
+    });
+  }
+  fetchMyArticles();
 
 </script>
 </html>
