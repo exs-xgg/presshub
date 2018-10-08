@@ -1,12 +1,10 @@
-
 <?php
-// Grabs the URI and breaks it apart in case we have querystring stuff
-
+session_start();
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 // echo $request_uri[0] . "\n";
 $uri = explode("/", $request_uri[0]);
 
-include '/database/config.php';
+include './database/config.php';
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // var_dump($uri);
@@ -54,6 +52,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'assignment':
             require 'class/Article-2Controller.php';
             break;
+        case 'test':
+            require 'class/TestController.php';
+            break;
         // Everything else
         default:
             header('HTTP/1.0 404 Not Found');
@@ -65,7 +66,6 @@ if (strpos($uri[1], 'api') !== false) {
 
 
 //PAGE VIEW CONTROLLERS
-    session_start();
 switch ($uri[1]) {
     // Home page
     case '':

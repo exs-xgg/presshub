@@ -53,7 +53,7 @@
               </a>
             </li>
             <?php
-if (!$_SESSION['is_admin']=="Y") {
+if ($_SESSION['is_admin']=="Y") {
 
 
   ?>

@@ -33,6 +33,23 @@ switch ($method) {
 
 
 	case 'PUT':
+		$contents = file_get_contents("php://input");
+		$data_to_catch = array();
+		$data_to_insert = array();
+		$data_to_insert = json_decode(($contents));
+		$fields = array();
+		foreach ($data_to_insert as $key1) {
+				foreach ($key1 as $key2 => $value) {
+				
+				array_push($data_to_catch, "$value");
+				array_push($fields, $key2);
+				
+			}
+		}
+		// var_dump($data_to_catch);
+		// var_dump($fields);
+			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
+		echo (DB::update("article", join(",",$data_to_catch),join(",", $fields)," id=".$id));
 		break;
 	case 'DELETE':
 		$result = DB::delete("article", $id);

@@ -178,9 +178,10 @@
 	function addArticle(){
 		article_name = $("#article_name").val();
 		var dataaa = [{
-				'name' : "'"+article_name+"'",
+				'name' : "'"+ article_name.replace(/<>/ig,"") +"'",
 				'date_created': "now()",
-				'status': "'H'"
+				'status': "'H'",
+				'body': "'" + btoa(('Insert content here').replace(/<>/ig,"")) + "'"
 				}];
 		dataaa = JSON.stringify(dataaa);
 		$.ajax({
@@ -284,7 +285,7 @@
 		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
 
 var dataa = [{
-				'nickname': "'" + $("#issue_name").val() + "'",
+				'nickname': "'" + $("#issue_name").val().replace(/<>/ig,"") + "'",
 				'date_started': "date('" + date_started + "')",
 				'deadline': "date('" + deadline + "')",
 				'status': "'" + $("#status").val() + "'",

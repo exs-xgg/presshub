@@ -85,15 +85,15 @@
 <script>
 	function submitForm(){
 			var dataa = [{
-				'first_name': "'" + $("#first_name").val() + "'",
-				'middle_name': "'" + $("#middle_name").val() + "'",
-				'last_name': "'" + $("#last_name").val() + "'",
-				'designation': "'" + $("#designation").val().substring(0,3) + "'",
-				'contact_no': "'" + $("#contact_no").val() + "'",
-				'email_addr': "'" + $("#email_addr").val() + "'",
-				'username': "'" + $("#username").val() + "'",
-				'password': "'" + $("#password").val() + "'",
-				'is_admin':"'" + $("#is_admin").val().substring(0,1) + "'"
+				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
+				'middle_name': "'" + $("#middle_name").val().replace(/<>/ig,"") + "'",
+				'last_name': "'" + $("#last_name").val().replace(/<>/ig,"") + "'",
+				'designation': "'" + $("#designation").val().replace(/<>/ig,"").substring(0,3) + "'",
+				'contact_no': "'" + $("#contact_no").val().replace(/<>/ig,"") + "'",
+				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
+				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
+				'password': "'" + $("#password").val().replace(/<>/ig,"") + "'",
+				'is_admin':"'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);

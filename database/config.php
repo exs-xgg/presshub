@@ -66,8 +66,8 @@ Class DB{
 			}
 		}
 		$query .= " where " . $conditions;
-		return   $conn->query($query) ?  true :  false; 
-		// return $query;
+		// return   $conn->query($query) ?  true :  false; 
+		return $query;
 
 	}
 

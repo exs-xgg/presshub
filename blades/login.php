@@ -1,3 +1,7 @@
+<?php
+
+session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +17,8 @@
   <!-- Argon CSS -->
   <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
 </head>
+
+
 <body style="background: rgba(212,228,239,1);
 background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
