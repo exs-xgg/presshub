@@ -127,5 +127,6 @@
 <style type="text/css">
 	tr:hover{
 		background-color: #ddd;
+		cursor: pointer;
 	}
 </style>

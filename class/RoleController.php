@@ -1,10 +1,10 @@
 <?php
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("role",null," id=". $id) : DB::select("role");
+		$result =  ($id!==null) ? DB::select("designation",null," id=". $id) : DB::select("designation");
 		echo "$result";
 		break;
 	case 'POST':
@@ -22,14 +22,14 @@ switch ($method) {
 			}
 		}
 			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
-		echo (DB::insert("role", $data_to_catch,join(",", $fields))) ? true : false;
+		echo (DB::insert("designation", $data_to_catch,join(",", $fields))) ? true : false;
 		break;
 
 
 	case 'PUT':
 		break;
 	case 'DELETE':
-		$result = DB::delete("role", $id);
+		$result = DB::delete("designation", $id);
 		echo "$result";
 		break;				
 	default:

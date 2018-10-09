@@ -3,7 +3,7 @@ $result = DB::select("announcement",null," is_active='Y'");
 
 ?>
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 50vh;min-height: 50vh;">
   <div class="carousel-inner">
     <div class="carousel-item active">
        <div class="d-block w-100" >

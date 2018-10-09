@@ -11,7 +11,7 @@
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="/home">
+        <a class="navbar-brand mr-lg-5" href="/dashboard">
           <h3>Presshub Admin Panel</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">

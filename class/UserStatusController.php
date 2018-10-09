@@ -16,8 +16,7 @@
 			// echo $_SESSION['user'];
 			header("location: /dashboard");
 		}else{
-			 header('HTTP/1.0 500');
-         require 'blades/500.php';
+			 header('location: /login?incorrect=y');
 		}
 	}else{
 	//	header("location: /500");

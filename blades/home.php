@@ -34,16 +34,16 @@
         <a class="navbar-brand mr-lg-5" href="/home">
           <h3>Presshub</h3>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar_global">
           <div class="navbar-collapse-header">
             <div class="row">
               <div class="col-6 collapse-brand">
-                <a href="/home">
-                  <img src="/img/brand/blue.png">
-                </a>
+                <a class="navbar-brand mr-lg-5" href="/home">
+          <h3>Presshub</h3>
+        </a>
               </div>
               <div class="col-6 collapse-close">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +86,7 @@
                 <span class="nav-link-inner--text d-lg-none">Twitter</span>
               </a>
             </li>
-            <li class="nav-item d-none d-lg-block ml-lg-4">
+            <li class="nav-item">
               <a href="/login" target="_blank" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon">
                   <i class="fa fa-key mr-2"></i>

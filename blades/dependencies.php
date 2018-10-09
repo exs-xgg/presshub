@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?><link href="/img/brand/favicon.png" rel="icon" type="image/png">
+<link href="/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->

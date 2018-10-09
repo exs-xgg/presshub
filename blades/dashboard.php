@@ -15,7 +15,7 @@
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="/home">
+        <a class="navbar-brand mr-lg-5" href="/dashboard">
           <h3>Presshub</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,9 +25,9 @@
           <div class="navbar-collapse-header">
             <div class="row">
               <div class="col-6 collapse-brand">
-                <a href="/home">
-                  <img src="/img/brand/blue.png">
-                </a>
+                 <a class="navbar-brand mr-lg-5" href="/dashboard">
+          <h3>Presshub</h3>
+        </a>
               </div>
               <div class="col-6 collapse-close">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,7 @@ if ($_SESSION['is_admin']=="Y") {
 
 
             ?>
-          </ul>
-          <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-            <li class="nav-item d-none d-lg-block ml-lg-4">
+            <li class="nav-item pull-right">
               <a href="/login" class="btn btn-warning btn-icon">
                 <span class="btn-inner--icon">
                   <i class="fa fa-sign-out mr-2"></i>
@@ -80,6 +78,8 @@ if ($_SESSION['is_admin']=="Y") {
               </a>
             </li>
           </ul>
+          
+            
         </div>
       </div>
     </nav>
@@ -88,18 +88,7 @@ if ($_SESSION['is_admin']=="Y") {
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              Announcements
-            </div>
-            <div class="card-body">
-              <?php include 'views/announcement-carousel.php'; ?>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-              <!-- Tabs with icons -->
-              <div class="mb-3">
+          <div class="mb-3">
                 <small class="text-uppercase font-weight-bold">My Dashboard</small>
               </div>
               <div class="nav-wrapper">
@@ -115,10 +104,22 @@ if ($_SESSION['is_admin']=="Y") {
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Meetings</a>
                   </li>
                    <li class="nav-item">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Files</a>
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="#tabs-icons-text-4" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Files</a>
                   </li>
                 </ul>
               </div>
+          <div class="card">
+            <div class="card-header">
+              Announcements
+            </div>
+            <div class="card-body">
+              <?php include 'views/announcement-carousel.php'; ?>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+              <!-- Tabs with icons -->
+              
               <div class="card">
                 <div class="card-body">
                   <div class="tab-content" id="myTabContent">
@@ -147,45 +148,15 @@ if ($_SESSION['is_admin']=="Y") {
                      <div class="alert alert-primary" onclick="$(this).hide(1000)"><span class="fa fa-circle mr-2"> </span> An article has been assigned to you.</div>
                     </div> -->
                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                     <?php //include "views/create-issue.php"; ?>
+                     <?php include "views/edit-role.php"; ?>
+                    </div>
+                     <?php include "views/file-panel.php"; ?>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             
-        <div class="col-lg-4 col-md-4 col-xs-6">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-6">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-6">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-6">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
       </div>
     </div>
   </main>

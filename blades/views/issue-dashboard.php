@@ -118,7 +118,7 @@
 						 							<li class="list-group-item">
 						 								Rain Pioquinto <button type="button" class="pull-right btn btn-sm btn-danger" data-toggle="modal" data-target="#md_1"><b>x</b></button>
 						 							</li>
-<div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
+			<div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
               <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                 <div class="modal-content bg-gradient-danger">
                   <div class="modal-header">

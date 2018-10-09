@@ -30,17 +30,14 @@
 	function getRoles(){
 		$("#roleTable > tbody").empty();
 		$.ajax({
-			url: "/api/role/",
+			url: "/api/role",
 			success: function(result){
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
 					 $('#roleTable > tbody:last-child').append('<tr><td contenteditable="true" id="t_' + value.id + '">' + value.description + '</td><td><button onclick="editRole(' + "'" +value.id +  "'" +')">Save</button> <button onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td></tr>');
 				});
-				for (var i = 0; i < r.length; i++) {
-				    
-				    
-				}
+			
 		           
 		        }
 				

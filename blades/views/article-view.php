@@ -6,13 +6,13 @@
 
   <?php include 'dependencies.php'; ?>
  <?php 
-
+$id=($uri[2]);
 $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx']. " and article=$id");
 
 (isset($uri[2]) && ($uri[2])!=="") ? $id = $uri[2] : header("location: /admin");
 ?>
 <script>
-  localStorage.setItem("art_id","<?php echo $is_he_here; ?>");
+  localStorage.setItem("art_id","<?php echo $id; ?>");
 </script>
 </head>
 <body>
@@ -82,7 +82,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
           
         </div>
 
- <?php if ($is_he_here!==[]) {
+ <?php if ($is_he_here!=="[]") {
   ?>
         <div class="col-md-6">
           <nav class="alert alert-dark">Actions</nav>

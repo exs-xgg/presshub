@@ -42,6 +42,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 						<div class="card-body">
 							<h2 class="col-lg-12" align="center">Login - Presshub</h2>
 							<hr>
+							<?php
+						if ($_REQUEST['incorrect']=="y") {
+							?>
+
+<p class=" text-danger" align="center">Login Incorrect.</p>
+
+							<?php
+						}
+
+
+						?>
 							<div class="col-lg-12">
 								<form autocomplete="off" class="" action="/userstatus" method="post">
 								<input class="form-control" type="text" name="username" placeholder="Username">
