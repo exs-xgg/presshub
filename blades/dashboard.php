@@ -169,12 +169,12 @@ if ($_SESSION['is_admin']=="Y") {
         console.log(result);
         assign_result = jQuery.parseJSON(result);
         $("#assignedTable").empty();
-        $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead>');
+        $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead><tbody>');
         $.each(assign_result,function(idx,values){
           // var id_art = values.article;
           $("#assignedTable").append('<tr class="text-danger"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
         });
-
+        $("#assignedTable").append('</tbody>');
     $('#assignedTable').DataTable();
       }
     });

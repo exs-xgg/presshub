@@ -40,7 +40,8 @@
             </div>
 
 <?php
-$result = DB::select("files",null," private=0 and (private=1 and user_id=".$_SESSION['idx'].") ");
+$result = DB::select("files",null," private='N' or (private='Y' and user_id=".$_SESSION['idx'].") ");
+// echo "$result";
 $result = json_decode($result);
 if ($result==[]) {
 
@@ -55,9 +56,11 @@ if ($result==[]) {
 }
 foreach ($result as $key) {
  echo '<div class="col-lg-4">
-	<div class="card bg-secondary">
+	<div class="card bg-secondary" onclick="getFile(' . $key->{"id"} . ')">
 		<div class="card-header">
-			<i class="fa fa-file"></i><small>'; echo $key->{"filename"}; 
+			<i class="fa fa-file"></i><b>&nbsp;&nbsp;'; echo $key->{"file_name"}; 
+			echo '</b>
+		</div><div class="card-footer">'; echo $key->{"date_uploaded"}; 
 			echo '</small>
 		</div>
 	</div>
@@ -73,3 +76,8 @@ foreach ($result as $key) {
 </div>             
 </div>
 
+<script type="text/javascript">
+	function getFile(e){
+		window.location.href = "/dashboard/file/" + e;
+	}
+</script>

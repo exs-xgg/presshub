@@ -52,6 +52,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'assignment':
             require 'class/Article-2Controller.php';
             break;
+        case 'upload':
+            require 'class/UploadFileController.php';
+            break;
         case 'test':
             require 'class/TestController.php';
             break;
