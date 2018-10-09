@@ -66,8 +66,8 @@ Class DB{
 			}
 		}
 		$query .= " where " . $conditions;
-		// return   $conn->query($query) ?  true :  false; 
-		return $query;
+		return   $conn->query($query) ?  true :  false; 
+		// return $query;
 
 	}
 
@@ -76,7 +76,7 @@ Class DB{
 		// $id = $conn->real_escape_string($id);
 		$query = "DELETE from $table where id=$id";
 		$result = $conn->query($query);
-		return $query;
+		return $result;
 	}
 	function escape($string){
 		$string = str_replace("'", "\'", $string);
