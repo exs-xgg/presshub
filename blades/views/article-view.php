@@ -4,6 +4,8 @@
 <head>
   <title>Article Name</title>
 
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <?php include 'dependencies.php'; ?>
  <?php 
 $id=($uri[2]);
@@ -120,8 +122,17 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
  }       ?>        
         <div class="col-md-12">
            <nav class="alert alert-dark">Content <div class="pull-right">Select column Preview:&nbsp;&nbsp;<select onchange="changeColumn()" id="numberOfColumns"><option id="1">1</option><option id="2">2</option><option id="3">3</option><option id="4">4</option></select></div></nav>
-           <br>
-           <p contenteditable="true" id="article_content" class="p2c"></p>
+           <br><div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+           
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+
            <!-- <textarea class="form-control form-control-alternative"></textarea> -->
         </div>
     </div>
@@ -131,6 +142,21 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 </body>
 <script>
+ var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow'  // or 'bubble'
+});
+
+
+
+
   getWholeArticle();
   function saveArticle(){
     var art_id = localStorage.getItem("art_id");

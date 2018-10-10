@@ -37,17 +37,17 @@
               </div>
             </div>
           </div>
-
-
-          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+ <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link">
+              <span class="">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">My Profile</span>  (<small><?php
+                <span class="nav-link-inner--text">(<small><?php
                   echo $_SESSION['user'];
-                  ?></small>)
-              </a>
+                  ?></small>)</span>  
+              </span>
             </li>
+
+         
             <li class="nav-item dropdown">
               <a href="/about" class="nav-link">
                 <i class="ni ni-collection d-lg-none"></i>

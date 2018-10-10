@@ -104,7 +104,7 @@
 		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
 
 		var dataa = [{
-				'nickname': "'" + $("#issue_name").val() + "'",
+				'nickname': "'" + $("#nickname").val() + "'",
 				'date_started': "date('" + date_started + "')",
 				'deadline': "date('" + deadline + "')",
 				'status': "'" + $("#status").val() + "'"
@@ -118,6 +118,7 @@
 				success: function(result){
 					toastr.success("Issue Succesfully Added!");
 					$("#issueSubmitBtn").disabled = true;
+					getIssues();
 				}
 			})
 	}

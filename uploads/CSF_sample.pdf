@@ -1,0 +1,294 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 17, 2018 at 07:36 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `all_users`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `middle_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `suffix_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `birthdate` date NOT NULL,
+  `gender` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `is_admin` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile_number` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `is_active` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `photo_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `e_sign` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `designation` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tin_number` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
+  `accreditation_number` varchar(14) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `program_id` char(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `last_name`, `first_name`, `middle_name`, `suffix_name`, `birthdate`, `gender`, `role`, `is_admin`, `username`, `password`, `email`, `mobile_number`, `is_active`, `photo_url`, `e_sign`, `designation`, `tin_number`, `accreditation_number`, `remember_token`, `program_id`, `created_at`, `updated_at`) VALUES
+(10001, 'Huelar', 'Ma.kristina', 'Sarabia', 'NOTAP', '1979-05-16', 'F', 'RN', 'N', 'thirdy', '$2y$10$swLrWb6dIj93LaLHfQmP2eMPSF4fyqe3J7vciYMa4dViOArq8L.f2', 'makris_79@yahoo.com', '9051922805', 'Y', '', '', 'DENTALAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-22 00:34:24'),
+(10006, 'Quitayen', 'Maribeth', 'Del Rosario', 'NOTAP', '1976-06-12', 'F', 'MWIFE', 'N', 'maribeth', '$2y$10$/nfXYvIMfKiEErNYiJg07uuaCckN7hbl.1ERMHAdMbiAsPJzDjeI.', 'maribeth_quitayen@yahoo.com', '9358394220', 'Y', '', '', 'RHMPP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:12:54'),
+(10007, 'Ilao', 'Kristy Ivy', 'Acabo', 'NOTAP', '1994-01-02', 'F', 'MWIFE', 'N', 'ivy08', '$2y$10$bttJiu7MfufybkAkLl1uCeZZCdtDh8kaZzso9FhM9zuYDE/MoAhkW', '', '3456789876', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-23 16:40:06'),
+(10008, 'Albon', 'Hilda', 'Abadiano', '', '1970-07-29', 'F', 'MWIFE', 'N', 'dahil', '$2y$10$eVt3uoUxdPq0E804.cJnoeROtzdFy9wrs6yztK/I6AD4lbVDUq7/u', 'h.albon@yahoo.com', '9269858723', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:15:49'),
+(10009, 'Bayoca', 'Maria Fe', 'Cichon', 'NOTAP', '1976-05-05', 'F', 'MEDTECH', 'Y', 'marzbay', '$2y$10$g3qahmjQkNRVNIaQPGKQO.EQtwdAsbIciKPHlLYeg5W/icCReH3hO', 'marzbay@gmail.com', '9153970816', 'Y', '', '', 'MEDTECH', '', '', '', NULL, '2018-09-17 05:36:29', '2018-02-11 23:14:24'),
+(20002, 'Cabansag', 'Kristian John ', 'Sebastian', 'NOTAP', '1988-12-12', 'M', '', 'Y', 'kjscab', '$2y$10$er.l/X.yh8JKztTH1GzAxeQ0BrUu0HcXM3KGhwE5WB8B2yvgXoNu.', 'kjscab@gmail.com', '9279943040', 'N', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-09-17 16:19:51'),
+(20003, 'Madera', 'Shiela ', 'Romero', 'III', '1988-12-10', 'F', '', 'N', 'shiela', '$2y$10$/EQTDJnaoiq8ticmG9lmXOJYOZ/kTLzj7qp9B4SM.3L26KyCheN.O', NULL, '9270000001', 'N', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-09-17 16:19:55'),
+(20004, 'Catubig', 'Mclaren Heuer', 'Muyargas', 'NOTAP', '1994-10-03', 'M', '', 'Y', 'mclessthantree', '$2y$10$aJUf7d15lz9xEcO7rqZbg.K0AmChMYRsSF.X6dJZHsnB4yQVQdwza', 'mclarenheuer3@gmail.com', '9171098375', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-14 04:18:37'),
+(20005, 'Sibud', 'Jeffrey', 'Donguila', 'NOTAP', '1984-04-14', 'M', '', 'N', 'jeff', '$2y$10$sKmQ012n9LgilKSCwdQBi.xqxX5ENRgj7f5Pj.1La1Rk4f92KDil6', NULL, '9366325226', 'N', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:43:22'),
+(20006, 'Rom', 'Mark John', 'Legara', 'NOTAP', '1990-11-09', 'M', '', 'N', 'sirjong', '$2y$10$fGukQ5MwXb0ha7Oc2x1kiO5sB0oBdzojT9tcOO1VsaglGyUj/NwES', 'mjrom1990@gmail.com', '9778093762', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 22:16:32'),
+(20007, 'Fernandez', 'Joanna Lou', 'Luab', 'NOTAP', '1986-06-07', 'F', '', 'N', 'joanna', '$2y$10$r1O1dsM6DTR3Ro6h9p3Foe2aFtx.K5ISamnF3d1RQHQlzq63s24kO', 'fernandezjoannalou@yahoo.com', '9553029777', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 18:59:30'),
+(20008, 'Pagaran', 'Hiezel Jane', 'Arandia', 'NOTAP', '1989-04-10', 'F', '', 'N', 'hiezel', '$2y$10$.D/sJ8ddw7wBZDQdQ9E3j.ujBe74dMfAYPesKgpNrcghsoy3GLjAy', NULL, '9361349426', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-23 22:53:59'),
+(20009, 'Locsin', 'Mary Doll', 'Gonzales', 'NOTAP', '1989-09-25', 'F', '', 'N', 'merai_bratz', '$2y$10$yGP3YEuOGgksn24ssZHI5.jvwCEG6ND14TbMnx.KawseWDNcfIv9G', 'merai_bratz@yahoo.com', '9261022540', 'N', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:43:36'),
+(30001, 'User', 'Admin', 'User', '', '1982-02-03', 'M', 'MD', 'Y', 'user123', '$2y$10$23gAL0tJsiE5qCadSD78LO/CLMj8H7J6FYULYY4/m7eh8JOQAjxdS', 'darth_ali@yahoo.com', '9154038801', 'Y', '', '', 'MD', '', '', '', NULL, '2018-09-17 05:36:29', '2018-04-23 03:29:54'),
+(30002, 'Perez', 'Alison', '', '', '1982-02-03', 'M', 'MWIFE', 'N', 'alison', 'texQN4goIMuj6', '', '', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(30004, 'Biag', 'Rose Ann', '', '', '1998-07-29', 'F', 'RN', 'N', 'rosa', 'texQN4goIMuj6', 'rose@gmail.com', '09218765430', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(30005, 'Cainglet', 'Yeelyn Grace', '', '', '1992-12-05', 'F', 'MWIFE', 'N', 'yen', 'teg3QTE6RbLvI', 'gams_yenzy@yahoo.com', '09262632271', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:04:08'),
+(30006, 'Verano', 'Jeannix Grace ', 'Locsin', '', '1991-06-06', 'F', 'RN', 'N', 'jean', 'teuEvxERnZwko', 'jeannix_grace06@yahoo.com', '09155716094', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:04:31'),
+(30007, 'Dequilla', 'Marjorie', 'Tayag', 'NOTAP', '1971-12-27', 'F', 'MWIFE', 'N', 'marjz', '$2y$10$u8ZU0ma9sb2prOmeUSuQue2kUABJAN3el691g.iy5gevFN2FinjuG', 'marjdequilla@gmail.com', '9355389867', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:34:10'),
+(30008, 'Fernandez', 'Arlene', 'Sonido', 'NOTAP', '1973-01-25', 'F', 'MWIFE', 'N', 'arlene', '$2y$10$HM5gEmhiNmzVy63G5veAv.cRY8B9s90abLqq241HKj9iBPrpNfLKa', '', '9264863856', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:40:25'),
+(30009, 'Gustilo', 'Merrychris', 'Nicolas', '', '1986-12-25', 'F', 'RN', 'N', 'chris', '$2y$10$vg4eS2vTyoj0yaETCFKAkO1ZbyN6om2LCelseJtJ379H7HjQasNxa', 'merrychrisnicolas@gmail.com', '9262542165', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:47:32'),
+(100010, 'Dela Cruz', 'Nenette', 'Logico', 'NOTAP', '1963-04-08', 'F', 'DENTIST', 'N', 'dentist', '$2y$10$zxvdA3IguSM3yfpuhQdDOuORC3TzIjILsFcLXq/NJ5EyILgkovEbm', '', '9173198494', 'Y', '', '', 'DENTIST', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:16:55'),
+(100011, 'Monge', 'Delia', '', '', '1954-08-08', 'F', 'RN', 'N', 'delia', 'te0Qb9NjOdpVs', 'delia_monge@yahoo.com', '', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:16:25'),
+(100012, 'Salomes', 'Myrna', 'Cabral', 'NOTAP', '1970-08-02', 'F', 'MD', 'Y', 'myrna', '$2y$10$LF0UyI4rLH/igVJmWaV0Ae2e3dtn0mHMGCBXZ7YMAwkvwB8IbQCXC', 'myrna_salomes2000@yahoo.com', '9088207365', 'Y', '', '', 'MD', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:58'),
+(100013, 'Jantica', 'Sarah', 'Corvera', '', '1984-07-17', 'F', 'RN', 'N', 'soping', '$2y$10$kcYtagTS8YhReRsJNlg5N.hTvUia3cLQjWWQZ/LvhGiyxM4YAaMBa', 'corvera.sarah@yahoo.com', '9971394351', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:19:27'),
+(100014, 'Naraja', 'Claudio ', 'Rautraut', 'JR', '1991-04-26', 'M', 'RN', 'N', 'junexus', '$2y$10$a7pUwXQ21W7IFidkOw4waOLvDnB5BUOmkY/fqXxMQMkmIw4934362', 'junexus26@gmail.com', '9087858385', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-06-20 21:52:10'),
+(100016, 'Asuela', 'Benita', 'Bantongan', 'NOTAP', '1966-01-14', 'F', 'MWIFE', 'N', 'benita', '$2y$10$a47781JaWs29H/DITPY1wOwkdIeE.0ha8aBUbk29Xg8KSbJhgZcLW', 'benitaasuela@gmail.com', '9059081517', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:18:55'),
+(100017, 'Laxina', 'Kristine Cybill', 'Buendia', 'NOTAP', '1992-03-05', 'F', 'RN', 'N', 'bunny', '$2y$10$cSDe4p1jRet2P1m0xDWIq.lBpJZqesUVqnVsb0RVYLIAmesnePFAm', 'kristinecybill05@yahoo.com', '9554307908', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:21:12'),
+(100018, 'Navaja', 'Genevev', 'Acotanza', 'NOTAP', '1986-02-14', 'F', 'RN', 'N', 'genevev', '$2y$10$MYBhmOH.fUhPkRpwN/u9heg2ws3UUdCxVGISnF.94ymdwRkc/K/9i', 'gen_cadecius1986@yahoo.com', '9264248331', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:15:04'),
+(100019, 'Vibar', 'Jocelyn', 'Peje', 'NOTAP', '1967-05-29', 'F', 'MWIFE', 'N', 'dhaylyn', '$2y$10$Gsd6NyEBQfqMDRWTv1/4zeXtKp4Camh4lZtFbYqSf/es/q3cFlP.W', 'jocelynvibar@yahoo.com', '9350894816', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-22 16:54:53'),
+(100020, 'Quintilla', 'Araceli', 'Sanchez', '', '1957-01-22', 'F', 'MWIFE', 'N', 'cecil', '$2y$10$bVtbcjhp6rkVd8xlqUFiUe5bwkN5M6xPqM8HRcYNJY2VBriiDbkKG', '', '9365998322', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:39:46'),
+(100021, 'Quintilla', 'Geraldine', 'Galindo', 'NOTAP', '1957-02-16', 'F', 'RN', 'N', 'geraldine', '$2y$10$.QuhaJ.hfKhJKAKfJHaoouEsaXnUd.SRI6XRfWfNfniKZRvkItypm', 'geraldinequintilla@yahoo.com', '9094541987', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:13'),
+(100022, 'Binondo', 'Rey John', 'Labadia', '', '1986-06-24', 'M', 'LABAIDE', 'N', 'adan', 'teifOtjs44ERo', 'reyjohnbinondo@yahoo.com', '09169421719', 'N', '', '', 'LABAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-28 19:14:11'),
+(100023, 'Binondo', 'Cathay May', 'Duran', 'NOTAP', '1992-01-23', 'F', 'MWIFE', 'N', 'mimoi.cb', '$2y$10$cI07J5o0siw42BjhLgDK0.uEeAYkiCZJg5IIlaKSvKfxA.noGx26W', 'cathaymay.binondo@yahoo.com', '9278300566', 'Y', '', '', 'RHMPP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:13:22'),
+(100025, 'Flores', 'Kim Arvi', 'Manlunas', '', '1991-12-07', 'M', 'RSI', 'Y', 'kimpoy', '$2y$10$7ndKRKdLTaBc2nbgIUUC1.qJ3FKHEgTQe4F1zrDGJYyY9O.odrXGy', 'dark_heaven214@yahoo.com', '9353881823', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:12:29'),
+(100026, 'Murillo', 'Emerald', '', '', '1988-02-09', 'M', 'RN', 'N', 'emerald', 'teBBXWIvRcTYs', 'yanix_rald@yahoo.com', '09300615478', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-28 19:14:58'),
+(100028, 'Dunken', 'Jean Claire', 'Giner', 'NOTAP', '1985-10-14', 'F', 'RN', 'N', 'vladimir', '$2y$10$Zs1c8NfN3ZIxvgo9QFPu3.60x4xPHJB7WRKToNeBzUB0en3WC6oqC', 'jeanclairedunken@yahoo.com', '9366681662', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:35:00'),
+(100029, 'Plasencia', 'Annie Lou', 'Magdamit', '', '1990-11-11', 'F', 'RN', 'N', 'aiyouxoo', 'teX8RTzd2AF.s', 'louei_ann@yahoo.com.ph', '09753434210', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:00'),
+(100030, 'Acotanza', 'Frankie', 'Garnace', '', '1984-07-19', 'M', 'RN', 'Y', 'batman01', '$2y$10$dTJ6s2uGgZhkYRGhvF3o9eYl1u7bj8bs4YAjDFOwfq3Jm.w2Aad.O', 'facotanza@yahoo.com', '9064585044', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-08-16 18:31:08'),
+(100031, 'Sumignan', 'Irine', 'Tapoc', '', '1988-11-07', 'F', 'MWIFE', 'N', 'francienaila18', '$2y$10$BY/c/TxpRGjPKd3rND0pheVCl/bt6Po6XSiHjTH0wCYWA16xCI8Gi', 'irinedelacruztapoc@yahoo.com', '9100408725', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:16:17'),
+(100032, 'Laurente', 'Lovely', 'Lucena', '', '1988-02-14', 'F', 'RN', 'N', 'love_14', 'teCtne1w6FZoI', 'thalia_142001@yahoo.com', '09753777588', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:31'),
+(100033, 'Bandiala', 'Daisy', 'Puerto', 'NOTAP', '1990-03-25', 'F', 'MWIFE', 'N', 'daisy', '$2y$10$i2pKE5fV6bAMLgViu.tw0ObffMNuI92hVWxihsozZ8TUzD2pjuoL6', 'dbandiala90@gmail.com', '9158054367', 'Y', '', '', 'RHMPP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:11:08'),
+(100034, 'Salilin', 'Novee Renelyn', 'Leguiz', '', '1993-11-08', 'F', 'RN', 'N', 'novee', 'teXjDSCeBjBx.', 'noveerenelynsalilin@yahoo.com', '09094251340', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:21'),
+(100035, 'Cunting', 'Maribeth', 'Monforte', 'NOTAP', '1975-03-25', 'F', 'MWIFE', 'N', 'ben10', '$2y$10$1hT/YTDTk8siDjnkUprFwuqiftlzgLvG4aV8cOjMulv7JlI/54CuO', 'cli_bitz@yahoo.com', '9350898159', 'Y', '', '', 'RHMPP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:13:23'),
+(100037, 'Migalang', 'Aileen Mae', 'Clinacion', '', '1993-08-01', 'F', 'RN', 'N', 'aileen', 'tenLJESM3Pj8A', 'migalangaileenmae', '09057820014', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:53'),
+(100038, 'Capundag', 'Shirly', 'De Asis', 'NOTAP', '1973-06-11', 'F', 'LABAIDE', 'N', 'shirly', '$2y$10$twPaQ.rCgplmZOQ/CH9XY.P7cBDKHaE3sTwnHZ45xQGDJ2N.vS/0u', 'swin4@yahoo.com', '9753589969', 'Y', '', '', 'LABAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:16:17'),
+(100039, 'Dammang', 'Darwesa', 'Ebere', '', '1984-07-17', 'F', 'RN', 'N', 'ridzkhan', 'teYnPBZS.fatI', 'dammangdarwesa@yahoo.com', '09356124209', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:17:47'),
+(100040, 'Lamatan', 'Jaydee', 'Carpio', 'NOTAP', '1988-05-13', 'M', 'RN', 'N', 'stupidjade', '$2y$10$zzin5ZUoa8.ZzPmwzkD0u.rkpCt7FCskhspgvAcpPHm2oFjn.Cr42', '', '9356134984', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:20:30'),
+(100041, 'Suh', 'Honey Lee', 'Hermosisima', '', '1990-03-06', 'F', 'RN', 'N', 'leewon', '$2y$10$NV7H6cumoclSKZy9oNd/XuA1gshM70RxGvzo48RwV44d0om.DRN/.', 'hondrie_lee@yahoo.com', '9567231397', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:11:14'),
+(100042, 'Quintilla', 'Jhanice', 'Galindo', 'NOTAP', '1983-01-10', 'F', 'RN', 'N', 'jquintilla', '$2y$10$rOVIgNZ9tjyVsnzWVbAS3ugCoZw042Un5/qPjWOSKXT8QlbLVT3Eq', 'jhan_quintilla@yahoo.com', '9550537903', 'Y', '', '', 'PHA', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:13:57'),
+(100043, 'Quiosay', 'Richel', 'Sontillano', 'NOTAP', '1993-05-16', 'F', 'RN', 'N', 'richel', '$2y$10$SER.rUQtXpdnuS41JS0oVuWvbxt2FCw.rIFjfnEFtFuSfHvy4Gi0G', '', '9979482323', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:23:50'),
+(100044, 'Sarabia', 'Kathy Grace', 'Cunting', 'NOTAP', '1991-02-09', 'F', 'RN', 'N', 'sarabia', '$2y$10$F9qgvcocHFIXa6muYUw.a.jQWAXa6vUvA/kx2wBhc7jyu9935tTLC', 'kitsarabia29@gmail.com', '9369779244', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:18:35'),
+(100045, 'Ecot', 'Dexter', 'Enopia', 'NOTAP', '1990-01-01', 'M', 'RN', 'N', 'dext', '$2y$10$GffSz.TicBzxskdG4l9PF.SVvL8VzViy6ULaQzFEQm90vF63jGoyy', 'mrdexterecot@gmail.com', '9972690355', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:16:13'),
+(100046, 'Huelar', 'Ma.Kristina', 'Sarabia', '', '1979-05-16', 'F', 'DENTALAIDE', 'N', 'thirdy', 'teuZ/6YI0Z2hI', '', '09051922805', 'Y', '', '', 'DENTALAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-28 19:17:54'),
+(100047, 'Dionaldo', 'Josephine', 'Aguilar', 'NOTAP', '1979-03-14', 'F', 'BHW', 'N', 'jojo', '$2y$10$/oMNPCXz4kwOjgA8DWeB0OpMkdaaHRAFYBoF9EBWBjEX6vTkmY5P2', '', '9353437626', 'Y', '', '', 'BHW', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:15:20'),
+(100048, 'Opsar', 'Sweet Heart', 'Canete', '', '1992-08-22', 'F', 'RN', 'N', 'heart', 'teIfFHtyQ0x52', '', '09759257355', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:18:17'),
+(100049, 'Bacang', 'Ma Katherine', 'Tagapia', 'NOTAP', '1990-03-06', 'F', 'RN', 'Y', 'erinbacang', '$2y$10$9/1c.hsVUSi7fsmQpunVlOribbVuvTEcGB1VE0LdF6FO9BHusWY4q', 'ma.katherinetagapia@yahoo.com', '9272435551', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-17 22:43:23'),
+(100050, 'Escueta', 'Richell ', 'Calica', 'NOTAP', '1987-09-03', 'F', 'JO', 'N', 'rich', '$2y$10$eJ774lTUNkQlJ5HzK09dHeONHbwdDOgs5NetWtqRia/fhREVDnT62', 'escuetarichell@yahoo.com', '9076059793', 'Y', '', '', 'CLK', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:14:32'),
+(100051, 'Patarata', 'Reycelle', 'Hingco', 'NOTAP', '1992-02-04', 'F', 'RN', 'N', 'dayang', '$2y$10$301CQtMYJUF7NPSXsuW7E.j/CZprT1MY9ptaqRX370KCYatAFGnoC', '', '9171029183', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-28 19:20:21'),
+(100052, 'Patarata', 'Reycelle Mae', 'Hingco', 'NOTAP', '1992-02-04', 'F', 'RN', 'N', 'reycelle', '$2y$10$26Ca/oaMQUBfTu.tndPhCukNUnGfgQIenGjWKK23WQvrvLmKupMV2', 'reycelle143@gmail.com', '9356800533', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:32:58'),
+(100053, 'Patino', 'Joan', 'Lauranilla', '', '1990-08-14', 'F', 'RN', 'N', 'joanpatino', '$2y$10$u9ipBWIZshyBzCtzPcxMruB6kzogATSGB09pyaRA3kPNG4v1HdDcO', 'joanpatino90@gmail.com', '9064253630', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-29 22:06:06'),
+(100054, 'Ago', 'Jingky', 'Ladiero', '', '1995-02-14', 'F', 'MWIFE', 'N', 'jingky', 'texnwft3oJ.ng', '', '', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:18:48'),
+(100055, 'Jara', 'Algren', 'Monreal', '', '1981-09-24', 'M', 'RN', 'N', 'algren', 'teapxBSry2CPw', 'jaraalgren@gmail.com', '09483257720', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:18:56'),
+(100056, 'Lapuhapo', 'Kenneth', 'Bentic', '', '1993-04-19', 'M', 'RN', 'N', 'psychen7', '$2y$10$C1.sak7usEtL4h.yOimInOi2p0NO88FTZq70mtILugGGsu2MaZNBy', 'psychenphilip@gmail.com', '9351195729', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:06:55'),
+(100057, 'Ramiso', 'Mary Joy', 'Bation', 'NOTAP', '1995-11-13', 'F', 'MEDTECH', 'N', 'majoy', '$2y$10$6YxA.HWz40KMNN3Tn/qXTOwgqocC6DduPoiSBKbYf/UBsHXpBoT/K', 'madsrmt@gmail.com', '9126956777', 'Y', '', '', 'MEDTECH', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-21 23:12:31'),
+(100058, 'Yturralde', 'Anna', 'Santos', 'NOTAP', '1989-12-12', 'F', '', 'N', 'anna', '$2y$10$TdUBGBxdbVtg9cwTVsW/keVws0dwqSWJrqi.mv/yl7wOfjIaRWFOm', NULL, '9176662222', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-21 23:21:54'),
+(100059, 'Donato', 'Jezrell Jay', 'Junsay', 'NOTAP', '1991-03-29', 'M', '', 'N', 'Jj Don', '$2y$10$B83yhxgegrrx1p7VXRUBzuLH.s4EAg5jfHNwIRnoYxgZzx/jxDRQO', 'jjdon45@gmail.com', '9154596382', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-21 23:21:25'),
+(100060, 'Tenaflor', 'Jane', 'Quitayen', 'NOTAP', '1978-01-01', 'F', '', 'N', 'tenaflor1', '$2y$10$kUFqhviXg4o/3EQxnSu/FuOPle02RHmrvhzTjJZ.kfRNEC7eX704C', 'lalay_18@yahoo.com', '9367260275', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-06-03 21:40:42'),
+(100061, 'Dionaldo', 'Adonis', 'Mag-aso', 'NOTAP', '1976-05-10', 'M', '', 'N', 'Adonis', '$2y$10$9nB.1hOfws2x3ReyMJ/WCO.ajo8cJH6e293wZcA3g8vnMl/0Sqdue', NULL, '9353881823', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-19 02:32:00'),
+(100062, 'Arga', 'Sherlyn', 'Quines', 'NOTAP', '1980-04-14', 'F', '', 'N', 'Sherlyn', '$2y$10$RzhNlv8yUAuMlRmIlT1Kneyzhwxa1CFA/zt3yyxf8rSpc8eHUg9Ne', 'arga_norman@yahoo.com', '9758195409', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-23 22:18:51'),
+(100063, 'Admin', 'Admin', 'Admin', 'NOTAP', '2018-02-13', 'F', '', 'Y', 'Admin', '$2y$10$y9uMt9YRQsrr.q2d0dqdNe846Ve14jZ8/NfAUFw8J7iOWTszRNJe2', '', '9000000000', 'N', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-08-09 17:54:42'),
+(100064, 'Oral', 'Michael', 'Magallanes', 'NOTAP', '1987-09-01', 'F', '', 'N', 'mitchwayne', '$2y$10$GF433lHhIQXLQu8SmBgY.OCXxyxqVQD8Vp66QfO0YkDtFKil.o.62', 'michaelmagallanesoral@yahoo.com.ph', '9053035038', 'Y', '', '', 'LABAIDE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-22 22:50:40'),
+(100065, 'Juntilla', 'Rio Grace', 'Dimco', 'NOTAP', '1987-05-04', 'F', '', 'N', 'yuri', '$2y$10$S0xabvdjxh04B13xRjFwnOq/yjsTZjxMQvByRZYht6OcSfIh1RyGW', 'rgjuntilla03@gmail.com', '9169833036', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-12 18:20:52'),
+(100066, 'Gamil', 'Gemrye', 'Trigosa', 'NOTAP', '1997-07-31', 'F', '', 'N', 'gemryegamil', '$2y$10$mQssvJEQ32k974i3Ynqzi.fdYUCPPDJcoXcMBXu176N0GFexndniG', 'gemrye143@yahoo.com', '9356170149', 'Y', '', '', 'MEDTECH', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-06-12 21:57:27'),
+(100067, 'Seno', 'Ronald Ivan', 'Velasco', 'NOTAP', '1988-07-21', 'M', '', 'N', 'ivan', '$2y$10$NUiIu/msJM7Fpn.zDYJCt.aFKYkrsxYIMH1WxBdMIYq95X1DG4LP2', 'ronaldivanseno07211988@gmail.com', '9262796796', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-17 22:24:31'),
+(100068, 'Conserman', 'Evamie', 'Azupra', 'NOTAP', '1996-02-27', 'F', '', 'N', 'Vamzkie', '$2y$10$JU2IVBc7bI7WhutdsvIGhOBNtuPNRS1Y72yZc6roX.RN.XmjYD5Hq', 'concermanevamie@gamil.com', '9355893932', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-20 16:45:58'),
+(200010, 'Mohammad', 'Sherylim', 'Bacus', 'NOTAP', '1995-01-31', 'F', '', 'N', 'sherylim', '$2y$10$JMFlPj/JmXmdOasJFQTrZ.89cuIs771eIY.jtOaAxlxgI7zGvRpkW', 'sherylimhd@gmail.com', '9973945341', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:13:59'),
+(200011, 'Rillera', 'Maria Anagil', 'Delos Reyes', 'NOTAP', '1986-07-02', 'F', '', 'N', 'anagil', '$2y$10$Ou6dEl95j7ecx8XKfRy6Ku4Ins465H7wEWSpIS1sshX9K/0r1rbfe', NULL, '9162673730', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-26 23:15:25'),
+(200012, 'Javar', 'Cherrylyn', 'Baguio', 'NOTAP', '1989-01-03', 'F', '', 'N', 'cjavar', '$2y$10$NfSW95w8EcH0ZfsDUKeDPeIFPTbBn7j2D1oRkJiW4uOfOrnmsqVym', NULL, '9353647510', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-18 18:24:15'),
+(200013, 'Guia', 'Chiradee', 'Donato', 'NOTAP', '1986-03-25', 'F', '', 'N', 'cguia', '$2y$10$cziwGGATomfFjmebzh1RnuC89zwU3ST9jgSX2r/uErNaUBLWYHYza', NULL, '9558958810', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:20:35'),
+(200014, 'Inoferio', 'Xyla Kristi', 'Agbayani', 'NOTAP', '1978-12-15', 'F', '', 'N', 'xyla', '$2y$10$w8igY5VEeoDcjoeq7fDfLe2bDcm0AjA/GxzMKItZP46O9Kfw55zRu', 'kristi_inoferio@yahoo.com', '9771383881', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-05-31 18:34:56'),
+(200015, 'Oxenio', 'Mildred', 'Arqueza', 'NOTAP', '1960-03-03', 'F', '', 'N', 'mildred', '$2y$10$ApIVU8UslUoTdSjcMGWw4uFWvunC1HWlaIterilvzKasCRbxNo11G', NULL, '9267982379', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:27:16'),
+(200016, 'Catubig', 'Apollo Zeus', 'Narvaez', 'NOTAP', '1992-04-19', 'M', '', 'N', 'maxervolt', '$2y$10$ZCT2UCOHV4JBf/dCrYOfzOEbalBu0oVaWmwrWmCNgUHu0itw0P9d.', NULL, '9263440241', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:09:28'),
+(200017, 'Senio', 'Mary Joy', 'Sagang', 'NOTAP', '1991-03-08', 'F', '', 'N', 'maryjoysenio', '$2y$10$DGlJo019ljimEPnjfWG4ge/Vgck4HQTII1gmE5vfkxvtQE3jYhgRW', NULL, '9092675267', 'N', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:43:57'),
+(200018, 'Septimo', 'Alvec', 'Sabaduquia', 'NOTAP', '1983-09-03', 'F', '', 'N', 'alvec', '$2y$10$vb44qsT9UcGswHw1OML/leBPhazQ/kSO/L8zbkKio2TnzquXFLhGG', 'alvecsabaduquia@yahoo.com', '9753001984', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:14:30'),
+(200019, 'Teves', 'Cherylane', 'Laurente', 'NOTAP', '1984-05-26', 'F', '', 'N', 'tcherylane', '$2y$10$K7TeCEar/yvmg217lthb5.eQP17ZY6n8m4okjYLptKX0NFTuipprK', NULL, '9758816255', 'Y', '', '', 'PHA', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:15:01'),
+(200020, 'Arquisola', 'Dareen', 'Almirol', 'NOTAP', '1989-12-03', 'F', '', 'N', 'darz', '$2y$10$Ep1l1TllOB0JfYszBZXwF.t9dUU1MwOXvdrU063iLIWEzMhV09n0i', NULL, '9361114569', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:14:51'),
+(200021, 'Lanuza', 'Maria Seleca', 'Wacay', 'NOTAP', '1991-11-07', 'F', '', 'N', 'mariaseleca', '$2y$10$ZmI9r.3pMFZhPQs04yWScOfSvWzmIaNhMfk5ug4GuKb1MGaB9siW.', NULL, '9567232131', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-18 18:24:29'),
+(200022, 'Licayu', 'Gladys Mae', 'Chin', 'NOTAP', '1994-02-23', 'F', '', 'N', 'gladysmae', '$2y$10$qp2MFRQWv5Y9oNx856Z/Oe8Y.LgCDjZoG102u/ea9Zeq9rKdm5zoS', NULL, '9365773314', 'N', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:44:12'),
+(200023, 'Rivero', 'Eldhen Faith', 'Tayag', 'NOTAP', '1994-08-31', 'F', '', 'N', 'dhentot', '$2y$10$wfqZyatd1kgZ1Tn34.kOHuIMMursJ3lXD899lZaOX8MI.CVLA/hg6', 'eldhenfaith@gmail.com', '9277650727', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-18 18:23:52'),
+(200024, 'Agbayani', 'Elezabeth', 'Anito', 'NOTAP', '1972-08-27', 'F', '', 'N', 'elezabeth', '$2y$10$8SUnQW0DJHKIb6eAxnbPU.VDyfaUn1qDnXyjareE9D/0Xy6nUqvtK', NULL, '9206162007', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:14:39'),
+(200025, 'Gomez', 'Rosemarie', 'Ladot', 'NOTAP', '1970-02-14', 'F', '', 'N', 'rose', '$2y$10$H5S.ZL10j.YI5dvqMG/8AuZXathaW5hVfuj0AXS/ZFtTcY3U.sJAe', NULL, '9972534265', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:15:44'),
+(200026, 'Partosa', 'Anelia', 'Delante', 'NOTAP', '1970-09-21', 'F', '', 'N', 'anelia', '$2y$10$4WZU0u1v9FO0T8udd/W0EeVTJoUI252.m/YmQIxQDm3kGP6az7MMa', NULL, '9275364099', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:17:26'),
+(200027, 'Obordo', 'Marietta', 'Bawisan', 'NOTAP', '1968-07-22', 'F', '', 'N', 'nene', '$2y$10$7AzOKhPnbFSqy/L4gFssZuj3OBkXauKW/nDu2pgBljTawEcq2RSMC', NULL, '9173177152', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:15:16'),
+(200028, 'Salacao', 'Lita', 'Timol', 'NOTAP', '1965-12-13', 'F', '', 'N', 'lita', '$2y$10$jhlr8h.WRWjClw9EqFgipuXP2I3Qfzv9Lq6Fjr6QteY6MvdjJzfVu', NULL, '9368263195', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:16:45'),
+(200029, 'Salacao', 'Lita', 'Timol', 'NOTAP', '1965-12-13', 'F', '', 'N', 'lita', '$2y$10$Bd8nlrneFOE9G03VpF/jn.rSasffeWRPrLNoMRpUhpvP1cME.p8Zi', NULL, '9368263195', '', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 18:51:23'),
+(200030, 'Azuelo', 'Meldred', 'Bebeta', 'NOTAP', '1975-08-07', 'F', '', 'N', 'meldred', '$2y$10$uQ7kkvIOc0IH8pqqlz7l8Ocu6x25fqu7ZOfPoB1xP9ljKG7sGSfxW', NULL, '9266083964', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:28:14'),
+(200031, 'Jemino', 'Nelsita', 'Cuala', 'NOTAP', '1967-08-20', 'F', '', 'N', 'nels', '$2y$10$mcyUTO9tZDMKzwfMc07S8uRXIcD607eFSKDOBXdQDCzk9xKh4U53e', NULL, '9352937613', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:17:09'),
+(200032, 'Mangubat', 'Nena', 'Nieto', 'NOTAP', '1973-10-30', 'F', '', 'N', 'nena', '$2y$10$7gCxp6s7FB85dmOLyHT7eOLPSyJzOdlG15P7Qk78CUGAp4Tmt2vDC', NULL, '9166087118', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:17:07'),
+(200033, 'Simon', 'Mario', 'Baybayan', 'NOTAP', '1952-03-06', 'M', '', 'N', 'mario', '$2y$10$s4.sjy7dYaczGERssunWjeofyYNw7YleXtoV27dDyhaOw2zMOGbdi', NULL, '9068643212', 'Y', '', '', 'MD', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:23:42'),
+(200034, 'Cuevas', 'Nina Joanne', 'Ortega', 'NOTAP', '1981-01-16', 'F', '', 'N', 'wjoanne', '$2y$10$BIlXXGqa6Oc6WpYox4uNYuIFM2D/VAkcDKw8277pYkP4PeonTX3H.', 'njoanneoc@gmail.com', '9174136174', 'Y', '', '', 'MEDTECH', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:13:54'),
+(200035, 'Iso', 'Mariamie', 'Bernaldez', 'NOTAP', '1966-06-12', 'F', '', 'N', 'mariamie', '$2y$10$3CAajNO.jnwtCZc1Wi7skOwlyyEV4h.ZBPRMKZhltHzkwxgtrWHOW', NULL, '9971397687', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:33:09'),
+(200036, 'Madalih', 'Editha', 'Dayday', 'NOTAP', '1958-01-23', 'F', '', 'N', 'edith', '$2y$10$OdaNAcETIU2cSeH7hlKUf.G2F0f7tdfhC1je1qrMSjR1z593fROLy', NULL, '9068061434', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:33:55'),
+(200037, 'Jamora', 'Josie', 'Mangubat', 'NOTAP', '1975-09-08', 'F', '', 'N', 'josie', '$2y$10$TFMmdyMvzqQC8IxK2SCaA.P3XupteFbfg5DuDu7e6SDBbYYRJ1lUm', NULL, '9263848704', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:14:52'),
+(200038, 'Cabuhan', 'Alicia', 'Tarucan', 'NOTAP', '1954-10-09', 'F', '', 'N', 'alicia', '$2y$10$pAxwd8K/Bn9IFJhDxwJMKe2OIXvzlBdDt8d76kc10/8Knp8DsbO8O', NULL, '9066551184', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:19:12'),
+(200039, 'Gamboa', 'Francis', 'Jo', 'NOTAP', '1989-12-12', 'M', '', 'Y', 'gamboa', '$2y$10$K1UaBsm/PpBpI5Mr.hwUbu/sycYaTKkPnJh7pTf9ZC5eje3EKQHOi', NULL, '9999999999', 'N', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:44:42'),
+(200040, 'Aposaga', 'Mark Vincent', 'Castro', 'NOTAP', '1988-10-24', 'M', '', 'Y', 'mrkaposaga', '$2y$10$4gsrBghMxcOIiUdlUjD3huyFT5yuMSBqoJRNpHY/azhTicWm1YHya', 'mrkaposaga@gmail.com', '9159189523', 'Y', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 19:31:47'),
+(200041, 'Dahunan', 'Melanie', 'Morales', 'NOTAP', '1990-08-02', 'F', '', 'N', 'melanie', '$2y$10$BY7TwFGx6jpXGYp8Qu.k6O1VzOal85hMNcVLZJak1oS839f6b8OoK', 'dahunanlanie@gmail.com', '9778047803', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-06 22:19:16'),
+(200042, 'Ordeniza', 'Ma.analiza', 'Fayloga', 'NOTAP', '1971-02-15', 'F', '', 'N', 'neth', '$2y$10$9AAB7nXoQwX.ZZq3IMdG/.AX.xPcpf6luA9UbqXGYZ0Bu2Y3.cM8u', NULL, '9355386698', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-07 16:07:22'),
+(200043, 'Pantua', 'Kim', 'Lanzaderas', 'NOTAP', '1991-02-10', 'F', '', 'Y', 'kimpantua', '$2y$10$.bzDBh/Xq/K7n60qlhF1J.Wa/JHrI8H2vC3eQkJAdmmnQg6AZbEYm', 'kimiakaxine_91@yahoo.com', '9268202946', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-10 22:01:35'),
+(200044, 'Martir', 'Jovie', 'Vocal', 'NOTAP', '1993-01-03', 'M', '', 'N', 'ampoy', '$2y$10$hDFflE.clFn0xn7SUTyeiuNoMoZvxCfUjR8/x3ej8Ai9MGS7IXEYS', 'joviemartir@gmail.com', '9753001984', 'Y', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-07 16:35:21'),
+(200045, 'Cañete', 'Mae Aisa', 'Piala', 'NOTAP', '1985-05-12', 'F', '', 'N', 'maeaisa', '$2y$10$LCr3ZgRX11YZqFPoPghssO3lDB3/6tkH7Z7SACCoe9Y2GkIc/hXnO', NULL, '9361341950', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-09 17:49:22'),
+(200046, 'Buenavista', 'Nadelyn', 'Baradero', 'NOTAP', '1973-01-05', 'F', '', 'N', 'nadz', '$2y$10$6KUbiOkagUN1XYqGjiwzP.LeGSK6jFWBlQDFFRseU0iMb3QaOxMym', 'edbuen_143@yahoo.com', '9194960730', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-09 16:41:29'),
+(200047, 'Ladot', 'Jay', 'Milmao', 'NOTAP', '1992-06-25', 'M', '', 'N', 'jayl', '$2y$10$HyrVqXc7RK3LBDN4bg2Gfe85.NDPmZFKnMJfTDevGeOPrhTcUfRWW', NULL, '9275488681', 'Y', '', '', 'CLK', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-09 17:06:39'),
+(200048, 'Catubig', 'Apollo Zeus', 'Narvaez', 'NOTAP', '1992-04-19', 'M', '', 'N', 'maxervolt', '$2y$10$R9NIil78y.pHxi3HILoGmul/AmMuves.VTXakxjS/9L1lWlWjQIAe', NULL, '9263440241', '', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-09 18:24:26'),
+(200049, 'Verzon', 'Adnilre', 'Drapiza', 'NOTAP', '1980-03-29', 'F', '', 'Y', 'nilfe', '$2y$10$6BMBbtx1UKdJPXvBz0.IluFf4pnt5t8YHVnNBr6vmiN3dOkgyjRRK', 'dayin_ad26@yahoo.com.ph', '9175077456', 'Y', '', '', 'MD', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-14 18:05:19'),
+(200050, 'Tabamo', 'Jeannibel', 'Logsanay', 'NOTAP', '1991-12-15', 'F', '', 'N', 'jtabamo', '$2y$10$THMRdN.Rb6lAXn4fLmy7/eg3AX6Pf//XYJTkaln2VeIwdA1Bv2X1q', 'missjay1215@gmail.com', '9068450665', 'Y', '', '', 'MEDTECH', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-08-16 00:40:41'),
+(200051, 'Gonzaga', 'Romark', 'Del Rosario', 'NOTAP', '1993-02-08', 'M', '', 'N', 'marco', '$2y$10$lWA.s.N6UHUQd70sW5700.BL.T0J3t2SX29sT9dcyJbE4OpLyXSyu', 'romarkgonzaga@gmail.com', '9157702306', 'N', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-14 04:23:20'),
+(200052, 'Asoy', 'Jc Feb', 'Catane', 'NOTAP', '1994-02-13', 'M', '', 'N', 'drjaycee', '$2y$10$rpAGhdlwGDXZwutm43yoHucCKVgeJy.tD7tqyG67TlJ5FR1JV7t/a', 'abscessa@gmail.com', '9273274973', 'Y', '', '', 'DENTIST', '', '', NULL, NULL, '2018-09-17 05:36:29', '2017-11-26 23:02:50'),
+(200053, 'Javellana', 'Jane Diane', 'Sibud', 'NOTAP', '1995-07-04', 'F', '', 'N', 'jane', '$2y$10$NGdC0N8sDQgbjr/FQxQHC.jJp/CT73j7WjxaL4a6NVDYEnD455P8G', 'janedianejavellana@gmail.com', '9551932126', 'Y', '', '', 'PHA', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-11 18:00:01'),
+(200054, 'Medina', 'Florenz Kenneth', 'Tamala', 'NOTAP', '1993-05-18', 'M', '', 'Y', 'florenz123', '$2y$10$gzl3TU6t/eqLjse7MhAfzeVGuh5V4wldhVOC4vLLIPxxruDkj2CbG', 'florenzmedina@gmail.com', '9166599510', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-12 00:22:49'),
+(200055, 'Navidad', 'Ione', 'Iso', 'NOTAP', '1980-08-17', 'F', '', 'N', 'feliz', '$2y$10$RsFOd8FSGYWcGctWBfpIwuBh.rKzIMHrt9ZvYDOUeQe7n0xxuviay', 'aieene125@gmail.com', '9161437123', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-17 22:59:17'),
+(200056, 'Escarpe', 'Heroncia', 'Tejada', 'NOTAP', '1972-01-19', 'F', '', 'N', 'annie', '$2y$10$2Dol8UU5yUL4HcbzrRJ7SebqCLpKEf/mouM0QhCfTYMiDxMmBmPS6', 'annie.escarpe72@gmail.com', '9272615313', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-17 22:58:33'),
+(200057, 'Cayabyab', 'Cherryl Vic', 'Cabrera', 'NOTAP', '1997-02-03', 'F', '', 'N', 'Cayabyab', '$2y$10$h/iYDvoA3DRcCsoru9MmWuuci9hQleJMpPyxP4YePPK8ZlqYt62l2', NULL, '9353962709', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-17 23:07:49'),
+(200058, 'Asil', 'Fatima', 'Mambuay', 'NOTAP', '1991-09-27', 'F', '', 'N', 'senine', '$2y$10$VahVmtojJuGIsbYQSXCRj.0o/mYv6eGc9cLlOMl2Jg8GfrLncFena', NULL, '9556023139', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-17 23:07:26'),
+(200059, 'Colubio', 'Jessame', 'Romanillos', 'NOTAP', '1993-11-18', 'F', '', 'N', 'jessa', '$2y$10$RHVejb9HS7Qfi21Jv9m74.a5EInk3H1qWTJD7gJnbI97zGLmF4iji', 'ColubioJessame@gmail.com', '9168451362', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-17 23:09:27'),
+(200060, 'Neri', 'Arthur', 'Torres', 'NOTAP', '1993-05-03', 'M', '', 'N', 'arthur57', '$2y$10$0CFLeNLJqgJcOfj0HkNsyeNCRVycgF3Leh7gMyzk8w5mW12lio5nG', 'arthurneri63@gmail.com', '9778551696', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-04 22:54:00'),
+(200061, 'Demegillo', 'John Michael', 'Guinanad', 'NOTAP', '1993-11-05', 'M', '', 'N', 'demegillo', '$2y$10$FgIg1N1mUoDpZo78RSORduRVLFx82rw/RAQdoF5RvMw4eKzFhUcgi', 'johnmichaeldemegillo@gmail.com', '9175063444', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-02-25 22:55:13'),
+(200062, 'Agbayani', 'Yrl Phares Martin', 'Ridad', 'NOTAP', '1987-11-03', 'M', '', 'N', 'yrlagbayani', '$2y$10$yiMTvcO/QjCqTm8TBtLyUOQbfZZ2/9BruEV9FgJRhVC3avu85QOJG', 'yrl@gmail.com', '9457767500', 'Y', '', '', 'MD', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-06-03 22:53:25'),
+(300010, 'Ulao', 'Gleeza', 'Calipayan', 'NOTAP', '1989-08-19', 'F', 'MWIFE', 'N', 'glee', '$2y$10$9EjmZ4SJABiNMBjFWUm8CeCTyq7JhYSlWHTD9nKwZbaPXh1tSzoOe', 'glenzulao@yahoo.com', '9360795744', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:44:08'),
+(300011, 'Cagas', 'Elsa', 'Lerio', 'NOTAP', '1967-07-31', 'F', 'RN', 'N', 'elsa', '$2y$10$WWwP93q4kV1hxpwly67C.eNHfyMSbu500hmZFI2Qt/86g1SfMZ0Q.', 'elsaleriocagas@yahoo.com', '9262654829', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 09:02:50'),
+(300012, 'Labis', 'Salome', 'Borres', 'NOTAP', '1959-06-06', 'F', 'MWIFE', 'N', 'salome', '$2y$10$V.T1ayNGWwHDH4/wnV7u..kcHNZTs876WLC4ip1q2sNcrz18R6SIi', '', '9274288891', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 09:06:16'),
+(300013, 'Regalado', 'Rosemarie', 'Gayat', 'NOTAP', '1966-03-01', 'F', 'MWIFE', 'N', 'rosemarie', '$2y$10$rP0KgYgmtKB4BV3l7b7acOC/x7vNwYITuBTDU5s6ygyHbhuMNzu7G', '', '9161524497', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:33:42'),
+(300014, 'Tragico', 'Rizza Mae', 'Cabrera', 'NOTAP', '1985-12-30', 'F', 'RN', 'N', 'azzirmae', '$2y$10$4EYgokDHvLOn7rRPnHa7WewahCn1Ofsv/ricSvFoUuVBovM.ILzfe', 'edriz2105@gmail.com', '9178826639', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:33:48'),
+(300015, 'Fernandez', 'Warren', 'Nadela', 'NOTAP', '1969-02-27', 'M', 'RN', 'N', 'warren', '$2y$10$UZuaC4XgXgfs5BTyKKocY.L2ODsKMBWtQVUJ/R2guhHOwgFkd8Z8u', 'warrenfernandez2769@yahoo.com', '9056011292', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:39:58'),
+(300016, 'Gustilo', 'Romeo', 'Castor', '', '1955-03-04', 'M', 'MEDTECH', 'N', 'romy', 'ted2/ely1LrBY', '', '09296799477', 'Y', '', '', 'MEDTECH', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(300017, 'Castillon', 'Jona', 'Suan ', 'NOTAP', '1982-06-27', 'F', 'MWIFE', 'N', 'jona', '$2y$10$FWxNeYwiU4Gy0aMU89sOnOKbs02vTq0ZreooBkkA.M.iQhOjwzFrm', 'jona_casts@yahoo.com', '9268280408', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:46:18'),
+(300018, 'Ramirez', 'Nadine', 'Guzman', '', '1981-06-17', 'F', 'LABAIDE', 'N', 'dhen', 'teqP9qSQS9Mrg', '', '09159247161', 'Y', '', '', 'LABAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(300019, 'Berioso', 'Charissa Mae', 'Segovia', '', '1991-12-08', 'F', 'RN', 'N', 'chamae', 'ter9g1Mw92QBM', 'chamber_8@rocketmail.com', '09151277135', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:05:21'),
+(300020, 'Guillermo', 'Rhea', 'Guzman', 'NOTAP', '1988-03-10', 'F', 'RN', 'N', 'rhea', '$2y$10$IXouVHR4mtUXlJlh2HCS9uIvneojI6U1iuAOQo3f4Ousdl8ae2KK2', 'rhea.guillermo@yahoo.com', '9267657028', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:35:13'),
+(300021, 'Dela Cruz', 'Ronalyn', 'Guillermo', '', '1989-04-01', 'F', 'RN', 'N', 'ronabelle', 'ter2Yq21im9XI', 'ronalyndelacruz24@gmail.com', '09174278914', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:05:32'),
+(300022, 'Rojas', 'Elena Velma', 'Angcahan', '', '1951-09-05', 'F', 'MWIFE', 'N', 'velma', 'teILz3ti/URqg', '', '09187052283', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:05:37'),
+(300023, 'Natividad', 'Crispina', 'Talagtag', '', '1953-06-05', 'F', 'MWIFE', 'N', 'crispina', 'tek6fQMoVY/ks', 'crisnati2007@yahoo.com', '09261234930', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:05:41'),
+(300024, 'Tragico', 'Joel Chan ', 'Lerio', 'NOTAP', '1990-07-23', 'M', 'RN', 'N', 'chanchan', '$2y$10$JZiElXg9/xkhTDWxOsewe.Y0benZdDljqw1lZvJmNAVaUHevt.Uyu', 'joelchantragico@yahoo.com.ph', '9055509869', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-02-27 00:36:16'),
+(300025, 'Ranas', 'Amy', 'Yarte', '', '1981-08-17', 'F', 'LABAID', 'N', 'amy', 'teZyCQTRP58kU', 'amy_ranas@yahoo.com', '09351556688', 'Y', '', '', 'LABAID', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(300026, 'Gayomali', 'Sheryll', 'Garrido', 'NOTAP', '1987-08-14', 'F', 'RN', 'N', 'sheryll', '$2y$10$ETqKkU9rbZJ6N0hBefQ0HuA2X/GtDxsOhVU7hx22EXQXKwDyGbGj2', 'sheryll_gayomali@yahoo.com', '9362730343', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:31:11'),
+(300027, 'Carreon', 'Mark Alexis', 'Pacaña', 'NOTAP', '1990-01-26', 'M', 'RN', 'Y', 'alexis', '$2y$10$7sp8uXKSjUr6CQYGSP7P2uOQ9ENuyriXgT42iW5FvBLfZ/ipKVM..', 'carreon_ma@yahoo.com', '9065069489', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-18 01:50:26'),
+(300028, 'Balot', 'Karen', 'So', 'NOTAP', '1990-05-28', 'F', 'RN', 'N', 'katey', '$2y$10$Q8Sca8nfuAPh0yWMbpCpH.WAsw8.pyB9qA2wY8aoeOu1bP2hYyIda', '', '9171561760', 'N', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:05:56'),
+(300029, 'Babor', 'Janna May', 'Cuarton', '', '1991-05-27', 'F', 'RN', 'N', 'janna', 'terN5xcEEjBQE', 'jannamaybabor@gmail.com', '09167301800', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:00'),
+(300030, 'Cuevas', 'Merlita', 'Cacho', '', '1952-02-18', 'F', 'MWIFE', 'N', 'merlita', 'te..j8TjPdAWk', '', '', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:06'),
+(300031, 'Esperat', 'Marilou', 'Pedrosa', '', '1973-09-23', 'F', 'LABAIDE', 'N', 'malou', '$2y$10$tIfVBERvDgJ4oFVgKrWRiOQjR7ySwrgp58zYa42uyWH0j7PiyjPxG', '', '9361087589', 'Y', '', '', 'LABAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-02-06 03:39:13'),
+(300032, 'Guzman', 'Belinda', 'Sanz', 'NOTAP', '1965-04-23', 'F', 'RN', 'N', 'bebot', '$2y$10$mO26bL11h.NbIuWrqd96Ruzq/5.jTRyhw4gzR0Uyrdfr4.WFqmjJa', 'bsguzman@yahoo.com', '9062297662', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:32:01'),
+(300033, 'Agabon', 'Maria Emilie', 'Caballero', 'NOTAP', '1972-07-01', 'F', 'MWIFE', 'N', 'emilie', '$2y$10$cp0kRirJPxCIXKCDL2.kL.b9Nq0CLD4CI1aEpBBz01zK0T7CdBv5a', '', '0977011040', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:34:17'),
+(300034, 'Batuigas', 'Gabby', 'Rambuyong', 'NOTAP', '1984-05-17', 'M', 'MD', 'Y', 'sen_sui14', '$2y$10$MPxY96NauoHvG15jCRRZ.eHX.ePXwczCHDSwK82cMFNXge/4V0Ft.', 'sen_sui14@yahoo.com', '9175050140', 'Y', '', '', 'MD', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:33:31'),
+(300035, 'Ali', 'Winfred', 'Abrenica', '', '1974-09-28', 'M', 'RSI', 'N', 'alwins', 'te9G9e/k4J8a2', 'foxs_74@yahoo.com', '09123528889', 'Y', '', '', 'RSI', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(300036, 'Prudente', 'Arlene ', 'Ramizo', '', '1971-02-08', 'F', 'HEPO', 'N', 'arlene', 'te3N6dhLVCd2g', 'arlene0871@gmail.com', '09186636461', 'N', '', '', 'HEPO', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:23'),
+(300037, 'Engcol', 'Lezzil', 'Pesan', 'NOTAP', '1986-07-11', 'F', 'RN', 'N', 'zell', '$2y$10$BNlbukX1/vG9WjJbctX8be0LN0d90jN52tAYx3za1RlqxFtrFctES', 'zel_engcol@yahoo.com', '9067084346', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:28'),
+(300038, 'Inso', 'Mary Grace', 'Garrido', 'NOTAP', '1989-11-23', 'F', 'MWIFE', 'N', 'grace', '$2y$10$B4njKeiSeamvxb12Y2Bg0eiy5LYwkNgUPiJnvjl3Ukpe6f.b6OGkS', 'curtneng111@yahoo.com', '9164060825', 'Y', '', '', 'RHMPP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:33:34'),
+(300039, 'Dela Pena', 'Celso', 'Estorninos', '', '1966-11-26', 'M', 'DENTIST', 'N', 'cuspid', 'teChtVrohFrc.', '', '09351428713', 'Y', '', '', 'DENTIST', '', '', '', NULL, '2018-09-17 05:36:29', '0000-00-00 00:00:00'),
+(300040, 'Pellazar', 'Jean', 'Dequilla', 'NOTAP', '1991-04-06', 'F', 'LABAIDE', 'N', 'jean1', '$2y$10$oEsYc/qNMnLXC5DrKfqIM.8771mdxOZJyOeVnyWtXBhHeNRCXcura', 'pellazarjeandequilla@yahoo.com', '9059667010', 'Y', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:41:39'),
+(300041, 'Legaspi', 'Elizabeth', 'Garde', 'NOTAP', '1985-10-12', 'F', 'RN', 'N', 'beth85', '$2y$10$3FFn20MPVJuieDiGRuo74O6Mrbps3VilmZJNO/z3lSWQn.XStbjoy', 'elizabethgarde85@ymail.com', '9353661584', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:30:13'),
+(300042, 'Domingo', 'Kristelle Jan', 'Torres', '', '1985-01-18', 'F', 'MWIFE', 'N', 'jannix1', 'tejp5HFgpVTDY', '', '', 'N', '', '', 'MWIFE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:42'),
+(300043, 'Arrocena', 'Apple Rose', 'Dumaya', 'NOTAP', '1991-04-15', 'F', 'RN', 'N', 'applerose', '$2y$10$mwxNTgvrUyB4oJSHU27gaeK04OxMHJYxY..Zd.DoyUQNPGTOabdI6', 'arrocenaapplerosed15@gmail.com', '9550535573', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:30:43'),
+(300044, 'Esperat', 'Divine Mariel', 'Medrano', 'NOTAP', '1997-01-13', 'F', 'LABAID', 'N', 'divine', '$2y$10$43oBw6pWQ9GJPRAQOROK4OU75fSbkEbp6oeNm92oJqB4cqhbT4c5q', 'khivine@yahoo.com', '9262648111', 'Y', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:30:36'),
+(300045, 'Andrada', 'Alfonso', 'Puroy', 'JR', '1980-05-13', 'M', 'LABAID', 'N', 'foxjay', '$2y$10$N47myHO5MxFllqlx.reSIOafNKWHwtEHLLXPHwbhXSgADK8LB9sDW', 'faxjay@yahoo.com', '9059646496', 'Y', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:31:33'),
+(300046, 'Caguimbay', 'Ella Mae', '', '', '1997-07-17', 'F', 'LABAID', 'N', 'ella', 'texQN4goIMuj6', '', '', 'N', '', '', 'LABAID', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:06:57'),
+(300047, 'Regalado', 'Rizel ', '', '', '1998-04-13', 'F', 'DENTALAIDE', 'N', 'rizel', 'teurkIHPUApyU', '09365848988', '09368659593', 'N', '', '', 'DENTALAIDE', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:07:02'),
+(300048, 'Riu', 'Maileen', 'Patcho', 'NOTAP', '1996-08-01', 'F', 'DENTALAIDE', 'N', 'maileen', '$2y$10$2cY.pYBJutAiXx71lIoobeWYCgR1mrUj6Qg5vI2oFWr5Q0u3xuCiK', 'mhaiiri01@yahoo.com', '9363179745', 'Y', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:01:08'),
+(300049, 'Talabi', 'Reymark', 'Lumatag', 'NOTAP', '1996-11-25', 'M', 'LABAIDE', 'Y', 'mark', '$2y$10$U8.crw6.Jz0pSqprE2uoe.QZcgCW0/lw6w6AcdVt2iLEt1itLmDme', 'mackoitalabi25@gmail.com', '9754645975', 'Y', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-02-09 02:40:17'),
+(300050, 'Chiong', 'Biverlyn', 'Jumawan', 'NOTAP', '1984-04-20', 'F', 'RN', 'N', 'bebs', '$2y$10$6J0U.Ccii2zTbeBHcyTlA.PicpgGq0xq0.biPeL6QkGY7i7AWXiuK', 'biverlyn@gmail.com', '9754639551', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:39:10'),
+(300051, 'Caguimbay', 'Ella', 'Lerio', '', '1997-07-17', 'F', 'LABAIDE', 'N', 'ellah', '$2y$10$gQsV9mLjoIiZ9UGKv7tXMOiyU1XGv/PNaW2GdkVIDrGVXIeaHm6O2', 'ellah.caguimbay@gmail.com', '9364353076', 'N', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-17 05:37:37'),
+(300052, 'Gonzalo', 'Judelex', 'Reyes', 'NOTAP', '1986-12-28', 'M', 'RN', 'N', 'jude', '$2y$10$P/H2RuLirOBFLzWZkocGku06hXCPtVtv8apd6A3RNKl9f8Ki183Qy', 'jdlxx_22@yahoo.com', '9365524776', 'Y', '', '', 'NDP', '', '', '', NULL, '2018-09-17 05:36:29', '2018-07-17 00:39:55'),
+(300053, 'Ajijul', 'Shernalaine', 'Alamia', '', '1992-11-15', 'F', 'RN', 'N', 'sajijul', 'teXHnAwuzuddQ', 'shernalaine.ajijul@gmail.com', '09973613694', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:07:22'),
+(300054, 'Brito', 'Cristopher', 'Sabando', 'NOTAP', '1989-12-26', 'M', 'RN', 'N', 'cristophersbrito', '$2y$10$d1RE1YvEPGvF9wYc6YiGpuqsKU2jhic8Zht0GqiNrQSTfTGyqr1g6', 'cristophersbrito@gmail.com', '9169421514', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-15 08:31:21'),
+(300055, 'Guisona', 'Jennevieve ', 'Bacara', 'NOTAP', '1990-10-28', 'F', 'RN', 'N', 'jenne', '$2y$10$pQv/BVo5ywyP6isQ0BZw3.2kAooMn4FlyOeDzP8cK3ZfKaoFHhs92', 'jenneguisona@yahoo.com', '9159471763', 'N', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-03-09 08:07:29'),
+(300056, 'Arroyo', 'Ronito', 'Caay', 'NOTAP', '1981-01-20', 'M', 'RN', 'N', 'arroyo20', '$2y$10$o74dXoYg8laShfcZUGPpL.xWRL4ZWpleHN9KBCX6Bk4xnsnU4xWOm', 'ra20_arroyo@yahoo.com', '9752703378', 'Y', '', '', 'RN', '', '', '', NULL, '2018-09-17 05:36:29', '2018-01-16 01:32:18'),
+(300057, 'Cainglet', 'Felixberto', 'Callao', 'III', '1997-03-18', 'M', 'LABAIDE', 'Y', 'felix', '$2y$10$923ThHcdFppwBdj9/m15Kuf.tKg.XjyJMCmVybjeqSrhg97MbWZuW', 'callao.jr.fc@gmail.com', '9368793968', 'Y', '', '', 'ENC', '', '', '', NULL, '2018-09-17 05:36:29', '2018-02-19 03:00:07'),
+(300058, 'Tapayan', 'Jennilyn', 'Cruz', 'NOTAP', '1988-11-16', 'F', '', 'N', 'jc_tapayan16', '$2y$10$xO6hJb57GmOUYo542JVHjO3OgyZSG51N4taYHgfu8SMnDgxH/659a', 'jennilyn.cruz88@gmail.com', '9977455113', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:23:40'),
+(300059, 'Panes', 'Evelyn', 'Tuden', 'NOTAP', '1988-04-03', 'F', '', 'N', 'eviang143', '$2y$10$7wTzh781xfboNpd5ySqgGOE1IZU7JSVdmJcjQpmFEegZjKkySiGXS', 'panes_evelyn040388@yahoo.com.ph', '9365912949', 'Y', '', '', 'MEDTECH', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:26:55'),
+(300060, 'Regalado', 'Jeizel', 'Gayat', 'NOTAP', '1995-07-27', 'F', '', 'N', 'eizel', '$2y$10$eLNj8uus5NDnvN0MBoir3.7Aee.fIHhMW9aVX68JtRu38Bm4Fq/XW', 'jeizel727@gmail.com', '9366330250', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:27:45'),
+(300061, 'Castillon', 'Jona', 'Suan', 'NOTAP', '1982-06-27', 'F', '', 'N', 'jonacasts', '$2y$10$JPBwrSUzKGy234Zovng30OJK.mAB2NS798M.n0D0RV15IQ02VvW/K', 'jona_casts@yahoo.com', '9268280408', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-17 05:38:15'),
+(300062, 'Subardiaga', 'Shamgar', 'Samson', 'NOTAP', '1993-09-03', 'M', '', 'N', 'shamgar939', '$2y$10$eiVaTg81ZlwH9tJqdBkjT.F1pBRMVNtADDg3U5zUyFMaySMdFs9fi', 'wolfgang_gary17@yahoo.com', '9061170188', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:29:45'),
+(300063, 'Magalso', 'Alfe', 'Deleonio', 'NOTAP', '1988-02-07', 'F', '', 'N', 'alfe07', '$2y$10$dYHMcwbv1MgNWvYy.xs5z.WKig1EDXp0nOudcsRVkD6qDk4ecn7LS', NULL, '9263814524', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:48:59'),
+(300064, 'Bag-ao', 'Jessa', 'Contiveros', 'NOTAP', '1998-01-04', 'F', '', 'N', 'jessa', '$2y$10$3MpjmjoCEV8CE5D/4vnrF.CT9XeyGpoCheKRsA8dEGBwZRm3S9paC', NULL, '9061739177', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:31:18'),
+(300065, 'Gaballo', 'Chedil', 'Ampong', 'NOTAP', '1997-10-29', 'F', '', 'N', 'chedilgaballo', '$2y$10$txwQ2rKj287zm8ofMyD0g.QFatzIJH0i08PRVjQir3vScHJuNdRkS', 'chedz_29@yahoo.com', '9354378613', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 02:09:30'),
+(300066, 'Fernandez', 'Krystah Angelique', 'Loreno', 'NOTAP', '1996-10-21', 'F', '', 'N', 'krystah21', '$2y$10$qvfMFEiv11H/.mrNgeyDwOs3a5df2Ys4ycv9MGUlF2lWqc7/YPDtC', 'hellokrystah21@gmail.com', '9351193042', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-04 01:56:02'),
+(300067, 'Jasmin', 'Jake Allen', 'Constantino', 'NOTAP', '1990-10-04', 'F', '', 'N', 'jasminjake', '$2y$10$vbScDsnHadx.D5nNi/G1TOvw0VUp4DmTBn2BiJ0urR1svCwIzZBNu', NULL, '9391520312', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:33:53'),
+(300068, 'Aranez', 'Mary Beatriz', 'Blen', 'NOTAP', '1983-10-26', 'F', '', 'N', 'bea34', '$2y$10$DnBQPGCF6h2wNDPIdCH7AO7TgU3Dw2YM/d8ko29j4aLwQuzsr9eZ.', 'phabearanez@gmail.com', '9362857293', 'Y', '', '', 'PHA', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:37:15');
+INSERT INTO `user` (`id`, `last_name`, `first_name`, `middle_name`, `suffix_name`, `birthdate`, `gender`, `role`, `is_admin`, `username`, `password`, `email`, `mobile_number`, `is_active`, `photo_url`, `e_sign`, `designation`, `tin_number`, `accreditation_number`, `remember_token`, `program_id`, `created_at`, `updated_at`) VALUES
+(300069, 'Pisingan', 'Ailyn', 'Kiram', 'NOTAP', '1994-05-21', 'F', '', 'N', 'lhang', '$2y$10$HMi0rze7gxImL81nQqrCz.kfOTuvZo0Z7lxlCHy64AzJ8hKG1Da52', 'lhangkiram@yahoo.com', '9369038845', 'Y', '', '', 'RN', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:39:01'),
+(300070, 'Lamoste', 'Daryl Ann', 'Mirabuena', 'NOTAP', '1992-04-28', 'F', '', 'N', 'darylannlamoste', '$2y$10$ZKMIrfMTFe9cT3ndtPm24.tq1OooPq0xn8xFfHoz0oLsmxm/VD6/a', 'darylannmirabuena13@gmail.com', '9369541653', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-23 00:40:41'),
+(300071, 'Regalado', 'Rosemarie', 'Gayat', 'NOTAP', '1966-03-01', 'F', '', 'N', 'rose', '$2y$10$IUeYIp4b/QMi5.Hn7SEaN.lB/AUXth8Cag1QTIw/d4FLcxqQzPDk2', NULL, '9161524497', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:08:15'),
+(300072, 'Himaya', 'Floramay', 'Engcol', 'NOTAP', '1997-08-28', 'F', '', 'N', 'floramayhimaya', '$2y$10$a3W6RFyMnGlq.Je6ZzYSb.xXfrsu9r64qOkJ6eEYbXUYzpjjTPxtC', '09276443673@yahoo.com', '9051865363', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:41:46'),
+(300073, 'Endrina', 'Cheryl', 'Visitacion', 'NOTAP', '1994-07-27', 'F', '', 'N', 'cheryl', '$2y$10$AhLvESUvLZpoNc0k387vQ.whtVFpC5gf.qSz.BtXPCoFznbPMvy8m', NULL, '9352731969', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:45:37'),
+(300074, 'Anjawang', 'Venus', 'Galve', 'NOTAP', '1987-08-22', 'F', '', 'N', 'venus22', '$2y$10$lE4krZe/cz9k6Q3e.w7WDus5lSqbbNelWrgGuJbRXM/C65vepJAOG', 'venuspiodenagalve@yahoo.com', '9554511372', 'Y', '', '', 'RHMPP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-16 01:48:53'),
+(300075, 'Galvez', 'Jose Bruno', 'Escobar', 'NOTAP', '1967-10-21', 'M', '', 'N', 'jbgalvez', '$2y$10$2jD/nUdx5i8FwR5dkh.aHeN4TMhkOohWK37MCVwe0E/byNJqjfuju', NULL, '9178834207', 'Y', '', '', 'DENTIST', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-19 01:05:04'),
+(300076, 'Guzman', 'Princess Ivy', 'Galvalore', 'NOTAP', '1995-11-22', 'F', '', 'N', 'princessivy', '$2y$10$KMxH8aXzNj97dOBAHG0wp.cB/7.Pt4.ywt6aMSC6EqhcoR/S7rnRS', 'princessivyguzman@yahoo.com', '9358870332', 'Y', '', '', 'MWIFE', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-01-19 01:47:24'),
+(300077, 'Montecino', 'Michael', 'Aswe', 'NOTAP', '2000-05-25', 'M', '', 'N', 'michael', '$2y$10$YiwvnF5FS7TSeyslBrMWcu9lqi7EzOJSnsypfXhmRFizeEXWNgU0C', '', '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:08:34'),
+(300078, 'Lim', 'Kevin', 'Guitao', 'NOTAP', '1999-01-04', 'M', '', 'N', 'kevin', '$2y$10$wUX5FFYF99VaJ6lsrxVhReCsJiNeTXNM1FxLqsIB0hpwXJ3bKh/Vm', NULL, '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:08:48'),
+(300079, 'Guarin', 'Alvin', 'Pacilan', 'NOTAP', '1999-10-25', 'M', '', 'N', 'alvin', '$2y$10$zjdq0LeMo0QQvLvZddZX8.6iKZx5q8j0x.pXX8MHg8aCOStgveIyW', NULL, '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-17 05:39:06'),
+(300080, 'Librando', 'Jay', 'Tok', 'NOTAP', '1999-03-11', 'M', '', 'N', 'librando', '$2y$10$R3Fbht3WhCg.etXzV/rI5OP9bNpwFvJ0TO3MCUINZASmIdMrT8yKW', NULL, '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:08:57'),
+(300081, 'Cubio', 'Raven Lloyd', 'C', 'NOTAP', '2000-05-30', 'M', '', 'N', 'raven', '$2y$10$ZZs9xnPWAvfsuheIDK1CIOQtCRIN56Kgmve9Iz.a8YCYveifRQjUO', NULL, '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:09:07'),
+(300082, 'Redula', 'Jaypee', 'Dorimon', 'NOTAP', '1999-10-15', 'M', '', 'N', 'jaypee', '$2y$10$.eltA4C/G4G.2IanRIcKa.0ZoG/qXG7P5mPgY8WwOglCCK02nLZtq', NULL, '9977050019', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:09:11'),
+(300083, 'Benito', 'Justin Mark', 'Elemia', 'NOTAP', '1999-11-18', 'M', '', 'N', 'justin', '$2y$10$VTEkAWVca1SZTzcz3t2c1uDV0ZBy5aH7C446Orw9SnocZLZ6PJiqe', NULL, '9057167741', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:09:14'),
+(300084, 'Taguran', 'Janwar', 'Palong2x', 'NOTAP', '1999-01-02', 'M', '', 'N', 'janwar', '$2y$10$P686EdEAMsLbCVQTYztIYOW.ZHh52.Ln5y0jbKbuNhyEBp2Dh.F1u', 'janwar.taguran@yahoo.com', '9000000000', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:09:18'),
+(300085, 'Beligolo', 'Lester', 'Sayson', 'NOTAP', '1998-10-18', 'M', '', 'N', 'lester', '$2y$10$oKU4CVDHut11g/p24m0Qu.hPtTynBY6Yigs24apNmNXdgSs8nDAEK', 'beligolo.lexter@gmail.com', '9351120946', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-09 08:09:23'),
+(300086, 'Nueva', 'Joel', 'Bacquiller', 'NOTAP', '1987-05-24', 'M', '', 'N', 'joel', '$2y$10$boHUhRFWbT/zDUqFCAd0sOVt2O.JhvX7esAVlgriAYXqME/KkFwQe', 'spikestarwin7@yahoo.com', '9268460447', 'Y', '', '', 'NDP', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-03-05 01:30:43'),
+(300087, 'Prudente', 'Nonito', 'Rivera', 'NOTAP', '2000-02-03', 'M', '', 'N', 'yoyongprudente', '$2y$10$YrOinmYHBaJ6HsoUGtSJ5uiHxpgaO11DYCkityRgbjzbT.4lfaksi', '', '9550536244', 'N', '', '', 'ENC', '', '', NULL, NULL, '2018-09-17 05:36:29', '2018-07-17 05:39:45');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

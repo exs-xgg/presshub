@@ -18,5 +18,6 @@
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
+  
 <?php ?>
 

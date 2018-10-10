@@ -19,5 +19,8 @@
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
+
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <?php ?>
 
