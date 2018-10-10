@@ -36,13 +36,6 @@
 			              </div>
 			            </div>
 
-			            <br>
-			             <small class="d-block text-uppercase font-weight-bold mb-3">Status</small>
-			             <select class="form-control" id="status" required>
-			             	<option value="O">ONGOING</option>
-			             	<option value="H">ON HOLD</option>
-			             	<option value="D">DISMISSED</option>
-			             </select>
 			             <br>
 			             <span id="issueSubmitBtn" class="btn btn-primary" onclick="createIssueConfirm()">Create Issue</span>
 					

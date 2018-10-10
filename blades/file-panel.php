@@ -9,9 +9,10 @@ if (isset($uri[3])) {
 	?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 mx-auto">
+		<div class="col-md-6 mx-auto" id="fileCard">
 			<div class="card bg-info">
 				<div class="card-header">
+					<span class="pull-right" onclick="$('#fileCard').hide(750);" style="cursor: pointer">x</span>
 					<label>File Name: </label> <span class="text-uppercase font-weight-bold"><?php echo $file_name; ?></span><br>
 					<label>Date Uploaded: </label> <small class="small"><?php echo $date_uploaded; ?></small><br>
 					<label>Uploaded by:</label> <small class="small"><?php
@@ -113,7 +114,7 @@ foreach ($result as $key) {
 
 <script type="text/javascript">
 	function getFile(e){
-		window.location.href = "/dashboard/file/" + e;
+		window.location.href = "/dashboard/myfile/" + e;
 	}
 	<?php
 if (isset($_REQUEST['success'])) {

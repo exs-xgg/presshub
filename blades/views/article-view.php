@@ -4,8 +4,8 @@
 <head>
   <title>Article Name</title>
 
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https:///cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <?php include 'dependencies.php'; ?>
  <?php 
 $id=($uri[2]);
@@ -78,7 +78,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
               </div>
-              <input class="form-control datepicker" placeholder="Select date" type="text" id="deadline" <?php echo (!true) ? "disabled" : null; ?>>
+              <input class="form-control datepicker" placeholder="Select date" type="text" id="deadline" <?php echo (true) ? "disabled" : null; ?>>
             </div>
           </div>
           
@@ -123,14 +123,13 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
         <div class="col-md-12">
            <nav class="alert alert-dark">Content <div class="pull-right">Select column Preview:&nbsp;&nbsp;<select onchange="changeColumn()" id="numberOfColumns"><option id="1">1</option><option id="2">2</option><option id="3">3</option><option id="4">4</option></select></div></nav>
            <br><div id="editor">
-  <p>Hello World!</p>
+  <p>Hello World!</p><h1>asdasdasda</h1>
   <p>Some initial <strong>bold</strong> text</p>
   <p><br></p>
 </div>
            
 
 <!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 
            <!-- <textarea class="form-control form-control-alternative"></textarea> -->
@@ -142,17 +141,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 </body>
 <script>
- var quill = new Quill('#editor', {
-  modules: {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline'],
-      ['image', 'code-block']
-    ]
-  },
-  placeholder: 'Compose an epic...',
-  theme: 'snow'  // or 'bubble'
-});
+ 
 
 
 
@@ -165,8 +154,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
     var art_data = [{
       'name' : "'" + $("#article_name").val().replace(/<>/ig,"") +"'",
       'title' : "'" + $("#article_title").val().replace(/<>/ig,"") +"'",
-      'deadline': "date('" + deadline + "')",
-      'body' : "'" + btoa($("#article_content").text().replace(/<>/ig,"")) + "'"
+      'body' : "'" + btoa($("#editor").html()) + "'"
     }];
     art_data = JSON.stringify(art_data);
 
@@ -200,9 +188,21 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
           $("#article_name").val(value.name);
           $("#article_title").val(value.title);
           $("#deadline").val(value.deadline);
-          $("#article_content").text(atob(value.body));
+          $("#editor").html(atob(value.body));
           window.document.title = value.name + " - Edit Article";
+
         });
+        var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image']
+    ]
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow'  // or 'bubble'
+});
       }
     });
   }

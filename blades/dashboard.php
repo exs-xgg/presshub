@@ -154,38 +154,6 @@ if (!isset($uri[2]) || $uri[2]=="") {
               
             </div>
           </div>
-
- <?php
-}else{
-
-switch ($uri[2]) {
-  case 'assignment':
-    require 'assignments.php';
-    break;
-  case 'meeting':
-    require 'view-meeting.php';
-    break;
-  case 'events':
-    require 'events.php';
-    break;
-  case 'file':
-   require 'file-panel.php';
-    break;
-  default:
-    # code...
-    break;
-}//end switch
-}//end isset uri2
-?>
-             </div>
-              
-            
-            </div>
-            
-      </div>
-    </div>
-  </main>
-</body>
 <script>
   function fetchMyArticles(){
     $.ajax({
@@ -208,5 +176,43 @@ switch ($uri[2]) {
 function go(e){
   window.location.href = "/dashboard/" + e;
 }
+ <?php
+}else{
+
+switch ($uri[2]) {
+  case 'assignment':
+    require 'assignments.php';
+    break;
+  case 'meeting':
+    require 'view-meeting.php';
+    break;
+  case 'events':
+    require 'events.php';
+    break;
+  case 'file':
+   require 'file-cat.php';
+    break;
+  case 'myfile':
+   require 'file-panel.php';
+    break;
+  case 'proj-file':
+    require 'proj-files.php';
+    break;
+  default:
+    # code...
+    break;
+}//end switch
+}//end isset uri2
+?>
+             </div>
+              
+            
+            </div>
+            
+      </div>
+    </div>
+  </main>
+</body>
+
 </script>
 </html>

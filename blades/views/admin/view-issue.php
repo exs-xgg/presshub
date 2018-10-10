@@ -14,17 +14,12 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="container" id="form">
 						<div class="row">
-							<div class="col-lg-6 col-md-6">
+							<div class="col-md-12 mx-auto">
 								<label>Issue Name*</label>
 								 <input class="form-control form-control-alternative" type="text" id="issue_name">
 							</div>
 							<div class="col-lg-6 col-md-6">
-								<small class="d-block text-uppercase font-weight-bold mb-3">Status</small>
-			             <select class="form-control" id="status" required>
-			             	<option value="O">ONGOING</option>
-			             	<option value="H">ON HOLD</option>
-			             	<option value="D">DISMISSED</option>
-			             </select>
+								
 							</div>
 						</div>
 						<br>
@@ -37,7 +32,7 @@
 				                    <div class="input-group-prepend">
 				                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
 				                    </div>
-				                   <input class="form-control form-control datepicker" id="date_started" placeholder="Start date" type="text" required>
+				                   <input class="form-control datepicker" id="date_started" placeholder="Start date" type="text" required>
 				                  </div>
 				                </div>
 				              </div>
@@ -48,11 +43,24 @@
 				                    <div class="input-group-prepend">
 				                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
 				                    </div>
-				                   <input class="form-control form-control datepicker" id="deadline" placeholder="Select date" type="text" required>
+				                   <input class="form-control datepicker" id="deadline" placeholder="Select date" type="text" required>
 				                  </div>
 				                </div>
 				              </div>
 				            </div>
+						</div>
+						<div class="container">
+							        <label><input type="checkbox" value="football" name="sport"> Football</label>
+
+        <label><input type="checkbox" value="baseball" name="sport"> Baseball</label>
+
+        <label><input type="checkbox" value="cricket" name="sport"> Cricket</label>
+
+        <label><input type="checkbox" value="boxing" name="sport"> Boxing</label>
+
+        <label><input type="checkbox" value="racing" name="sport"> Racing</label>
+
+        <label><input type="checkbox" value="swimming" name="sport"> Swimming</label>
 						</div>
 						<div class="container">
 							 <span class="btn btn-primary pull-right" id="issueupdatebtn" onclick="saveIssue()"><i class="fa fa-save"></i> Save</span> <a href="/admin" class="btn btn-warning" ><i class="fa fa-chevron-left"></i> Go Back</a>
@@ -265,9 +273,14 @@
 				result = jQuery.parseJSON(result);
 				$.each(result,function(idx,value){
 					$("#issue_name").val(value.nickname);
-					$("#date_started").val(value.date_started);
-					$("#deadline").val(value.deadline);
-					$("#status").val(value.status);
+					var date_started = value.date_started.split(" ");
+					date_started = date_started[0].split("-");
+					date_started =  date_started[1] + "/" + date_started[2] + "/" + date_started[0];
+					$("#date_started").val(date_started);
+					var deadline = value.deadline.split(" ");
+					deadline = deadline[0].split("-");
+					deadline =  deadline[1] + "/" + deadline[2] + "/" + deadline[0];
+					$("#deadline").val(deadline);
 				});
 			}
 		});
@@ -287,9 +300,7 @@
 var dataa = [{
 				'nickname': "'" + $("#issue_name").val().replace(/<>/ig,"") + "'",
 				'date_started': "date('" + date_started + "')",
-				'deadline': "date('" + deadline + "')",
-				'status': "'" + $("#status").val() + "'",
-				'issue_id': localStorage.getItem("issue_id")
+				'deadline': "date('" + deadline + "')"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);
