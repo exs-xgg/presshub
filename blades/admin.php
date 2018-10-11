@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php if (!isset($_SESSION['user']) && $_SESSION['is_admin']!=='Y') {
+  header("location: /login");
+  echo $_SESSION['idx'];
+} 
+?>
 <!DOCTYPE html>
 <html>
 <head>

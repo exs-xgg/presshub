@@ -90,7 +90,8 @@ if ($_SESSION['is_admin']=="Y") {
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="mb-3"><div class="nav-wrapper">
+          <div class="mb-3">
+            <div class="nav-wrapper">
                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                   <li class="nav-item"  onclick="go('assignment')">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments</a>
@@ -114,16 +115,22 @@ if ($_SESSION['is_admin']=="Y") {
     if ((isset($uri[2]))) {
      switch ($uri[2]) {
   case 'assignment':
-    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'.'assignments</li>';
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">assignments</li>';
     break;
   case 'meeting':
-    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'.'view-meeting</li>';
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">meetings</li>';
     break;
   case 'events':
-    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'.'events</li>';
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">events</li>';
     break;
   case 'file':
-   echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'.'file-panel</li>';
+   echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">files</li>';
+  case 'proj-file':
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page"><a href="/dashboard/proj-file">project files</a></li>';
+    if (isset($uri[3])) {
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'. $uri[3].'</li>';
+   }
+    break;
     break;
   default:
     # code...
@@ -154,28 +161,7 @@ if (!isset($uri[2]) || $uri[2]=="") {
               
             </div>
           </div>
-<script>
-  function fetchMyArticles(){
-    $.ajax({
-      url: '/api/assignment/' + <?php echo $_SESSION['idx']; ?>,
-      success: function(result){
-        console.log(result);
-        assign_result = jQuery.parseJSON(result);
-        $("#assignedTable").empty();
-        $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead><tbody>');
-        $.each(assign_result,function(idx,values){
-          // var id_art = values.article;
-          $("#assignedTable").append('<tr class="text-danger"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
-        });
-        $("#assignedTable").append('</tbody>');
-    $('#assignedTable').DataTable();
-      }
-    });
-  }
-  fetchMyArticles();
-function go(e){
-  window.location.href = "/dashboard/" + e;
-}
+
  <?php
 }else{
 
@@ -213,6 +199,27 @@ switch ($uri[2]) {
     </div>
   </main>
 </body>
-
+<script>
+  function fetchMyArticles(){
+    $.ajax({
+      url: '/api/assignment/' + <?php echo $_SESSION['idx']; ?>,
+      success: function(result){
+        // console.log(result);
+        assign_result = jQuery.parseJSON(result);
+        $("#assignedTable").empty();
+        $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead><tbody>');
+        $.each(assign_result,function(idx,values){
+          // var id_art = values.article;
+          $("#assignedTable").append('<tr class="text-danger"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
+        });
+        $("#assignedTable").append('</tbody>');
+    $('#assignedTable').DataTable();
+      }
+    });
+  }
+  fetchMyArticles();
+function go(e){
+  window.location.href = "/dashboard/" + e;
+}
 </script>
 </html>

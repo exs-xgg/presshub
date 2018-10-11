@@ -37,9 +37,16 @@ foreach ($person as $key) {
 
 <div class="container">
 	<div class="row">
-	<div class="col-lg-4 p-3">
+		<div class="col-4 align-self-center p-3">
+			<a href="/dashboard/file" class="text-white">
+				<div class="card-header bg-gradient-warning col-6 mx-auto" align="center">
+					<i class="fa fa-chevron-left"></i><strong class=""> Back</strong>
+				</div>
+			</a>
+		</div>
+	<div class="col-4 align-self-center p-3">
 		<div class="btn" data-toggle="modal" data-target="#md_1">
-			<div class="card-header bg-primary text-white">
+			<div class="card-header bg-primary text-white col-12 mx-auto">
 				<i class="fa fa-plus"></i><strong class=""> Upload a file</strong>
 			</div>
 		</div>
@@ -81,7 +88,7 @@ $result = DB::select("files",null," deleted=0 and (private='N' or (private='Y' a
 $result = json_decode($result);
 if ($result==[]) {
 
-	echo '<div class="col-lg-4">
+	echo '<div class="col-4 align-self-center">
 	<div class="card bg-secondary">
 		<div class="card-header">'; echo "No uploaded files yet.";
 			echo '</small>
@@ -91,7 +98,7 @@ if ($result==[]) {
 	
 }
 foreach ($result as $key) {
- echo '<div class="col-md-4 p-3"><div class="container">
+ echo '<div class="col-4 align-self-center p-3"><div class="container">
 	<div class="card bg-secondary" onclick="getFile(' . $key->{"id"} . ')" style="cursor:pointer">
 		<div class="card-header">
 			<i class="fa fa-file"></i><b>&nbsp;&nbsp;'; echo $key->{"file_name"}; 

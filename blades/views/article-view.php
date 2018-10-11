@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php if (!isset($_SESSION['user'])) {
+  header("location: /login");
+  echo $_SESSION['idx'];
+} 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,17 +74,18 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
         <div class="col-md-6">
           <label>Article Name</label>
           <input class="form-control form-control-alternative" type="text" id="article_name">
-          <label>Article Title</label>
-          <input class="form-control form-control-alternative" type="text" id="article_title">
+          <label for="category">Category</label>
+          <select class="form-control" type="text" id="category" list="userList">
+                          <datalist id="userList">
+                      <option value="News">News</option>
+                      <option value="Feature">Feature</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Literary">Literary</option>
+                      <option value="Editorial">Editorial</option>
+                    </datalist>
+          </select>
           <label>Deadline</label>
-          <div class="form-group focused">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-              </div>
               <input class="form-control datepicker" placeholder="Select date" type="text" id="deadline" <?php echo (true) ? "disabled" : null; ?>>
-            </div>
-          </div>
           
         </div>
 
@@ -116,12 +121,12 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
           </div>
           
           
-        </div>
+        </div></div>
 
  <?php  
- }       ?>        
+ }       ?>        <hr>
         <div class="col-md-12">
-           <nav class="alert alert-dark">Content <div class="pull-right">Select column Preview:&nbsp;&nbsp;<select onchange="changeColumn()" id="numberOfColumns"><option id="1">1</option><option id="2">2</option><option id="3">3</option><option id="4">4</option></select></div></nav>
+           <nav class="alert alert-dark">Content </nav>
            <br><div id="editor">
   <p>Hello World!</p><h1>asdasdasda</h1>
   <p>Some initial <strong>bold</strong> text</p>
@@ -153,7 +158,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
     deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
     var art_data = [{
       'name' : "'" + $("#article_name").val().replace(/<>/ig,"") +"'",
-      'title' : "'" + $("#article_title").val().replace(/<>/ig,"") +"'",
+      'cat_id': "'"+$("#category").val() + "'",
       'body' : "'" + btoa($("#editor").html()) + "'"
     }];
     art_data = JSON.stringify(art_data);
@@ -186,7 +191,6 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
         $.each(article_result, function(idx, value){
           $("#article_header").text(value.name);
           $("#article_name").val(value.name);
-          $("#article_title").val(value.title);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
           window.document.title = value.name + " - Edit Article";

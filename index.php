@@ -6,7 +6,8 @@ $uri = explode("/", $request_uri[0]);
 
 include './database/config.php';
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+// error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_WARNING);
 // var_dump($uri);
 //API CONTROLLER ROUTES
 if (strpos($uri[1], 'api') !== false) {
@@ -64,7 +65,9 @@ if (strpos($uri[1], 'api') !== false) {
         case 'meeting-minutes':
             require 'class/MeetingMinutesController.php';
             break;
-        // Everything else
+        case 'category':
+            require 'class/TypeArticleController.php';
+            break;
         default:
             header('HTTP/1.0 404 Not Found');
             require 'class/404.php';
@@ -81,6 +84,9 @@ switch ($uri[1]) {
         require 'blades/home.php';
         break;
     // Home page
+    case 'layout':
+        require 'blades/layout.php';
+        break;
     case 'home':
         require 'blades/home.php';
         break;

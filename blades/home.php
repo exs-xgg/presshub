@@ -8,7 +8,7 @@
   <meta name="author" content="Creative Tim">
   <title>Presshub - Home</title>
   <!-- Favicon -->
-  <link href="/img/brand/favicon.png" rel="icon" type="image/png">
+  <link href="/img/brand/favicon1.png" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
@@ -87,7 +87,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/login" target="_blank" class="btn btn-neutral btn-icon">
+              <a href="/login" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon">
                   <i class="fa fa-key mr-2"></i>
                 </span>

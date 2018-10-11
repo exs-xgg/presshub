@@ -8,7 +8,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 
 <div class="col-md-4 p-3">
 	<div class="container">
-		<div class="card" onclick="go('news')"  style="cursor: pointer">
+		<div class="card" onclick="goSection('news')"  style="cursor: pointer">
 			<div class="card-header"><i class="fa fa-newspaper-o"></i>
 				&nbsp;&nbsp;News
 			</div>
@@ -17,7 +17,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 </div>
 <div class="col-md-4 p-3">
 	<div class="container">
-		<div class="card" onclick="go('sports')"  style="cursor: pointer">
+		<div class="card" onclick="goSection('sports')"  style="cursor: pointer">
 			<div class="card-header"><i class="fa fa-futbol-o"></i>
 				&nbsp;&nbsp;Sports
 			</div>
@@ -26,7 +26,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 </div>
 <div class="col-md-4 p-3">
 	<div class="container">
-		<div class="card" onclick="go('editorial')"  style="cursor: pointer">
+		<div class="card" onclick="goSection('editorial')"  style="cursor: pointer">
 			<div class="card-header"><i class="fa fa-user"></i>
 				&nbsp;&nbsp;Editorial
 			</div>
@@ -35,7 +35,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 </div>
 <div class="col-md-4 p-3">
 	<div class="container">
-		<div class="card" onclick="go('literary')"  style="cursor: pointer">
+		<div class="card" onclick="goSection('literary')"  style="cursor: pointer">
 			<div class="card-header"><i class="fa fa-pencil"></i>
 				&nbsp;&nbsp;Literary
 			</div>
@@ -44,7 +44,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 </div>
 <div class="col-md-4 p-3">
 	<div class="container">
-		<div class="card" onclick="go('feature')"  style="cursor: pointer">
+		<div class="card" onclick="goSection('feature')"  style="cursor: pointer">
 			<div class="card-header"><i class="fa fa-star"></i>
 				&nbsp;&nbsp;Feature
 			</div>
@@ -53,7 +53,7 @@ if (isset($uri[4]) && $uri[4]!=="") {
 </div>
 </div>
 <script>
-	function go(e) {
+	function goSection(e) {
 		window.location.href = "/dashboard/proj-file/" + localStorage.getItem("issue_id") + "/" + e;
 	}
 </script>
