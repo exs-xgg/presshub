@@ -89,44 +89,65 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
           
         </div>
 
- <?php if ($is_he_here!=="[]") {
-  ?>
+ 
         <div class="col-md-6">
-          <nav class="alert alert-dark">Actions</nav>
-          <div class="container">
+          <nav class="alert alert-dark">Assign Users</nav>
+          <div class="col-lg-10 ">
+          <label>Assign Users</label>
+                      <input class="form-control" type="text" id="userAssigned" list="userList">
+                            <datalist id="userList">
+                        <option value="7">Rain</option>
+                        <option value="8">Josh</option>
+                        <option value="9">Therese</option>
+                        <option value="10">Calvin</option>
+                        <option value="11">Maam Danica</option>
+                      </datalist>
+          
+          </div>
+          <div class="col-lg-2">
+            <label class="col-lg-12">&nbsp;</label>
+            <span onclick="addUserToArticle()" class="btn btn-primary"><i class="fa fa-plus"></i> Add</span>
+          </div>
+          <div class="row">
+                    <table class="table table-striped" id="user_article_list">
+                      <thead>
+                        <tr><th>Name</th><td></td></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Test</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+        </div>
+<?php if ($is_he_here!=="[]" || true) {
+  ?>
+ <?php  
+ }       ?>        <hr>
+        <div class="col-md-12">
+           <nav class="alert alert-dark">Content </nav>
+           <div class="container">
             <div class="row">
               
               
-              <div class="col-lg-6">
+              <div class="col-3">
                 <span class="col-md-12 btn btn-success" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
               </div>
-              <div class="col-lg-6">
+              <div class="col-3">
                 <span class="col-md-12 btn btn-primary"><i class="fa fa-check"></i> Finished</span>
               </div>
-            </div>  
-            <br>
-            <div class="row">
 <?php if ($_SESSION['designation']!=="EIC") {
 
 ?>
-              <div class="col-lg-6">
+              <div class="col-3">
                 <span class="col-md-12 btn btn-warning"><i class="fa fa-search"></i> Copyread</span>
               </div>
 
-              <div class="col-lg-6">
+              <div class="col-3">
                 <span class="col-md-12 btn btn-danger"><i class="fa fa-trash"></i> Delete</span>
               </div>
   <?php } ?>            
             </div>  
           </div>
-          
-          
-        </div></div>
-
- <?php  
- }       ?>        <hr>
-        <div class="col-md-12">
-           <nav class="alert alert-dark">Content </nav>
            <br><div id="editor">
   <p>Hello World!</p><h1>asdasdasda</h1>
   <p>Some initial <strong>bold</strong> text</p>
@@ -139,7 +160,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
            <!-- <textarea class="form-control form-control-alternative"></textarea> -->
         </div>
-    </div>
+    </div></div>
 </div>
 
     
@@ -149,9 +170,53 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
  
 
 
-
-
+loadUserArticle();
+getUserList();
   getWholeArticle();
+  function getUserList(){
+    $.ajax({
+      url: '/api/user',
+      success: function(result){
+        var user_list = jQuery.parseJSON(result);
+        $("#userList").empty();
+        $.each(user_list,function(idx,value){
+          $("#userList").append('<option value="' + value.id + '">' + value.first_name + ' ' + value.last_name + '</option>');
+        });
+      }
+    });
+  }
+  function loadUserArticle(){
+    var user_id = $("#userList").val();
+    $.ajax({
+      url: "/api/userList/" + localStorage.getItem("art_id"),
+      success: function(result){
+        console.log(result);
+        var user_list = jQuery.parseJSON(result);
+        $("#user_article_list").empty();
+        $.each(user_list,function(idx,value){
+          $("#user_article_list").append('<tr><td>'+ value.first_name +' ' + value.last_name + '</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>');
+        });
+      }
+    });
+  }
+  function addUserToArticle(){
+    var user_id = $("#userAssigned").val();
+    dataa = [{
+      'user' : user_id,
+      'article' : localStorage.getItem("art_id")
+    }]
+    dataa = JSON.stringify(dataa);
+    $.ajax({
+      url: "/api/userList",
+      method: 'post',
+      data: dataa,
+      success: function(result){
+        console.log(result);
+        toastr.success("User Succesfully assigned to this Article!");
+        loadUserArticle();
+      }
+    });
+  }
   function saveArticle(){
     var art_id = localStorage.getItem("art_id");
     var deadline = $("#deadline").val().split("/");

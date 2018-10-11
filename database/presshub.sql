@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2018 at 05:27 PM
+-- Generation Time: Oct 11, 2018 at 06:02 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -42,7 +42,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `title`, `body`, `date_created`, `author`, `is_active`) VALUES
-(2, 'Dummy Data', 'Dummy Function', '2018-09-29 20:44:18', 0, 'Y');
+(2, 'Dummy Data', 'Dummy Function', '2018-09-29 20:44:18', 0, 'Y'),
+(3, 'Meeting', 'dbajb labfadfna fanfs', '2018-10-10 11:40:30', 0, 'Y');
 
 -- --------------------------------------------------------
 
@@ -53,11 +54,11 @@ INSERT INTO `announcement` (`id`, `title`, `body`, `date_created`, `author`, `is
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `issue_id` int(11) NOT NULL,
+  `cat_id` varchar(20) NOT NULL,
   `name` text NOT NULL,
   `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
   `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `status` varchar(3) DEFAULT NULL,
-  `title` varchar(100) NOT NULL,
+  `is_done` varchar(1) DEFAULT 'N',
   `body` mediumtext,
   `deadline` date DEFAULT NULL,
   `date_finished` date DEFAULT NULL
@@ -67,8 +68,31 @@ CREATE TABLE `article` (
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`id`, `issue_id`, `name`, `date_created`, `date_updated`, `status`, `title`, `body`, `deadline`, `date_finished`) VALUES
-(2, 7, 'CCS Wins TORO 2018', '2018-10-01 18:49:44', '2018-10-09 22:32:03', 'H', 'CCS Wins TORO', 'SW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMgSW5zZXJ0IGNvbnRlbnQgaGVyZS4uLmFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZGFzZCBhc2QgYXNkIGFkIGFzZCBhZHMg', '2018-10-31', NULL);
+INSERT INTO `article` (`id`, `issue_id`, `cat_id`, `name`, `date_created`, `date_updated`, `is_done`, `body`, `deadline`, `date_finished`) VALUES
+(2, 7, 'News', 'CCS Wins TORO 2018', '2018-10-01 18:49:44', '2018-10-11 23:28:52', 'N', 'PGRpdiBjbGFzcz0icWwtZWRpdG9yIiBkYXRhLWdyYW1tPSJmYWxzZSIgZGF0YS1wbGFjZWhvbGRlcj0iQ29tcG9zZSBhbiBlcGljLi4uIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjxoMT48c3Ryb25nPkNDUyBHcmFicyBDaGFtcGlvbiBUaXRsZSBpbiBSZWdpb25hbCBDb21wZXRpdGlvbjwvc3Ryb25nPjwvaDE+PHA+CTxlbT5BbmdlbGVzLCBQYW1wYW5nYSA8L2VtPi0gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gUGhhc2VsbHVzIHBsYWNlcmF0IGVnZXN0YXMganVzdG8sIGlkIGdyYXZpZGEgZGlhbSBwb3J0dGl0b3IgdXQuIFBlbGxlbnRlc3F1ZSBtYWxlc3VhZGEgbGFjdXMgdXQgZGljdHVtIHBsYWNlcmF0LiBJbnRlZ2VyIGNvbmd1ZSBvcmNpIGFjIG5pc2kgZmVybWVudHVtIGF1Y3Rvci4gRnVzY2UgcGxhY2VyYXQgbWV0dXMgc2l0IGFtZXQganVzdG8gbW9sbGlzLCBub24gc29kYWxlcyB0ZWxsdXMgcGxhY2VyYXQuIEludGVnZXIgcXVpcyBzb2xsaWNpdHVkaW4gZW5pbSwgbm9uIG1vbGxpcyBtYWduYS4gUGVsbGVudGVzcXVlIGVsZW1lbnR1bSBlbGVtZW50dW0gY29tbW9kby4gQ3VyYWJpdHVyIGludGVyZHVtIG51bGxhIHNjZWxlcmlzcXVlIGxvcmVtIGlhY3VsaXMsIHNpdCBhbWV0IHRpbmNpZHVudCBhbnRlIGN1cnN1cy4gQWxpcXVhbSBuaXNpIGlwc3VtLCB2YXJpdXMgdXQgbWkgbmVjLCByaG9uY3VzIGZldWdpYXQgYXJjdS4gVmVzdGlidWx1bSB2b2x1dHBhdCBtYXNzYSBuZWMgcnV0cnVtIG1vbGxpcy4gVml2YW11cyB2aXRhZSB2b2x1dHBhdCBtYWduYSwgZWdldCBmaW5pYnVzIG9kaW8uIFNlZCBxdWlzIHRvcnRvciB2ZWxpdC4gSW4gdXQgZXJvcyBldCBleCBwaGFyZXRyYSBldWlzbW9kLjwvcD48cD5Nb3JiaSBzaXQgYW1ldCB0ZWxsdXMgZXQgbnVuYyB0cmlzdGlxdWUgcHJldGl1bS4gTWF1cmlzIGF0IGRpZ25pc3NpbSBsYWN1cy4gRG9uZWMgZW5pbSBkaWFtLCBtb2xsaXMgbm9uIG5pYmggZXUsIGVsZWlmZW5kIHBlbGxlbnRlc3F1ZSBuZXF1ZS4gVXQgaWQgcmhvbmN1cyBqdXN0by4gTW9yYmkgaW4gdXJuYSBpcHN1bS4gRG9uZWMgdGluY2lkdW50IHZlbCBtYXVyaXMgc2VkIHRlbXBvci4gRXRpYW0gYSBmcmluZ2lsbGEgbmlzaS4gVXQgYSBlc3QgZGljdHVtLCB0ZW1wdXMgZWxpdCBuZWMsIHZ1bHB1dGF0ZSBlcmF0LiBOYW0gYmxhbmRpdCBsaWd1bGEgcXVpcyBsaWd1bGEgY29uZ3VlLCBpZCB1bGxhbWNvcnBlciB2ZWxpdCB2b2x1dHBhdC4gTWF1cmlzIGxpYmVybyBuaWJoLCBzZW1wZXIgbmVjIHNhcGllbiBpbiwgaW50ZXJkdW0gcmhvbmN1cyBvcmNpLiBVdCBhdWd1ZSBuaWJoLCBmaW5pYnVzIG5vbiBtYXVyaXMgZXUsIHVsbGFtY29ycGVyIGNvbmRpbWVudHVtIGV4LiBEb25lYyBmZXVnaWF0IGxlY3R1cyBsb3JlbSwgbmVjIHRpbmNpZHVudCBlcm9zIHZlc3RpYnVsdW0gbm9uLiBBZW5lYW4gZWdldCBlZmZpY2l0dXIgbmlzaSwgZXQgc3VzY2lwaXQgbWkuIFNlZCB0dXJwaXMgcmlzdXMsIG1vbGxpcyBhYyBxdWFtIG5lYywgc29kYWxlcyBhbGlxdWFtIHF1YW0uPC9wPjwvZGl2PjxkaXYgY2xhc3M9InFsLWNsaXBib2FyZCIgdGFiaW5kZXg9Ii0xIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjwvZGl2PjxkaXYgY2xhc3M9InFsLXRvb2x0aXAgcWwtaGlkZGVuIj48YSBjbGFzcz0icWwtcHJldmlldyIgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9ImFib3V0OmJsYW5rIj48L2E+PGlucHV0IGRhdGEtZm9ybXVsYT0iZT1tY14yIiBkYXRhLWxpbms9Imh0dHBzOi8vcXVpbGxqcy5jb20iIGRhdGEtdmlkZW89IkVtYmVkIFVSTCIgdHlwZT0idGV4dCI+PGEgY2xhc3M9InFsLWFjdGlvbiI+PC9hPjxhIGNsYXNzPSJxbC1yZW1vdmUiPjwvYT48L2Rpdj4=', '2018-10-23', NULL),
+(3, 7, 'News', 'TSU 108th Foundation Week', '2018-10-11 12:55:06', '2018-10-11 20:26:05', 'N', NULL, '2018-11-02', NULL),
+(4, 7, 'Sports', 'Red Hawks bagged 2 golds', '2018-10-11 12:57:24', '2018-10-11 20:26:08', 'N', NULL, '2018-10-10', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `cat_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `cat_name`) VALUES
+(1, 'SPORTS'),
+(2, 'FEATURE'),
+(3, 'EDITORIAL'),
+(4, 'NEWS');
 
 -- --------------------------------------------------------
 
@@ -117,19 +141,12 @@ INSERT INTO `designation` (`id`, `description`) VALUES
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `file_name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date_uploaded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `private` varchar(1) DEFAULT NULL
+  `private` varchar(1) DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `file_name`, `user_id`, `date_uploaded`, `private`) VALUES
-(1, 'epcb2.PNG', 5, '2018-10-09 15:06:46', 'N'),
-(2, 'MVC.jpg', 5, '2018-10-09 15:09:50', 'Y'),
-(3, 'Authorization Letter.docx', 5, '2018-10-09 15:10:03', 'N');
 
 -- --------------------------------------------------------
 
@@ -144,7 +161,6 @@ CREATE TABLE `issue` (
   `date_last_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deadline` datetime NOT NULL,
   `date_finished` date DEFAULT NULL,
-  `status` varchar(3) DEFAULT NULL,
   `is_archived` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -152,10 +168,22 @@ CREATE TABLE `issue` (
 -- Dumping data for table `issue`
 --
 
-INSERT INTO `issue` (`id`, `nickname`, `date_started`, `date_last_updated`, `deadline`, `date_finished`, `status`, `is_archived`) VALUES
-(4, 'Test Issue', '2018-10-16 00:00:00', '2018-10-01 17:30:37', '2018-10-20 00:00:00', NULL, 'O', 'N'),
-(7, 'Sports Issue 2018 2nd Sem', '2018-08-28 00:00:00', '2018-09-30 21:48:48', '2018-09-28 00:00:00', NULL, 'H', 'N'),
-(8, 'aaaaaaaaaaaaaa', '2018-09-04 00:00:00', '2018-09-30 20:32:42', '2018-09-08 00:00:00', NULL, 'O', 'N');
+INSERT INTO `issue` (`id`, `nickname`, `date_started`, `date_last_updated`, `deadline`, `date_finished`, `is_archived`) VALUES
+(4, 'Test Issue', '2018-10-16 00:00:00', '2018-10-01 17:30:37', '2018-10-20 00:00:00', NULL, 'N'),
+(7, '1st Regular Issue SY1718', '2018-10-01 00:00:00', '2018-10-11 20:56:41', '2018-10-19 00:00:00', NULL, 'N');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `layout`
+--
+
+CREATE TABLE `layout` (
+  `id` int(11) NOT NULL,
+  `issue_id` int(11) NOT NULL,
+  `body` mediumtext NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -171,6 +199,13 @@ CREATE TABLE `meeting` (
   `details` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `meeting`
+--
+
+INSERT INTO `meeting` (`id`, `name`, `date_of_meeting`, `user_id`, `details`) VALUES
+(1, 'Scrum 1', '2018-10-10 03:03:46', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -179,6 +214,7 @@ CREATE TABLE `meeting` (
 
 CREATE TABLE `minutes` (
   `id` int(11) NOT NULL,
+  `meeting_id` int(11) NOT NULL,
   `note` varchar(255) NOT NULL,
   `time_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL
@@ -237,9 +273,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `designation`, `contact_no`, `email_addr`, `date_created`, `date_updated`, `is_admin`, `is_active`) VALUES
 (5, 'rain', 'MjQzZGMxMzkzMGIyNTkxMWViOWMyMzJhNzllMzcwN2I=', 'Rain', 'Maristela', 'Pioquinto', 'ADM', '9177994321', 'rain@gmail.com', '2018-08-14 21:44:55', NULL, 'Y', 'N'),
-(6, 'josh', 'NjY5YWYwMTZhZDdkZjg2ZTU1N2ZlY2U0MWIwZmRjZjQ=', 'Josh', 'M', 'Kotlin', 'FEA', '9875456', 'qweqwe@dasd.cd', '2018-08-29 12:09:24', NULL, 'Y', 'N'),
+(6, 'josh', 'NjY5YWYwMTZhZDdkZjg2ZTU1N2ZlY2U0MWIwZmRjZjQ=', 'Josh', 'M', 'Kotlin', 'FEA', '9875456', 'qweqwe@dasd.cd', '2018-08-29 12:09:24', '2018-10-10 10:18:22', 'N', 'N'),
 (7, 'romeo', 'NTAxY2Q4M2JlZGU4ZGQyM2IxZjJjN2VlMjdhMmFmOWE=', 'Romeo', 'E', 'David', 'Edi', '987654321', 'asdasd@asda.casd', '2018-09-01 10:43:16', NULL, 'Y', 'N'),
-(8, 'anne', 'NDcyMGM2Yjc0NDE1NTVmY2ViZDU2YmY4YjA5MGM1ZjM=', 'Anne', 'Curtis', 'Heusaff', 'FEA', '9812312311', 'annecurtis@gmail.com', '2018-09-13 00:29:43', NULL, 'N', 'N');
+(8, 'anne', 'NDcyMGM2Yjc0NDE1NTVmY2ViZDU2YmY4YjA5MGM1ZjM=', 'Anne', 'Curtis', 'Heusaff', 'FEA', '9812312311', 'annecurtis@gmail.com', '2018-09-13 00:29:43', NULL, 'N', 'N'),
+(9, 'corres_kev', 'N2Q4OGVkODIxYWJmN2E0ZjA4ZDBlYTlmNGM0MjFiYTI=', 'Kevin', 'Mendiola', 'Morales', 'FEA', '9090909090', 'kevs@yahoo.com', '2018-10-10 11:30:56', NULL, 'N', 'N');
 
 -- --------------------------------------------------------
 
@@ -258,7 +295,8 @@ CREATE TABLE `user_article` (
 --
 
 INSERT INTO `user_article` (`id`, `user`, `article`) VALUES
-(1, 5, 2);
+(1, 5, 2),
+(3, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -288,6 +326,12 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -303,6 +347,12 @@ ALTER TABLE `files`
 -- Indexes for table `issue`
 --
 ALTER TABLE `issue`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `layout`
+--
+ALTER TABLE `layout`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -343,13 +393,19 @@ ALTER TABLE `user_article`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -361,19 +417,25 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `layout`
+--
+ALTER TABLE `layout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `minutes`
@@ -391,13 +453,13 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_article`
 --
 ALTER TABLE `user_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

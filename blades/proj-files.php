@@ -33,10 +33,10 @@ if (isset($uri[3]) && $uri[3]!=="") {
 										  <option value="Editorial">Editorial</option>
 										</datalist>
 					</select><br>
-					<button class="btn btn-primary" onclick="saveNewArticle()">Submit</button>
+					<button class="btn btn-primary" onclick="saveNewArticle()">Submit</button><br><br>
 				</div>
 				
-			</div>
+			</div><hr>
 		</div>
 		<?php if (isset($uri[4]) && $uri[4]!=="") {
 			?>
