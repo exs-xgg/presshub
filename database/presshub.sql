@@ -32,7 +32,7 @@ CREATE TABLE `announcement` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `body` mediumtext,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
   `author` int(11) NOT NULL,
   `is_active` varchar(1) DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,8 +56,8 @@ CREATE TABLE `article` (
   `issue_id` int(11) NOT NULL,
   `cat_id` varchar(20) NOT NULL,
   `name` text NOT NULL,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_done` varchar(1) DEFAULT 'N',
   `body` mediumtext,
   `deadline` date DEFAULT NULL,
@@ -104,8 +104,8 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `comment` mediumtext NOT NULL,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_edited` varchar(1) DEFAULT 'N',
   `is_resolved` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -157,9 +157,9 @@ CREATE TABLE `files` (
 CREATE TABLE `issue` (
   `id` int(11) NOT NULL,
   `nickname` varchar(50) NOT NULL,
-  `date_started` datetime DEFAULT CURRENT_TIMESTAMP,
-  `date_last_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `deadline` datetime NOT NULL,
+  `date_started` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deadline` timestamp NOT NULL,
   `date_finished` date DEFAULT NULL,
   `is_archived` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -182,7 +182,7 @@ CREATE TABLE `layout` (
   `id` int(11) NOT NULL,
   `issue_id` int(11) NOT NULL,
   `body` mediumtext NOT NULL,
-  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -231,7 +231,7 @@ CREATE TABLE `reply` (
   `parent` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `body` mediumtext NOT NULL,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -261,8 +261,8 @@ CREATE TABLE `users` (
   `designation` varchar(4) NOT NULL,
   `contact_no` varchar(10) NOT NULL,
   `email_addr` varchar(30) NOT NULL,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_admin` varchar(1) NOT NULL,
   `is_active` varchar(1) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
