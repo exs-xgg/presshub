@@ -5,7 +5,7 @@
 		<div class="col-lg-6">
 			<div class="card bg-secondary text-center" onclick="go('myfile')"  style="cursor: pointer">
 				<div class="card-body text-white">
-					<h3>My Files</h3>
+					<h3>Archive</h3>
 				</div>
 			</div>
 		</div>
