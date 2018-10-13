@@ -43,7 +43,7 @@ switch ($method) {
 			}
 		}
 		// echo "\n";
-		echo DB::update("users", $column, $cont_, $conditions);
+		echo DB::update("users", join(",",$cont_), join(",",$column), $conditions);
 		break;
 	case 'DELETE':
 		DB::delete("users", (($id==null) ? "id =". $id : null));

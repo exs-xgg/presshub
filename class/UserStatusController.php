@@ -3,7 +3,7 @@
 	if (isset($_POST['username']) && isset($_POST['password'])) {
 		$user = $_POST['username'];
 		$pw = base64_encode(md5("'".$_POST['password']."'"));
-		$result = DB::select("users",null,"username='$user' and password='$pw'");
+		$result = DB::select("users",null,"username='$user' and password='$pw' and is_active='Y'");
 		if ($result!=='[]') {
 			$result = json_decode($result);
 			$_SESSION['json'] = $result;
