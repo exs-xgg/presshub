@@ -11,7 +11,10 @@ if (isset($uri[3]) && $uri[3]!=="") {
 		<h2><?php echo $issue_name ?></h2>
 		<small>Total Articles: <?php echo ((DB::raw("select count(*) as ct from article where issue_id=".$uri[3]))); ?></small><br>
 		<small>Deadline: <?php echo explode(" ",$deadline)[0] ?></small><br><br>
-		<span class="btn btn-sm btn-warning">Edit Details</span>
+		<?php if ($_SESSION['is_admin']=='Y'): ?>
+			<span onclick="goToIssueBoard()" class="btn btn-sm btn-warning">Edit Details</span>
+		<?php endif ?>
+		
 
 
 		<span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span>
@@ -81,6 +84,9 @@ if (isset($uri[3]) && $uri[3]!=="") {
 <script type="text/javascript">
 	$("#addArticlePanel").hide();
 	getProjFiles();
+	function goToIssueBoard(){
+		window.location.href = '/admin/issue/' + localStorage.getItem("issue_id");
+	}
 	function goIssue(e){
 		window.location.href = "/dashboard/proj-file/" + e;
 		localStorage.setItem("issue_id",e);

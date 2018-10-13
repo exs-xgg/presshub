@@ -153,7 +153,7 @@
 				data: dataa,
 				url: "/api/user/" + localStorage.getItem("user_id"),
 				success: function(result){
-					toastr.success("Succesfully created user");
+					toastr.success("Succesfully updated user");
 				}
 			});
 
@@ -182,6 +182,7 @@
 				}
 			});
 		}
+		getUserlist();
 	}
 	// toastr.info("Succesfully created user");
 </script>
