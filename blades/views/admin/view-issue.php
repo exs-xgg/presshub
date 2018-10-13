@@ -176,7 +176,6 @@
 		var dataaa = [{
 				'name' : "'"+ article_name.replace(/(<([^>]+)>)/ig,"") +"'",
 				'date_created': "now()",
-				'status': "'H'",
 				'body': "'" + btoa(('Insert content here').replace(/(<([^>]+)>)/ig,"")) + "'"
 				}];
 		dataaa = JSON.stringify(dataaa);

@@ -60,11 +60,14 @@
 		
 	}
 	function submitRole(){
-		var role = $("#role").val();
+		var role = [{ 
+			"id": "'" + $("#role").val().substring(0,3).toUpperCase()+ "'", 
+			"description": "'" + $("#role").val().toUpperCase() + "'"}];
+		role = JSON.stringify(role);
 		$.ajax({
 			url: "/api/role",
 			type: "post",
-			data: JSON.stringify(role),
+			data: role,
 			success: function(result){
 					toastr.info("Succesfully added Designation");
 					// console.log(JSON.stringify(role));

@@ -11,7 +11,15 @@ if (isset($uri[3]) && $uri[3]!=="") {
 		<h2><?php echo $issue_name ?></h2>
 		<small>Total Articles: <?php echo ((DB::raw("select count(*) as ct from article where issue_id=".$uri[3]))); ?></small><br>
 		<small>Deadline: <?php echo explode(" ",$deadline)[0] ?></small><br><br>
-		<span class="btn btn-sm btn-warning">Edit Details</span><span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span><a href="/layout" class="btn btn-sm btn-info">Proceed to Layout</a>
+		<span class="btn btn-sm btn-warning">Edit Details</span>
+
+
+		<span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span>
+<?php if ($_SESSION['is_admin']=='Y'): ?>
+	<a href="/layout" class="btn btn-sm btn-info">Proceed to Layout</a>
+<?php endif ?>
+		
+
 		<hr>
 		<div class="container" id="addArticlePanel">
 			<div class="row">

@@ -100,7 +100,6 @@
 				'nickname': "'" + $("#nickname").val() + "'",
 				'date_started': "date('" + date_started + "')",
 				'deadline': "date('" + deadline + "')",
-				'status': "'" + $("#status").val() + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);

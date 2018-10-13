@@ -28,8 +28,6 @@ switch ($method) {
 		break;
 	case 'PUT':
 		$contents = json_decode(file_get_contents("php://input"),true);
-		$contents = str_replace("[", "", $contents);
-		$contents = str_replace("]", "", $contents);
 		$column = array();
 		$cont_ = array();
 		$conditions = "id=" . $id;

@@ -29,7 +29,7 @@ switch ($method) {
 	case 'PUT':
 		break;
 	case 'DELETE':
-		$result = DB::delete("designation", $id);
+		$result = DB::raw("delete from designation where id='" . $id . "'");
 		echo "$result";
 		break;				
 	default:
