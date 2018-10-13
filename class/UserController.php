@@ -34,9 +34,12 @@ switch ($method) {
 		$fields = array();
 		foreach ($data_to_insert as $key1) {
 				foreach ($key1 as $key2 => $value) {
-				
+				if ($key2=="password") {
+					$value = "'".base64_encode((md5($value)))."'";
+
+				}
 				array_push($data_to_catch, "$value");
-				array_push($fields, $key2);
+				}
 				
 			}
 		}
