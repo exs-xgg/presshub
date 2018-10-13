@@ -1,15 +1,15 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6 col-sm-12 mx-auto">
 			<div class="card">
 				<div class="card-header">
 					Add Role
 				</div>
 				<div class="card-body">
 					<label>Role Name</label>
-					<input type="text" id="role" class="form-control col-lg-4">
+					<input type="text" id="role" class="form-control col-8">
 					<br>
-					<button class="btn btn-primary col-lg-2" onclick="submitRole()">Add Role</button>
+					<button class="btn btn-primary col-4" onclick="submitRole()">Add Role</button>
 				</div>
 				<div class="card-footer">
 					<label>Currently Available Designation</label>
@@ -35,7 +35,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#roleTable > tbody:last-child').append('<tr><td contenteditable="true" id="t_' + value.id + '">' + value.description + '</td><td><button onclick="editRole(' + "'" +value.id +  "'" +')">Save</button> <button onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td></tr>');
+					 $('#roleTable > tbody:last-child').append('<tr><td contenteditable="true" id="t_' + value.id + '">' + value.description + '</td><td> <button class="btn btn-danger" onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td></tr>');
 				});
 			
 		           
@@ -44,16 +44,7 @@
 			});
 		
 	}
-	function editRole(id){
-		$.ajax({
-			url: "/api/role/" + id,
-			type: "PUT",
-			success: function(result){
-				toastr.info("Delete succesful");
-				getRoles();
-			}
-		});
-	}
+	
 	function deleteRole(id){
 		var action = confirm("Are you sure you want to delete " + id + "?");
 		if (action) {

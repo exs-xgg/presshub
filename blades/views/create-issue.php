@@ -50,7 +50,7 @@
 				<div class="card-body">
 					<table class="table" id="issuesTable">
 						<thead>
-							<tr><th>ID</th><th>Issue Name</th><th>Date Started</th><th>Status</th><th>Deadline</th></tr>
+							<tr><th>ID</th><th>Issue Name</th><th>Date Started</th><th>Deadline</th></tr>
 						</thead>
 						<tbody>
 						</tbody>
@@ -70,7 +70,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#issuesTable > tbody:last-child').append('<tr onclick="navIssue(' + value.id + ')"><td><a href="/admin/issue/' + value.id + '">' + value.id + '</a></td><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>'+value.status +'</td><td>' + value.deadline + '</td>></tr>');
+					 $('#issuesTable > tbody:last-child').append('<tr onclick="navIssue(' + value.id + ')"><td><a href="/admin/issue/' + value.id + '">' + value.id + '</a></td><td id="t_' + value.id + '">' + value.nickname + '</td><td>' + value.date_started + '</td><td>' + value.deadline + '</td>></tr>');
 					 
 				});
 				}

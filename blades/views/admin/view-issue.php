@@ -49,19 +49,7 @@
 				              </div>
 				            </div>
 						</div>
-						<div class="container">
-							        <label><input type="checkbox" value="football" name="sport"> Football</label>
-
-        <label><input type="checkbox" value="baseball" name="sport"> Baseball</label>
-
-        <label><input type="checkbox" value="cricket" name="sport"> Cricket</label>
-
-        <label><input type="checkbox" value="boxing" name="sport"> Boxing</label>
-
-        <label><input type="checkbox" value="racing" name="sport"> Racing</label>
-
-        <label><input type="checkbox" value="swimming" name="sport"> Swimming</label>
-						</div>
+						
 						<div class="container">
 							 <span class="btn btn-primary pull-right" id="issueupdatebtn" onclick="saveIssue()"><i class="fa fa-save"></i> Save</span> <a href="/admin" class="btn btn-warning" ><i class="fa fa-chevron-left"></i> Go Back</a>
 						</div>

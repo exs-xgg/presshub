@@ -1,9 +1,8 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-xs-12">
+
 			<div class="container">
 				<div class="row">
-					<div class="card">
+					<div class="col-6">
+						<div class="card">
 						<div class="card-header">
 							<span>Create New User</span>
 						</div>
@@ -46,11 +45,11 @@
 								<div class="row">
 									<div class="col-lg-3">
 										<label>Username</label>
-										<input class=" col-lg-12 form form-control form-control-alternative" type="text" id="username" placeholder="username"  data-toggle="tooltip" data-placement="bottom" title="4-10 characters only" maxlength="10">
+										<input class=" col-lg-12 form form-control form-control-alternative" type="text" id="username" placeholder="username"  data-toggle="tooltip" data-placement="bottom" title="up to 32 characters only" maxlength="10">
 									</div>
 									<div class="col-lg-4">
 										<label>Password</label>
-										<input class=" col-lg-12 form form-control form-control-alternative" type="password" id="password" placeholder="Password"  data-toggle="tooltip" data-placement="bottom" title="Preferrably 8-10 characters with a combination of Numbers, Uppercase and Lowercase letters">
+										<input class=" col-lg-12 form form-control form-control-alternative" type="password" id="password" placeholder="Password"  data-toggle="tooltip" data-placement="bottom" title="Preferrably 8-32 characters with a combination of Numbers, Uppercase and Lowercase letters">
 									</div>
 									<div class="col-lg-5">
 										<label>Designation</label>
@@ -76,14 +75,79 @@
 								<button class="btn btn-primary" onclick="submitForm()">SUbmit</button>
 							</div>
 						</div>
+						
 					</div>
+					</div>
+					<div class="col-6">
+							<table class="table" id="userTable">
+								<thead>
+									<tr><th>Name</th><th>Designation</th><th></th></tr>
+									
+								</thead><tbody></tbody>
+							</table>
+						</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
 <script>
+	getUserlist();
+	function getUserDetails(e){
+		localStorage.setItem("user_id",e);
+		$.ajax({
+			url: '/api/user/' + e,
+			success: function(result){
+				result = jQuery.parseJSON(result);
+				$.each(result,function(idx,value){
+					$("#last_name").val(value.last_name);
+					$("#first_name").val(value.first_name);
+					$("#middle_name").val(value.middle_name);
+					$("#email_addr").val(value.email_addr);
+					$("#contact_no").val(value.contact_no);
+					$("#designation").val(value.designation);
+					$("#username").val(value.username);
+					$("#realpw").val(value.password);
+
+				});
+			}
+		});
+	}
+	function getUserlist(){
+		$.ajax({
+			url: '/api/user',
+			success: function(result){
+				result = jQuery.parseJSON(result);
+				$("#userTable > tbody").empty();
+				$.each(result, function(idx,value){
+					$("#userTable > tbody").append('<tr><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td><span class="badge badge-warning" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
+				})
+			}
+		});
+	}
 	function submitForm(){
+		if (localStorage.getItem("user_id")) {
+			var dataa = [{
+				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
+				'middle_name': "'" + $("#middle_name").val().replace(/<>/ig,"") + "'",
+				'last_name': "'" + $("#last_name").val().replace(/<>/ig,"") + "'",
+				'designation': "'" + $("#designation").val().replace(/<>/ig,"").substring(0,3) + "'",
+				'contact_no': "'" + $("#contact_no").val().replace(/<>/ig,"") + "'",
+				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
+				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
+				'password': "'" + $("#password").val().replace(/<>/ig,"") + "'",
+				'is_admin':"'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'"
+			}];
+			dataa = JSON.stringify(dataa);
+			// console.log(dataa);
+			$.ajax({
+				type: "PUT",
+				data: dataa,
+				url: "/api/user/" + localStorage.getItem("user_id"),
+				success: function(result){
+					toastr.success("Succesfully created user");
+				}
+			});
+
+			localStorage.removeItem("user_id")
+		}else{
 			var dataa = [{
 				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
 				'middle_name': "'" + $("#middle_name").val().replace(/<>/ig,"") + "'",
@@ -105,6 +169,7 @@
 					toastr.success("Succesfully created user");
 				}
 			});
+		}
 	}
 	// toastr.info("Succesfully created user");
 </script>

@@ -49,7 +49,7 @@
 
          
             <li class="nav-item dropdown">
-              <a href="/about" class="nav-link">
+              <a href="/dashboard/settings" class="nav-link">
                 <i class="ni ni-collection d-lg-none"></i>
                 <span class="nav-link-inner--text">User Settings</span>
               </a>
@@ -176,6 +176,9 @@ switch ($uri[2]) {
     break;
   case 'proj-file':
     require 'proj-files.php';
+    break;
+  case 'settings':
+    require 'user-settings.php';
     break;
   default:
     # code...

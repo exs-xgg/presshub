@@ -1,4 +1,4 @@
-<div class="container">
+	<div class="container">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card">
@@ -13,7 +13,7 @@
 					<textarea class="form-control" id="body"></textarea>
 					<input type="hidden" name="author" value="<?php echo $_SESSION['id'];?>">
 					<br> 
-					<button class="btn btn-primary col-lg-4" onclick="submitAnnouncement()">Add Announcement</button>
+					<button class="btn btn-primary col-lg-4" onclick="submitAnnouncement()">Submit</button>
 				</div>
 				<div class="card-footer">
 					<label>Announcements</label>
@@ -39,7 +39,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#announcementTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,20) + '</td><td>' + value.date_created + '</td><td> <button class="btn btn-danger" onclick="deleteAnnouncement(' + "'" +value.id +  "'" +')">Delete</button><button class="btn btn-info" onclick="editAnnouncement(' + "'" +value.id +  "'" +')">Edit</button></td></tr>');
+					 $('#announcementTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.title + '</td><td data-toggle="tooltip" data-placement="bottom" title="' + value.body + '" >' + value.body.substring(0,20) + '</td><td>' + value.date_created + '</td><td> <button class="btn btn-danger" onclick="deleteAnnouncement(' +value.id +')">Delete</button><button class="btn btn-info" onclick="editAnnouncement(' +value.id +')">Edit</button></td></tr>');
 				});
 				
 		           
@@ -55,7 +55,6 @@
 			$.ajax({
 				type: "DELETE",
 				url: "/api/announcement/" + id,
-				type: "DELETE",
 				success: function(result){
 					toastr.info("Delete succesful");
 					getAnnouncement();
@@ -64,25 +63,48 @@
 		}
 		
 	}
-	function editActiveAnnouncement(e,id){
-		 if (e.keyCode == 13) {
-	        $.get({
-				url: "/api/carouselActive/" +id+"/" + $("ac_" + id).text() ,
-				success: function(result){
-					toastr.success("Succesfully created announcement");
-					console.log($("ac_" + id).text());
-				}
-			});
-			 // timeout(1000,getAnnouncement());
+	function editAnnouncement(e){
+		 localStorage.setItem("ann_id",e);
+		 $.ajax({
+		 	url: '/api/announcement/' + e,
+		 	success: function(result){
+		 		result = jQuery.parseJSON(result);
+		 		$.each(result,function(idx,value){
+
+		 			$("#title").val(value.title);
+		 			$("#body").val(value.body);
+		 		});
+		 	}
+		 })
 		getAnnouncement();
     }
 		
-	}
+	
 	function submitAnnouncement(){
+		if (localStorage.getItem("ann_id")) {
+			var dataa = [{
+				'title': "'" + $("#title").val() + "'",
+				'body': "'" + $("#body").val() + "'",
+				'author' : "'" + <?php echo $_SESSION['idx']; ?> + "'"
+			}];
+			dataa = JSON.stringify(dataa);
+			// console.log(dataa);
+			$.ajax({
+				type: "put",
+				data: dataa,
+				url: "/api/announcement/"+localStorage.getItem("ann_id"),
+				success: function(result){
+					toastr.success("Succesfully updated announcement");
+				}
+			});
+			$("#title").val('');
+			$("#body").val('');
+			localStorage.remoteItem("ann_id");
+		}else{
 		var dataa = [{
 				'title': "'" + $("#title").val() + "'",
 				'body': "'" + $("#body").val() + "'",
-				'author' : "'" + $("#author").val() + "'"
+				'author' : "'" + <?php echo $_SESSION['idx']; ?> + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);
@@ -94,7 +116,8 @@
 					toastr.success("Succesfully created announcement");
 				}
 			});
-			 // timeout(1000,getAnnouncement());
+
+		}
 			 getAnnouncement();
 	}
 </script>
