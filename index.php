@@ -119,6 +119,9 @@ switch ($uri[1]) {
     case 'dashboard':
         require 'blades/dashboard.php';
         break;
+    case 'copyread':
+        require 'blades/views/copyread.php';
+        break;
     // Everything else
     case '500':
          header('HTTP/1.0 500');

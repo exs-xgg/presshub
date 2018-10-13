@@ -10,6 +10,7 @@
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="https:///cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   <?php include 'dependencies.php'; ?>
  <?php 
 $id=($uri[2]);
@@ -139,7 +140,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 ?>
               <div class="col-3">
-                <span class="col-md-12 btn btn-warning"><i class="fa fa-search"></i> Copyread</span>
+                <span class="col-md-12 btn btn-warning" onclick="copyread()"  data-toggle="modal" data-target="#md_copyread"><i class="fa fa-search"></i> Copyread</span>
               </div>
 
               <div class="col-3">
@@ -149,7 +150,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 
               <div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
-                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-dialog modal-danger modal-dialog-centered" role="document">
                       <div class="modal-content bg-gradient-danger">
                         <div class="modal-header">
                           <h6 class="modal-title" id="modal-title-notification">DELETE ARTICLE</h6>
@@ -176,9 +177,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
             </div>  
           </div>
            <br><div id="editor">
-  <p>Hello World!</p><h1>asdasdasda</h1>
-  <p>Some initial <strong>bold</strong> text</p>
-  <p><br></p>
+ 
 </div>
            
 
@@ -187,15 +186,56 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
            <!-- <textarea class="form-control form-control-alternative"></textarea> -->
         </div>
+
+        <div class="col-12">
+         
+        </div>
     </div></div>
 </div>
+</div>
 
-    
+
+<div class="modal fade" id="md_copyread" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog2">
+        <div class="modal-content modal-content2">
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">REVISION</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                
+
+            </div>
+            <div class="modal-body"> 
+              <div class="modal-body" id="copyread" align="center">
+                         
+                        </div>
+            </div>
+            <div class="modal-footer"> 
+                          <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
+                        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<span class="col-3 card-body bg-gradient-danger" id="fixedBtn"  data-toggle="modal" data-target="#md_copyread"> 
+  <span href="#head" class="text-white"><i class="fa fa-search"></i>&nbsp;&nbsp;Revision</span>
+</span>
+
+
+
+   
+
 
 </body>
-<script>
- 
 
+<script>
+ function copyread(){
+       window.location.href = "/copyread/" + localStorage.getItem("art_id");
+
+
+
+    }
 
 loadUserArticle();
 getUserList();
@@ -279,10 +319,6 @@ getUserList();
       }
     });
   }
-  function snapArticle(){
-    var article_body = $("#article_body");
-    
-  }
   function getWholeArticle(){
     $.ajax({
       url: '/api/article/' + localStorage.getItem("art_id"),
@@ -294,6 +330,7 @@ getUserList();
           $("#article_name").val(value.name);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
+          $("#copyread").append('<img src="'+value.copyread+'" alt="No Revisions Yet.">')
           window.document.title = value.name + " - Edit Article";
 
         });
@@ -314,48 +351,27 @@ getUserList();
 
 
 
-  function changeColumn(){
-    var numberOfColumns = $("#numberOfColumns").val();
-    $("#article_content").removeClass();
-    $("#article_content").addClass("p" + numberOfColumns + 'c');
-  }
 </script>
 <style type="text/css">
-  .p2c{
-    text-align: justify;
-    -webkit-column-gap: 20px;
-       -moz-column-gap: 20px;
-            column-gap: 20px;
-    -webkit-column-count: 2;
-       -moz-column-count: 2;
-            column-count: 2;
+img{
+  max-width: 100%;
 }
-.p1c{
-    text-align: justify;
-    -webkit-column-gap: 20px;
-       -moz-column-gap: 20px;
-            column-gap: 20px;
-    -webkit-column-count: 1;
-       -moz-column-count: 1;
-            column-count: 1;
+.modal-dialog2 {
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
 }
-.p3c{
-    text-align: justify;
-    -webkit-column-gap: 20px;
-       -moz-column-gap: 20px;
-            column-gap: 20px;
-    -webkit-column-count: 3;
-       -moz-column-count: 3;
-            column-count: 3;
+.modal-content2 {
+    height: 100%;
+    min-height: 100%;
+    height: auto;
+    border-radius: 0;
 }
-.p4c{
-    text-align: justify;
-    -webkit-column-gap: 20px;
-       -moz-column-gap: 20px;
-            column-gap: 20px;
-    -webkit-column-count: 4;
-       -moz-column-count: 4;
-            column-count: 4;
+#fixedBtn {
+    position: fixed;
+    bottom: 0px;
+    right: 0px; 
 }
 </style>
 </html>
