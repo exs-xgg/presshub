@@ -63,7 +63,7 @@
 	if ($result!=='[]') {
 		$result = json_decode($result,true);
 		foreach ($result as $key) {
-			echo '<option id="'.$key['id'].'">'.$key['description']."</option>";
+			echo '<option id="'.$key['description'].'">'.$key['description']."</option>";
 		}
 	}
 ?>
@@ -138,7 +138,7 @@
 				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
 				'middle_name': "'" + $("#middle_name").val().replace(/<>/ig,"") + "'",
 				'last_name': "'" + $("#last_name").val().replace(/<>/ig,"") + "'",
-				'designation': "'" + $("#designation").val().replace(/<>/ig,"").substring(0,3) + "'",
+				'designation': "'" + $("#designation").val().replace(/<>/ig,"") + "'",
 				'contact_no': "'" + $("#contact_no").val().replace(/<>/ig,"") + "'",
 				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
 				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
@@ -163,7 +163,7 @@
 				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
 				'middle_name': "'" + $("#middle_name").val().replace(/<>/ig,"") + "'",
 				'last_name': "'" + $("#last_name").val().replace(/<>/ig,"") + "'",
-				'designation': "'" + $("#designation").val().replace(/<>/ig,"").substring(0,3) + "'",
+				'designation': "'" + $("#designation").val().replace(/<>/ig,"") + "'",
 				'contact_no': "'" + $("#contact_no").val().replace(/<>/ig,"") + "'",
 				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
 				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",

@@ -49,8 +49,8 @@ $art_id = $uri[2];
 		<div class="col-12" id="penPanel">
                   <div class="row">
                     <div class="col-1 text-dark">Pick Pen color</div>
-                      <div class="col-1" style="height:50px;background:red;" id="red" onclick="color(this)"></div>
-                      <div class="col-1" style="height:50px;background:black;" id="black" onclick="color(this)"></div>
+                      <div class="col-1" style="height:50px;background:red; cursor: pointer;" id="red" onclick="color(this)"></div>
+                      <div class="col-1" style="height:50px;background:black; cursor: pointer;" id="black" onclick="color(this)"></div>
                   </div>
                   <div class="row">
                   	<div class="col-6 mx-auto pull-right">
@@ -60,7 +60,7 @@ $art_id = $uri[2];
                   	
                   </div>
                 </div><br>
-		<div id="box1"></div>
+		<div class="col-10" id="box1"></div>
 	
 	</div>
 

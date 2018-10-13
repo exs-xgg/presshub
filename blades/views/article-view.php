@@ -218,8 +218,8 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 
 
-<span class="col-3 card-body bg-gradient-danger" id="fixedBtn"  data-toggle="modal" data-target="#md_copyread"> 
-  <span href="#head" class="text-white"><i class="fa fa-search"></i>&nbsp;&nbsp;Revision</span>
+<span class="col-3 card-body bg-gradient-danger" id="fixedBtn"  data-toggle="modal" data-target="#md_copyread" style="cursor: pointer;"> 
+  <span href="#head" class="text-white"><i class="fa fa-chevron-up"></i>&nbsp;&nbsp;Revision</span>
 </span>
 
 

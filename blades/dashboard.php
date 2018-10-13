@@ -54,12 +54,7 @@ foreach ($re as $key) {
             </li>
 
          
-            <li class="nav-item dropdown">
-              <a href="/dashboard/settings" class="nav-link">
-                <i class="ni ni-collection d-lg-none"></i>
-                <span class="nav-link-inner--text">User Settings</span>
-              </a>
-            </li>
+            
             <?php
 if ($_SESSION['is_admin']=="Y") {
 

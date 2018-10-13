@@ -17,27 +17,7 @@
 			<input class="form-control form-control-alternative" type="text" id="contact">
 				<label>Email Address</label>
 			<input class="form-control form-control-alternative" type="email" id="email_addr">
-				<label>Designation</label>
-			<select class="form-control form-control-alternative" type="text" id="designation">
-<option>
-												Choose Designation
-											</option>
-<?php 
-	$result = DB::select("designation");
-	// echo "$result";
-	if ($result!=='[]') {
-		$result = json_decode($result,true);
-		foreach ($result as $key) {
-			echo '<option id="'.$key['id'].'">'.$key['description']."</option>";
-		}
-	}
-?>
-			</select>
-				<label>Is Admin</label>
-			<select class="form-control form-control-alternative" id="is_admin">
-				<option id="N">NO</option>
-				<option id="Y">YES</option>
-			</select>
+				
 			</div>
 			
 		</div>
@@ -68,7 +48,6 @@ loadUserDetails();
 					$("#middle_name").val(value.middle_name);
 					$("#email_addr").val(value.email_addr);
 					$("#contact").val(value.contact_no);
-					$("#designation").val(value.designation);
 					$("#username").val(value.username);
 					$("#realpw").val(value.password);
 
@@ -87,9 +66,7 @@ loadUserDetails();
 				"middle_name": "'" + $("#middle_name").val() + "'",
 				"email_addr" : "'" +$("#email_addr").val() + "'",
 				"contact_no" : "'" + $("#contact").val() + "'",
-				"designation" : "'" + $("#designation").val() + "'",
-				"username" : "'" + $("#username").val() +"'",
-				"is_admin" : "'" + $("#is_admin").val() +"'"
+				"username" : "'" + $("#username").val() +"'"
 			}];
 			dataa = JSON.stringify(dataa);
 			$.ajax({
