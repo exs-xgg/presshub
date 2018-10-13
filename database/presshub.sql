@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2018 at 06:02 PM
+-- Generation Time: Oct 13, 2018 at 02:42 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -32,7 +32,7 @@ CREATE TABLE `announcement` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `body` mediumtext,
-  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
   `author` int(11) NOT NULL,
   `is_active` varchar(1) DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,8 +42,7 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `title`, `body`, `date_created`, `author`, `is_active`) VALUES
-(2, 'Dummy Data', 'Dummy Function', '2018-09-29 20:44:18', 0, 'Y'),
-(3, 'Meeting', 'dbajb labfadfna fanfs', '2018-10-10 11:40:30', 0, 'Y');
+(3, 'Meeting1', 'HAHAHAHA\nGUMAGANA NA SIYA BES', '2018-10-10 11:40:30', 5, 'Y');
 
 -- --------------------------------------------------------
 
@@ -56,8 +55,8 @@ CREATE TABLE `article` (
   `issue_id` int(11) NOT NULL,
   `cat_id` varchar(20) NOT NULL,
   `name` text NOT NULL,
-  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_done` varchar(1) DEFAULT 'N',
   `body` mediumtext,
   `deadline` date DEFAULT NULL,
@@ -70,8 +69,9 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`id`, `issue_id`, `cat_id`, `name`, `date_created`, `date_updated`, `is_done`, `body`, `deadline`, `date_finished`) VALUES
 (2, 7, 'News', 'CCS Wins TORO 2018', '2018-10-01 18:49:44', '2018-10-11 23:28:52', 'N', 'PGRpdiBjbGFzcz0icWwtZWRpdG9yIiBkYXRhLWdyYW1tPSJmYWxzZSIgZGF0YS1wbGFjZWhvbGRlcj0iQ29tcG9zZSBhbiBlcGljLi4uIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjxoMT48c3Ryb25nPkNDUyBHcmFicyBDaGFtcGlvbiBUaXRsZSBpbiBSZWdpb25hbCBDb21wZXRpdGlvbjwvc3Ryb25nPjwvaDE+PHA+CTxlbT5BbmdlbGVzLCBQYW1wYW5nYSA8L2VtPi0gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gUGhhc2VsbHVzIHBsYWNlcmF0IGVnZXN0YXMganVzdG8sIGlkIGdyYXZpZGEgZGlhbSBwb3J0dGl0b3IgdXQuIFBlbGxlbnRlc3F1ZSBtYWxlc3VhZGEgbGFjdXMgdXQgZGljdHVtIHBsYWNlcmF0LiBJbnRlZ2VyIGNvbmd1ZSBvcmNpIGFjIG5pc2kgZmVybWVudHVtIGF1Y3Rvci4gRnVzY2UgcGxhY2VyYXQgbWV0dXMgc2l0IGFtZXQganVzdG8gbW9sbGlzLCBub24gc29kYWxlcyB0ZWxsdXMgcGxhY2VyYXQuIEludGVnZXIgcXVpcyBzb2xsaWNpdHVkaW4gZW5pbSwgbm9uIG1vbGxpcyBtYWduYS4gUGVsbGVudGVzcXVlIGVsZW1lbnR1bSBlbGVtZW50dW0gY29tbW9kby4gQ3VyYWJpdHVyIGludGVyZHVtIG51bGxhIHNjZWxlcmlzcXVlIGxvcmVtIGlhY3VsaXMsIHNpdCBhbWV0IHRpbmNpZHVudCBhbnRlIGN1cnN1cy4gQWxpcXVhbSBuaXNpIGlwc3VtLCB2YXJpdXMgdXQgbWkgbmVjLCByaG9uY3VzIGZldWdpYXQgYXJjdS4gVmVzdGlidWx1bSB2b2x1dHBhdCBtYXNzYSBuZWMgcnV0cnVtIG1vbGxpcy4gVml2YW11cyB2aXRhZSB2b2x1dHBhdCBtYWduYSwgZWdldCBmaW5pYnVzIG9kaW8uIFNlZCBxdWlzIHRvcnRvciB2ZWxpdC4gSW4gdXQgZXJvcyBldCBleCBwaGFyZXRyYSBldWlzbW9kLjwvcD48cD5Nb3JiaSBzaXQgYW1ldCB0ZWxsdXMgZXQgbnVuYyB0cmlzdGlxdWUgcHJldGl1bS4gTWF1cmlzIGF0IGRpZ25pc3NpbSBsYWN1cy4gRG9uZWMgZW5pbSBkaWFtLCBtb2xsaXMgbm9uIG5pYmggZXUsIGVsZWlmZW5kIHBlbGxlbnRlc3F1ZSBuZXF1ZS4gVXQgaWQgcmhvbmN1cyBqdXN0by4gTW9yYmkgaW4gdXJuYSBpcHN1bS4gRG9uZWMgdGluY2lkdW50IHZlbCBtYXVyaXMgc2VkIHRlbXBvci4gRXRpYW0gYSBmcmluZ2lsbGEgbmlzaS4gVXQgYSBlc3QgZGljdHVtLCB0ZW1wdXMgZWxpdCBuZWMsIHZ1bHB1dGF0ZSBlcmF0LiBOYW0gYmxhbmRpdCBsaWd1bGEgcXVpcyBsaWd1bGEgY29uZ3VlLCBpZCB1bGxhbWNvcnBlciB2ZWxpdCB2b2x1dHBhdC4gTWF1cmlzIGxpYmVybyBuaWJoLCBzZW1wZXIgbmVjIHNhcGllbiBpbiwgaW50ZXJkdW0gcmhvbmN1cyBvcmNpLiBVdCBhdWd1ZSBuaWJoLCBmaW5pYnVzIG5vbiBtYXVyaXMgZXUsIHVsbGFtY29ycGVyIGNvbmRpbWVudHVtIGV4LiBEb25lYyBmZXVnaWF0IGxlY3R1cyBsb3JlbSwgbmVjIHRpbmNpZHVudCBlcm9zIHZlc3RpYnVsdW0gbm9uLiBBZW5lYW4gZWdldCBlZmZpY2l0dXIgbmlzaSwgZXQgc3VzY2lwaXQgbWkuIFNlZCB0dXJwaXMgcmlzdXMsIG1vbGxpcyBhYyBxdWFtIG5lYywgc29kYWxlcyBhbGlxdWFtIHF1YW0uPC9wPjwvZGl2PjxkaXYgY2xhc3M9InFsLWNsaXBib2FyZCIgdGFiaW5kZXg9Ii0xIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjwvZGl2PjxkaXYgY2xhc3M9InFsLXRvb2x0aXAgcWwtaGlkZGVuIj48YSBjbGFzcz0icWwtcHJldmlldyIgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9ImFib3V0OmJsYW5rIj48L2E+PGlucHV0IGRhdGEtZm9ybXVsYT0iZT1tY14yIiBkYXRhLWxpbms9Imh0dHBzOi8vcXVpbGxqcy5jb20iIGRhdGEtdmlkZW89IkVtYmVkIFVSTCIgdHlwZT0idGV4dCI+PGEgY2xhc3M9InFsLWFjdGlvbiI+PC9hPjxhIGNsYXNzPSJxbC1yZW1vdmUiPjwvYT48L2Rpdj4=', '2018-10-23', NULL),
-(3, 7, 'News', 'TSU 108th Foundation Week', '2018-10-11 12:55:06', '2018-10-11 20:26:05', 'N', NULL, '2018-11-02', NULL),
-(4, 7, 'Sports', 'Red Hawks bagged 2 golds', '2018-10-11 12:57:24', '2018-10-11 20:26:08', 'N', NULL, '2018-10-10', NULL);
+(3, 7, 'News', 'TSU 108th Foundation Week', '2018-10-11 12:55:06', '2018-10-12 11:22:57', 'N', 'PGRpdiBjbGFzcz0icWwtZWRpdG9yIiBkYXRhLWdyYW1tPSJmYWxzZSIgZGF0YS1wbGFjZWhvbGRlcj0iQ29tcG9zZSBhbiBlcGljLi4uIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjxwPglQcmlvciB0byB0cmFpbmluZyB0aGUgdGVhbSBjaGVjayBhbmQgY2hhbmdlIGFsbCBjbGllbnQgY29tcHV0ZXJzIHRpbWUgem9uZSB0byArOCBhbmQgc2V0IHRoZSBhY3R1YWwgdGltZSBhbmQgZGF0ZSwgSW5zdGFsbCBhbmQgdXBkYXRlIGdvb2dsZSBjaHJvbWUgb2YgYWxsIGNsaWVudCBjb21wdXRlcnMsIHByZXBhcmUgYW5kIGluc3RhbGwgYSBmcmVzaCBNaXN1V0FIIHNlcnZlciBhbmQgaW5zdGFsbCBhIG5ldHdvcmsgc3lzdGVtIHRvIGFsbG93IGFsbCBjbGllbnQgY29tcHV0ZXIgdG8gY29ubmVjdCB0byB0aGUgV0FIIHN5c3RlbSB1c2luZyByb3V0ZXIgYW5kIG5ldHdvcmsgc3dpdGNoZXMuIE9uIHRoZSByZW1haW5kZXIgb2YgdGhlIDQgZGF5cyB0cmFpbmluZywgdGhlIHRlY2huaWNhbCBwb2ludCBwZXJzb24gYXNzaXN0IHRoZSBXQUggaGVhbHRoIHByb2dyYW0gcGFydG5lciBieSBwcm92aWRpbmcgc3RhYmxlIGNvbm5lY3Rpdml0eSAsIEluc3RhbGwgYSBuZXR3b3JrIGNvbm5lY3Rpb24gYnkgcGxhY2luZyB0aGUgcm91dGVyIHRvIGEgc3RyYXRlZ2ljIHBvaW50IGFuZCB0cmFpbnMgdGhlIHN5c3RlbSBhZG1pbmlzdHJhdG9ycyBvbiBiYXNpYyB0cm91Ymxlc2hvb3RpbmcgYW5kIGJhY2stdXAgcHJvY2Vzcy4gJm5ic3A7PC9wPjwvZGl2PjxkaXYgY2xhc3M9InFsLWNsaXBib2FyZCIgdGFiaW5kZXg9Ii0xIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjwvZGl2PjxkaXYgY2xhc3M9InFsLXRvb2x0aXAgcWwtaGlkZGVuIj48YSBjbGFzcz0icWwtcHJldmlldyIgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9ImFib3V0OmJsYW5rIj48L2E+PGlucHV0IGRhdGEtZm9ybXVsYT0iZT1tY14yIiBkYXRhLWxpbms9Imh0dHBzOi8vcXVpbGxqcy5jb20iIGRhdGEtdmlkZW89IkVtYmVkIFVSTCIgdHlwZT0idGV4dCI+PGEgY2xhc3M9InFsLWFjdGlvbiI+PC9hPjxhIGNsYXNzPSJxbC1yZW1vdmUiPjwvYT48L2Rpdj4=', '2018-11-02', NULL),
+(4, 7, 'Sports', 'Red Hawks bagged 2 golds', '2018-10-11 12:57:24', '2018-10-11 20:26:08', 'N', NULL, '2018-10-10', NULL),
+(5, 7, 'Literary', 'qwe', '2018-10-12 10:53:11', '2018-10-12 11:23:09', 'N', 'PGRpdiBjbGFzcz0icWwtZWRpdG9yIiBkYXRhLWdyYW1tPSJmYWxzZSIgZGF0YS1wbGFjZWhvbGRlcj0iQ29tcG9zZSBhbiBlcGljLi4uIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjxwPglQcmlvciB0byB0cmFpbmluZyB0aGUgdGVhbSBjaGVjayBhbmQgY2hhbmdlIGFsbCBjbGllbnQgY29tcHV0ZXJzIHRpbWUgem9uZSB0byArOCBhbmQgc2V0IHRoZSBhY3R1YWwgdGltZSBhbmQgZGF0ZSwgSW5zdGFsbCBhbmQgdXBkYXRlIGdvb2dsZSBjaHJvbWUgb2YgYWxsIGNsaWVudCBjb21wdXRlcnMsIHByZXBhcmUgYW5kIGluc3RhbGwgYSBmcmVzaCBNaXN1V0FIIHNlcnZlciBhbmQgaW5zdGFsbCBhIG5ldHdvcmsgc3lzdGVtIHRvIGFsbG93IGFsbCBjbGllbnQgY29tcHV0ZXIgdG8gY29ubmVjdCB0byB0aGUgV0FIIHN5c3RlbSB1c2luZyByb3V0ZXIgYW5kIG5ldHdvcmsgc3dpdGNoZXMuIE9uIHRoZSByZW1haW5kZXIgb2YgdGhlIDQgZGF5cyB0cmFpbmluZywgdGhlIHRlY2huaWNhbCBwb2ludCBwZXJzb24gYXNzaXN0IHRoZSBXQUggaGVhbHRoIHByb2dyYW0gcGFydG5lciBieSBwcm92aWRpbmcgc3RhYmxlIGNvbm5lY3Rpdml0eSAsIEluc3RhbGwgYSBuZXR3b3JrIGNvbm5lY3Rpb24gYnkgcGxhY2luZyB0aGUgcm91dGVyIHRvIGEgc3RyYXRlZ2ljIHBvaW50IGFuZCB0cmFpbnMgdGhlIHN5c3RlbSBhZG1pbmlzdHJhdG9ycyBvbiBiYXNpYyB0cm91Ymxlc2hvb3RpbmcgYW5kIGJhY2stdXAgcHJvY2Vzcy4gJm5ic3A7PC9wPjwvZGl2PjxkaXYgY2xhc3M9InFsLWNsaXBib2FyZCIgdGFiaW5kZXg9Ii0xIiBjb250ZW50ZWRpdGFibGU9InRydWUiPjwvZGl2PjxkaXYgY2xhc3M9InFsLXRvb2x0aXAgcWwtaGlkZGVuIj48YSBjbGFzcz0icWwtcHJldmlldyIgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9ImFib3V0OmJsYW5rIj48L2E+PGlucHV0IGRhdGEtZm9ybXVsYT0iZT1tY14yIiBkYXRhLWxpbms9Imh0dHBzOi8vcXVpbGxqcy5jb20iIGRhdGEtdmlkZW89IkVtYmVkIFVSTCIgdHlwZT0idGV4dCI+PGEgY2xhc3M9InFsLWFjdGlvbiI+PC9hPjxhIGNsYXNzPSJxbC1yZW1vdmUiPjwvYT48L2Rpdj4=', '2018-10-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -104,8 +104,8 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `comment` mediumtext NOT NULL,
-  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_edited` varchar(1) DEFAULT 'N',
   `is_resolved` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -157,9 +157,9 @@ CREATE TABLE `files` (
 CREATE TABLE `issue` (
   `id` int(11) NOT NULL,
   `nickname` varchar(50) NOT NULL,
-  `date_started` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `date_last_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `deadline` timestamp NOT NULL,
+  `date_started` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deadline` datetime NOT NULL,
   `date_finished` date DEFAULT NULL,
   `is_archived` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -182,7 +182,7 @@ CREATE TABLE `layout` (
   `id` int(11) NOT NULL,
   `issue_id` int(11) NOT NULL,
   `body` mediumtext NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -231,7 +231,7 @@ CREATE TABLE `reply` (
   `parent` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `body` mediumtext NOT NULL,
-  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -261,8 +261,8 @@ CREATE TABLE `users` (
   `designation` varchar(4) NOT NULL,
   `contact_no` varchar(10) NOT NULL,
   `email_addr` varchar(30) NOT NULL,
-  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` timestamp DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_admin` varchar(1) NOT NULL,
   `is_active` varchar(1) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -272,7 +272,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `designation`, `contact_no`, `email_addr`, `date_created`, `date_updated`, `is_admin`, `is_active`) VALUES
-(5, 'rain', 'MjQzZGMxMzkzMGIyNTkxMWViOWMyMzJhNzllMzcwN2I=', 'Rain', 'Maristela', 'Pioquinto', 'ADM', '9177994321', 'rain@gmail.com', '2018-08-14 21:44:55', NULL, 'Y', 'N'),
+(5, 'rain', 'rain', 'Rainy', 'Maristela', 'Pioquinto', 'Edi', '917998739', 'rain@gmail.com', '2018-08-14 21:44:55', '2018-10-13 08:14:59', 'Y', 'N'),
 (6, 'josh', 'NjY5YWYwMTZhZDdkZjg2ZTU1N2ZlY2U0MWIwZmRjZjQ=', 'Josh', 'M', 'Kotlin', 'FEA', '9875456', 'qweqwe@dasd.cd', '2018-08-29 12:09:24', '2018-10-10 10:18:22', 'N', 'N'),
 (7, 'romeo', 'NTAxY2Q4M2JlZGU4ZGQyM2IxZjJjN2VlMjdhMmFmOWE=', 'Romeo', 'E', 'David', 'Edi', '987654321', 'asdasd@asda.casd', '2018-09-01 10:43:16', NULL, 'Y', 'N'),
 (8, 'anne', 'NDcyMGM2Yjc0NDE1NTVmY2ViZDU2YmY4YjA5MGM1ZjM=', 'Anne', 'Curtis', 'Heusaff', 'FEA', '9812312311', 'annecurtis@gmail.com', '2018-09-13 00:29:43', NULL, 'N', 'N'),
@@ -296,7 +296,8 @@ CREATE TABLE `user_article` (
 
 INSERT INTO `user_article` (`id`, `user`, `article`) VALUES
 (1, 5, 2),
-(3, 9, 2);
+(3, 9, 2),
+(4, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -399,7 +400,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -423,7 +424,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `layout`
@@ -459,7 +460,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_article`
 --
 ALTER TABLE `user_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

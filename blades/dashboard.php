@@ -2,6 +2,12 @@
 	header("location: /login");
   echo $_SESSION['idx'];
 } 
+
+$count_assigned = 0;
+$re = json_decode(DB::raw("select count(*) as ct from user_article inner join article on article.id=user_article.article where is_done='N' and user=" . $_SESSION['idx'] ));
+foreach ($re as $key) {
+  $count_assigned = $key->{"ct"};
+}
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +100,7 @@ if ($_SESSION['is_admin']=="Y") {
             <div class="nav-wrapper">
                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                   <li class="nav-item"  onclick="go('assignment')">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments</a>
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments (<?php echo $count_assigned ?>)</a>
                   </li>
                    <li class="nav-item"  onclick="go('file')">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="#tabs-icons-text-4" role="tab" aria-controls="tabs-icons-text-4" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Files</a>
