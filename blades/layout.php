@@ -54,7 +54,7 @@ if ($_SESSION['is_admin']!=='Y') {
   <div class="container"><h2>1.) Build your layout</h2>
   	<div class="row">
   		<div class="col-12 align-content-center">
-  			<table class="table" id="layoutMaster">
+  			<table class="" id="layoutMaster">
   				
   			</table>
   			<div class="col-6 mx-auto">
@@ -124,7 +124,7 @@ if ($_SESSION['is_admin']!=='Y') {
   		var art_id = $("#articleToPlace").val();
   		var numberOfColumns = $("#numberOfColumns").val();
   		// 
-  		$("#layoutMaster").append('<tr><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td></tr>');
+  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td></tr>');
   		$.ajax({
   			url: '/api/article/' + art_id,
   			success: function(result){
@@ -139,6 +139,11 @@ if ($_SESSION['is_admin']!=='Y') {
   	}
   </script>
   <style type="text/css">
+  .secb{
+
+      border: 13px !important;
+      border-color: gray;
+  }
   img{
   	max-width: 100px;
   }

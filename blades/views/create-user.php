@@ -90,7 +90,7 @@
 					<div class="col-6">
 							<table class="table" id="userTable">
 								<thead>
-									<tr><th>Name</th><th>Designation</th><th></th></tr>
+									<tr><th>Name</th><th>Designation</th><th>Is Active</th><th></th></tr>
 									
 								</thead><tbody></tbody>
 							</table>
@@ -126,7 +126,8 @@
 				result = jQuery.parseJSON(result);
 				$("#userTable > tbody").empty();
 				$.each(result, function(idx,value){
-					$("#userTable > tbody").append('<tr><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td><span class="badge badge-warning" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
+					var r = (value.is_active=='N')?"bg-gray text-white" : "bg-info text-white"
+					$("#userTable > tbody").append('<tr class="'+r+'"><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td>'+value.is_active+'</td><td><span class="btn btn-sm btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
 				})
 			}
 		});
@@ -184,3 +185,8 @@
 	}
 	// toastr.info("Succesfully created user");
 </script>
+<style type="text/css">
+	.bg-warning{
+		background-color: pink;
+	}
+</style>
