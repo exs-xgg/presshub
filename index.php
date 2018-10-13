@@ -13,7 +13,12 @@ error_reporting(E_WARNING);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
-        
+        case 'deleteArt':
+            require 'class/DeleteArtController.php';
+            break;
+        case 'assignme':
+            require 'class/AssignMeController.php';
+            break;
         case 'user':
             require 'class/UserController.php';
             break;

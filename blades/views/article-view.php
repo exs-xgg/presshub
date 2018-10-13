@@ -119,10 +119,9 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
                     </table>
                   </div>
         </div>
-<?php if ($is_he_here!=="[]" || true) {
+<?php if ($is_he_here!=="[]" || $_SESSION['is_admin']=="Y") {
   ?>
- <?php  
- }       ?>        <hr>
+      <hr>
         <div class="col-md-12">
            <nav class="alert alert-dark">Content </nav>
            <div class="container">
@@ -134,7 +133,8 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
               </div>
               <div class="col-3">
                 <span class="col-md-12 btn btn-primary"><i class="fa fa-check"></i> Finished</span>
-              </div>
+              </div> <?php  
+ }       ?>  
 <?php if ($_SESSION['designation']!=="EIC") {
 
 ?>
@@ -143,8 +143,35 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
               </div>
 
               <div class="col-3">
-                <span class="col-md-12 btn btn-danger"><i class="fa fa-trash"></i> Delete</span>
+                <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
               </div>
+
+
+
+              <div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                      <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header">
+                          <h6 class="modal-title" id="modal-title-notification">DELETE ARTICLE</h6>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                         <h1>ARE YOU SURE YOU WANT TO DELETE THIS ARTICLE?</h1>
+                         <h3>This action can't be undone.</h3>
+                        </div>
+                        <div class="modal-footer"> 
+                          <button class="btn btn-danger" data-dismiss="modal" onclick="deleteArticle()">yes, delete</button>
+                          <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
   <?php } ?>            
             </div>  
           </div>
@@ -173,6 +200,15 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 loadUserArticle();
 getUserList();
   getWholeArticle();
+
+  function deleteArticle(){
+    $.ajax({
+      url: '/api/deleteArt/' + localStorage.getItem("art_id"),
+      success: function(result){
+        window.location.href= "/dashboard/proj-file";
+      }
+    });
+  }
   function getUserList(){
     $.ajax({
       url: '/api/user',

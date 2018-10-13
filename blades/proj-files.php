@@ -123,7 +123,7 @@ if (isset($uri[3]) && $uri[3]!=="") {
 				toastr.success("Successfully Added Article");
 				$("#article_name").val("");
 				$("#deadline").val("");
-
+				$.ajax({url:'/api/assignme'});
 			}
 		});
 	}

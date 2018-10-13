@@ -124,7 +124,7 @@ if ($_SESSION['is_admin']!=='Y') {
   		var art_id = $("#articleToPlace").val();
   		var numberOfColumns = $("#numberOfColumns").val();
   		// 
-  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td><button class="btn btn-primary">xx</button></tr>');
+  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td><button class="btn btn-danger">Delete</button>');
   		$.ajax({
   			url: '/api/article/' + art_id,
   			success: function(result){
