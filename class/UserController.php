@@ -1,6 +1,8 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
+
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','USER')");
 $id = $uri[3];
 switch ($method) {
 	case 'GET':

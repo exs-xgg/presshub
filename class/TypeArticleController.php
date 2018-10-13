@@ -1,6 +1,7 @@
 <?php
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $method = $_SERVER['REQUEST_METHOD'];
+
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-TYPE')");
 $cat = $uri[3];
 $id = $uri[4];
 switch ($method) {

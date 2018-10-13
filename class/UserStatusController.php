@@ -14,9 +14,14 @@
 				$_SESSION['designation'] = $key->{"designation"};
 			}
 			// echo $_SESSION['user'];
+
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'LOGIN','')");
 			header("location: /dashboard");
 		}else{
+
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'LOGIN','FAILED')");
 			 header('location: /login?incorrect=y');
+
 		}
 	}else{
 	//	header("location: /500");
