@@ -54,12 +54,12 @@ if ($_SESSION['is_admin']!=='Y') {
   <div class="container"><h2>1.) Build your layout</h2>
   	<div class="row">
   		<div class="col-12 align-content-center">
-  			<table class="" id="layoutMaster">
+  			<table class="table" id="layoutMaster">
   				
   			</table>
   			<div class="col-6 mx-auto">
   				
-					
+					<br><br>
 					<span class="col-12 btn btn-primary" data-toggle="modal" data-target="#md_1">
 						<i class="fa fa-plus"></i><strong class=""> Add Section</strong>
 					</span>
@@ -124,7 +124,7 @@ if ($_SESSION['is_admin']!=='Y') {
   		var art_id = $("#articleToPlace").val();
   		var numberOfColumns = $("#numberOfColumns").val();
   		// 
-  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td></tr>');
+  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td><button class="btn btn-primary">xx</button></tr>');
   		$.ajax({
   			url: '/api/article/' + art_id,
   			success: function(result){
@@ -139,7 +139,7 @@ if ($_SESSION['is_admin']!=='Y') {
   	}
   </script>
   <style type="text/css">
-  .secb{
+  .table{
 
       border: 13px !important;
       border-color: gray;
