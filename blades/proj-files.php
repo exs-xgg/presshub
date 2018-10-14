@@ -5,10 +5,10 @@ if (isset($uri[3]) && $uri[3]!=="") {
 		$issue_name = $key->{"nickname"};
 		$deadline = $key->{"deadline"};
 	}
-	$count_art = 0;
-$rex = ((DB::raw("select count(*) as ct from article where issue_id=".$uri[3])));
-foreach ($rex as $key => $value) {
-  $count_art = $value;
+$count_art = 0;
+$rex = json_decode(DB::raw("select count(*) as ct from article where issue_id=".$uri[3]));
+foreach ($rex as $key) {
+  $count_art = $key->{'ct'};
 }
 	?>
 <div class="card">
