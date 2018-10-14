@@ -140,7 +140,18 @@
  //              <span class="custom-toggle-slider rounded-circle"></span>
  //            </label>
 	function activate(e){
-		alert(e);
+		var dataa = [{
+				'is_active' : "'" + (($("#ac_" + e).is(':checked'))?"Y":"N") + "'"
+				}];
+				dataa = JSON.stringify(dataa);
+				$.ajax({
+					type: "PUT",
+					data: dataa,
+					url: "/api/user/" + e,
+					success: function(result){
+						toastr.success("Succesfully updated user");
+					}
+				});
 	}
 	function submitForm(){
 		if (localStorage.getItem("user_id")) {
@@ -195,7 +206,7 @@
 		getUserlist();
 	}
 	// toastr.info("Succesfully created user");
-	
+
 </script>
 <style type="text/css">
 	.bg-warning{
