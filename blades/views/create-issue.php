@@ -12,18 +12,7 @@
 						<br>
 			            
 						<div class="input-daterange datepicker row align-items-center">
-			              <div class="col">
-			                <div class="form-group focused">
-			                	<label>Start Date</label>
-			                  <div class="input-group">
-			                    <div class="input-group-prepend">
-			                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-			                    </div>
-			                   <input class="form-control form-control datepicker" id="date_started" placeholder="Start date" type="text" required>
-			                  </div>
-			                </div>
-			              </div>
-			              <div class="col">
+			               <div class="col">
 			                <div class="form-group focused">
 			                	<label>Deadline</label>
 			                  <div class="input-group">
@@ -98,7 +87,7 @@
 
 		var dataa = [{
 				'nickname': "'" + $("#nickname").val() + "'",
-				'date_started': "date('" + date_started + "')",
+				'date_started': "now()",
 				'deadline': "date('" + deadline + "')",
 			}];
 			dataa = JSON.stringify(dataa);
