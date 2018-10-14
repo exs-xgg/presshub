@@ -128,11 +128,17 @@
 				$("#userTable > tbody").empty();
 				$.each(result, function(idx,value){
 					var r = (value.is_active=='N')?"bg-gray text-white" : "bg-info text-white"
-					$("#userTable > tbody").append('<tr class=""><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td> <input id="ac_'+value.id+'" onchange="activate('+value.id+')" class="" '+((value.is_active=='Y')? "checked" : "") +' data-toggle="toggle" type="checkbox" data-onstyle="success" data-offstyle="danger"></td><td><span class="btn  btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
+					$("#userTable > tbody").append('<tr class=""><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td><label class="custom-toggle"><input id="ac_'+value.id+'" onchange="activate('+value.id+')" '+((value.is_active=='Y')? "checked" : "") +' type="checkbox"><span class="custom-toggle-slider rounded-circle"></span></label></td><td><span class="btn  btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
 				})
 			}
 		});
 	}
+
+
+	// <label class="custom-toggle">
+ //              <input checked="" type="checkbox">
+ //              <span class="custom-toggle-slider rounded-circle"></span>
+ //            </label>
 	function activate(e){
 		alert(e);
 	}
@@ -189,16 +195,8 @@
 		getUserlist();
 	}
 	// toastr.info("Succesfully created user");
-
-	$(function() {
-    $('#userTable input').bootstrapToggle({
-      on: 'Active',
-      off: 'Inactive'
-    });
-  })
+	
 </script>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <style type="text/css">
 	.bg-warning{
 		background-color: pink;
