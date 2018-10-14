@@ -33,14 +33,14 @@ foreach ($rex2 as $key) {
                     <span>PROGRESS</span>
                   </div> 
                   <div class="progress-percentage">
-                    <span><?php echo ($count_f/$count_art)*100; ?>%</span>
+                    <span><?php  
+                  $progress = (explode(".",($count_f/$count_art)*100));
+                  echo $progress[0];
+                  ?>%</span>
                   </div>
                 </div>
                 <div class="progress">
-                  <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="<?php echo $count_f; ?>" aria-valuemin="0" aria-valuemax="<?php echo $count_art; ?>" style="width: <?php  
-                  $progress = (explode(".",($count_f/$count_art)*100));
-                  echo $progress[0];
-                  ?>%"></div>
+                  <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="<?php echo $count_f; ?>" aria-valuemin="0" aria-valuemax="<?php echo $count_art; ?>" style="width: <?php echo ($count_f/$count_art)*100; ?>%"></div>
                 </div>
               </div>               	
                   <?php endif ?>
