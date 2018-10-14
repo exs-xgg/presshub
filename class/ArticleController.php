@@ -66,7 +66,7 @@ switch ($method) {
 					// echo "$b64";
 				}
 			}
-		echo DB::raw("update article set copyread=".$b64." where id=".$ar_id);
+		echo DB::raw("update article set copyread=".$b64.", is_done='N' where id=".$ar_id);
 	}
 		
 		break;

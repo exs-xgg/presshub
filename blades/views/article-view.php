@@ -133,14 +133,14 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
                 <span class="col-md-12 btn btn-success" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
               </div>
               <div class="col-3">
-                <span class="col-md-12 btn btn-primary"><i class="fa fa-check"></i> Finished</span>
+                <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
               </div> <?php  
  }       ?>  
 <?php if ($_SESSION['designation']!=="EIC") {
 
 ?>
               <div class="col-3">
-                <span class="col-md-12 btn btn-warning" onclick="copyread()"  data-toggle="modal" data-target="#md_copyread"><i class="fa fa-search"></i> Copyread</span>
+                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
               </div>
 
               <div class="col-3">
@@ -249,6 +249,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 </body>
 
 <script>
+
   $("#fixedBtn").hide();
  function copyread(){
        window.location.href = "/copyread/" + localStorage.getItem("art_id");
@@ -260,7 +261,20 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 loadUserArticle();
 getUserList();
   getWholeArticle();
-
+ function finishNa(){
+    dataa = [{
+      "is_done" : "'Y'"
+    }]
+    dataa = JSON.stringify(dataa);
+    $.ajax({
+      url: '/api/article/' + localStorage.getItem("art_id"),
+      type: 'put',
+      data: dataa,
+      success: function(result){
+        toastr.success("Article flagged as FINISHED");
+      }
+    });
+  }
   function deleteArticle(){
     $.ajax({
       url: '/api/deleteArt/' + localStorage.getItem("art_id"),

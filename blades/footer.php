@@ -16,7 +16,7 @@
 
 
 <style type="text/css">
-    .footer{
+    .fix-bottom{
   position: fixed; left: 0; bottom: 0; width: 100%
 }
 </style>

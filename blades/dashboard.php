@@ -47,9 +47,9 @@ foreach ($re as $key) {
             <li class="nav-item dropdown">
               <span class="">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">(<small><?php
+                <span class="nav-link-inner--text"><small><?php
                   echo $_SESSION['user'];
-                  ?></small>)</span>  
+                  ?>&nbsp;&nbsp;(<?php echo $_SESSION['designation'] ?>)</small></span>  
               </span>
             </li>
 
@@ -250,7 +250,5 @@ function go(e){
 </script>
 </html>
 <style type="text/css">
-    .footer{
-  position: fixed; left: 0; bottom: 0; width: 100%
-}
+   
 </style>
