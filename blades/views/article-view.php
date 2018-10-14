@@ -222,10 +222,29 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
   <span href="#head" class="text-white"><i class="fa fa-chevron-up"></i>&nbsp;&nbsp;Revision</span>
 </span>
 
+<br><br><br><br><br><br>
+<footer class="footer has-cards fix-bottom" style="">
+    <div class="container">
+      
+      <hr>
+      <div class="row align-items-center justify-content-md-between">
+        <div class="col-md-6">
+          <div class="copyright">
+            &copy; 2018
+            <a href="/" target="_blank">CCS Presshub</a>.
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </footer>
 
 
-   
-
+<style type="text/css">
+    .footer{
+  position: fixed; left: 0; bottom: 0; width: 100%
+}
+</style>
 
 </body>
 
@@ -360,6 +379,7 @@ getUserList();
 
 </script>
 <style type="text/css">
+
 img{
   max-width: 100%;
 }

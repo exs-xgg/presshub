@@ -4,7 +4,7 @@
 					<div class="col-6">
 						<div class="card">
 						<div class="card-header">
-							<span>Create New User</span>
+							<b><span id="wat">Create New</span> User</b>
 						</div>
 						<div class="card-body">
 							<div class="form" action="/api/user" method="post" id="createUserForm_">
@@ -101,6 +101,7 @@
 	getUserlist();
 	function getUserDetails(e){
 		localStorage.setItem("user_id",e);
+		$("#wat").text("Edit");
 		$.ajax({
 			url: '/api/user/' + e,
 			success: function(result){
@@ -178,7 +179,9 @@
 				}
 			});
 
-			localStorage.removeItem("user_id")
+			localStorage.removeItem("user_id");
+			$("#wat").text("Create New");
+			emptyFields();
 		}else{
 			var dataa = [{
 				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
@@ -206,7 +209,17 @@
 		getUserlist();
 	}
 	// toastr.info("Succesfully created user");
-
+function emptyFields(){
+	$("#last_name").val("");
+					$("#first_name").val("");
+					$("#middle_name").val("");
+					$("#email_addr").val("");
+					$("#contact_no").val("");
+					$("#designation").val("");
+					$("#username").val("");
+					$("#realpw").val("");
+					$("is_admin").val("");
+}
 </script>
 <style type="text/css">
 	.bg-warning{

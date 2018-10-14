@@ -51,6 +51,7 @@
       </div>
     </nav>
   </header>
+
 <body>
 
 
@@ -71,6 +72,13 @@ switch ($page) {
   ?>
     
     
-
+</section>
 </body>
+
+  <?php
+  include 'footer.php';
+  ?>
 </html>
+<style type="text/css">
+  
+</style>

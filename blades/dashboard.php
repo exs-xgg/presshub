@@ -19,7 +19,7 @@ foreach ($re as $key) {
 </head>
 <body>
 <header class="header-global">
-    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg text-white">
       <div class="container">
         <a class="navbar-brand mr-lg-5" href="/dashboard">
           <h3>Presshub</h3>
@@ -36,14 +36,14 @@ foreach ($re as $key) {
         </a>
               </div>
               <div class="col-6 collapse-close">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                  <span></span>
-                  <span></span>
+                <button type="button" class="navbar-toggler fa fa-circle" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""></span>
+                  
                 </button>
               </div>
             </div>
           </div>
- <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+ <ul class="navbar-nav navbar-nav-hover align-items-lg-center text-white">
             <li class="nav-item dropdown">
               <span class="">
                 <i class="ni ni-ui-04 d-lg-none"></i>
@@ -61,9 +61,9 @@ if ($_SESSION['is_admin']=="Y") {
 
   ?>
 <li class="nav-item dropdown">
-              <a href="/admin" class="nav-link">
+              <a href="/admin" class="nav-link text-white">
                 <i class="ni ni-collection d-lg-none"></i>
-                <span class="nav-link-inner--text">Admin</span>
+                <span class="">Admin</span>
               </a>
             </li>
 
@@ -87,6 +87,7 @@ if ($_SESSION['is_admin']=="Y") {
       </div>
     </nav>
   </header>
+
   <main>
     <div class="container">
       <div class="row">
@@ -139,7 +140,7 @@ if ($_SESSION['is_admin']=="Y") {
               </div>
               
 
-        </div>
+        </div></section>
         <div class="col-lg-12">
              <div class="container">
                <?php 
@@ -196,6 +197,10 @@ switch ($uri[2]) {
     </div>
   </main>
 </body>
+
+  <?php
+  include 'footer.php';
+  ?>
 <script>
   function fetchMyArticles(){
     $.ajax({
@@ -244,3 +249,8 @@ function go(e){
 }
 </script>
 </html>
+<style type="text/css">
+    .footer{
+  position: fixed; left: 0; bottom: 0; width: 100%
+}
+</style>

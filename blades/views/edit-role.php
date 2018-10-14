@@ -15,7 +15,7 @@
 					<label>Currently Available Designation</label>
 					<table class="table" id="roleTable">
 						<thead>
-							<tr><th>Designation</th><th>Action</th></tr>
+							<tr><th>Designation</th></tr>
 						</thead>
 						<tbody>
 						</tbody>
@@ -35,7 +35,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#roleTable > tbody:last-child').append('<tr><td contenteditable="true" id="t_' + value.id + '">' + value.description + '</td><td> <button class="btn btn-danger" onclick="deleteRole(' + "'" +value.id +  "'" +')">Delete</button></td></tr>');
+					 $('#roleTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.description + '</td><td></tr>');
 				});
 			
 		           
@@ -45,20 +45,7 @@
 		
 	}
 	
-	function deleteRole(id){
-		var action = confirm("Are you sure you want to delete " + id + "?");
-		if (action) {
-			$.ajax({
-				url: "/api/role/" + id,
-				type: "DELETE",
-				success: function(result){
-					toastr.info("Delete succesful");
-					getRoles();
-				}
-			});
-		}
-		
-	}
+	
 	function submitRole(){
 		var role = [{ 
 			"id": "'" + $("#role").val().substring(0,3).toUpperCase()+ "'", 

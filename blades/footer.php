@@ -1,4 +1,4 @@
-<footer class="footer has-cards">
+<footer class="footer has-cards fix-bottom" style="">
     <div class="container">
       
       <hr>
@@ -13,3 +13,10 @@
       </div>
     </div>
   </footer>
+
+
+<style type="text/css">
+    .footer{
+  position: fixed; left: 0; bottom: 0; width: 100%
+}
+</style>
