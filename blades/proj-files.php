@@ -5,17 +5,45 @@ if (isset($uri[3]) && $uri[3]!=="") {
 		$issue_name = $key->{"nickname"};
 		$deadline = $key->{"deadline"};
 	}
+$count_f = 0;
 $count_art = 0;
+
 $rex = json_decode(DB::raw("select count(*) as ct from article where issue_id=".$uri[3]));
 foreach ($rex as $key) {
   $count_art = $key->{'ct'};
 }
+
+$rex2 = json_decode(DB::raw("select count(*) as ct from article where is_done='Y' and issue_id=".$uri[3]));
+foreach ($rex2 as $key) {
+  $count_f = $key->{'ct'};
+}
+
 	?>
 <div class="card">
 	<div class="card-header">
 		<h2><?php echo $issue_name ?></h2>
 		<small>Total Articles: <?php echo $count_art; ?></small><br>
-		<small>Deadline: <?php echo explode(" ",$deadline)[0] ?></small><br><br>
+		<small>Deadline: <?php echo explode(" ",$deadline)[0] ?></small>
+
+
+                  <?php if ($count_art> 0): ?>
+ 			<div class="progress-wrapper">
+                <div class="progress-info">
+                  <div class="progress-label">
+                    <span>PROGRESS</span>
+                  </div> 
+                  <div class="progress-percentage">
+                    <span><?php echo ($count_f/$count_art)*100; ?>%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="<?php echo $count_f; ?>" aria-valuemin="0" aria-valuemax="<?php echo $count_art; ?>" style="width: 60%;"></div>
+                </div>
+              </div>               	
+                  <?php endif ?>
+                  
+		<br><br>
+
 		<?php if ($_SESSION['is_admin']=='Y'): ?>
 			<span onclick="goToIssueBoard()" class="btn btn-sm btn-warning">Edit Details</span>
 		<?php endif ?>

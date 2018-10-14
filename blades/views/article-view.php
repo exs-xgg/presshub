@@ -117,7 +117,7 @@ foreach ($is_he_here as $key) {
           <div class="row">
                     <table class="table table-striped" id="user_article_list">
                       <thead>
-                        <tr><th>Name</th><td></td></tr>
+                        <tr><th>Name</th></tr>
                       </thead>
                       <tbody>
                         <tr><td>Test</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>
@@ -308,7 +308,7 @@ getUserList();
         var user_list = jQuery.parseJSON(result);
         $("#user_article_list").empty();
         $.each(user_list,function(idx,value){
-          $("#user_article_list").append('<tr><td>'+ value.first_name +' ' + value.last_name + '</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>');
+          $("#user_article_list").append('<tr><td>'+ value.first_name +' ' + value.last_name + '</td></tr>');
         });
       }
     });
