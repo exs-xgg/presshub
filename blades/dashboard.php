@@ -214,7 +214,7 @@ switch ($uri[2]) {
           // var id_art = values.article;
           var today = new Date(); 
   var targetDate= new Date();
-  targetDate.setDate(today.getDate() + 6);
+  targetDate.setDate(today.getDate() + 7);
 
 
 
@@ -225,13 +225,6 @@ switch ($uri[2]) {
   deadline.setYear(deds[0]);
 
 
-
-  var oopsDate = new Date();
-  oopsDate.setDate(values.deadline);
-
-
-  var color = "";
-console.log(today.getTime() + "/" + (Date.parse(deds)-(24*60*60*1000) * 5));
 
 if (Date.parse(targetDate) >= Date.parse(deds)) {
     color = "bg-danger text-white" ;
