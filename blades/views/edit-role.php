@@ -2,7 +2,15 @@
 	<div class="row">
 		<div class="col-lg-6 col-sm-12 mx-auto">
 			<div class="card">
-				
+				<div class="card-header">
+					Add Role
+				</div>
+				<div class="card-body">
+					<label>Role Name</label>
+					<input type="text" id="role" class="form-control col-8">
+					<br>
+					<button class="btn btn-primary col-4" onclick="submitRole()">Add Role</button>
+				</div>
 				<div class="card-footer">
 					<label>Currently Available Designation</label>
 					<table class="table" id="roleTable">
