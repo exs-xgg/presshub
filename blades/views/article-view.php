@@ -86,7 +86,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
                     </datalist>
           </select>
           <label>Deadline</label>
-              <input class="form-control datepicker" placeholder="Select date" type="text" id="deadline" <?php echo (true) ? "disabled" : null; ?>>
+              <input class="form-control" placeholder="Select date" type="date" id="deadline" <?php echo ($_SESSION['is_admin']!=='Y') ? "disabled" : null; ?>>
           
         </div>
 
@@ -230,6 +230,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 </body>
 
 <script>
+  $("#fixedBtn").hide();
  function copyread(){
        window.location.href = "/copyread/" + localStorage.getItem("art_id");
 
@@ -300,7 +301,8 @@ getUserList();
     var art_data = [{
       'name' : "'" + $("#article_name").val().replace(/<>/ig,"") +"'",
       'cat_id': "'"+$("#category").val() + "'",
-      'body' : "'" + btoa($("#editor").html()) + "'"
+      'body' : "'" + btoa($("#editor").html()) + "'",
+      'deadline' : "date('" +$("#deadline").val() + "')"
     }];
     art_data = JSON.stringify(art_data);
 
@@ -330,7 +332,12 @@ getUserList();
           $("#article_name").val(value.name);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
-          $("#copyread").append('<img src="'+value.copyread+'" alt="No Revisions Yet.">')
+
+          if (value.copyread) {
+
+          $("#copyread").append('<img src="'+value.copyread+'" alt="Corrupted image.">')
+            $("#fixedBtn").show(1000);
+          }
           window.document.title = value.name + " - Edit Article";
 
         });

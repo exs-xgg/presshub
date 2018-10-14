@@ -207,7 +207,31 @@ switch ($uri[2]) {
         $("#assignedTable").append('<thead><tr><th>Date Started</th><th>Issue</th><th>Article</th><th>Deadline</th><th>Action</th></tr></thead><tbody>');
         $.each(assign_result,function(idx,values){
           // var id_art = values.article;
-          $("#assignedTable").append('<tr class="text-danger"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
+          var today = new Date(); 
+  var targetDate= new Date();
+  targetDate.setDate(today.getDate() + 7);
+
+
+
+  var deadline = new Date();
+  deds=(values.deadline).split("-");
+  deadline.setDate(deds[2]);
+  deadline.setMonth(deds[1]);
+  deadline.setYear(deds[0]);
+
+
+
+  var oopsDate = new Date();
+  oopsDate.setDate(values.deadline);
+
+
+  var color = "";
+console.log(today.getTime() + "/" + (Date.parse(deds)-(24*60*60*1000) * 5));
+
+if (Date.parse(targetDate) >= Date.parse(deds)) {
+    color = "bg-danger text-white" ;
+  }
+          $("#assignedTable").append('<tr class="text-primary '+color+'"><td>'+ values.date_created +'</td><td>'+ values.article_name +'</td><td>'+ values.issue +'</td><td>'+ values.deadline +'</td><td><a class="link" href="/article/'+ values.id +'"><i class="fa fa-eye"></i> <b> View</b></a></td></tr>');
         });
         $("#assignedTable").append('</tbody>');
     $('#assignedTable').DataTable();

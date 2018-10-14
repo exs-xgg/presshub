@@ -70,6 +70,14 @@
 											<
 										</select>
 									</div>
+									<div class="col-lg-5">
+										<label>Department</label>
+										<select class="form form-control form-control-alternative" id="designation" placeholder="Designation">
+											<option>
+												Sports
+											</option>
+									</select>
+									</div>
 								</div>
 								<div class="row">
 									<div class="col-4">

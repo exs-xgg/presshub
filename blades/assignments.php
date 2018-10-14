@@ -11,9 +11,7 @@
                       <div class="small bg-secondary">
                         <small> • LEGEND •</small>
                         <ul>
-                          <li>Default</li>
-                          <li class="text-danger">Nearing Deadline / Overdue</li>
-                          <li class="text-primary">Fresh; less than a week since assigned</li>
+                          <li class="text-danger">RED - Nearing Deadline / Overdue</li>
                         </ul>
                       </div>
                     </div>
