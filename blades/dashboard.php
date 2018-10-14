@@ -214,7 +214,7 @@ switch ($uri[2]) {
           // var id_art = values.article;
           var today = new Date(); 
   var targetDate= new Date();
-  targetDate.setDate(today.getDate() + 7);
+  targetDate.setDate(today.getDate() + 6);
 
 
 

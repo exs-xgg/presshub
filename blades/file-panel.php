@@ -22,7 +22,7 @@ foreach ($person as $key) {
 }
 					?></small><hr>
 					<a class="btn btn-primary" href="/uploads/<?php echo $file_name; ?>" target="_blank">Download</a>
-					<a class="btn btn-danger pull-right" href="delete">Delete</a>
+					<a class="btn btn-danger pull-right" onclick="deleteFile()">Delete</a>
 				</div>
 			</div>
 		</div>
@@ -120,6 +120,22 @@ foreach ($result as $key) {
 
 
 <script type="text/javascript">
+<?php if (isset($uri[3])): ?>
+	function deleteFile(){
+	var confi = confirm("Delete this file?");
+	if (confi) {
+		$.ajax({
+			url: '/api/deletefile/' + <?php echo $uri[3] ?>,
+			type: 'delete',
+			success: function(result){
+				toastr.success("File Deleted Successfully");
+				window.location.href="/dashboard/myfile";
+			}
+		});
+	}
+}
+<?php endif ?>
+	
 	function getFile(e){
 		window.location.href = "/dashboard/myfile/" + e;
 	}
@@ -136,6 +152,7 @@ toastr.error("File Upload Failed!");
 	}
 	
 }
+
 
 	?>
 </script>

@@ -20,7 +20,7 @@ if(isset($_POST["submit"])) {
     	$result =  DB::insert("files",array("'$target_file_masked'",$user_id,"'$private','$desc'"),"file_name,user_id,private,description");
 
 DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'FILE','UPLOAD')");
-    	header("location: /dashboard/file?success=y");
+    	header("location: /dashboard/myfile?success=y");
     }else{
     	echo "Cant Upload";
     }

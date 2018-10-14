@@ -140,7 +140,7 @@ foreach ($is_he_here as $key) {
                 <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
               </div> <?php  
  }       ?>  
-<?php if ($_SESSION['is_admin']!=="Y") {
+<?php if ($_SESSION['is_admin']=="Y") {
 
 ?>
               <div class="col-3">
