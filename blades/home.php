@@ -73,7 +73,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="/ig" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+              <a class="nav-link nav-link-icon" href="https://instagram.com/tsuccsthebrowser" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
                 <i class="fa fa-instagram"></i>
                 <span class="nav-link-inner--text d-lg-none">Instagram</span>
               </a>

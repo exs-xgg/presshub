@@ -14,8 +14,12 @@
   <?php include 'dependencies.php'; ?>
  <?php 
 $id=($uri[2]);
-$is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx']. " and article=$id");
+$is_he_here = json_decode(DB::raw("select count(*) as c from user_article where user=" . $_SESSION['idx']. " and article=$id"));
 
+$cf = 0;
+foreach ($is_he_here as $key) {
+  $cf = $key->{'c'};
+}echo "$cf";
 (isset($uri[2]) && ($uri[2])!=="") ? $id = $uri[2] : header("location: /admin");
 ?>
 <script>
@@ -90,7 +94,8 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
           
         </div>
 
- 
+ <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
+  ?>
         <div class="col-md-6">
           <nav class="alert alert-dark">Assign Users</nav>
           <div class="col-lg-10 ">
@@ -120,8 +125,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
                     </table>
                   </div>
         </div>
-<?php if ($is_he_here!=="[]" || $_SESSION['is_admin']=="Y") {
-  ?>
+
       <hr>
         <div class="col-md-12">
            <nav class="alert alert-dark">Content </nav>
@@ -136,13 +140,13 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
                 <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
               </div> <?php  
  }       ?>  
-<?php if ($_SESSION['designation']!=="EIC") {
+<?php if ($_SESSION['is_admin']!=="Y") {
 
 ?>
               <div class="col-3">
                 <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
               </div>
-
+ <?php } ?>
               <div class="col-3">
                 <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
               </div>
@@ -173,7 +177,7 @@ $is_he_here = DB::raw("select * from user_article where user=" . $_SESSION['idx'
 
 
 
-  <?php } ?>            
+             
             </div>  
           </div>
            <br><div id="editor">
