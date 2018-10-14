@@ -5,11 +5,16 @@ if (isset($uri[3]) && $uri[3]!=="") {
 		$issue_name = $key->{"nickname"};
 		$deadline = $key->{"deadline"};
 	}
+	$count_art = 0;
+$rex = ((DB::raw("select count(*) as ct from article where issue_id=".$uri[3])));
+foreach ($rex as $key => $value) {
+  $count_art = $value;
+}
 	?>
 <div class="card">
 	<div class="card-header">
 		<h2><?php echo $issue_name ?></h2>
-		<small>Total Articles: <?php echo ((DB::raw("select count(*) as ct from article where issue_id=".$uri[3]))); ?></small><br>
+		<small>Total Articles: <?php echo $count_art; ?></small><br>
 		<small>Deadline: <?php echo explode(" ",$deadline)[0] ?></small><br><br>
 		<?php if ($_SESSION['is_admin']=='Y'): ?>
 			<span onclick="goToIssueBoard()" class="btn btn-sm btn-warning">Edit Details</span>

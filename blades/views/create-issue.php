@@ -79,8 +79,6 @@
 	}
 
 	function submitFormIssue(){
-		var date_started = $("#date_started").val().split("/");
-		date_started = date_started[2] + "-" + date_started[0] + "-" + date_started[1];
 
 		var deadline = $("#deadline").val().split("/");
 		deadline = deadline[2] + "-" + deadline[0] + "-" + deadline[1];
