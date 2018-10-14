@@ -36,8 +36,8 @@
 										<label>Is Admin?</label>
 										<select class="form form-control form-control-alternative" id="is_admin" placeholder="--">
 											
-											<option id="N">NO</option>
-											<option id="Y">YES</option>
+											<option id="NO">NO</option>
+											<option id="YES">YES</option>
 										</select>
 									</div>
 								</div>
@@ -70,24 +70,16 @@
 											<
 										</select>
 									</div>
-									<div class="col-lg-5">
+									<!-- <div class="col-lg-5">
 										<label>Department</label>
 										<select class="form form-control form-control-alternative" id="designation" placeholder="Designation">
 											<option>
 												Sports
 											</option>
 									</select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<label>Active</label>
-										<select class="form-control form-control-alternative" id="is_active">
-											<option id="Y">YES</option>
-											<option id="N">NO</option>
-										</select>
-									</div>
-								</div>
+									</div> -->
+								</div><input type="text" id="is_active" value="Y" hidden>
+								
 								<br>
 								<button class="btn btn-primary" onclick="submitForm()">SUbmit</button>
 							</div>
@@ -122,6 +114,7 @@
 					$("#designation").val(value.designation);
 					$("#username").val(value.username);
 					$("#realpw").val(value.password);
+					$("is_admin").val(value.is_admin);
 
 				});
 			}
@@ -135,10 +128,13 @@
 				$("#userTable > tbody").empty();
 				$.each(result, function(idx,value){
 					var r = (value.is_active=='N')?"bg-gray text-white" : "bg-info text-white"
-					$("#userTable > tbody").append('<tr class="'+r+'"><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td>'+value.is_active+'</td><td><span class="btn btn-sm btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
+					$("#userTable > tbody").append('<tr class=""><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td> <input id="ac_'+value.id+'" onchange="activate('+value.id+')" class="" '+((value.is_active=='Y')? "checked" : "") +' data-toggle="toggle" type="checkbox" data-onstyle="success" data-offstyle="danger"></td><td><span class="btn  btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
 				})
 			}
 		});
+	}
+	function activate(e){
+		alert(e);
 	}
 	function submitForm(){
 		if (localStorage.getItem("user_id")) {
@@ -193,7 +189,16 @@
 		getUserlist();
 	}
 	// toastr.info("Succesfully created user");
+
+	$(function() {
+    $('#userTable input').bootstrapToggle({
+      on: 'Active',
+      off: 'Inactive'
+    });
+  })
 </script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <style type="text/css">
 	.bg-warning{
 		background-color: pink;
