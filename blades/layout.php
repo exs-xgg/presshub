@@ -11,8 +11,12 @@ if ($_SESSION['is_admin']!=='Y') {
 <html>
 <head>
 	<title>My Dashboard - Presshub</title>
-  <?php include 'dependencies.php'; ?>
-
+  <?php //include 'dependencies.php'; ?>
+<link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/bootstrap.min.js"></script>
+  <!-- Argon JS -->
+  <script src="/js/argon.js?v=1.0.0"></script>
 </head>
 <body>
 <header class="header-global">
@@ -51,7 +55,19 @@ if ($_SESSION['is_admin']!=='Y') {
     </nav>
   </header>
   <hr>
-  <div class="container"><h2>1.) Build your layout</h2>
+  <div class="container">
+    <h5>View Other Layouts:</h5>
+    <div class="row" id="layoutGallery">
+      <div class="col-3 p-3  align-self-center">
+        <div class="card-body bg-secondary shadow" style="cursor: pointer"> 
+          Layout ID #1
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <hr>
+  <div class="container"><h5>New Layout</h5>
   	<div class="row">
   		<div class="col-12 align-content-center">
   			<table class="table" id="layoutMaster">
@@ -60,9 +76,15 @@ if ($_SESSION['is_admin']!=='Y') {
   			<div class="col-6 mx-auto">
   				
 					<br><br>
-					<span class="col-12 btn btn-primary" data-toggle="modal" data-target="#md_1">
-						<i class="fa fa-plus"></i><strong class=""> Add Section</strong>
-					</span>
+          <div class="row">
+            <span class="col-5 btn btn-primary" data-toggle="modal" data-target="#md_1">
+            <strong class=""> Add Section</strong>
+          </span>
+          <span class="col-5 btn btn-success" onclick="saveLayout()">
+            <strong class=""> Save layout</strong>
+          </span>
+          </div>
+					
 					
 				
 				<div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
@@ -102,7 +124,14 @@ if ($_SESSION['is_admin']!=='Y') {
   	</div>
   </div>
   </body>
+
   <script type="">
+<?php if (isset($uri[2])): ?>
+    localStorage.setItem("layout_id",<?php echo $uri[2];?>)
+  <?php endif ?>
+    
+
+    if (true) {}
   	loadArticles();
   	function loadArticles() {
   		var issue_id = localStorage.getItem("issue_id");
@@ -113,18 +142,21 @@ if ($_SESSION['is_admin']!=='Y') {
   				// console.log(result);
   				result = jQuery.parseJSON(result);
   				$.each(result,function(idx,value){
-  					$("#articleToPlace").append('<option value="'+value.id+'">'+value.name+'</option>');
+  					$("#articleToPlace").append('<option id="cx_'+value.id+'" value="'+value.id+'">'+value.name+'</option>');
   				});
   			}
   		});
   	}
+    function rm(e){
+      $('#secc_'+e).remove();
+    }
   	function generateColumn(){
   		var rowInit = $('#layoutMaster tr').length + 1;
   		var generatedId = "sec_" + rowInit;
   		var art_id = $("#articleToPlace").val();
   		var numberOfColumns = $("#numberOfColumns").val();
   		// 
-  		$("#layoutMaster").append('<tr class="secb"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td><button class="btn btn-danger">Delete</button>');
+  		$("#layoutMaster").append('<tr class="secb" id="secc_'+rowInit + '"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td class="btnn"><button class="btn btn-danger" onclick="rm('+rowInit + ')">Delete</button></td></tr>');
   		$.ajax({
   			url: '/api/article/' + art_id,
   			success: function(result){
@@ -137,8 +169,29 @@ if ($_SESSION['is_admin']!=='Y') {
   			}
   		});
   	}
+    function saveLayout(){
+      $(".btnn").remove();
+      var dataa = [{
+        "issue_id" : localStorage.getItem("issue_id"),
+        "body" : "'" + btoa($("#layoutMaster").html()) + "'"
+      }];
+      dataa = JSON.stringify(dataa);
+      $.ajax({
+        url: '/api/layout',
+        type: 'post',
+        data: dataa,
+        success: function(result){
+          alert("Layout Saved Successfully");
+        }
+      })
+    }
   </script>
   <style type="text/css">
+  @media print  
+{
+    div{
+    }
+}
   .table{
 
       border: 13px !important;
@@ -174,4 +227,12 @@ if ($_SESSION['is_admin']!=='Y') {
        -moz-column-count: 3;
             column-count: 3;
 }
+
+
+
+
   </style>
+
+  <?php
+  include 'footer.php';
+  ?>
