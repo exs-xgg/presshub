@@ -6,8 +6,8 @@ $uri = explode("/", $request_uri[0]);
 
 include './database/config.php';
 
-// error_reporting(E_ERROR | E_WARNING | E_PARSE);
-// error_reporting(E_WARNING);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_WARNING);
 // var_dump($uri);
 //API CONTROLLER ROUTES
 if (strpos($uri[1], 'api') !== false) {
