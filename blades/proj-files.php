@@ -55,7 +55,7 @@ foreach ($rex2 as $key) {
 
 		<span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span>
 <?php if ($_SESSION['is_admin']=='Y'): ?>
-	<a href="/layout" class="btn btn-sm btn-info">Proceed to Layout</a>
+	<a href="/layout/<?php echo $uri[3] ?>" class="btn btn-sm btn-info">Proceed to Layout</a>
 <?php endif ?>
 		
 

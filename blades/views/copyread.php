@@ -51,8 +51,6 @@ $art_id = $uri[2];
                     <div class="col-1 text-dark">Pick Pen color</div>
                       <div class="col-1" style="height:50px;background:red; cursor: pointer;" id="red" onclick="color(this)"></div>
                       <div class="col-1" style="height:50px;background:black; cursor: pointer;" id="black" onclick="color(this)"></div>
-                      <div style="position:absolute;top:20%;left:43%;">Eraser</div>
-                      <div class="col-1" style="height:50px;background:red; cursor: pointer;" id="white" onclick="color(this)"></div>
                   </div>
                   <div class="row">
                   	<div class="col-6 mx-auto pull-right">

@@ -55,17 +55,7 @@ if ($_SESSION['is_admin']!=='Y') {
     </nav>
   </header>
   <hr>
-  <div class="container">
-    <h5>View Other Layouts:</h5>
-    <div class="row" id="layoutGallery">
-      <div class="col-3 p-3  align-self-center">
-        <div class="card-body bg-secondary shadow" style="cursor: pointer"> 
-          Layout ID #1
-        </div>
-      </div>
-      
-    </div>
-  </div>
+
   <hr>
   <div class="container"><h5>New Layout</h5>
   	<div class="row">
@@ -130,7 +120,18 @@ if ($_SESSION['is_admin']!=='Y') {
     localStorage.setItem("layout_id",<?php echo $uri[2];?>)
   <?php endif ?>
     
-
+init();
+function init(){
+  $.ajax({
+    url: '/api/layout/'+localStorage.getItem("layout_id"),
+    success: function(result){
+      result = jQuery.parseJSON(result);
+      $.each(result,function(idx,value){
+        $("#layoutMaster").append(atob(value.body));
+      });
+    }
+  })
+}
     if (true) {}
   	loadArticles();
   	function loadArticles() {
@@ -170,7 +171,6 @@ if ($_SESSION['is_admin']!=='Y') {
   		});
   	}
     function saveLayout(){
-      $(".btnn").remove();
       var dataa = [{
         "issue_id" : localStorage.getItem("issue_id"),
         "body" : "'" + btoa($("#layoutMaster").html()) + "'"

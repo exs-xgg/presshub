@@ -5,7 +5,7 @@ DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['i
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  DB::raw("select * from meeting inner join minutes on meeting.id = minutes.meeting_id where meeting.id=".$id);
+		$result =  DB::select("layout",null,"issue_id=".$id . " order by id desc limit 1");
 		echo "$result";
 		break;
 	case 'POST':

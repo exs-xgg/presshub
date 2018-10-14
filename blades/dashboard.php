@@ -224,7 +224,7 @@ switch ($uri[2]) {
   deadline.setMonth(deds[1]);
   deadline.setYear(deds[0]);
 
-
+color = '';
 
 if (Date.parse(targetDate) >= Date.parse(deds)) {
     color = "bg-danger text-white" ;
