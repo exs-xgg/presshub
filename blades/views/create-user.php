@@ -142,7 +142,7 @@
  //              <span class="custom-toggle-slider rounded-circle"></span>
  //            </label>
 	function activate(e){
-		var conf = confirm("Do you really want to " + (($("#ac_" + e).is(':checked'))?"Deactivate":"Activate") + " this user?");
+		var conf = confirm("Do you really want to " + (($("#ac_" + e).is(':checked'))?"Activate":"Deactivate") + " this user?");
 		if (conf) {
 			var dataa = [{
 				'is_active' : "'" + (($("#ac_" + e).is(':checked'))?"Y":"N") + "'"
@@ -199,7 +199,7 @@
 				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
 				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
 				'password': "'" + $("#password").val().replace(/<>/ig,"") + "'",
-				'is_admin':"'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'",
+				'is_admin': "'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'",
 				'is_active' : "'" + $("#is_active").val().substring(0,1) + "'"
 			}];
 			dataa = JSON.stringify(dataa);
