@@ -79,7 +79,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="/tw" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+              <a class="nav-link nav-link-icon" href="https://twitter.com/TSU_The_Browser" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
                 <i class="fa fa-twitter-square"></i>
                 <span class="nav-link-inner--text d-lg-none">Twitter</span>
               </a>

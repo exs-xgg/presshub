@@ -52,7 +52,12 @@ foreach ($re as $key) {
                   ?>&nbsp;&nbsp;(<?php echo $_SESSION['designation'] ?>)</small></span>  
               </span>
             </li>
-
+ <li class="nav-item dropdown">
+              <a href="/dashboard/settings" class="nav-link text-white">
+                <i class="ni ni-collection d-lg-none"></i>
+                <span class="">User Settings</span>
+              </a>
+            </li>
          
             
             <?php
@@ -72,6 +77,8 @@ if ($_SESSION['is_admin']=="Y") {
 
 
             ?>
+
+           
             <li class="nav-item pull-right">
               <a href="/login" class="btn btn-warning btn-icon">
                 <span class="btn-inner--icon">
@@ -146,7 +153,30 @@ if ($_SESSION['is_admin']=="Y") {
                <?php 
 if (!isset($uri[2]) || $uri[2]=="") {
  ?>
+<div class="container">
+  <h4>Notifications</h4>
+  <br>
+  <div class="row">
+ <?php 
+$notif = json_decode(DB::raw("select  article.name as art_name from article left join user_article on user_article.article=article.id where (is_done='N' and body is null) and user_article.user = ".$_SESSION['idx'] ));
+    foreach ($notif as $key => $value): ?>
+      <?php foreach ($value as $key3): ?>
+        <nav class="col-12 alert alert-info">New Article Available - <?php echo $key3 ?></nav>
+      <?php endforeach ?>
+      
+    <?php endforeach ?>
 
+    <?php 
+$notif = json_decode(DB::raw("select  article.name as art_name from article left join user_article on user_article.article=article.id where (is_done='N' and copyread is not null) and user_article.user = ".$_SESSION['idx'] ));
+    foreach ($notif as $key => $value): ?>
+      <?php foreach ($value as $key3): ?>
+        <nav class="col-12 alert alert-warning">Revision Available - <?php echo $key3 ?></nav>
+      <?php endforeach ?>
+      
+    <?php endforeach ?>
+    
+  </div>
+</div>
           <div class="card">
             <div class="card-header">
               Announcements
@@ -240,6 +270,9 @@ if (Date.parse(targetDate) >= Date.parse(deds)) {
 function go(e){
   window.location.href = "/dashboard/" + e;
 }
+localStorage.removeItem("user_id");
+
+      localStorage.removeItem("ann_id");
 </script>
 </html>
 <style type="text/css">

@@ -1,3 +1,4 @@
+
 <?php
 $result = DB::select("announcement",null," is_active='Y'");
 
@@ -60,3 +61,6 @@ echo '<div class="carousel-item">
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+
+<hr>

@@ -30,6 +30,8 @@
 	</div>
 </div>
 <script>
+
+			localStorage.removeItem("ann_id");
 	 getAnnouncement();
 	function getAnnouncement(){
 		$("#announcementTable > tbody").empty();

@@ -66,7 +66,8 @@ loadUserDetails();
 				"middle_name": "'" + $("#middle_name").val() + "'",
 				"email_addr" : "'" +$("#email_addr").val() + "'",
 				"contact_no" : "'" + $("#contact").val() + "'",
-				"username" : "'" + $("#username").val() +"'"
+				"username" : "'" + $("#username").val() +"'",
+				"password" : "'" + pw1 + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			$.ajax({

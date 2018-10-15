@@ -19,7 +19,7 @@ $is_he_here = json_decode(DB::raw("select count(*) as c from user_article where 
 $cf = 0;
 foreach ($is_he_here as $key) {
   $cf = $key->{'c'};
-}echo "$cf";
+}
 (isset($uri[2]) && ($uri[2])!=="") ? $id = $uri[2] : header("location: /admin");
 ?>
 <script>

@@ -98,6 +98,7 @@
 				</div>
 			</div>
 <script>
+	localStorage.removeItem("user_id");
 	getUserlist();
 	function getUserDetails(e){
 		localStorage.setItem("user_id",e);
