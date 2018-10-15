@@ -35,7 +35,7 @@
 				console.log(result);
 				r = jQuery.parseJSON(result);
 				$.each(r,function(idx,value){
-					 $('#roleTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.description + '</td><td></tr>');
+					 $('#roleTable > tbody:last-child').append('<tr><td id="t_' + value.id + '">' + value.description + '</td></tr>');
 				});
 			
 		           
