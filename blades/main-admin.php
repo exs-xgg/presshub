@@ -13,6 +13,9 @@
             <li class="nav-item">
               <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2"></i>Create Announcement</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="/admin/logs" role="tab" aria-controls="tabs-icons-text-4" aria-selected="false"><i class="fa fa-users mr-2"></i>Logs</a>
+            </li>
           </ul>
         </div>
         <div class="card">
