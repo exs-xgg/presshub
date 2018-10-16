@@ -52,7 +52,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 						}
 
 
+						?><?php
+						if ($_REQUEST['incorrect']=="x") {
+							?>
+
+<p class=" text-danger" align="center">User is Deactivated.</p>
+
+							<?php
+						}
+
+
 						?>
+
 							<div class="col-lg-12">
 								<form autocomplete="off" class="" action="/userstatus" method="post">
 								<input class="form-control" type="text" name="username" placeholder="Username">

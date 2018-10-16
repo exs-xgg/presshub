@@ -96,35 +96,7 @@ foreach ($is_he_here as $key) {
 
  <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
   ?>
-        <div class="col-md-6">
-          <nav class="alert alert-dark">Assign Users</nav>
-          <div class="col-lg-10 ">
-          <label>Assign Users</label>
-                      <input class="form-control" type="text" id="userAssigned" list="userList">
-                            <datalist id="userList">
-                        <option value="7">Rain</option>
-                        <option value="8">Josh</option>
-                        <option value="9">Therese</option>
-                        <option value="10">Calvin</option>
-                        <option value="11">Maam Danica</option>
-                      </datalist>
-          
-          </div>
-          <div class="col-lg-2">
-            <label class="col-lg-12">&nbsp;</label>
-            <span onclick="addUserToArticle()" class="btn btn-primary"><i class="fa fa-plus"></i> Add</span>
-          </div>
-          <div class="row">
-                    <table class="table table-striped" id="user_article_list">
-                      <thead>
-                        <tr><th>Name</th></tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>Test</td><td class="col-md-1 chev"><i class="fa fa-close"></i></td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-        </div>
+        
 
       <hr>
         <div class="col-md-12">
