@@ -1,7 +1,7 @@
 <?php
 $method = $_SERVER['REQUEST_METHOD'];
 
-DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-TYPE')");
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-TYPE". (isset($uri[3]) ? "(".$uri[3].")" : "")."')");
 $cat = $uri[3];
 $id = $uri[4];
 switch ($method) {

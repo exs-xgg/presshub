@@ -1,11 +1,11 @@
 <?php
 $method = $_SERVER['REQUEST_METHOD'];
 
-DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','DESIGNATION')");
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','DESIGNATION". (isset($uri[3]) ? "(".$uri[3].")" : "")."')");
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("designation",null," id=". $id) : DB::select("designation");
+		$result =  ($id!==null) ? DB::select("designation",null," id=". $id) : DB::select("designation", null, "description not in (select distinct(designation) from users)");
 		echo "$result";
 		break;
 	case 'POST':

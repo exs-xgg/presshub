@@ -2,7 +2,7 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[3];
-DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-ASSIGNMENT')");
+DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-ASSIGNMENT". (isset($uri[3]) ? "(".$uri[3].")" : "")."')");
 switch ($method) {
 	case 'GET':
 		$result =  ($id!==null) ? DB::raw("select a.id as id, a.name as article_name, a.date_created as date_created, a.deadline as deadline, i.nickname as issue from user_article ua inner join article a on ua.article=a.id inner join issue i on a.issue_id = i.id where is_done='N' and user=" . $id):null;

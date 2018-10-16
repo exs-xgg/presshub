@@ -26,7 +26,7 @@
 								<div class="row">
 									<div class="col-lg-4">
 										<label>Contact No.</label>
-										<input class=" col-lg-12 form form-control form-control-alternative" type="number" id="contact_no" placeholder="Contact No." data-toggle="tooltip" data-placement="bottom" title="Start with 9 (ex. 9174589972)" maxlength="10">
+										<input class=" col-lg-12 form form-control form-control-alternative" type="number" id="contact_no" placeholder="Contact No." data-toggle="tooltip" data-placement="bottom" maxlength="11">
 									</div>
 									<div class="col-lg-4">
 										<label>Email Address</label>
@@ -58,7 +58,7 @@
 												Choose Designation
 											</option>
 <?php 
-	$result = DB::select("designation");
+	$result = DB::select("designation",null,"description not in (select distinct(designation) from users)");
 	// echo "$result";
 	if ($result!=='[]') {
 		$result = json_decode($result,true);
@@ -67,7 +67,9 @@
 		}
 	}
 ?>
-											<
+											<option id="NONE">
+												NONE
+											</option>
 										</select>
 									</div>
 									<!-- <div class="col-lg-5">

@@ -63,7 +63,9 @@ switch ($page) {
     require 'views/admin/view-issue.php';
   // echo "aaaa";
     break;
-  
+  case 'logs':
+    require 'views/logs.php';
+    break ;
   default:
     require 'main-admin.php';
     break;
