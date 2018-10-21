@@ -10,6 +10,7 @@
 			foreach ($result as $key) {
 				if ($key->{"is_active"}=="N") {
 					header('location: /login?incorrect=x');
+					exit;
 				}
 				$_SESSION['user'] = $key->{"first_name"}.' '.$key->{"middle_name"}.' '.$key->{"last_name"};
 				$_SESSION['is_admin'] = $key->{"is_admin"};

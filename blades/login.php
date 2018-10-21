@@ -56,7 +56,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 						if ($_REQUEST['incorrect']=="x") {
 							?>
 
-<p class=" text-danger" align="center">User is Deactivated.</p>
+<p class=" text-danger" align="center">User is Deactivated. Please contact administrator</p>
 
 							<?php
 						}
