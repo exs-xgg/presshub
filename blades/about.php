@@ -130,7 +130,7 @@
          	<hr>
          	<div class="container">
          		<div class="col-12 mx-auto">
-         			<img src="https://i.imgur.com/zzdIe1O.png">
+         			<img class="shadow" src="https://i.imgur.com/zzdIe1O.png">
          		</div>
          		
          	</div>

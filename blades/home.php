@@ -53,7 +53,7 @@
           </div>
           <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link">
+              <a href="/about#members" class="nav-link">
                 <i class="ni ni-ui-04 d-lg-none"></i>
                 <span class="nav-link-inner--text">Members</span>
               </a>
