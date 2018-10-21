@@ -115,12 +115,7 @@
         <div class="container shape-container d-flex" id="about">
          <div class="container text-white">
          	<h1 class="text-white">About Us</h1>
-         	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-         	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-         	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-         	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-         	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-         	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         	<p> The Browser is the official publication of the College of Computer Studies. It was launched in 1996, as it was first called ICS Gazette, and in 1997 it was renamed as ICS Browser and turned The Browser later on. </p>
          </div>
         </div>
 <hr>
