@@ -158,6 +158,15 @@ if (!isset($uri[2]) || $uri[2]=="") {
   <br>
   <div class="row">
  <?php 
+$notif = json_decode(DB::raw("select nickname from issue where id not in (select distinct(issue_id) from article)"));
+    foreach ($notif as $key => $value): ?>
+      <?php foreach ($value as $key3): ?>
+        <nav class="col-12 alert alert-success">New Issue - <?php echo $key3 ?></nav>
+      <?php endforeach ?>
+      
+    <?php endforeach ?>
+
+ <?php 
 $notif = json_decode(DB::raw("select  article.name as art_name from article left join user_article on user_article.article=article.id where (is_done='N' and body is null) and user_article.user = ".$_SESSION['idx'] ));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
