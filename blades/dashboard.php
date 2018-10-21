@@ -105,6 +105,11 @@ if ($_SESSION['is_admin']=="Y") {
                   <li class="nav-item"  onclick="go('assignment')">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments (<?php echo $count_assigned ?>)</a>
                   </li>
+                  <?php if ($_SESSION['is_admin']=='Y'): ?>
+                    <li class="nav-item"  onclick="go('admin-notif')">
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Admin Notifications</a>
+                  </li>
+                  <?php endif ?>
                    <li class="nav-item"  onclick="go('file')">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="#tabs-icons-text-4" role="tab" aria-controls="tabs-icons-text-4" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Files</a>
                   </li>
@@ -118,12 +123,6 @@ if ($_SESSION['is_admin']=="Y") {
      switch ($uri[2]) {
   case 'assignment':
     echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">assignments</li>';
-    break;
-  case 'meeting':
-    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">meetings</li>';
-    break;
-  case 'events':
-    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">events</li>';
     break;
   case 'file':
    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">files</li>';
@@ -220,6 +219,9 @@ switch ($uri[2]) {
     break;
   case 'settings':
     require 'user-settings.php';
+    break;
+  case 'admin-notif':
+    require 'admin-notif.php';
     break;
   default:
     # code...
