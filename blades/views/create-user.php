@@ -67,6 +67,9 @@
 		}
 	}
 ?>
+											<option id="CORRESPONDENT">
+												CORRESPONDENT
+											</option>
 											<option id="NONE">
 												NONE
 											</option>
