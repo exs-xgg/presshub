@@ -115,7 +115,10 @@
         <div class="container shape-container d-flex" id="about">
          <div class="container text-white">
          	<h1 class="text-white">About Us</h1>
-         	<p> The Browser is the official publication of the College of Computer Studies. It was launched in 1996, as it was first called ICS Gazette, and in 1997 it was renamed as ICS Browser and turned The Browser later on. </p>
+         	<p>Welcome to Presshub, A cloud-based publication management system specifically made for the Browser. The Browser is the official publication of the College of Computer Studies. It was launched in 1996, as it was first called ICS Gazette, and in 1997 it was renamed as ICS Browser and turned The Browser later on.
+Having a ton of paperworks to hold on to as a college student writer is indeed hassle and somewhat energy consuming; Thinking of misplacing your printed article; Forgetting the deadline of articles and many problems down the line add up in the stress of being a student. So, why not create a platform where a student writer can easily do his/her duties without being bonkers.
+We have the answer! Introducing Presshub, a cloud based publication management system that enables users to create, edit, save and back up files in a virtual storage, anytime, anywhere.
+ AN ALL-IN-ONE STUDENT WRITER COMPANION!</p>
          </div>
         </div>
 <hr>
