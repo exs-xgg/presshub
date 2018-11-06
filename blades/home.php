@@ -121,7 +121,7 @@
                 </h1>
                 
                 <div class="btn-wrapper">
-                  <a href="/members"  class="btn btn-info btn-icon mb-3 mb-sm-0">
+                  <a href="/about#members"  class="btn btn-info btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fa fa-group"></i></span>
                     <span class="btn-inner--text">Members</span>
                   </a>

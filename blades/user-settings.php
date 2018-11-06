@@ -14,7 +14,7 @@
 				<label>Last Name</label>
 			<input class="form-control form-control-alternative" type="text" id="last_name">
 				<label>Contact Number</label>
-			<input class="form-control form-control-alternative" type="text" id="contact">
+			<input class="form-control form-control-alternative" type="text" id="contact" maxlength="11" onkeypress="return isNumber(event)">
 				<label>Email Address</label>
 			<input class="form-control form-control-alternative" type="email" id="email_addr">
 				
@@ -26,17 +26,38 @@
 				<label>Username</label>
 			<input class="form-control form-control-alternative" type="text" id="username" required>
 				<label>New Password</label>
-			<input class="form-control form-control-alternative" type="password" id="password" required>
+			<input class="form-control form-control-alternative" type="password" id="password" required onkeyup="confirmPass()">
 				<label>Confirm Password</label>
-			<input class="form-control form-control-alternative" type="Password" id="c_password" required>
+			<input class="form-control form-control-alternative" type="Password" id="conf_password" required onkeyup="confirmPass()">
 			<hr>
-			<button class="btn btn-primary" onclick="saveUserDetails()">Submit</button>
+			<button class="btn btn-primary" onclick="saveUserDetails()" id="submiter">Submit</button>
 			</div>
 		</div>
 	</div>
 </div>
 <script>
 loadUserDetails();
+function confirmPass(){
+		if ($("#password").val() !== $("#conf_password").val()) {
+			 $("#conf_password").addClass("text-danger border-danger");
+			 $("#conff").addClass("text-danger");
+		return false;
+		}else{
+			$("#conf_password").removeClass("text-danger border-danger");
+			 $("#conff").removeClass("text-danger");
+			 $("#conf_password").addClass("text-success border-success");
+			 $("#conff").addClass("text-success");
+		return true;
+		}
+	}
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
 	function loadUserDetails(){
 		$.ajax({
 			url: '/api/user/' + <?php echo $_SESSION['idx']; ?>,
@@ -56,10 +77,12 @@ loadUserDetails();
 		});
 	}
 	function saveUserDetails(){
+
+		if (confirmPass()) {
 		var pw1 = $("#password").val();
 		var pw2 = $("#c_password").val();
 		var rp = $("#realpw").val();
-		if ((pw1!=="") && (pw1==pw2)) {
+		
 			var dataa = [{
 				"first_name" : "'" + $("#first_name").val() + "'",
 				"last_name" : "'" + $("#last_name").val() + "'",
@@ -81,7 +104,8 @@ loadUserDetails();
 				}
 			});
 		}else{
-			toastr.error("Something Went Wrong. PLease Check Input Fields");
+			toastr.error("Passwords do not match");
 		}
+	
 	}
 </script>

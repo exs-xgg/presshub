@@ -26,7 +26,7 @@
 								<div class="row">
 									<div class="col-lg-4">
 										<label>Contact No.</label>
-										<input class=" col-lg-12 form form-control form-control-alternative" type="number" id="contact_no" placeholder="Contact No." data-toggle="tooltip" data-placement="bottom" maxlength="11">
+										<input class=" col-lg-12 form form-control form-control-alternative" type="text" id="contact_no" placeholder="Contact No." data-toggle="tooltip" data-placement="bottom" maxlength="11" onkeypress="return isNumber(event)" >
 									</div>
 									<div class="col-lg-4">
 										<label>Email Address</label>
@@ -43,15 +43,21 @@
 								</div>
 								<br>
 								<div class="row">
-									<div class="col-lg-3">
+									<div class="col-lg-4">
 										<label>Username</label>
 										<input class=" col-lg-12 form form-control form-control-alternative" type="text" id="username" placeholder="username"  data-toggle="tooltip" data-placement="bottom" title="up to 32 characters only" maxlength="10">
 									</div>
 									<div class="col-lg-4">
 										<label>Password</label>
-										<input class=" col-lg-12 form form-control form-control-alternative" type="password" id="password" placeholder="Password"  data-toggle="tooltip" data-placement="bottom" title="Preferrably 8-32 characters with a combination of Numbers, Uppercase and Lowercase letters">
+										<input class=" col-lg-12 form form-control form-control-alternative" type="password" id="password" placeholder="Password"  data-toggle="tooltip" data-placement="bottom" title="Preferrably 8-32 characters with a combination of Numbers, Uppercase and Lowercase letters" onkeyup="confirmPass()">
 									</div>
-									<div class="col-lg-5">
+									<div class="col-lg-4">
+										<label id="conff">Confirm Password</label>
+										<input class=" col-lg-12 form form-control form-control-alternative" type="password" id="conf_password" placeholder="Password" onkeyup="confirmPass()">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
 										<label>Designation</label>
 										<select class="form form-control form-control-alternative" id="designation" placeholder="Designation">
 											<option>
@@ -63,16 +69,19 @@
 	if ($result!=='[]') {
 		$result = json_decode($result,true);
 		foreach ($result as $key) {
-			echo '<option id="'.$key['description'].'">'.$key['description']."</option>";
+			echo '<option value="'.$key['description'].'">'.$key['description']."</option>";
 		}
 	}
 ?>
-											<option id="CORRESPONDENT">
+											<option value="CORRESPONDENT">
 												CORRESPONDENT
 											</option>
-											<option id="NONE">
+											<option value="NONE">
 												NONE
 											</option>
+											<span id="illegal">
+												asd
+											</span>
 										</select>
 									</div>
 									<!-- <div class="col-lg-5">
@@ -84,27 +93,68 @@
 									</select>
 									</div> -->
 								</div><input type="text" id="is_active" value="Y" hidden>
-								
+								<div class="row">
+									<div class="col-12">
+										<label>Secret Question</label>
+										<select class="form-control form-control-alternative" id="question" placeholder="">
+											<option>
+												Choose Secret Question
+											</option>
+<?php 
+	$result = DB::raw("select * from questions");
+	// echo "$result";
+	if ($result!=='[]') {
+		$result = json_decode($result,true);
+		foreach ($result as $key) {
+			echo '<option value="'.$key['id'].'">'.$key['question']."</option>";
+		}
+	}
+?>
+											
+										</select>
+									</div>
+									
+									
+								</div>
+								<div class="row">
+										<div class="col-12">
+										<label>Answer</label>
+										<input class="form-control form-control-alternative" type="text" name="" id="answer">
+									</div>
+									</div>
 								<br>
-								<button class="btn btn-primary" onclick="submitForm()">SUbmit</button>
+								<button class="btn btn-primary" id="submiter" onclick="submitForm()">SUbmit</button>
 							</div>
 						</div>
 						
 					</div>
 					</div>
 					<div class="col-6">
-							<table class="table" id="userTable">
-								<thead>
-									<tr><th>Name</th><th>Designation</th><th>Is Active</th><th></th></tr>
-									
-								</thead><tbody></tbody>
-							</table>
-						</div>
+						<table class="table" id="userTable">
+							<thead>
+								<tr><th>Name</th><th>Designation</th><th>Is Active</th><th></th></tr>
+								
+							</thead><tbody></tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 <script>
 	localStorage.removeItem("user_id");
 	getUserlist();
+	function confirmPass(){
+		if ($("#password").val() !== $("#conf_password").val()) {
+			 $("#conf_password").addClass("text-danger border-danger");
+			 $("#conff").addClass("text-danger");
+		return false;
+		}else{
+			$("#conf_password").removeClass("text-danger border-danger");
+			 $("#conff").removeClass("text-danger");
+			 $("#conf_password").addClass("text-success border-success");
+			 $("#conff").addClass("text-success");
+		return true;
+		}
+	}
 	function getUserDetails(e){
 		localStorage.setItem("user_id",e);
 		$("#wat").text("Edit");
@@ -113,16 +163,20 @@
 			success: function(result){
 				result = jQuery.parseJSON(result);
 				$.each(result,function(idx,value){
+					$(".dump").remove();
+					$("#designation").append('<option class="dump" value="'+value.designation+'">'+value.designation+'</option>');
+					$("#designation").val(value.designation);
 					$("#last_name").val(value.last_name);
 					$("#first_name").val(value.first_name);
 					$("#middle_name").val(value.middle_name);
 					$("#email_addr").val(value.email_addr);
 					$("#contact_no").val(value.contact_no);
-					$("#designation").val(value.designation);
 					$("#username").val(value.username);
-					$("#realpw").val(value.password);
 					$("is_admin").val(value.is_admin);
-
+					$("#question").val(value.question_id);
+					$("#answer").val(value.answer);
+					$("#password").val("");
+					$("#conf_password").val("");
 				});
 			}
 		});
@@ -167,6 +221,9 @@
 		
 	}
 	function submitForm(){
+		if (confirmPass()) {
+
+		
 		if (localStorage.getItem("user_id")) {
 			var dataa = [{
 				'first_name': "'" + $("#first_name").val().replace(/<>/ig,"") + "'",
@@ -177,8 +234,10 @@
 				'email_addr': "'" + $("#email_addr").val().replace(/<>/ig,"") + "'",
 				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
 				'password': "'" + $("#password").val().replace(/<>/ig,"") + "'",
-				'is_admin':"'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'",
-				'is_active' : "'" + $("#is_active").val().substring(0,1) + "'"
+				'is_admin':"'" + $("#is_admin").val().substring(0,1) + "'",
+				'is_active' : "'" + $("#is_active").val().substring(0,1) + "'",
+				'question_id' : "'" + $("#question").val() + "'",
+				'answer' : "'" + $("#answer").val().replace(/<>/ig,"") + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);
@@ -205,7 +264,9 @@
 				'username': "'" + $("#username").val().replace(/<>/ig,"") + "'",
 				'password': "'" + $("#password").val().replace(/<>/ig,"") + "'",
 				'is_admin': "'" + $("#is_admin").val().replace(/<>/ig,"").substring(0,1) + "'",
-				'is_active' : "'" + $("#is_active").val().substring(0,1) + "'"
+				'is_active' : "'" + $("#is_active").val().substring(0,1) + "'",
+				'question_id' : "'" + $("#question").val() + "'",
+				'answer' : "'" + $("#answer").val().replace(/<>/ig,"") + "'"
 			}];
 			dataa = JSON.stringify(dataa);
 			// console.log(dataa);
@@ -219,6 +280,7 @@
 			});
 		}
 		getUserlist();
+		}
 	}
 	// toastr.info("Succesfully created user");
 function emptyFields(){
@@ -229,8 +291,20 @@ function emptyFields(){
 					$("#contact_no").val("");
 					$("#designation").val("");
 					$("#username").val("");
-					$("#realpw").val("");
+
+					$("#password").val("");
+					$("#conf_password").val("");
 					$("is_admin").val("");
+					$("#answer").val("");
+					$("#question_id").val("");
+}
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
 }
 </script>
 <style type="text/css">

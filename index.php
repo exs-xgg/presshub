@@ -13,8 +13,14 @@ error_reporting(E_WARNING);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
+        case 'forget':
+            require 'class/ForgetController.php';
+            break;
         case 'deletefile':
             require 'class/DeleteFileController.php';
+            break;
+        case 'searchuser':
+            require 'class/SearchUserController.php';
             break;
         case 'layout':
             require 'class/LayoutController.php';
@@ -95,6 +101,9 @@ switch ($uri[1]) {
         require 'blades/home.php';
         break;
     // Home page
+    case 'forgot':
+        require 'blades/forgot.php';
+        break;
     case 'layout':
         require 'blades/layout.php';
         break;

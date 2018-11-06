@@ -70,7 +70,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 								<br>
 								<input class="form-control" type="password" name="password" placeholder="Password"><br>
 								<button class="btn btn-primary col-lg-12" onclick="set()" type="submit">Login</button><br><div class="col-lg-12" align="center"> - or - </div>
-								<a class="btn btn-warning col-lg-12" href="/home">Go Back</a>
+								<a class="btn btn-warning col-lg-12" href="/forgot">Forgot Password</a>
 								</form>
 							</div>
 						</div>
