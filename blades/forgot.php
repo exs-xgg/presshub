@@ -11,6 +11,7 @@ include 'dependencies.php';
 		<div class="col-10 mx-auto">
 			<div class="card card-shadow">
 				<div class="card-body">
+					<a href="/login">Back to Login Page</a><br><br>
 					<?php if (isset($_REQUEST['pass']) && $_REQUEST['pass']=="true"): ?>
 						<nav class="alert alert-success">Password reset has been succesful and has been reset to blank.</nav>
 						<?php else: ?>
