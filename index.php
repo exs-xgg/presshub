@@ -76,9 +76,6 @@ if (strpos($uri[1], 'api') !== false) {
         case 'test':
             require 'class/TestController.php';
             break;
-        case 'meeting':
-            require 'class/MeetingController.php';
-            break;
         case 'meeting-minutes':
             require 'class/MeetingMinutesController.php';
             break;
