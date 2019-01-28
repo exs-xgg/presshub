@@ -228,7 +228,7 @@ foreach ($is_he_here as $key) {
 
   $("#fixedBtn").hide();
  function copyread(){
-       window.location.href = "/copyread/" + localStorage.getItem("art_id");
+       window.location.href= ( "/copyread/" + localStorage.getItem("art_id"));
 
 
 

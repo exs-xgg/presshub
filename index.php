@@ -132,7 +132,7 @@ switch ($uri[1]) {
         require 'blades/dashboard.php';
         break;
     case 'copyread':
-        require 'blades/views/copyread.php';
+        require 'blades/views/copyread_v2.php';
         break;
     // Everything else
     case '500':

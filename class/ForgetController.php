@@ -14,7 +14,7 @@ switch ($method) {
 			header("location: /forgot?pass=fail");
 		}
 		break;
-	case 'POST':
+	case 'POST':	
 		$contents = file_get_contents("php://input");
 		$data_to_catch = array();
 		$data_to_insert = array();
