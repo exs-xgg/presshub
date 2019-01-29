@@ -47,15 +47,31 @@ $art_id = $uri[2];
 			</div>
 		</div>
         <hr>
-		<div class="col-lg-8 col-md-10 col-xs-12 mx-auto"  id="penPanel">
+		<div class="col-lg-8 col-md-10 col-xs-12 mx-auto"  id="penPanel"><div class="col-10 text-dark">Click to add a symbol to the copyreading canvas</div>
                   <div class="row">
-                    <!-- <div class="col-1 text-dark">Pick Pen color</div> -->
-                        <div class="col-1" style="height:50px;background:red; cursor: pointer;" id="red" onclick="color(this)"></div>
-                        <div class="col-1" style="height:50px;background:black; cursor: pointer;" id="black" onclick="color(this)"></div>
-                        <div class="furniture">
-                            <img draggable="true" src="http://placehold.it/50x50/848/fff">
-                            <img draggable="true" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Red_Arrow_Left.png" height="50px">
-                        </div>
+                    
+                    <div id="images" class="furniture">
+            <img class="c_img" draggable="true" src="/img/cp_symbols/transpose.png" width="250" height="250" onclick="addToCanvas('/img/cp_symbols/transpose.png')"></img>
+            <img class="c_img" draggable="true" src="/img/cp_symbols/Omit.gif" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/Omit.gif')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/italics.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/italics.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/hashtag.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/hashtag.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/closeup.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/closeup.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/bf.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/bf.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/cap.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/cap.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/colon.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/colon.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/fl.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/fr.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/inser_comma.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/inser_comma.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_L.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_L.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_R.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_R.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_hyphen.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_hyphen.png')"></img>
+            
+
+
+                    <!-- <img class="c_img" draggable="true" src="/img/cp_symbols/.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/.png')"></img> -->
+                    <!-- https://www.sfep.org.uk/assets/files/general/bsi-symbols-d1-closeup.png -->
+
+        </div>
+                        
                   </div>
                 <div class="row">
                   	<div class="col-6 mx-auto pull-right">
@@ -64,14 +80,14 @@ $art_id = $uri[2];
                     </div>
                   	
                 </div>
-         </div><br>
-		<div class="col-10" id="box1"></div>
+                <div class="col-10" id="box1"></div>
         <div class="drafter"></div>
-        <canvas></canvas>
+        <canvas id="cvdrafter" width="1280" height="720" style="border: 1px solid black"></canvas>
         
-	
-	</div>
-
+        
+         </div><br>
+		
+        
 </body>
 
 <script>
@@ -123,78 +139,7 @@ loadArt();
        
     }
     
-    function color(obj) {
-        switch (obj.id) {
-           
-            case "red":
-                x = "red";
-                break;
-           
-            case "black":
-                x = "black";
-                break;
    
-        }
-        if (x == "white") y = 14;
-        else y = 2;
-    
-    }
-    
-    function draw() {
-        ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
-        ctx.lineTo(currX, currY);
-        ctx.strokeStyle = x;
-        ctx.lineWidth = y;
-        ctx.stroke();
-        ctx.closePath();
-    }
-    
-    function erase() {
-        var m = confirm("Want to clear");
-        if (m) {
-            ctx.clearRect(0, 0, w, h);
-            document.getElementById("canvasimg").style.display = "none";
-        }
-    }
-    
-    function save() {
-        document.getElementById("canvasimg").style.border = "2px solid";
-        var dataURL = canvas.toDataURL();
-        document.getElementById("canvasimg").src = dataURL;
-        document.getElementById("canvasimg").style.display = "inline";
-    }
-    
-    function findxy(res, e) {
-        if (res == 'down') {
-            prevX = currX;
-            prevY = currY;
-            currX = e.clientX - canvas.offsetLeft;
-            currY = e.clientY - canvas.offsetTop;
-    
-            flag = true;
-            dot_flag = true;
-            if (dot_flag) {
-                ctx.beginPath();
-                ctx.fillStyle = x;
-                ctx.fillRect(currX, currY, 2, 2);
-                ctx.closePath();
-                dot_flag = false;
-            }
-        }
-        if (res == 'up' || res == "out") {
-            flag = false;
-        }
-        if (res == 'move') {
-            if (flag) {
-                prevX = currX;
-                prevY = currY;
-                currX = e.clientX - canvas.offsetLeft;
-                currY = e.clientY - canvas.offsetTop;
-                draw();
-            }
-        }
-    }
 
 
 
@@ -218,133 +163,81 @@ loadArt();
 
 
 	}
-//=========================
-
-
-function initCanvas() {
-    $('.drafter').each(function(index) {
-
-        var canvasContainer = $(this)[0];
-        var canvasObject = $("canvas", this)[0];
-        var url = $(this).data('floorplan');
-        var canvasa = window._canvas = new fabric.Canvas(canvasObject);
-
-        // canvas.setHeight(200);
-        // canvas.setWidth(500);
-        canvasa.setBackgroundImage(url, canvasa.renderAll.bind(canvasa));
-        
-        var imageOffsetX, imageOffsetY;
-
-        function handleDragStart(e) {
-            [].forEach.call(images, function (img) {
-                img.classList.remove('img_dragging');
-            });
-            this.classList.add('img_dragging');
-          
-          
-            var imageOffset = $(this).offset();
-            imageOffsetX = e.clientX - imageOffset.left;
-            imageOffsetY = e.clientY - imageOffset.top;
-        }
-
-        function handleDragOver(e) {
-            if (e.preventDefault) {
-                e.preventDefault();
-            }
-            e.dataTransfer.dropEffect = 'copy';
-            return false;
-        }
-
-        function handleDragEnter(e) {
-            this.classList.add('over');
-        }
-
-        function handleDragLeave(e) {
-            this.classList.remove('over');
-        }
-
-        function handleDrop(e) {
-            e = e || window.event;
-            if (e.preventDefault) {
-              e.preventDefault();
-            }
-            if (e.stopPropagation) {
-                e.stopPropagation();
-            }
-            var img = document.querySelector('.furniture img.img_dragging');
-            console.log('event: ', e);
-          
-            var offset = $(canvasObject).offset();
-            var y = e.clientY - (offset.top + imageOffsetY);
-            var x = e.clientX - (offset.left + imageOffsetX);
-          
-            var newImage = new fabric.Image(img, {
-                width: img.width,
-                height: img.height,
-                left: x,
-                top: y
-            });
-            canvasa.add(newImage);
-            return false;
-        }
-
-        function handleDragEnd(e) {
-            [].forEach.call(images, function (img) {
-                img.classList.remove('img_dragging');
-            });
-        }
-      
-      var images = document.querySelectorAll('.furniture img');
-      [].forEach.call(images, function (img) {
-        img.addEventListener('dragstart', handleDragStart, false);
-        img.addEventListener('dragend', handleDragEnd, false);
-      });
-      canvasContainer.addEventListener('dragenter', handleDragEnter, false);
-      canvasContainer.addEventListener('dragover', handleDragOver, false);
-      canvasContainer.addEventListener('dragleave', handleDragLeave, false);
-      canvasContainer.addEventListener('drop', handleDrop, false);
-    });
-}
-
-
-
-
-
-
-
-
-
-
-
-//========================
-
+    var canvas_main = ""
     function saveCanvas(){
-        setTimeout(200);
-        var dataURL = canvas.getElementsByTagName('canvas')[0].toDataURL('image/png', 1);
+        var dataURL =  document.getElementsByTagName("canvas")[0].toDataURL('image/png', 1);
+        //set canvas
+        var img = new Image();
+        img.src = dataURL;
+        console.log(img.width);
+        var canvass = document.getElementById('cvdrafter');
+        canvass.width = $("#box0").width();
+            canvass.height = $("#box0").height();
+
+
+
         $("canvas").first().remove();
         $(".drafter").attr('data-floorplan', dataURL);
         
-        initCanvas();
+        
+        canvas_main = new fabric.Canvas('cvdrafter');
+
+       
+        // fabric.Image.fromURL($(".drafter").attr('data-floorplan'), function(myImg) {
+        // //i create an extra var for to change some image properties
+        // var img1 = myImg.set();
+
+        
+        // canvas.add(img1); 
+    // });
+        canvas_main.setBackgroundImage($(".drafter").attr('data-floorplan'), canvas_main.renderAll.bind(canvas_main));
+
+
+
+
+
     }
+
+
+
+
 	function save(){
-		var dataURL = canvas.getElementsByTagName('canvas')[0].toDataURL('image/png', 1);
-        console.log(dataURL);
+        var canvas = document.getElementById('cvdrafter');
+		var dataURL = canvas.toDataURL('image/png', 1);
+        // console.log(dataURL);
 		dataa = [{
 			"copyread" : "'" + dataURL + "'"
 		}];
 		dataa = JSON.stringify(dataa);
-		// $.ajax({
-		// 	url: '/api/article/cp/' + <?php echo $art_id; ?>,
-		// 	type: 'put',
-		// 	data: dataa,
-		// 	success: function(result){
-		// 		toastr.success("Copyread Saved!");
-		// 	}
-		// });
+		$.ajax({
+			url: '/api/article/cp/' + <?php echo $art_id; ?>,
+			type: 'put',
+			data: dataa,
+			success: function(result){
+				toastr.success("Copyread Saved!");
+			}
+		});
 	}
+    function addToCanvas(e){
 
+        var imgObj = new Image();
+        imgObj.src = e;
+        imgObj.onload = function() {
+        var image = new fabric.Image(imgObj);
+        image.set({
+            left: 10,
+            top: 10,
+        }).scale(0.2);
+        
+        canvas_main.add(image);
+        }
+    }
 </script>
 <style type="text/css">
+.c_img{
+    max-height: 50px;
+    max-width: 50px;
+}
 [draggable] {
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -362,8 +255,8 @@ function initCanvas() {
   border-style: solid;
   border-width: 2px;
 }
-.canvas {
-    // max-width: 100%;
-    // max-height: 100%;
+canvas {
+    max-width: 100%;
+    max-height: 100%;
 }
 </style>
