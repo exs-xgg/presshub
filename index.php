@@ -13,6 +13,9 @@ error_reporting(E_WARNING);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
+        case 'pdf':
+            require 'class/PDFPublisherController.php';
+            break;
         case 'forget':
             require 'class/ForgetController.php';
             break;
