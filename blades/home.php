@@ -115,11 +115,27 @@
         <div class="container shape-container d-flex">
           <div class="col px-0">
             <div class="row">
-              <div class="col-lg-7" >
-                <h1 class="display-3  text-white">Presshub
-                  <span>The Official Website Publication Portal for CCS - The Browser</span>
+              <div class="col-lg-12 text-center" >
+                <h1 class="display-3 text-white">Presshub
+                  <span>The Official Website Publication Portal<br> for CCS - The Browser</span>
                 </h1>
-                
+                <br><br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-4 mx-auto">&nbsp;
+                    </div>
+                    <div class="col-2 mx-auto">
+                     <img src="https://www.tsu.edu.ph/media/1902/TSUC_250x250.jpg" width="141" height="141">
+                    </div>
+                    <div class="col-2 mx-auto">
+                     <img src="/img/brand/favicon1.png" width="150" height="150">
+                    </div>
+                    <div class="col-4 mx-auto">&nbsp;
+                    </div>
+                  </div>
+                </div>
+
+                <br><br>
                 <div class="btn-wrapper">
                   <a href="/about#members"  class="btn btn-info btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fa fa-group"></i></span>

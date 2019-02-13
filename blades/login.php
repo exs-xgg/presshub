@@ -19,20 +19,14 @@ session_destroy();
 </head>
 
 
-<body style="background: rgba(212,228,239,1);
-background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 ">
+<body style="background-image:url('/img/bg_login.png'); 
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;  ">
 <div class="container">
-	<div class="row" style="height: 30vh">
-		&nbsp;
-	</div>
+	
 	<div class="row">
-		<div class="col-lg-3 col-md-2 col-xs-2">
+		<div class="col-lg-6 col-md-4 col-xs-4">
 			&nbsp;
 		</div>
 		<div class="col-lg-6 col-md-8 col-xs-8">
@@ -40,6 +34,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 				<div class="row">
 					<div class="card col-lg-12">
 						<div class="card-body">
+							<div class="row">
+								<div class="col-2">
+								&nbsp;	
+								</div>
+								<div class="col-8">
+								<img src="/img/brand/favicon1.png" width="250" height="250">
+								</div>
+								<div class="col-2">
+								&nbsp;	
+								</div>
+							</div>
 							<h2 class="col-lg-12" align="center">Login - Presshub</h2>
 							<hr>
 							<?php
@@ -83,9 +88,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', end
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3 col-md-2 col-xs-2">
-		&nbsp;
-	</div>
+	
 </div>
 
 </body>
