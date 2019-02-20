@@ -15,7 +15,7 @@
 <script src="/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
   <script src="/node_modules/toastr/build/toastr.min.js"></script>
-  <script src="/node_modules/datatables/media/js/jquery.datatables.min.js"></script>
+  <script src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>

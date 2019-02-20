@@ -1,8 +1,9 @@
 <?php
 $method = $_SERVER['REQUEST_METHOD'];
 
-DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','LAYOUT". (isset($uri[3]) ? "(".$uri[3].")" : "")."')");
+// DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','LAYOUT". (isset($uri[2]) ? "(".$uri[1].")" : "")."')");
 $id = $uri[3];
+// echo $id;
 switch ($method) {
 	case 'GET':
 		$result =  DB::select("layout",null,"issue_id=".$id . " order by id desc limit 1");
@@ -22,6 +23,7 @@ switch ($method) {
 				
 			}
 		}
+		var_dump($data_to_catch);
 			// $fields = "first_name,middle_name,last_name,layout,contact_no,email_addr,username,password,is_admin";
 		echo (DB::insert("layout", $data_to_catch,join(",", $fields))) ? true : false;
 		break;

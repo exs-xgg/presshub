@@ -48,7 +48,7 @@ switch ($method) {
 				
 			}
 		}
-		// var_dump($data_to_catch);
+		var_dump($data_to_catch);
 		// var_dump($fields);
 			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
 		echo (DB::update("article", join(",",$data_to_catch),join(",", $fields)," id=".$id));

@@ -125,7 +125,7 @@
                     <div class="col-4 mx-auto">&nbsp;
                     </div>
                     <div class="col-2 mx-auto">
-                     <img src="https://www.tsu.edu.ph/media/1902/TSUC_250x250.jpg" width="141" height="141">
+                     <img src="https://www.tsu.edu.ph/media/1888/CCS_200x200.jpg" width="141" height="141">
                     </div>
                     <div class="col-2 mx-auto">
                      <img src="/img/brand/favicon1.png" width="150" height="150">

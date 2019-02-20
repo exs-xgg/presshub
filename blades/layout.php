@@ -13,8 +13,12 @@ if ($_SESSION['is_admin']!=='Y') {
 	<title>My Dashboard - Presshub</title>
   <?php //include 'dependencies.php'; ?>
 <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/bootstrap.min.js"></script>
+
+  <link type="text/css" href="/node_modules/toastr/build/toastr.min.css" rel="stylesheet">
+  <script src="/node_modules/toastr/build/toastr.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
 </head>
@@ -67,12 +71,15 @@ if ($_SESSION['is_admin']!=='Y') {
   				
 					<br><br>
           <div class="row">
-            <span class="col-5 btn btn-primary" data-toggle="modal" data-target="#md_1">
-            <strong class=""> Add Section</strong>
-          </span>
-          <span class="col-5 btn btn-success" onclick="saveLayout()">
-            <strong class=""> Save layout</strong>
-          </span>
+            <button  class="col-3 btn btn-primary" data-toggle="modal" data-target="#md_1" title="Add Articles">
+            <strong class="fa fa-plus"></strong>
+          </button>
+          <button class="col-3 btn btn-success" onclick="saveLayout()" title="Save">
+            <strong class="fa fa-save"></strong>
+          </button>
+           <button class="col-3 btn btn-warning" onclick="printMe()" title="Print Preview">
+            <strong class="fa fa-print"></strong>
+          </button>
           </div>
 					
 					
@@ -116,23 +123,57 @@ if ($_SESSION['is_admin']!=='Y') {
   </body>
 
   <script type="">
+    var all_articles = [];
 <?php if (isset($uri[2])): ?>
     localStorage.setItem("layout_id",<?php echo $uri[2];?>)
   <?php endif ?>
     
 init();
+function printMe(){
+  window.location.href = "/api/pdf/" + localStorage.getItem("layout_id");
+}
 function init(){
   $.ajax({
     url: '/api/layout/'+localStorage.getItem("layout_id"),
     success: function(result){
       result = jQuery.parseJSON(result);
+      if (result==[]) {return 0;}
       $.each(result,function(idx,value){
-        $("#layoutMaster").append(atob(value.body));
+        // $("#layoutMaster").append(atob(value.body));
+        console.log(value.body);
+        all_articles = value.body.split(",");
+        console.log(all_articles);
+        var rowInit = 1;
+        $.each(all_articles, function(idz, art_value){
+            var generatedId = "sec_" + rowInit;
+            var art_id = art_value;
+            // 
+            
+            $.ajax({
+              url: '/api/article/' + art_id,
+              success: function(result){
+                result = jQuery.parseJSON(result);
+                $.each(result,function(idx,value){
+
+                var numberOfColumns = value.cols;
+
+                $("#layoutMaster").append('<tr class="secb" id="secc_'+rowInit + '"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td class="btnn"><button class="btn btn-danger" onclick="rm('+rowInit + ",'" + art_id + "'" + ')">Delete</button></td></tr>');
+
+
+
+                 $('#sec_'+rowInit).html(atob(value.body));
+                  $('.ql-clipboard').remove();
+                  $('.ql-tooltip').remove();
+
+              rowInit +=1;
+                })
+              }
+            });
+        });
       });
     }
   })
 }
-    if (true) {}
   	loadArticles();
   	function loadArticles() {
   		var issue_id = localStorage.getItem("issue_id");
@@ -148,8 +189,12 @@ function init(){
   			}
   		});
   	}
-    function rm(e){
-      $('#secc_'+e).remove();
+    function rm(e,id){
+      $('#secc_'+e).remove(); 
+      for( var i =0; i < all_articles.length; i++){
+        if ( all_articles[i] == id) all_articles.splice(i, 1);
+      }
+      console.log(all_articles);
     }
   	function generateColumn(){
   		var rowInit = $('#layoutMaster tr').length + 1;
@@ -166,18 +211,30 @@ function init(){
   					$('#sec_'+rowInit).html(atob(value.body));
   					$('.ql-clipboard').remove();
   					$('.ql-tooltip').remove();
-  				})
+  				});
+          var dtt = JSON.stringify([{
+              'cols' : numberOfColumns
+            }]);
+          $.ajax({
+            url:'/api/article/' + art_id,
+            type: 'put',
+            data : dtt,
+            success: function(result) {
+              toastr.success("Article Temporarily Added to Layout");
+              all_articles.push(art_id);
+            }
+          });
   			}
   		});
   	}
     function saveLayout(){
       var dataa = [{
         "issue_id" : localStorage.getItem("issue_id"),
-        "body" : "'" + btoa($("#layoutMaster").html()) + "'"
+        "body" : "'" + all_articles.join(",") + "'"
       }];
       dataa = JSON.stringify(dataa);
       $.ajax({
-        url: '/api/layout',
+        url: '/api/layout/' + localStorage.getItem("layout_id"),
         type: 'post',
         data: dataa,
         success: function(result){
