@@ -6,7 +6,7 @@ Class DB{
 
 	public $conn = "";
 	function db_init(){
-		$SERVER_ADDRESS = "ccspresshub.com";
+		$SERVER_ADDRESS = "148.66.146.16";
 		$DATABASE_USER = "rootpresshub";
 		$DATABASE_PASSWORD = "rootpresshub";
 		$DATABASE_NAME = "presshub";
