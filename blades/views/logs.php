@@ -1,5 +1,5 @@
 <?php
-$logs = json_decode(DB::raw("select (concat(first_name, (concat(' ', last_name)))) as name, method, module, date_added from actions inner join users on actions.user=users.id order by actions.id desc "));
+$logs = json_decode(DB::raw("select (concat(first_name, (concat(' ', last_name)))) as name, method, module, date_added from actions inner join users on actions.user=users.id order by actions.id desc limit 100"));
 // var_dump($logs);
 ?>
 <div class="container">

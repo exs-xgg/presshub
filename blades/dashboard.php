@@ -126,12 +126,17 @@ if ($_SESSION['is_admin']=="Y") {
     break;
   case 'file':
    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">files</li>';
+   break;
   case 'proj-file':
     echo '<li class="breadcrumb-item active text-uppercase" aria-current="page"><a href="/dashboard/proj-file">project files</a></li>';
+    break;
+  case 'archive':
+    echo '<li class="breadcrumb-item active text-uppercase" aria-current="page"><a href="/dashboard/archive">archived projects</a></li>';
+    break;
+
     if (isset($uri[3])) {
     echo '<li class="breadcrumb-item active text-uppercase" aria-current="page">'. $uri[3].'</li>';
    }
-    break;
     break;
   default:
     # code...
@@ -157,7 +162,7 @@ if (!isset($uri[2]) || $uri[2]=="") {
   <br>
   <div class="row">
  <?php 
-$notif = json_decode(DB::raw("select nickname from issue where id not in (select distinct(issue_id) from article)"));
+$notif = json_decode(DB::raw("select nickname from issue where id not in (select distinct(issue_id) from article) and date(date_created) > DATE_SUB(NOW(), INTERVAL 5 DAY) and is_archived='N'"));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
         <nav class="col-12 alert alert-success">New Issue - <?php echo $key3 ?></nav>
@@ -213,6 +218,9 @@ switch ($uri[2]) {
     break;
   case 'myfile':
    require 'file-panel.php';
+    break;
+  case 'archive':
+    require 'archive-files.php';
     break;
   case 'proj-file':
     require 'proj-files.php';

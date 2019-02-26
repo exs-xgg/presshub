@@ -57,6 +57,9 @@ foreach ($rex2 as $key) {
 <?php if ($_SESSION['is_admin']=='Y'): ?>
 	<a href="/layout/<?php echo $uri[3] ?>" class="btn btn-sm btn-info">Proceed to Layout</a>
 <?php endif ?>
+<?php if ($_SESSION['is_admin']=='Y'): ?>
+	<span onclick="arch()" class="btn btn-sm btn-danger">Archive Issue</span>
+<?php endif ?>
 		
 
 		<hr>
@@ -120,6 +123,18 @@ foreach ($rex2 as $key) {
 <script type="text/javascript">
 	$("#addArticlePanel").hide();
 	getProjFiles();
+	function arch(){
+		var is_t = confirm("Archive this issue?");
+		if (is_t) {
+			$.ajax({
+			url: '/api/arch/'+ localStorage.getItem("issue_id") ,
+			success: function(result){
+				toastr.success("Issue archived. Redirecting you to homepage in 5 seconds.");
+				setTimeout(function() {window.location.href="/dashboard"}, 5000);
+			}
+		});
+		}
+	}
 	function goToIssueBoard(){
 		window.location.href = '/admin/issue/' + localStorage.getItem("issue_id");
 	}
