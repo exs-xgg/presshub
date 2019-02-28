@@ -156,9 +156,9 @@ foreach ($result as $key) {
 if ($des1=="EDITOR" || $des0=="EDITOR") {
 
 ?>
-              <div class="col-3">
+             <!--  <div class="col-3">
                 <span class="col-md-12 btn bg-gradient-green text-white" onclick="finalize()" ><i class="fa fa-upload"></i> Finalize</span>
-              </div>
+              </div> -->
  <?php }
 
   ?> 
