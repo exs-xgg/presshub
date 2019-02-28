@@ -77,9 +77,9 @@ if ($_SESSION['is_admin']!=='Y') {
           <button class="col-3 btn btn-success" onclick="saveLayout()" title="Save">
             <strong class="fa fa-save"></strong>
           </button>
-           <button class="col-3 btn btn-warning" onclick="printMe()" title="Print Preview">
+           <!-- <button class="col-3 btn btn-warning" onclick="printMe()" title="Print Preview">
             <strong class="fa fa-print"></strong>
-          </button>
+          </button> -->
           </div>
 					
 					

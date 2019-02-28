@@ -76,7 +76,7 @@ foreach ($is_he_here as $key) {
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-6">
           <label>Article Name</label>
           <input class="form-control form-control-alternative" type="text" id="article_name">
           <label for="category">Category</label>
@@ -89,11 +89,37 @@ foreach ($is_he_here as $key) {
                       <option value="Editorial">Editorial</option>
                     </datalist>
           </select>
+
           <label>Deadline</label>
               <input class="form-control" placeholder="Select date" type="date" id="deadline" <?php echo ($_SESSION['is_admin']!=='Y') ? "disabled" : null; ?>>
           
         </div>
 
+        <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
+  ?>
+        
+
+      <hr>
+        <div class="col-6">
+          
+          <label>Forward to</label>
+          <select class="form-control" type="text" id="category" list="userList">
+            <?php
+              
+            ?>
+          </select>
+          <br>
+          <div class="pull-right">
+            <button class="btn btn-info">Forward</button>
+          </div>
+        </div> 
+        <?php  
+ }
+ ?>
+
+
+
+</div>
  <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
   ?>
         
