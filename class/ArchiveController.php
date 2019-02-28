@@ -4,7 +4,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::raw("update issue set is_archived='Y', date_archived=now() where id=". $id) : header('HTTP/1.0 500');;
+		$result =  ($id!==null) ? DB::raw("update issue set is_archived='Y', date_finished=now() where id=". $id) : header('HTTP/1.0 500');;
 		echo "$result";
 		break;
 	case 'POST':

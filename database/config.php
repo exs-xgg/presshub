@@ -6,13 +6,16 @@ Class DB{
 
 	public $conn = "";
 	function db_init(){
-		// $SERVER_ADDRESS = "148.66.146.16";
-		// $DATABASE_USER = "rootpresshub";
-		// $DATABASE_PASSWORD = "rootpresshub";
+		$SERVER_ADDRESS = "148.66.146.16";
+		$DATABASE_USER = "rootpresshub";
+		$DATABASE_PASSWORD = "rootpresshub";
 
-		$SERVER_ADDRESS = "localhost";
-		$DATABASE_USER = "root";
-		$DATABASE_PASSWORD = "";
+		// $SERVER_ADDRESS = "localhost";
+		// $DATABASE_USER = "root";
+		// $DATABASE_PASSWORD = "";
+
+
+		
 		$DATABASE_NAME = "presshub";
 		return mysqli_connect($SERVER_ADDRESS,$DATABASE_USER,$DATABASE_PASSWORD,$DATABASE_NAME);
 	}

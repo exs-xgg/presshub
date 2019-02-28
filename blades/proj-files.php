@@ -57,7 +57,7 @@ foreach ($rex2 as $key) {
 <?php if ($_SESSION['is_admin']=='Y'): ?>
 	<a href="/layout/<?php echo $uri[3] ?>" class="btn btn-sm btn-info">Proceed to Layout</a>
 <?php endif ?>
-<?php if ($_SESSION['is_admin']=='Y'): ?>
+<?php if ($_SESSION['is_admin']=='Y' && false): ?>
 	<span onclick="arch()" class="btn btn-sm btn-danger">Archive Issue</span>
 <?php endif ?>
 		

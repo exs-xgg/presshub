@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<br>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-lg-6">
 			<div class="card bg-secondary text-center" onclick="go('archive')"  style="cursor: pointer">
 				<div class="card-body text-white">
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <script type="text/javascript">

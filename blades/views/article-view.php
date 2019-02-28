@@ -118,7 +118,20 @@ foreach ($is_he_here as $key) {
               <div class="col-3">
                 <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
               </div>
- <?php } ?>
+ <?php }
+ $des = $_SESSION['designation'];
+  $des = split(" ", $des);
+  $des0 = $des[0];
+  $des1 = $des[1];
+if ($des1=="EDITOR" || $des0=="EDITOR") {
+
+?>
+              <div class="col-3">
+                <span class="col-md-12 btn bg-gradient-green text-white" onclick="finalize()" ><i class="fa fa-upload"></i> Finalize</span>
+              </div>
+ <?php }
+
+  ?> 
               <div class="col-3">
                 <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
               </div>
@@ -153,7 +166,7 @@ foreach ($is_he_here as $key) {
             </div>  
           </div>
            <br><div id="editor">
- 
+ please wait...
 </div>
            
 
@@ -248,6 +261,20 @@ getUserList();
       data: dataa,
       success: function(result){
         toastr.success("Article flagged as FINISHED");
+      }
+    });
+  }
+  function finalize(){
+    dataa = [{
+      "is_final" : "'Y'"
+    }]
+    dataa = JSON.stringify(dataa);
+    $.ajax({
+      url: '/api/article/' + localStorage.getItem("art_id"),
+      type: 'put',
+      data: dataa,
+      success: function(result){
+        toastr.success("Article flagged as FINALIZED.");
       }
     });
   }
