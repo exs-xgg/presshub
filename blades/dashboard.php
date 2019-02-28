@@ -162,6 +162,17 @@ if (!isset($uri[2]) || $uri[2]=="") {
   <br>
   <div class="row">
  <?php 
+
+ $notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article inner join issue on issue.id=article.issue_id where is_archived='N' and r_location='" . $_SESSION['designation'] . "'"));
+    foreach ($notif as $key => $value): ?>
+      <?php foreach ($value as $key3): ?>
+        <nav class="col-12 alert bg-gradient-purple">FORWARDED -  <?php 
+        $keymaster = explode("_",$key3);
+        echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?></nav>
+      <?php endforeach ?>
+      
+    <?php endforeach ?>  <?php 
+
 $notif = json_decode(DB::raw("select nickname from issue where id not in (select distinct(issue_id) from article) and date(date_created) > DATE_SUB(NOW(), INTERVAL 5 DAY) and is_archived='N'"));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
