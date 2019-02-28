@@ -104,6 +104,7 @@ foreach ($is_he_here as $key) {
           
           <label>Forward to</label>
           <select class="form-control" type="text"  id="desigList">
+            <option value='CORRESPONDENT'>CORRESPONDENT</option>
             <?php
 $result = DB::select("designation");
 $result = json_decode($result);
