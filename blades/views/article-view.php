@@ -103,14 +103,18 @@ foreach ($is_he_here as $key) {
         <div class="col-6">
           
           <label>Forward to</label>
-          <select class="form-control" type="text" id="category" list="userList">
+          <select class="form-control" type="text"  id="desigList">
             <?php
-              
+$result = DB::select("designation");
+$result = json_decode($result);
+foreach ($result as $key) {
+  echo "<option value='" . $key->{"description"} . "'>" . $key->{"description"} . "</option>";
+}
             ?>
           </select>
           <br>
           <div class="pull-right">
-            <button class="btn btn-info">Forward</button>
+            <button class="btn btn-info" onclick="refer()">Forward</button>
           </div>
         </div> 
         <?php  
@@ -264,18 +268,38 @@ if ($des1=="EDITOR" || $des0=="EDITOR") {
 </body>
 
 <script>
-
+//load designations to forward
+// $.ajax({
+//   url: '/api/role',
+//   success: function(result){
+//     result = jQuery.parseJSON(result);
+//     $.each(result, function(idx, value){
+//       console.log("<option value='" + value.description + "'>" + value.description + "</option>");
+//       $("#desigList").append("<option value='" + value.description + "'>" + value.description + "</option>");
+//     });
+//   }
+// });
   $("#fixedBtn").hide();
- function copyread(){
-       window.location.href= ( "/copyread/" + localStorage.getItem("art_id"));
-
-
-
-    }
+  
 
 loadUserArticle();
 getUserList();
   getWholeArticle();
+  function refer(){
+    dataa = [{
+      "r_location" : "'"+ $("#desigList").val() +"'"
+    }]
+    dataa = JSON.stringify(dataa);
+
+    $.ajax({
+      url: '/api/article/' + localStorage.getItem("art_id"),
+      type: 'put',
+      data: dataa,
+      success: function(result){
+        toastr.success("Article forwarded for review.");
+      }
+    });
+  }
  function finishNa(){
     dataa = [{
       "is_done" : "'Y'"
@@ -394,6 +418,7 @@ getUserList();
           $("#article_name").val(value.name);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
+          $("#desigList").val(value.r_location);
 
           if (value.copyread) {
 
@@ -417,7 +442,9 @@ getUserList();
       }
     });
   }
-
+function copyread(){
+       window.location.href= ( "/copyread/" + localStorage.getItem("art_id"));
+    }
 
 
 </script>
