@@ -5,7 +5,7 @@ DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['i
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("announcement",null," id=". $id) : DB::select("announcement");
+		$result =  ($id!==null) ? DB::select("announcement",null," id=". $id) : DB::select("announcement",null,"1=1 order by date_created desc");
 		echo "$result";
 		break;
 	case 'POST':

@@ -349,7 +349,7 @@ getUserList();
         }];
         dataa = JSON.stringify(dataa);
         $.ajax({
-          url:'/api/fwd/' + localStorage.getItem("art_id") + "/" + $("#desigList").val(),
+          url:'/api/frwd/' + localStorage.getItem("art_id"),
           type: 'post',
           data: dataa,
           success: function(result){
@@ -481,7 +481,7 @@ getUserList();
           $("#desigList").val(value.r_location);
 //GET LOGS HERE
           $.ajax({
-            url: '/api/fwd/'+ localStorage.getItem("art_id"),
+            url: '/api/frwd/'+ localStorage.getItem("art_id"),
             success: function(result){
                 var article_result = jQuery.parseJSON(result);
                 $.each(article_result, function(idx1, value1){

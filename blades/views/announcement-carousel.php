@@ -1,6 +1,6 @@
 
 <?php
-$result = DB::select("announcement",null," is_active='Y'");
+$result = DB::select("announcement",null," is_active='Y' order by date_created desc");
 
 ?>
 
@@ -11,7 +11,7 @@ $result = DB::select("announcement",null," is_active='Y'");
         <div class="container">
           <div class="col-lg-12">
             
-             <h1 align="center" class="jumbotron">2018 Announcements</h1>
+             <h1 align="center" class="jumbotron">2019 Announcements</h1>
             
           </div>
         </div>
