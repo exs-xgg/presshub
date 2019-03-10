@@ -31,7 +31,7 @@ foreach ($is_he_here as $key) {
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand mr-lg-5" href="<?php echo($_SERVER['HTTP_REFERER']); ?>">
-          <h3 id="article_header">Article Name</h3>
+          <h3><a href="/dashboard">HOME</a>&nbsp;&nbsp;-&nbsp;&nbsp; </h3> <h3 id="article_header">Article Name</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -92,7 +92,11 @@ foreach ($is_he_here as $key) {
 
           <label>Deadline</label>
               <input class="form-control" placeholder="Select date" type="date" id="deadline" <?php echo ($_SESSION['is_admin']!=='Y') ? "disabled" : null; ?>>
-          
+              <br>
+          <span class="btn bg-gradient-info"  data-toggle="modal" data-target="#md_fwd" style="cursor: pointer;"> 
+  <span href="#head" class="text-white">History</span>
+  
+</span>
         </div>
 
         <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
@@ -106,11 +110,28 @@ foreach ($is_he_here as $key) {
           <select class="form-control" type="text"  id="desigList">
             <option value='CORRESPONDENT'>CORRESPONDENT</option>
             <?php
-$result = DB::select("designation");
-$result = json_decode($result);
-foreach ($result as $key) {
-  echo "<option value='" . $key->{"description"} . "'>" . $key->{"description"} . "</option>";
+
+if ($_SESSION['designation']!=="CORRESPONDENT") {
+   echo "<option value='ADMINISTRATOR'>ADMINISTRATOR</option>";
+  echo "<option value='ADVISER'>ADVISER</option>";
+  echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
+  echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
+  echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
+  echo "<option value='MANAGING EDITOR'>MANAGING EDITOR</option>";
 }
+ 
+  echo "<option value='FEATURE WRITER'>FEATURE WRITER</option>";
+  echo "<option value='LITERARY EDITOR'>LITERARY EDITOR</option>";
+  echo "<option value='NEWS EDITOR'>NEWS EDITOR</option>";
+  echo "<option value='PHOTOGRAPHER'>PHOTOGRAPHER</option>";
+  echo "<option value='SPORTS EDITOR'>SPORTS EDITOR</option>";
+
+
+
+
+
+
+
             ?>
           </select>
           <br>
@@ -237,10 +258,34 @@ if ($des1=="EDITOR" || $des0=="EDITOR") {
 </div>
 
 
+<div class="modal fade" id="md_fwd" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog">
+        <div class="modal-content modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">Article Forwarding History</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                
+
+            </div>
+            <div class="modal-body"> 
+              <div class="modal-body" align="center">
+                         <ul id="logs">
+  </ul>
+                        </div>
+            </div>
+            <div class="modal-footer"> 
+                          <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
+                        </div>
+        </div>
+    </div>
+</div>
+
 
 <span class="col-3 card-body bg-gradient-danger" id="fixedBtn"  data-toggle="modal" data-target="#md_copyread" style="cursor: pointer;"> 
   <span href="#head" class="text-white"><i class="fa fa-chevron-up"></i>&nbsp;&nbsp;Revision</span>
 </span>
+
+
 
 <br><br><br><br><br><br>
 <footer class="footer has-cards fix-bottom" style="">
@@ -298,6 +343,20 @@ getUserList();
       data: dataa,
       success: function(result){
         toastr.success("Article forwarded for review.");
+        dataa =[{
+          "art_id" : localStorage.getItem("art_id"),
+          "desig" : "'" + $("#desigList").val() +"'"
+        }];
+        dataa = JSON.stringify(dataa);
+        $.ajax({
+          url:'/api/fwd/' + localStorage.getItem("art_id") + "/" + $("#desigList").val(),
+          type: 'post',
+          data: dataa,
+          success: function(result){
+            console.log('forward logged.');
+          }
+        });
+
       }
     });
   }
@@ -420,7 +479,17 @@ getUserList();
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
           $("#desigList").val(value.r_location);
-
+//GET LOGS HERE
+          $.ajax({
+            url: '/api/fwd/'+ localStorage.getItem("art_id"),
+            success: function(result){
+                var article_result = jQuery.parseJSON(result);
+                $.each(article_result, function(idx1, value1){
+                    $("#logs").append('<li>' + value1.desig + ' - (' + value1.date_fwd + ')</li>');
+                });
+          }
+        });
+//============
           if (value.copyread) {
 
           $("#copyread").append('<img src="'+value.copyread+'" alt="Corrupted image.">')
@@ -467,6 +536,11 @@ img{
     border-radius: 0;
 }
 #fixedBtn {
+    position: fixed;
+    bottom: 0px;
+    right: 0px; 
+}
+#fixedBtn2 {
     position: fixed;
     bottom: 0px;
     right: 0px; 

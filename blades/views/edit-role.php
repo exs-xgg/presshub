@@ -3,7 +3,7 @@
 		<div class="col-lg-6 col-sm-12 mx-auto">
 			<div class="card">
 				<div class="card-header">
-					<label>Currently Available Designation</label>
+					<label>Currently Vacant Designations</label>
 				</div>
 				
 				<div class="card-footer">

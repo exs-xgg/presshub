@@ -15,6 +15,9 @@ error_reporting(E_WARNING);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
+        case 'fwd':
+            require '/class/ForwardLogsController.php';
+            break;
         case 'unarch':
             require '/class/UnarchiveController.php';
             break;

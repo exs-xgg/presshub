@@ -1,11 +1,10 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
-DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'".$method."','ARTICLE-ASSIGNMENT". (isset($uri[3]) ? "(".$uri[3].")" : "")."')");
 $id = $uri[3];
 switch ($method) {
 	case 'GET':
-		$result =  ($id!==null) ? DB::select("user_article",null,"is_done='N' and  user=". $id) : DB::select("user_article");
+		$result =  ($id!==null) ? DB::select("fwd_logs",null," art_id=". $id) : DB::select("issue");
 		echo "$result";
 		break;
 	case 'POST':
@@ -23,16 +22,14 @@ switch ($method) {
 			}
 		}
 			// $fields = "first_name,middle_name,last_name,designation,contact_no,email_addr,username,password,is_admin";
-		echo (DB::insert("user_article", $data_to_catch,join(",", $fields))) ;
+		echo (DB::insert("fwd_logs", $data_to_catch,join(",", $fields))) ? true : false;
 		break;
 
 
 	case 'PUT':
 		break;
 	case 'DELETE':
-		$result = DB::delete("user_article", $id);
-		echo "$result";
-		break;				
+		break;					
 	default:
 		return 500;
 		break;

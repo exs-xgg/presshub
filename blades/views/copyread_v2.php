@@ -64,6 +64,16 @@ $art_id = $uri[2];
                 <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_L.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_L.png')"></img>
                 <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_R.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_R.png')"></img>
                 <img class="c_img" draggable="true" src="/img/cp_symbols/insert_hyphen.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_hyphen.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_period.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_period.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_space.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_space.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_sumthing.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_sumthing.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/capital_this.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/capital_this.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/check_pls.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/check_pls.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/delete_close.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/delete_close.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/ins_comma.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/ins_comma.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/new_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/new_par.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/no_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/no_par.png')"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/smol_letter.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/smol_letter.png')"></img>
             
 
 
