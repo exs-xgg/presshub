@@ -151,7 +151,7 @@ switch ($_SESSION['designation']) {
     echo "<option value='$cat'>$cat</option>";
     echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
     echo "<option value='ADVISER'>ADVISER</option>";
-    
+
     break;
   
   default:
@@ -285,7 +285,8 @@ if ($des1=="EDITOR" || $des0=="EDITOR") {
             <div class="modal-body"> 
               <div class="modal-body" id="copyread" align="center">
                          
-                        </div>
+              </div>
+              <b>Comment</b>: <span id="copyread_rv"></span>
             </div>
             <div class="modal-footer"> 
                           <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
@@ -531,6 +532,7 @@ getUserList();
 
           $("#copyread").append('<img src="'+value.copyread+'" alt="Corrupted image.">')
             $("#fixedBtn").show(1000);
+            $("#copyread_rv").append(value.comment);
           }
           window.document.title = value.name + " - Edit Article";
 

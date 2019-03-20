@@ -83,20 +83,21 @@ $art_id = $uri[2];
         </div>
                         
                   </div>
-                <div class="row">
-                  	<div class="col-6 mx-auto pull-right">
-                  		<button class="btn btn-success" onclick="save()">SAVE</button>
-						<a href="/article/<?php echo $art_id; ?>" class="btn btn-warning">BACK</a>
-                    </div>
-                  	
-                </div>
+                
                 <div class="col-10" id="box1"></div>
         <div class="drafter"></div>
         <canvas id="cvdrafter" width="1280" height="720" style="border: 1px solid black"></canvas>
         
-        
-         </div><br>
-		
+       
+         </div><br> <label>Notes:</label><textarea id="comment" class="form-control" placeholder="Notes here..."></textarea>
+         <br><br>
+		<div class="container">
+                    <div class="row">
+                      <button class="btn btn-success" onclick="save()">SAVE</button>
+            <a href="/article/<?php echo $art_id; ?>" class="btn btn-warning">BACK</a>
+                    </div>
+                    
+                </div>
         
 </body>
 
@@ -219,12 +220,23 @@ loadArt();
 			"copyread" : "'" + dataURL + "'"
 		}];
 		dataa = JSON.stringify(dataa);
+    console.log( dataa);
 		$.ajax({
 			url: '/api/article/cp/' + <?php echo $art_id; ?>,
 			type: 'put',
 			data: dataa,
 			success: function(result){
-				toastr.success("Copyread Saved!");
+				
+        dt = JSON.stringify([{"comment" : "'" + $("#comment").val() + "'"}]);
+
+        $.ajax({
+          url: '/api/article/'+ <?php echo $art_id; ?>,
+          type: 'put',
+          data: dt,
+          success: function(result){
+            toastr.success("Copyread Saved!");
+          }
+        });
 			}
 		});
 	}
