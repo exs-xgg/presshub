@@ -110,21 +110,54 @@ foreach ($is_he_here as $key) {
           <select class="form-control" type="text"  id="desigList">
             <option value='CORRESPONDENT'>CORRESPONDENT</option>
             <?php
-
-if ($_SESSION['designation']!=="CORRESPONDENT") {
+$res = json_decode(DB::raw("select * from article where id=".$id=($uri[2])));
+$cat = "";
+foreach ($res as $key) {
+  $cat = strtoupper($key->{"cat_id"}) . " EDITOR";
+}
+if ($_SESSION['designation']!=="") {
    echo "<option value='ADMINISTRATOR'>ADMINISTRATOR</option>";
   echo "<option value='ADVISER'>ADVISER</option>";
   echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
   echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
   echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
   echo "<option value='MANAGING EDITOR'>MANAGING EDITOR</option>";
+}else{
+  
+}
+
+switch ($_SESSION['designation']) {
+  case 'CORRESPONDENT':
+    echo "<option value='$cat'>$cat</option>";
+    break;
+  case 'NEWS EDITOR':
+    echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
+    break;
+  case 'SPORTS EDITOR':
+    echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
+    break;
+  case 'FEATURE EDITOR':
+    echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
+    break;
+  case 'LITERARY EDITOR':
+    echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
+    break;
+  case 'ASSOCIATE EDITOR':
+    echo "<option value='$cat'>$cat</option>";
+    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
+    echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
+    break;
+  case 'EDITOR IN CHIEF':
+    echo "<option value='ADVISER'>ADVISER</option>";
+    
+    break;
+  
+  default:
+    # code...
+    break;
 }
  
-  echo "<option value='FEATURE WRITER'>FEATURE WRITER</option>";
-  echo "<option value='LITERARY EDITOR'>LITERARY EDITOR</option>";
-  echo "<option value='NEWS EDITOR'>NEWS EDITOR</option>";
-  echo "<option value='PHOTOGRAPHER'>PHOTOGRAPHER</option>";
-  echo "<option value='SPORTS EDITOR'>SPORTS EDITOR</option>";
+  
 
 
 
