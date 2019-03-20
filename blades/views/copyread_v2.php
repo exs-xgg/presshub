@@ -47,33 +47,32 @@ $art_id = $uri[2];
 			</div>
 		</div>
         <hr>
-		<div class="col-lg-8 col-md-10 col-xs-12 mx-auto"  id="penPanel"><div class="col-10 text-dark">Click to add a symbol to the copyreading canvas</div>
+		<div class="col-lg-8 col-md-10 col-xs-12 mx-auto"  id="penPanel"><div class="col-10 text-dark">Click to add a symbol to the copyreading canvas. (Hover on each symbol to learn more)</div>
                   <div class="row">
                     
                     <div id="images" class="furniture">
-            <img class="c_img" draggable="true" src="/img/cp_symbols/transpose.png" width="250" height="250" onclick="addToCanvas('/img/cp_symbols/transpose.png')"></img>
-            <img class="c_img" draggable="true" src="/img/cp_symbols/Omit.gif" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/Omit.gif')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/italics.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/italics.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/hashtag.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/hashtag.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/closeup.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/closeup.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/bf.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/bf.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/cap.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/cap.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/colon.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/colon.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/fl.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/fr.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/inser_comma.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/inser_comma.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_L.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_L.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_R.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_R.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_hyphen.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_hyphen.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/add_period.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_period.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/add_space.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_space.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/add_sumthing.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_sumthing.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/capital_this.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/capital_this.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/check_pls.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/check_pls.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/delete_close.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/delete_close.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/ins_comma.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/ins_comma.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/new_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/new_par.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/no_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/no_par.png')"></img>
-                <img class="c_img" draggable="true" src="/img/cp_symbols/smol_letter.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/smol_letter.png')"></img>
+            <img class="c_img" draggable="true" src="/img/cp_symbols/transpose.png" width="250" height="250" onclick="addToCanvas('/img/cp_symbols/transpose.png')" title="Transpose"></img>
+            <img class="c_img" draggable="true" src="/img/cp_symbols/Omit.gif" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/Omit.gif')" title="Omit"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/italics.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/italics.png')" title="Italicize"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/hashtag.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/hashtag.png')" title="Add Space"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/closeup.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/closeup.png')" title="Close Gap"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/bf.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/bf.png')" title="BF"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/cap.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/cap.png')" title="Capitalize"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/colon.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/colon.png')" title="Add Colon"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/fl.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/fr.png')" title="Float"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/inser_comma.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/inser_comma.png')" title="Insert Comma"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_L.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_L.png')" title="Emphasize"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_emph_R.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_emph_R.png')" title="Emphasize"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/insert_hyphen.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/insert_hyphen.png')" title="Insert Hyphen"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_period.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_period.png')" title="Add Period"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_space.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_space.png')"  title="Add Space"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/add_sumthing.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/add_sumthing.png')"  title="Add Something"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/capital_this.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/capital_this.png')" title="Capitalize This"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/check_pls.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/check_pls.png')" title="Verify this"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/delete_close.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/delete_close.png')" title="Delete Closing"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/new_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/new_par.png')"  title="New Paragraph"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/no_par.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/no_par.png')" title="No Paragraph"></img>
+                <img class="c_img" draggable="true" src="/img/cp_symbols/smol_letter.png" width="252" height="295" onclick="addToCanvas('/img/cp_symbols/smol_letter.png')" title="Do not capitalize"></img>
             
 
 

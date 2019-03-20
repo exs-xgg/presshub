@@ -108,22 +108,11 @@ foreach ($is_he_here as $key) {
           
           <label>Forward to</label>
           <select class="form-control" type="text"  id="desigList">
-            <option value='CORRESPONDENT'>CORRESPONDENT</option>
             <?php
 $res = json_decode(DB::raw("select * from article where id=".$id=($uri[2])));
 $cat = "";
 foreach ($res as $key) {
   $cat = strtoupper($key->{"cat_id"}) . " EDITOR";
-}
-if ($_SESSION['designation']!=="") {
-   echo "<option value='ADMINISTRATOR'>ADMINISTRATOR</option>";
-  echo "<option value='ADVISER'>ADVISER</option>";
-  echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
-  echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
-  echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
-  echo "<option value='MANAGING EDITOR'>MANAGING EDITOR</option>";
-}else{
-  
 }
 
 switch ($_SESSION['designation']) {
@@ -131,15 +120,19 @@ switch ($_SESSION['designation']) {
     echo "<option value='$cat'>$cat</option>";
     break;
   case 'NEWS EDITOR':
+    echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
   case 'SPORTS EDITOR':
+    echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
   case 'FEATURE EDITOR':
+    echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
   case 'LITERARY EDITOR':
+    echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
   case 'ASSOCIATE EDITOR':
@@ -151,7 +144,9 @@ switch ($_SESSION['designation']) {
     echo "<option value='$cat'>$cat</option>";
     echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
     echo "<option value='ADVISER'>ADVISER</option>";
-
+case 'ADVISER':
+    echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
+    break;
     break;
   
   default:
