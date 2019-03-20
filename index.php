@@ -112,6 +112,9 @@ switch ($uri[1]) {
         require 'blades/home.php';
         break;
     // Home page
+    case 'reset':
+        require 'blades/reset.php';
+        break;
     case 'forgot':
         require 'blades/forgot.php';
         break;

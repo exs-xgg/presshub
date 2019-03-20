@@ -46,6 +46,7 @@ $fields = array();
 			}
 		}
 		// echo "\n";
+		DB::raw("update users set reset=0 where id=".$id);
 		echo DB::update("users", join(",",$cont_), join(",",$column), $conditions);
 		break;
 	case 'DELETE':

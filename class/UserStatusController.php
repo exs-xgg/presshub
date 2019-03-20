@@ -16,11 +16,18 @@
 				$_SESSION['is_admin'] = $key->{"is_admin"};
 				$_SESSION['idx'] = $key->{"id"};
 				$_SESSION['designation'] = $key->{"designation"};
+				$reset = $key->{"reset"};
 			}
 			// echo $_SESSION['user'];
 
 DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'LOGIN','')");
-			header("location: /dashboard");
+			
+
+			if ($reset==1) {
+				header("location: /reset");
+			}else{
+				header("location: /dashboard");
+			}
 		}else{
 
 DB::raw("INSERT INTO `actions`(`user`,`method`, `module`) VALUES (".$_SESSION['idx'].",'LOGIN','FAILED')");

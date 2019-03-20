@@ -13,7 +13,7 @@ include 'dependencies.php';
 				<div class="card-body">
 					<a href="/login">Back to Login Page</a><br><br>
 					<?php if (isset($_REQUEST['pass']) && $_REQUEST['pass']=="true"): ?>
-						<nav class="alert alert-success">Password reset has been succesful and has been reset to blank.</nav>
+						<nav class="alert alert-success">Password reset has been succesful and has been temporarily reset to <b><?php echo $_SESSION['forgot_key']; ?></b>. Go to login now and change your temporary password immediately</nav>
 						<?php else: ?>
 							<?php if (isset($_REQUEST['pass']) && $_REQUEST['pass']=="fail"): ?>
 						<nav class="alert alert-danger">Invalid Answer.</nav>
