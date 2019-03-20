@@ -80,7 +80,7 @@ foreach ($is_he_here as $key) {
           <label>Article Name</label>
           <input class="form-control form-control-alternative" type="text" id="article_name">
           <label for="category">Category</label>
-          <select class="form-control" type="text" id="category" list="userList">
+          <select class="form-control" type="text" id="category" list="userList" disabled="true">
                           <datalist id="userList">
                       <option value="News">News</option>
                       <option value="Feature">Feature</option>
@@ -153,7 +153,24 @@ if ($_SESSION['designation']!=="CORRESPONDENT") {
       <hr>
         <div class="col-md-12">
            <nav class="alert alert-dark">Content </nav>
-           <div class="container">
+           
+           <br><div id="editor">
+ please wait...
+</div>
+           
+
+<!-- Include the Quill library -->
+
+
+           <!-- <textarea class="form-control form-control-alternative"></textarea> -->
+        </div>
+
+        <div class="col-12">
+         
+        </div>
+
+    </div></div>
+    <div class="container">
             <div class="row">
                <div class="col-3">
                 <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
@@ -217,21 +234,6 @@ if ($des1=="EDITOR" || $des0=="EDITOR") {
              
             </div>  
           </div>
-           <br><div id="editor">
- please wait...
-</div>
-           
-
-<!-- Include the Quill library -->
-
-
-           <!-- <textarea class="form-control form-control-alternative"></textarea> -->
-        </div>
-
-        <div class="col-12">
-         
-        </div>
-    </div></div>
 </div>
 </div>
 
