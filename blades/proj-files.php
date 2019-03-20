@@ -52,8 +52,9 @@ foreach ($rex2 as $key) {
 		<?php endif ?>
 		
 
-
+<?php if ($uri[4]==""): ?>
 		<span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span>
+<?php endif ?>
 <?php if ($_SESSION['is_admin']=='Y'): ?>
 	<a href="/layout/<?php echo $uri[3] ?>" class="btn btn-sm btn-info">Proceed to Layout</a>
 <?php endif ?>

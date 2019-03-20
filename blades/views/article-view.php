@@ -148,6 +148,8 @@ switch ($_SESSION['designation']) {
     echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
     break;
   case 'EDITOR IN CHIEF':
+    echo "<option value='$cat'>$cat</option>";
+    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
     echo "<option value='ADVISER'>ADVISER</option>";
     
     break;
