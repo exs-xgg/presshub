@@ -24,7 +24,6 @@ background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;  ">
 <div class="container">
-	<br><br><br><br><br><br>
 	<div class="row">
 		<div class="col-lg-6 col-md-4 col-xs-4">
 			&nbsp;
@@ -40,8 +39,8 @@ background-repeat: no-repeat;
 								</div>
 								
 								<div class="col-8">
-									<img src="https://i.ibb.co/RbTYYBM/PRESSHUB.png" height="100">
-								<!-- <img src="/img/brand/favicon1.png" width="250" height="250"> -->
+									<!-- <img src="/img/brand/favicon1.png" height="100"> -->
+								<img src="/img/brand/favicon1.png" width="250" height="250">
 								</div>
 								<div class="col-2">
 								&nbsp;	
@@ -77,7 +76,8 @@ background-repeat: no-repeat;
 								<br>
 								<input class="form-control" type="password" name="password" placeholder="Password"><br>
 								<button class="btn btn-primary col-lg-12" onclick="set()" type="submit">Login</button><br><div class="col-lg-12" align="center"> - or - </div>
-								<a class="btn btn-warning col-lg-12" href="/forgot">Forgot Password</a>
+								<a class="btn btn-warning col-lg-12" href="/forgot">Forgot Password</a><hr>
+								<a class="btn btn-danger col-lg-12" href="/home">Back</a>
 								</form>
 							</div>
 						</div>

@@ -33,7 +33,7 @@
 										<input class=" col-lg-12 form form-control form-control-alternative" type="email" id="email_addr" placeholder="Email Address">
 									</div>
 									<div class="col-lg-4">
-										<label>Is Admin?</label>
+										<label>Is Assistant Admin?</label>
 										<select class="form form-control form-control-alternative" id="is_admin" placeholder="--">
 											
 											<option id="NO">NO</option>

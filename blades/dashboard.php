@@ -21,8 +21,9 @@ foreach ($re as $key) {
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg text-white">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="/dashboard">
-          <img src="https://i.ibb.co/RbTYYBM/PRESSHUB.png" height="40">
+        <img src="/img/brand/favicon1.png" width="50"> &nbsp;
+        <a class="navbar-brand mr-lg-5" href="/home">
+          <h3 class="text-white">PRESSHUB</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -60,11 +61,14 @@ foreach ($re as $key) {
             </li>
          
             
-            <?php
-if ($_SESSION['is_admin']=="Y") {
+                       <?php 
+ $des = $_SESSION['designation'];
+  $des = split(" ", $des);
+  $des0 = $des[0];
+  $des1 = $des[1];
+if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR" || $_SESSION['is_admin']=="Y"): ?>
 
 
-  ?>
 <li class="nav-item dropdown">
               <a href="/admin" class="nav-link text-white">
                 <i class="ni ni-collection d-lg-none"></i>
@@ -72,11 +76,7 @@ if ($_SESSION['is_admin']=="Y") {
               </a>
             </li>
 
-  <?php
-}
-
-
-            ?>
+  <?php endif ?>
 
            
             <li class="nav-item pull-right">
@@ -105,9 +105,13 @@ if ($_SESSION['is_admin']=="Y") {
                   <li class="nav-item"  onclick="go('assignment')">
                     <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Current Assignments (<?php echo $count_assigned ?>)</a>
                   </li>
-                  <?php if ($_SESSION['is_admin']=='Y'): ?>
+                  <?php  $des = $_SESSION['designation'];
+  $des = split(" ", $des);
+  $des0 = $des[0];
+  $des1 = $des[1];
+if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR"): ?>
                     <li class="nav-item"  onclick="go('admin-notif')">
-                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Admin Notifications</a>
+                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Editor Notifications</a>
                   </li>
                   <?php endif ?>
                    <li class="nav-item"  onclick="go('file')">
@@ -161,6 +165,18 @@ if (!isset($uri[2]) || $uri[2]=="") {
   <h4>Notifications</h4>
   <br>
   <div class="row">
+
+
+ <?php 
+$notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article left join user_article on user_article.article=article.id where (is_final='Y') and user_article.user = ".$_SESSION['idx'] ));
+    foreach ($notif as $key => $value): ?>
+      <?php foreach ($value as $key3): ?>
+        <nav class="col-12 alert bg-gradient-info">Finalized - <?php 
+        $keymaster = explode("_",$key3);
+        echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?></nav>
+      <?php endforeach ?>
+      
+    <?php endforeach ?>
  <?php 
 
  $notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article inner join issue on issue.id=article.issue_id where is_archived='N' and r_location='" . $_SESSION['designation'] . "'"));
@@ -182,22 +198,26 @@ $notif = json_decode(DB::raw("select nickname from issue where id not in (select
     <?php endforeach ?>
 
  <?php 
-$notif = json_decode(DB::raw("select  article.name as art_name from article left join user_article on user_article.article=article.id where (is_done='N' and body is null) and user_article.user = ".$_SESSION['idx'] ));
+$notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article left join user_article on user_article.article=article.id where (is_done='N' and body is null) and user_article.user = ".$_SESSION['idx'] ));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
-        <nav class="col-12 alert alert-info">New Article Available - <?php echo $key3 ?></nav>
+        <nav class="col-12 alert alert-info">New Article Available - <?php 
+        $keymaster = explode("_",$key3);
+        echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?></nav>
       <?php endforeach ?>
       
     <?php endforeach ?>
 
-    <?php 
-$notif = json_decode(DB::raw("select  article.name as art_name from article left join user_article on user_article.article=article.id where (is_done='N' and copyread is not null) and user_article.user = ".$_SESSION['idx'] ));
+    <!-- <?php 
+$notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article left join user_article on user_article.article=article.id where (is_done='N' and copyread is not null) and user_article.user = ".$_SESSION['idx'] ));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
-        <nav class="col-12 alert alert-warning">Revision Available - <?php echo $key3 ?></nav>
+        <nav class="col-12 alert alert-warning">Revision Available - <?php 
+        $keymaster = explode("_",$key3);
+        echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?></nav>
       <?php endforeach ?>
       
-    <?php endforeach ?>
+    <?php endforeach ?> -->
     
   </div>
 </div>

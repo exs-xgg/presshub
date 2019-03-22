@@ -78,7 +78,7 @@ foreach ($is_he_here as $key) {
     <div class="row">
         <div class="col-6">
           <label>Article Name</label>
-          <input class="form-control form-control-alternative" type="text" id="article_name">
+          <input class="form-control form-control-alternative" type="text" id="article_name" disabled >
           <label for="category">Category</label>
           <select class="form-control" type="text" id="category" list="userList" disabled="true">
                           <datalist id="userList">
@@ -91,7 +91,7 @@ foreach ($is_he_here as $key) {
           </select>
 
           <label>Deadline</label>
-              <input class="form-control" placeholder="Select date" type="date" id="deadline" <?php echo ($_SESSION['is_admin']!=='Y') ? "disabled" : null; ?>>
+              <input class="form-control" placeholder="Select date" type="date" id="deadline" disabled>
               <br>
           <span class="btn bg-gradient-info"  data-toggle="modal" data-target="#md_fwd" style="cursor: pointer;"> 
   <span href="#head" class="text-white">History</span>
@@ -135,18 +135,20 @@ switch ($_SESSION['designation']) {
     echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
+  case 'ASSOCIATE MANAGING EDITOR':
+    echo "<option value='$cat'>$cat</option>";
+    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE EDITOR</option>";
+    break;
   case 'ASSOCIATE EDITOR':
     echo "<option value='$cat'>$cat</option>";
-    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
     echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
     break;
   case 'EDITOR IN CHIEF':
-    echo "<option value='$cat'>$cat</option>";
-    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE MANAGING EDITOR</option>";
+    echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     echo "<option value='ADVISER'>ADVISER</option>";
+    break;
 case 'ADVISER':
     echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
-    break;
     break;
   
   default:
@@ -176,8 +178,7 @@ case 'ADVISER':
 
 
 </div>
- <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
-  ?>
+
         
 
       <hr>
@@ -198,7 +199,8 @@ case 'ADVISER':
         <div class="col-12">
          
         </div>
-
+ <?php if (($cf > 0)) {
+  ?>
     </div></div>
     <div class="container">
             <div class="row">
@@ -212,27 +214,30 @@ case 'ADVISER':
               <div class="col-3">
                 <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
               </div> <?php  
- }       ?>  
-<?php if ($_SESSION['is_admin']=="Y") {
-
-?>
-              <div class="col-3">
-                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
-              </div>
- <?php }
+ } 
  $des = $_SESSION['designation'];
   $des = split(" ", $des);
   $des0 = $des[0];
   $des1 = $des[1];
-if ($des1=="EDITOR" || $des0=="EDITOR") {
+if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
 
 ?>
-             <!--  <div class="col-3">
-                <span class="col-md-12 btn bg-gradient-green text-white" onclick="finalize()" ><i class="fa fa-upload"></i> Finalize</span>
-              </div> -->
+           <div class="col-3">
+                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
+              </div> 
  <?php }
 
-  ?> 
+  
+
+  if ( $_SESSION['designation']=="ADVISER") {
+
+?>
+           <div class="col-3">
+                <span class="col-md-12 btn btn-success" onclick="finalize()" ><i class="fa fa-check"></i> Finalize</span>
+              </div> 
+ <?php }
+
+  ?>
              
 
 
@@ -408,18 +413,23 @@ getUserList();
     });
   }
   function finalize(){
-    dataa = [{
-      "is_final" : "'Y'"
-    }]
-    dataa = JSON.stringify(dataa);
-    $.ajax({
-      url: '/api/article/' + localStorage.getItem("art_id"),
-      type: 'put',
-      data: dataa,
-      success: function(result){
-        toastr.success("Article flagged as FINALIZED.");
-      }
-    });
+    var ready = confirm("You are about to finalize an article and cannot be undone. Are you sure?");
+    if (ready){
+      dataa = [{
+        "is_final" : "'Y'"
+      }]
+      dataa = JSON.stringify(dataa);
+      $.ajax({
+        url: '/api/article/' + localStorage.getItem("art_id"),
+        type: 'put',
+        data: dataa,
+        success: function(result){
+          toastr.success("Article flagged as FINALIZED.");
+          location.reload();
+        }
+      });
+    }
+    
   }
   function deleteArticle(){
     $.ajax({
@@ -505,13 +515,15 @@ getUserList();
       url: '/api/article/' + localStorage.getItem("art_id"),
       success: function(result){
         // console.log(result);
+        var is_final
         var article_result = jQuery.parseJSON(result);
         $.each(article_result, function(idx, value){
           $("#article_header").text(value.name);
           $("#article_name").val(value.name);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
-          $("#desigList").val(value.r_location);
+          is_final = value.is_final;
+          // $("#desigList").val(value.r_location);
 //GET LOGS HERE
           $.ajax({
             url: '/api/frwd/'+ localStorage.getItem("art_id"),
@@ -531,8 +543,11 @@ getUserList();
           }
           window.document.title = value.name + " - Edit Article";
 
-        });
-        var quill = new Quill('#editor', {
+
+
+
+
+          var quill = new Quill('#editor', {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -543,6 +558,14 @@ getUserList();
   placeholder: 'Compose an epic...',
   theme: 'snow'  // or 'bubble'
 });
+
+
+
+if(is_final=='Y'){
+            $(".ql-editor").attr('contenteditable','false');
+          }
+        });
+        
       }
     });
   }
