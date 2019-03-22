@@ -222,7 +222,10 @@
 	}
 	function submitForm(){
 		if (confirmPass()) {
+		if ($("#password").val()=="") {
+			toastr.error("No Password Input.");
 
+		}else{
 		
 		if (localStorage.getItem("user_id")) {
 			var dataa = [{
@@ -279,6 +282,7 @@
 				}
 			});
 		}
+	}
 		getUserlist();
 		}
 	}

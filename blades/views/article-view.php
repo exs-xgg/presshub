@@ -204,12 +204,12 @@ case 'ADVISER':
                 <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
               </div>
               
-             <!--  <div class="col-3">
-                <span class="col-md-12 btn btn-success" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
-              </div> -->
               <div class="col-3">
+                <span class="col-md-12 btn btn-success" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
+              </div>
+              <!-- <div class="col-3">
                 <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
-              </div> <?php  
+              </div>  --><?php  
  } 
  $des = $_SESSION['designation'];
   $des = split(" ", $des);
@@ -229,9 +229,13 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
   if ( $_SESSION['designation']=="ADVISER") {
 
 ?>
+<div class="col-3">
+                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
+              </div> 
            <div class="col-3">
                 <span class="col-md-12 btn btn-success" onclick="finalize()" ><i class="fa fa-check"></i> Finalize</span>
               </div> 
+
  <?php }
 
   ?>
