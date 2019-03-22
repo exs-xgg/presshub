@@ -180,7 +180,7 @@ $notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as n
     <?php endforeach ?>
  <?php 
 
- $notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article inner join issue on issue.id=article.issue_id where is_archived='N' and r_location='" . $_SESSION['designation'] . "'"));
+ $notif = json_decode(DB::raw("select concat(concat(name , '_'), article.id) as name from article inner join issue on issue.id=article.issue_id where r_location='" . $_SESSION['designation'] . "'"));
     foreach ($notif as $key => $value): ?>
       <?php foreach ($value as $key3): ?>
         <nav class="col-12 alert bg-gradient-purple">FORWARDED -  <?php 

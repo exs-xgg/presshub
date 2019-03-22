@@ -13,7 +13,7 @@ foreach ($rex as $key) {
   $count_art = $key->{'ct'};
 }
 
-$rex2 = json_decode(DB::raw("select count(*) as ct from article where is_done='Y' and issue_id=".$uri[3]));
+$rex2 = json_decode(DB::raw("select count(*) as ct from article where is_final='Y' and issue_id=".$uri[3]));
 foreach ($rex2 as $key) {
   $count_f = $key->{'ct'};
 }
