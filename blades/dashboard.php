@@ -65,6 +65,7 @@ foreach ($re as $key) {
  $des = $_SESSION['designation'];
   $des = split(" ", $des);
   $des0 = $des[0];
+  $des2 = $des[2];
   $des1 = $des[1];
 if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR" || $_SESSION['is_admin']=="Y"): ?>
 

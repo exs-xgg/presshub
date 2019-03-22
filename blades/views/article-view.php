@@ -135,10 +135,6 @@ switch ($_SESSION['designation']) {
     echo "<option value='CORRESPONDENT'>CORRESPONDENT</option>";
     echo "<option value='ASSOCIATE EDITOR'>ASSOCIATE EDITOR</option>";
     break;
-  case 'ASSOCIATE MANAGING EDITOR':
-    echo "<option value='$cat'>$cat</option>";
-    echo "<option value='ASSOCIATE MANAGING EDITOR'>ASSOCIATE EDITOR</option>";
-    break;
   case 'ASSOCIATE EDITOR':
     echo "<option value='$cat'>$cat</option>";
     echo "<option value='EDITOR IN CHIEF'>EDITOR IN CHIEF</option>";
@@ -219,6 +215,7 @@ case 'ADVISER':
   $des = split(" ", $des);
   $des0 = $des[0];
   $des1 = $des[1];
+  $des2 = $des[2];
 if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
 
 ?>

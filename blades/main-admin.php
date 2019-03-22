@@ -33,6 +33,7 @@
   $des = split(" ", $des);
   $des0 = $des[0];
   $des1 = $des[1];
+  $des2 = $des[2];
 if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR"): ?>
 
 
@@ -60,7 +61,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR"): ?>
 
             <?php endif ?>
 
-            <?php if ($_SESSION['designation']=="EDITOR IN CHIEF" || $_SESSION['designation']=="ASSOCIATE EDITOR" || $_SESSION['designation']=="ASSOCIATE MANAGING EDITOR"): ?>
+            <?php if ($_SESSION['designation']=="EDITOR IN CHIEF" || $_SESSION['designation']=="ASSOCIATE EDITOR"): ?>
               <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                <?php include "views/create-issue.php"; ?>
               </div>
