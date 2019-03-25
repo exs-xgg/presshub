@@ -5,7 +5,7 @@ $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 $uri = explode("/", $request_uri[0]);
 
 include './database/config.php';
-if (1==1) {
+if (1==11) {
     
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 error_reporting(E_WARNING);

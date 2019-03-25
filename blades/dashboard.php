@@ -170,12 +170,12 @@
 
    <?php 
 
-   $notif = json_decode(DB::raw("select concat(concat(concat(concat(name , '_'), article.id),'_'),(article.date_updated)) as name from article where r_location='" . $_SESSION['designation'] . "' order by date_updated desc"));
+   $notif = json_decode(DB::raw("select concat(concat(concat(concat(concat(concat(concat(concat(name , '_'), article.id),'_'),(article.date_updated)),'_'),first_name),' '),last_name) as name from article inner join users on article.last_user_touch = users.id where r_location='" . $_SESSION['designation'] . "' order by article.date_updated desc"));
       foreach ($notif as $key => $value): ?>
         <?php foreach ($value as $key3): ?>
           <nav class="col-12 alert bg-gradient-purple">FORWARDED -  <?php 
           $keymaster = explode("_",$key3);
-          echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?><span class="pull-right"><?php echo $keymaster[2]; ?></span></nav>
+          echo "<a class='text-white' href='/article/" . $keymaster[1] . "'>" . $keymaster[0] . '</a>'; ?><span class="pull-right"><?php echo  'from: ' . $keymaster[3] .' (' . $keymaster[2] . ')'; ?></span></nav>
         <?php endforeach ?>
         
       <?php endforeach ?> 
