@@ -186,7 +186,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
 <div class="container">
   <div class="row">
     <hr>  
-        <div class="col-8">
+        <div class="col-12">
           
           <label>Forward to</label>
           <select class="form-control" type="text"  id="desigList">
@@ -240,7 +240,7 @@ case 'ADVISER':
           </select>
           <br>
           <div class="pull-right">
-            <button class="btn bg-gray" onclick="refer()">Forward</button>
+            <button class="btn bg-gray" onclick="refer()" id="fwdbtn">Forward</button>
           </div>
         </div> 
   </div>
@@ -531,7 +531,7 @@ getUserList();
       url: '/api/article/' + localStorage.getItem("art_id"),
       success: function(result){
         // console.log(result);
-        var is_final
+        var is_final  ="";
         var article_result = jQuery.parseJSON(result);
         $.each(article_result, function(idx, value){
           $("#article_header").text(value.name);
@@ -540,7 +540,7 @@ getUserList();
           $("#editor").html(atob(value.body));
           $("#category").val(value.cat_id);
           is_final = value.is_final;
-          // $("#desigList").val(value.r_location);
+          $("#desigList").val(value.r_location);
 //GET LOGS HERE
           $.ajax({
             url: '/api/frwd/'+ localStorage.getItem("art_id"),
@@ -580,6 +580,9 @@ getUserList();
 
 if(is_final=='Y'){
             $(".ql-editor").attr('contenteditable','false');
+            $(".ql-editor").attr("title","Article flagged as finished. Cannot edit anymore");
+            $("#fwdbtn").attr("disabled","true");
+            $("#fwdbtn").attr("title","Article flagged as finished. Cannot forward anymore");
           }
         });
         
