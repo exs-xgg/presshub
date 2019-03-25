@@ -2,16 +2,26 @@
 	header("location: /login");
   echo $_SESSION['idx'];
 } 
-if ($_SESSION['is_admin']!=='Y') {
+if (!($_SESSION['is_admin']=='Y' || $_SESSION['designation']=="EDITOR IN CHIEF")) {
 	header("location: /dashboard");
+}
+
+$count_art = 0;
+$rex = json_decode(DB::raw("select count(*) as ct from layout where issue_id=".$uri[2]));
+foreach ($rex as $key) {
+  $count_art = $key->{'ct'};
+}
+if ($count_art == 0) {
+  DB::raw("insert into layout (issue_id,date_added) values(".$uri[2].",now())");
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Dashboard - Presshub</title>
-  <?php //include 'dependencies.php'; ?>
+	<title>Layout Editing - Presshub</title>
+  
+
 <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="/vendor/jquery/jquery.min.js"></script>
@@ -21,14 +31,17 @@ if ($_SESSION['is_admin']!=='Y') {
   <script src="/node_modules/toastr/build/toastr.min.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.0.0"></script>
+<?php include 'loader.php'; ?>
+
 </head>
 <body>
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="/dashboard">
-          <h3>Presshub</h3>
-        </a>
+       <!--  <img src="img/brand/favicon1.png" width="50"> &nbsp; -->
+          <a class="navbar-brand mr-lg-5" href="/dashboard">
+            <h3 class="">PRESSHUB</h3>
+          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,11 +74,55 @@ if ($_SESSION['is_admin']!=='Y') {
   <hr>
 
   <hr>
-  <div class="container"><h5>New Layout</h5>
+  <div class="container">
   	<div class="row">
   		<div class="col-12 align-content-center">
+        <input type="file" id="headerpic" onchange="previewFile()" name="headerpic"><button class="btn btn-sm btn-success" onclick="upload()">Upload</button><br>
+<img src="" id="headerpic_container" width="870" alt="Image preview...">
+<script>
+  function upload(){
+    $.ajax({
+    url: '/api/rcvheader',
+    type: "POST",
+    data: formdata,
+    processData: false,
+    contentType: false,
+    success: function (result) {
+         toastr.success("Header image uploaded");
+    }
+});
+  }
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+  
+  $('#headerpic').change(function(){    
+    //on change event  
+    formdata = new FormData();
+    if($(this).prop('files').length > 0)
+    {
+        file =$(this).prop('files')[0];
+        formdata.append("headerpic", file);
+        formdata.append("id",localStorage.getItem("layout_id"));
+    }
+});
+
+  previewFile();  //calls the function named previewFile()
+  </script>
   			<table class="table" id="layoutMaster">
-  				
+           				
   			</table>
   			<div class="col-6 mx-auto">
   				
@@ -141,34 +198,39 @@ function init(){
       $.each(result,function(idx,value){
         // $("#layoutMaster").append(atob(value.body));
         console.log(value.body);
+        $("#headerpic_container").attr("src",value.img_url);
         all_articles = value.body.split(",");
         console.log(all_articles);
         var rowInit = 1;
         $.each(all_articles, function(idz, art_value){
             var generatedId = "sec_" + rowInit;
             var art_id = art_value;
-            // 
+            if (art_id!=="") {
+              console.log(art_id);
+              $.ajax({
+                url: '/api/article/' + art_id,
+                success: function(result){
+                  console.log(result);
+                  result = jQuery.parseJSON(result);
+                  $.each(result,function(idx,value){
+
+                  var numberOfColumns = value.cols;
+
+                  $("#layoutMaster").append('<tr class="secb" id="secc_'+rowInit + '"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td class="btnn"><button class="btn bg-gray" onclick="rm('+rowInit + ",'" + art_id + "'" + ')">Delete</button></td></tr>');
+
+
+
+                   $('#sec_'+rowInit).html(atob(value.body));
+                    $('.ql-clipboard').remove();
+                    $('.ql-tooltip').remove();
+
+                rowInit +=1;
+                  })
+                }
+              });
+            }
             
-            $.ajax({
-              url: '/api/article/' + art_id,
-              success: function(result){
-                result = jQuery.parseJSON(result);
-                $.each(result,function(idx,value){
-
-                var numberOfColumns = value.cols;
-
-                $("#layoutMaster").append('<tr class="secb" id="secc_'+rowInit + '"><td><div class="row"><div class="col-12 p' + numberOfColumns + 'c" id="sec_'+rowInit + '"></div></div></td><td class="btnn"><button class="btn btn-danger" onclick="rm('+rowInit + ",'" + art_id + "'" + ')">Delete</button></td></tr>');
-
-
-
-                 $('#sec_'+rowInit).html(atob(value.body));
-                  $('.ql-clipboard').remove();
-                  $('.ql-tooltip').remove();
-
-              rowInit +=1;
-                })
-              }
-            });
+            
         });
       });
     }
@@ -229,13 +291,12 @@ function init(){
   	}
     function saveLayout(){
       var dataa = [{
-        "issue_id" : localStorage.getItem("issue_id"),
         "body" : "'" + all_articles.join(",") + "'"
       }];
       dataa = JSON.stringify(dataa);
       $.ajax({
         url: '/api/layout/' + localStorage.getItem("layout_id"),
-        type: 'post',
+        type: 'put',
         data: dataa,
         success: function(result){
           alert("Layout Saved Successfully");
@@ -254,9 +315,7 @@ function init(){
       border: 13px !important;
       border-color: gray;
   }
-  img{
-  	max-width: 100px;
-  }
+  
   	.p2c{
     text-align: justify;
     -webkit-column-gap: 30px;

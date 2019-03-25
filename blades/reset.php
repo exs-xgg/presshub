@@ -1,7 +1,6 @@
 <?php
 
 include 'dependencies.php';
-
 ?>
 <main>
 <div class="container">

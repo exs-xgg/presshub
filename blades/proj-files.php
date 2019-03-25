@@ -55,9 +55,11 @@ foreach ($rex2 as $key) {
 <?php if ($uri[4]==""): ?>
 		<span class="btn btn-sm btn-success" onclick="$('#addArticlePanel').show(750)">Add Article</span>
 <?php endif ?>
-<?php if ($_SESSION['is_admin']=='Y'): ?>
+
+<?php if ($_SESSION['designation']=='EDITOR IN CHIEF'): ?>
 	<a href="/layout/<?php echo $uri[3] ?>" class="btn btn-sm btn-info">Proceed to Layout</a>
 <?php endif ?>
+
 <?php if ($_SESSION['is_admin']=='Y' && false): ?>
 	<span onclick="arch()" class="btn btn-sm btn-danger">Archive Issue</span>
 <?php endif ?>

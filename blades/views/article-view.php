@@ -80,26 +80,103 @@ foreach ($is_he_here as $key) {
           <label>Article Name</label>
           <input class="form-control form-control-alternative" type="text" id="article_name" disabled >
           <label for="category">Category</label>
-          <select class="form-control" type="text" id="category" list="userList" disabled="true">
-                          <datalist id="userList">
-                      <option value="News">News</option>
-                      <option value="Feature">Feature</option>
-                      <option value="Sports">Sports</option>
-                      <option value="Literary">Literary</option>
-                      <option value="Editorial">Editorial</option>
-                    </datalist>
-          </select>
-
+          <input class="form-control" type="text" id="category" disabled="true">
+                          
           <label>Deadline</label>
               <input class="form-control" placeholder="Select date" type="date" id="deadline" disabled>
               <br>
-          <span class="btn bg-gradient-info"  data-toggle="modal" data-target="#md_fwd" style="cursor: pointer;"> 
-  <span href="#head" class="text-white">History</span>
-  
-</span>
+          
         </div>
 
-        <?php if (($cf > 0) || $_SESSION['is_admin']=="Y") {
+       
+<div class="col-6">
+  <label>Forwarding Logs</label>
+  <table id="logs" class="table table-striped">
+    
+  </table>
+</div>
+
+</div>
+
+        
+
+      <hr>
+        <div class="col-md-12">
+           <nav class="alert alert-dark">Content </nav>
+           
+           <br><div id="editor">
+ please wait...
+</div>
+           
+
+<!-- Include the Quill library -->
+
+
+           <!-- <textarea class="form-control form-control-alternative"></textarea> -->
+        </div>
+
+        <div class="col-12">
+         </div>
+       
+ <?php if (($cf > 0)) {
+  ?>
+    </div></div>
+    <div class="container">
+            <div class="row">
+               <div class="col-3">
+                <span class="col-md-12 btn bg-gray text-white" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
+              </div>
+              
+              <div class="col-3">
+                <span class="col-md-12 btn bg-gray text-white" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
+              </div>
+              <!-- <div class="col-3">
+                <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
+              </div>  --><?php  
+ } 
+ $des = $_SESSION['designation'];
+  $des = split(" ", $des);
+  $des0 = $des[0];
+  $des1 = $des[1];
+  $des2 = $des[2];
+if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
+
+?>
+           <div class="col-3">
+                <span class="col-md-12 btn bg-gray text-white" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
+              </div> 
+ <?php }
+  ?>
+
+
+
+  <?php if ( $_SESSION['designation']=="ADVISER") {
+
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <span class="col-md-12 btn bg-gray text-white" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
+    </div> 
+    <div class="col-3">
+      <span class="col-md-12 btn bg-gray text-white" onclick="finalize()" ><i class="fa fa-check"></i> Finalize</span>
+    </div> 
+</div>
+</div>
+
+
+ <?php } ?>
+
+
+
+  <?php 
+ $des = $_SESSION['designation'];
+    $des = split(" ", $des);
+    $des0 = $des[0];
+    $des2 = $des[2];
+    $des1 = $des[1];
+
+    if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR" || ($cf > 0) || $_SESSION['is_admin']=="Y") {
   ?>
         
 
@@ -154,93 +231,22 @@ case 'ADVISER':
  
   
 
-
-
-
-
-
-
             ?>
           </select>
           <br>
           <div class="pull-right">
-            <button class="btn btn-info" onclick="refer()">Forward</button>
+            <button class="btn bg-gray" onclick="refer()">Forward</button>
           </div>
         </div> 
-        <?php  
+
+
+
+ <?php  
  }
+
+ 
  ?>
-
-
-
 </div>
-
-        
-
-      <hr>
-        <div class="col-md-12">
-           <nav class="alert alert-dark">Content </nav>
-           
-           <br><div id="editor">
- please wait...
-</div>
-           
-
-<!-- Include the Quill library -->
-
-
-           <!-- <textarea class="form-control form-control-alternative"></textarea> -->
-        </div>
-
-        <div class="col-12">
-         
-        </div>
- <?php if (($cf > 0)) {
-  ?>
-    </div></div>
-    <div class="container">
-            <div class="row">
-               <div class="col-3">
-                <span class="col-md-12 btn btn-danger" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
-              </div>
-              
-              <div class="col-3">
-                <span class="col-md-12 btn btn-success" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
-              </div>
-              <!-- <div class="col-3">
-                <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
-              </div>  --><?php  
- } 
- $des = $_SESSION['designation'];
-  $des = split(" ", $des);
-  $des0 = $des[0];
-  $des1 = $des[1];
-  $des2 = $des[2];
-if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
-
-?>
-           <div class="col-3">
-                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
-              </div> 
- <?php }
-
-  
-
-  if ( $_SESSION['designation']=="ADVISER") {
-
-?>
-<div class="col-3">
-                <span class="col-md-12 btn btn-warning" onclick="copyread()" ><i class="fa fa-search"></i> Copyread</span>
-              </div> 
-           <div class="col-3">
-                <span class="col-md-12 btn btn-success" onclick="finalize()" ><i class="fa fa-check"></i> Finalize</span>
-              </div> 
-
- <?php }
-
-  ?>
-             
-
 
 
               <div class="modal fade" id="md_1" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
@@ -296,7 +302,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
     </div>
 </div>
 
-
+<!-- 
 <div class="modal fade" id="md_fwd" tabindex="-1" role="dialog" aria-labelledby="modal-notification" style="display: none;" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-dialog">
         <div class="modal-content modal-content">
@@ -308,9 +314,8 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
             </div>
             <div class="modal-body"> 
               <div class="modal-body" align="center">
-                         <ul id="logs">
-  </ul>
-                        </div>
+                         
+              </div>
             </div>
             <div class="modal-footer"> 
                           <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Go Back</button>
@@ -318,7 +323,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
         </div>
     </div>
 </div>
-
+ -->
 
 <span class="col-3 card-body bg-gradient-danger" id="fixedBtn"  data-toggle="modal" data-target="#md_copyread" style="cursor: pointer;"> 
   <span href="#head" class="text-white"><i class="fa fa-chevron-up"></i>&nbsp;&nbsp;Revision</span>
@@ -372,7 +377,8 @@ getUserList();
   getWholeArticle();
   function refer(){
     dataa = [{
-      "r_location" : "'"+ $("#desigList").val() +"'"
+      "r_location" : "'"+ $("#desigList").val() +"'",
+      "user_id": <?php echo $_SESSION['idx'] ?>
     }]
     dataa = JSON.stringify(dataa);
 
@@ -523,6 +529,7 @@ getUserList();
           $("#article_name").val(value.name);
           $("#deadline").val(value.deadline);
           $("#editor").html(atob(value.body));
+          $("#category").val(value.cat_id);
           is_final = value.is_final;
           // $("#desigList").val(value.r_location);
 //GET LOGS HERE
@@ -531,7 +538,7 @@ getUserList();
             success: function(result){
                 var article_result = jQuery.parseJSON(result);
                 $.each(article_result, function(idx1, value1){
-                    $("#logs").append('<li>' + value1.desig + ' - (' + value1.date_fwd + ')</li>');
+                    $("#logs").append('<tr><td>' + value1.desig + '</td><td>' + value1.date_fwd + '</td</tr>');
                 });
           }
         });

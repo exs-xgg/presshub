@@ -51,7 +51,13 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR"): ?>
         <div class="card">
           <div class="card-body">
             <div class="tab-content" id="myTabContent">
+
+
+
                <?php if ($_SESSION['designation']=="ADVISER"): ?>
+
+
+
               <div class="tab-pane fade active show" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                 <?php include 'views/create-user.php';?>
               </div>

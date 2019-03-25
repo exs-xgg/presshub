@@ -23,6 +23,7 @@ Class DB{
 	function raw($query){
 		$conn = DB::db_init();
 		$result = $conn->query($query);
+		// return $query;
 		$result_array = array();
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
@@ -30,6 +31,7 @@ Class DB{
 			}
 		}
 		return json_encode($result_array);
+
 	}
 
 	function select($table,$fields = null,$conditions = null){

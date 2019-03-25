@@ -15,6 +15,9 @@ error_reporting(E_WARNING);
 if (strpos($uri[1], 'api') !== false) {
    $uri = explode("/", $request_uri[0]);
      switch ($uri[2]) {
+        case 'rcvheader':
+            require 'class/HeaderController.php';
+            break;
         case 'frwd':
             require 'class/ForwardLogsController.php';
             break;
@@ -23,9 +26,6 @@ if (strpos($uri[1], 'api') !== false) {
             break;
         case 'arch':
             require 'class/ArchiveController.php';
-            break;
-        case 'pdf':
-            require 'class/PDFPublisherController.php';
             break;
         case 'forget':
             require 'class/ForgetController.php';

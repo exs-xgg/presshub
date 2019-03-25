@@ -132,7 +132,7 @@
 					<div class="col-6">
 						<table class="table" id="userTable">
 							<thead>
-								<tr><th>Name</th><th>Designation</th><th>Is Active</th><th></th></tr>
+								<tr><th>Name</th><th>Designation</th><th>Is Active</th></tr>
 								
 							</thead><tbody></tbody>
 						</table>
@@ -157,7 +157,9 @@
 	}
 	function getUserDetails(e){
 		localStorage.setItem("user_id",e);
-		$("#wat").text("Edit");
+		$("#wat").text("View");
+
+			$("#submiter").attr('disabled','true');
 		$.ajax({
 			url: '/api/user/' + e,
 			success: function(result){
@@ -173,8 +175,8 @@
 					$("#contact_no").val(value.contact_no);
 					$("#username").val(value.username);
 					$("is_admin").val(value.is_admin);
-					$("#question").val(value.question_id);
-					$("#answer").val(value.answer);
+					$("#question").val('*****');
+					$("#answer").val('*****');
 					$("#password").val("");
 					$("#conf_password").val("");
 				});
@@ -189,7 +191,7 @@
 				$("#userTable > tbody").empty();
 				$.each(result, function(idx,value){
 					var r = (value.is_active=='N')?"bg-gray text-white" : "bg-info text-white"
-					$("#userTable > tbody").append('<tr class=""><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td><label class="custom-toggle"><input id="ac_'+value.id+'" onchange="activate('+value.id+')" '+((value.is_active=='Y')? "checked" : "") +' type="checkbox"><span class="custom-toggle-slider rounded-circle"></span></label></td><td><span class="btn  btn-primary" onclick="getUserDetails('+value.id+')">edit</span></td></tr>');
+					$("#userTable > tbody").append('<tr class=""><td>'+ value.first_name + ' ' + value.last_name+'</td><td>'+value.designation+'</td><td><label class="custom-toggle"><input id="ac_'+value.id+'" onchange="activate('+value.id+')" '+((value.is_active=='Y')? "checked" : "") +' type="checkbox"><span class="custom-toggle-slider rounded-circle"></span></label><td><button class="btn btn-gray" onclick="getUserDetails('+value.id+')">EDIT</button></td></td></tr>');
 				})
 			}
 		});
@@ -255,6 +257,7 @@
 
 			localStorage.removeItem("user_id");
 			$("#wat").text("Create New");
+			$("#submiter").attr('disabled','false');
 			emptyFields();
 		}else{
 			var dataa = [{

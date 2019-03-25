@@ -6,7 +6,7 @@ $cat = $uri[3];
 $id = $uri[4];
 switch ($method) {
 	case 'GET':
-		$result =  DB::select("article",null,"cat_id like '$cat' and issue_id=". $id);
+		$result =  DB::select("article",null,"cat_id like '$cat' and issue_id=". $id . " order by date_updated desc");
 		echo "$result";
 		break;
 	case 'POST':

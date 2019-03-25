@@ -59,6 +59,8 @@ function isNumber(evt) {
     return true;
 }
 	function loadUserDetails(){
+
+
 		$.ajax({
 			url: '/api/user/' + <?php echo $_SESSION['idx']; ?>,
 			success: function(result){
@@ -82,7 +84,7 @@ function isNumber(evt) {
 		var pw1 = $("#password").val();
 		var pw2 = $("#c_password").val();
 		var rp = $("#realpw").val();
-		
+		if (!(pw1=="" || pw2=="")) {
 			var dataa = [{
 				"first_name" : "'" + $("#first_name").val() + "'",
 				"last_name" : "'" + $("#last_name").val() + "'",
@@ -104,8 +106,12 @@ function isNumber(evt) {
 				}
 			});
 		}else{
+		toastr.error("Password not set");
+	}
+		}else{
 			toastr.error("Passwords do not match");
 		}
+
 	
 	}
 </script>
