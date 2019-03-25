@@ -122,6 +122,7 @@ foreach ($is_he_here as $key) {
   ?>
     </div></div>
     <div class="container">
+    <div class="container">
             <div class="row">
                <div class="col-3">
                 <span class="col-md-12 btn bg-gray text-white" data-toggle="modal" data-target="#md_1"><i class="fa fa-trash"></i> Delete</span>
@@ -130,6 +131,8 @@ foreach ($is_he_here as $key) {
               <div class="col-3">
                 <span class="col-md-12 btn bg-gray text-white" onclick="saveArticle()"><i class="fa fa-save"></i> Save</span>
               </div>
+            </div>
+          </div></div>
               <!-- <div class="col-3">
                 <span class="col-md-12 btn btn-primary" onclick="finishNa()"><i class="fa fa-check"></i> Finished</span>
               </div>  --><?php  
@@ -153,6 +156,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
   <?php if ( $_SESSION['designation']=="ADVISER") {
 
 ?>
+
 <div class="container">
   <div class="row">
     <div class="col-3">
@@ -161,7 +165,7 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
     <div class="col-3">
       <span class="col-md-12 btn bg-gray text-white" onclick="finalize()" ><i class="fa fa-check"></i> Finalize</span>
     </div> 
-</div>
+  </div>
 </div>
 
 
@@ -179,9 +183,10 @@ if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR") {
     if ($des2=="EDITOR" || $des1=="EDITOR" || $des0=="EDITOR" || ($cf > 0) || $_SESSION['is_admin']=="Y") {
   ?>
         
-
-      <hr>
-        <div class="col-6">
+<div class="container">
+  <div class="row">
+    <hr>  
+        <div class="col-8">
           
           <label>Forward to</label>
           <select class="form-control" type="text"  id="desigList">
@@ -238,6 +243,10 @@ case 'ADVISER':
             <button class="btn bg-gray" onclick="refer()">Forward</button>
           </div>
         </div> 
+  </div>
+</div>
+
+      
 
 
 
@@ -378,7 +387,7 @@ getUserList();
   function refer(){
     dataa = [{
       "r_location" : "'"+ $("#desigList").val() +"'",
-      "user_id": <?php echo $_SESSION['idx'] ?>
+      "last_user_touch": <?php echo $_SESSION['idx'] ?>
     }]
     dataa = JSON.stringify(dataa);
 
