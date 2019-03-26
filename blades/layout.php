@@ -38,7 +38,7 @@ if ($count_art == 0) {
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
       <div class="container">
-       <!--  <img src="img/brand/favicon1.png" width="50"> &nbsp; -->
+        <img src="/img/brand/favicon1.png" width="50"> &nbsp;
           <a class="navbar-brand mr-lg-5" href="/dashboard">
             <h3 class="">PRESSHUB</h3>
           </a>
@@ -78,6 +78,7 @@ if ($count_art == 0) {
   	<div class="row">
   		<div class="col-12 align-content-center">
         <input type="file" id="headerpic" onchange="previewFile()" name="headerpic"><button class="btn btn-sm btn-success" onclick="upload()">Upload</button><br>
+        <img src="https://i.ibb.co/0mbJHgV/image.png" width="870"><br>
 <img src="" id="headerpic_container" width="870" alt="Image preview...">
 <script>
   function upload(){
@@ -93,7 +94,7 @@ if ($count_art == 0) {
 });
   }
    function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
+       var preview = document.getElementById('headerpic_container'); //selects the query named img
        var file    = document.querySelector('input[type=file]').files[0]; //sames as here
        var reader  = new FileReader();
 
