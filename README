@@ -1,19 +1,18 @@
-presshub
-htdocs-presshub folder
--git bash here
---npm install
-restart apache
-git init
-git remote add origin https://github.com/exs-xgg/preshub
-git pull origin /master/- pull latest updates from the cloud
+Requirements: git, npm, xampp, common_sense.js
 
-htdocs
+Open htdocs, right click then "Git Bash here"
+
+//assuming wala pa ang folder ng presshub. if meron na, just ignore this line
 git clone https://github.com/exs-xgg/presshub
-cd presshub - change directory
-npm install
-git pull - if may changes
 
-apacher config (httpd.conf)
+cd presshub
+
+npm install
+
+
+//apacher config (httpd.conf)
+//Open Xampp, click Config on Apache, then Apache(httpd.conf)
+//Copy this:
 <VirtualHost *:80>
     DocumentRoot C:/xampp/htdocs/presshub/
     
@@ -26,8 +25,6 @@ apacher config (httpd.conf)
     </Directory>
 </VirtualHost>
 
-git status (check status/modifies changes)
-git checkout (-b test, test, master) switching branch
---git add .
----git commit -m "asd"
-----git checkout master
+//sa httpd.conf, paste mo sa pinaka baba
+//save, exit, then restart Apache.
+import database with db name "presshub"
